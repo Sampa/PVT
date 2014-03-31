@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Musse</title>
+    <!-- Källfiler som vi behöver för att bygga vår hemsida -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/jquery2-1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<button class="btn btn-primary btn-lg hidden-sm" id="knapp 1">Detta ar knapp 1</button>
+<button class="btn btn-warning btn-sm" id="knapp 2" >Test knapp2</button>
+<button class="btn btn-danger btn-xs" id="knapp 3" >Test knapp3</button>
+<button class="btn" id="knapp 4" >Test knapp4</button>
+
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $(".btn").on("click",function(){
+            alert($(this).attr("id"));
+        });
+    })
+
+</script>

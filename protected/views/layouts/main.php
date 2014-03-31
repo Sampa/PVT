@@ -4,14 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body data-target="#navparent" data-spy="scroll" style="background-color:#fff; width: 100%; ">
-	HSAFHSAIFHas
+
 	<?php
 		$baseUrl = Yii::app()->request->baseUrl;
 		$cs = Yii::app()->getClientScript();

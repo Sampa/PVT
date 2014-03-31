@@ -5,7 +5,7 @@
 	<meta name="language" content="en" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<title><?=CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body data-target="#navparent" data-spy="scroll" style="background-color:#fff; width: 100%; ">
 
@@ -36,7 +36,7 @@
 	?>
 
 	<div id="header">
-	     Här kan vi ha något...
+	   Daniel
 	    <div id="contactme">
 	    <?php
 	    	//CHtml::tag('h3',Yii::t('main','Contact me'));

@@ -11,6 +11,7 @@
 </head>
 
 <body data-target="#navparent" data-spy="scroll" style="background-color:#fff; width: 100%; ">
+	HSAFHSAIFHas
 	<?php
 		$baseUrl = Yii::app()->request->baseUrl;
 		$cs = Yii::app()->getClientScript();

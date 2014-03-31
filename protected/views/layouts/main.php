@@ -36,7 +36,7 @@
 	?>
 
 	<div id="header">
-	     Här kan vi ha något...
+	    HEJ JQO hHh Här kan vi ha något...
 	    <div id="contactme">
 	    <?php
 	    	//CHtml::tag('h3',Yii::t('main','Contact me'));

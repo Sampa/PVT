@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="test" default="warfile">
+  
+  <property name="war" value="test.war" />
+  <property name="bin" value="bin" />
+  <property name="src" value="src" />
+  <property name="jsp" value="jsp" />
+  <property name="encoding" value="utf-8" />
+
+  <target name="warfile" description="build a war file to deploy">
+    <war destfile="test.war" webxml="metadata/web.xml">
+      <fileset dir="jsp" />
+    </war>
+  </target>
+  
+</project>

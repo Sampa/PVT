@@ -5,7 +5,7 @@
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 $useLocalDatabase = true;
-echo $_SERVER['SERVER_NAME'];
+$localDbSettings = include_once(dirname(__FILE__)."/localdbsettings.php");
 if($_SERVER['SERVER_NAME']=="pvt.dsv.su.se")
 	$useLocalDatabase = false;
 return array(
@@ -97,20 +97,7 @@ return array(
             'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
         ),*/
 
-        'db' => ($useLocalDatabase) ?
-                array( //LOCALHOST
-                    'class' => 'CDbConnection',
-                    'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
-                    'username' => 'root',
-                    'password' => '',
-                    'charset' => 'UTF8',
-                    'tablePrefix' => '', // even empty table prefix required!!!
-                    'emulatePrepare' => true,
-                    'enableProfiling' => true,
-                    'schemaCacheID' => 'cache',
-                    'queryCacheID' => 'cache',
-                    'schemaCachingDuration' => 120
-                ):
+        'db' => ($useLocalDatabase) ? $localDbSettings:
                 array(       //SERVER
                     'class' => 'CDbConnection',
                     'connectionString' => 'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;dbname=pvt14Group1',

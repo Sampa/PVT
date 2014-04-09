@@ -51,6 +51,15 @@ $this->breadcrumbs = array(
             </div>
         </div>
         <div class="form-group">
+            <?php echo $form->labelEx($model, 'fullname', array('class' => 'col-lg-3 control-label')); ?>
+            <div class="col-lg-5">
+                <?php echo $form->textField($model, 'fullname', array('class' => 'form-control', 'placeholder' => 'Full Name')); ?>
+                <span class="help-block help-inline ">
+                <?php echo $form->error($model, 'fullname'); ?>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group">
             <?php echo $form->labelEx($model, 'email', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
                 <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => 'Email')); ?>
@@ -90,23 +99,30 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'other_checkbox', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-1">
-                <?php echo $form->checkBox($model, 'other_checkbox', array('class' => 'form-control', 'placeholder' => 'Confirm your password', 'rows' => 6, 'cols' => 50)); ?>
+                <?php echo $form->checkBox($model, 'other_checkbox', array('class' => 'form-control','id'=>'other_checkbox')); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'other_checkbox'); ?>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <?php echo $form->labelEx($model, 'other_textfield', array('class' => 'col-lg-3 control-label')); ?>
+        <div class="form-group" id='Companyname'>
+            <?php echo $form->labelEx($model, 'Companyname', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'other_textfield', array('class' => 'form-control', 'placeholder' => 'other_textfield text goes here')); ?>
+                <?php echo $form->textField($model, 'Companyname', array('class' => 'form-control', 'placeholder' => 'Enter your companyname')); ?>
                 <div class="help-block">
-                    <?php echo $form->error($model, 'other_textfield'); ?>
+                    <?php echo $form->error($model, 'Companyname'); ?>
                 </div>
             </div>
         </div>
-
+  <div class="form-group" id='VAT'>
+            <?php echo $form->labelEx($model, 'VAT', array('class' => 'col-lg-3 control-label')); ?>
+            <div class="col-lg-5">
+                <?php echo $form->textField($model, 'VAT', array('class' => 'form-control', 'placeholder' => 'Enter your VAT')); ?>
+                <div class="help-block">
+                    <?php echo $form->error($model, 'VAT'); ?>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-lg-5 col-lg-offset-3">
                 <?php echo CHtml::activeLabel($model, 'verify_code'); ?>

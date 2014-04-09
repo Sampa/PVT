@@ -8,19 +8,21 @@
  */
 class RegisterForm extends CFormModel
 {
-
+    public $fullname;
     public $username;
     public $email;
     public $new_password;
     public $password_confirm;
     public $verify_code;
     public $other_checkbox;
-    public $other_textfield;
+    public $Companyname;
+    public $VAT;
 
 
     public function rules()
     {
         return array(
+            array('fullname,email,new_password,password_confirm,username', 'required'),
             array('email,new_password,password_confirm,username', 'required'),
             array('username', 'match', 'allowEmpty' => false, 'pattern' => '/[A-Za-z0-9\x80-\xFF]+$/'),
             array('email', 'email'),
@@ -40,13 +42,15 @@ class RegisterForm extends CFormModel
     public function attributeLabels()
     {
         return array(
+            'fullname' => Yii::t('app', 'Full name'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
             'new_password' => Yii::t('app', 'Password'),
             'password_confirm' => Yii::t('app', 'Password Confirmation'),
             'verify_code' => Yii::t('app', 'Captcha'),
-            'other_checkbox' => Yii::t('app', "Other"),
-            'other_textfield' => Yii::t('app', "Other textfield")
+            'other_checkbox' => Yii::t('app', "Recruiter?"),
+            'Companyname' => Yii::t('app', "Companyname"),
+            'VAT' => Yii::t('app', "VAT")
         );
     }
 }

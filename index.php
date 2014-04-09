@@ -23,7 +23,7 @@ defined('DS') or define('DS',DIRECTORY_SEPARATOR);
 // //Server framework Path
 // dirname(__FILE__).DS.'..'.DS.'frameworks'.DS .'yii_1.1.14'.DS .'framework'.DS .'yii.php';
 
-$yii=dirname(__FILE__).'/../yii/framework/yii.php';
+$yii=dirname(__FILE__).'/yii/framework/yii.php';
 
 
 $config=dirname(__FILE__).'/protected/config/main.php';

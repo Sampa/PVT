@@ -4,7 +4,10 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-
+$useLocalDatabase = true;
+echo $_SERVER['SERVER_NAME'];
+if($_SERVER['SERVER_NAME']=="pvt.dsv.su.se")
+	$useLocalDatabase = false;
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'CV-Pages',
@@ -94,7 +97,7 @@ return array(
             'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
         ),*/
 
-        'db' => (APP_DEPLOYED) ?
+        'db' => ($useLocalDatabase) ?
                 array( //LOCALHOST
                     'class' => 'CDbConnection',
                     'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',

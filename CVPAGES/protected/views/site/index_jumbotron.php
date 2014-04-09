@@ -1,7 +1,7 @@
 <?php $this->pageTitle = Yii::app()->name; ?>
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello, öland!</h1>
+        <h1>Hello NEW  NEW CV!</h1>
 
         <p>This is not a template for a simple marketing or informational website. It includes a large callout called the
             hero unit and three supporting pieces of content. Use it as a starting point to create something more

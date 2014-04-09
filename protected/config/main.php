@@ -79,7 +79,7 @@ return array(
         // uncomment the following to enable URLs in path-format
 
         'urlManager' => array(
-            'urlFormat' => 'path',
+            'urlFormat' => 'get',
             'showScriptName' => false,
             'rules' => array(
                 'site/page/<view:\w+>' => 'site/page/',
@@ -98,7 +98,7 @@ return array(
                     'class' => 'CDbConnection',
                     'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
                     'username' => 'root',
-                    'password' => '',
+                    'password' => 'root',
                     'charset' => 'UTF8',
                     'tablePrefix' => '', // even empty table prefix required!!!
                     'emulatePrepare' => true,

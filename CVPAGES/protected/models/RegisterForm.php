@@ -14,6 +14,8 @@ class RegisterForm extends CFormModel
     public $new_password;
     public $password_confirm;
     public $verify_code;
+    public $other_checkbox;
+    public $other_textfield;
 
 
     public function rules()
@@ -43,6 +45,8 @@ class RegisterForm extends CFormModel
             'new_password' => Yii::t('app', 'Password'),
             'password_confirm' => Yii::t('app', 'Password Confirmation'),
             'verify_code' => Yii::t('app', 'Captcha'),
+            'other_checkbox' => Yii::t('app', "Other"),
+            'other_textfield' => Yii::t('app', "Other textfield")
         );
     }
 }

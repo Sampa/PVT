@@ -86,6 +86,27 @@ $this->breadcrumbs = array(
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <?php echo $form->labelEx($model, 'other_checkbox', array('class' => 'col-lg-3 control-label')); ?>
+            <div class="col-lg-1">
+                <?php echo $form->checkBox($model, 'other_checkbox', array('class' => 'form-control', 'placeholder' => 'Confirm your password', 'rows' => 6, 'cols' => 50)); ?>
+                <div class="help-block">
+                    <?php echo $form->error($model, 'other_checkbox'); ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo $form->labelEx($model, 'other_textfield', array('class' => 'col-lg-3 control-label')); ?>
+            <div class="col-lg-5">
+                <?php echo $form->textField($model, 'other_textfield', array('class' => 'form-control', 'placeholder' => 'other_textfield text goes here')); ?>
+                <div class="help-block">
+                    <?php echo $form->error($model, 'other_textfield'); ?>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-lg-5 col-lg-offset-3">
                 <?php echo CHtml::activeLabel($model, 'verify_code'); ?>

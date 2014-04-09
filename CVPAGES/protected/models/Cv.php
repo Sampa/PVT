@@ -41,12 +41,12 @@ class Cv extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('showUserDetail, typeOfEmployment,  title', 'required'),
-			array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
-			array(' typeOfEmployment, title', 'length', 'max'=>255),
+			//array('showUserDetail, typeOfEmployment,  title', 'required'),
+			//array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
+			//array(' typeOfEmployment, title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
+			//array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,10 +77,10 @@ class Cv extends CActiveRecord
 			'id' => 'ID',
 			'showUserDetail' => Yii::t('t','Vill du visa dina uppgifter'),
 			'date' => Yii::t('t','Datum'),
-			'pathToPdf' => 'Path To Pdf',
-			'typeOfEmployment' => Yii::t('t','Anställningsforhm'),
+			'pathToPdf' => '',
+			'typeOfEmployment' => Yii::t('t','Anställningsform'),
 			'geographicAreaId' => Yii::t('t','Geografiskt area'),
-			'title' => Yii::t('t','Rubrik'),
+			'title' => Yii::t('t','Rubrik på ditt CV'),
 			'pdfText' => 'Pdf Text',
 			'publisherId' => 'Publisher',
 		);
@@ -117,6 +117,10 @@ class Cv extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+
+	}
+	public function beforeSave(){
+		$this-> publisherId=yii::app()->user->id;
 	}
 
 	/**

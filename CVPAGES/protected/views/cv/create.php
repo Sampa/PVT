@@ -15,6 +15,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Cv</h1>
+<h1><?php echo yii::t("t",'Skapa ditt Cv');?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -18,11 +18,11 @@
                         array('label' => 'Hem', 'url' => array('/site/index')),
                         array('label' => 'Om oss', 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => 'Kontakt', 'url' => array('/site/contact')),
-                        array('label' => 'Dropdown', 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
+                        array('label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
                             'items' => array(
-                                array('label' => 'Action', 'url' => array('#')),
+                                array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
                                 array('label' => 'Another action', 'url' => array('#')),
                                 array('label' => 'Something else here', 'url' => array('#')),
                                 array('label' => 'Something else here', 'url' => array('#'), 'itemOptions' => array('class' => 'divider')),

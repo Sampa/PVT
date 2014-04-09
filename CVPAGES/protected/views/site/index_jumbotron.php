@@ -1,11 +1,9 @@
 <?php $this->pageTitle = Yii::app()->name; ?>
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello NEW  NEW CV!</h1>
+        <h1><?php echo Yii::t("t","Välkommen till!");?></h1>
 
-        <p>This is not a template for a simple marketing or informational website. It includes a large callout called the
-            hero unit and three supporting pieces of content. Use it as a starting point to create something more
-            unique.</p>
+        <p>Välkommen till CVPages. Här kan du enkelt publicera hur många cv:n som du vill. Dessa kommer att vara publika för alla möjliga rekryterare att hitta dig och kontakta dig om ett jobberbjudande.</p>
 
         <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>

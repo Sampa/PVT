@@ -94,12 +94,12 @@ return array(
             'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
         ),*/
 
-        'db' => (!APP_DEPLOYED) ?
+        'db' => (APP_DEPLOYED) ?
                 array( //LOCALHOST
                     'class' => 'CDbConnection',
                     'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
                     'username' => 'root',
-                    'password' => '1',
+                    'password' => '',
                     'charset' => 'UTF8',
                     'tablePrefix' => '', // even empty table prefix required!!!
                     'emulatePrepare' => true,

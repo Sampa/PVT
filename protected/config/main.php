@@ -4,6 +4,7 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'CV-Pages',
@@ -98,7 +99,7 @@ return array(
                     'class' => 'CDbConnection',
                     'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
                     'username' => 'root',
-                    'password' => 'root',
+                    'password' => '',
                     'charset' => 'UTF8',
                     'tablePrefix' => '', // even empty table prefix required!!!
                     'emulatePrepare' => true,

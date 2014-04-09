@@ -110,9 +110,9 @@ return array(
             ):
         array(       //SERVER
             'class' => 'CDbConnection',
-                              'connectionString' => 'mysql:host=[MYSQL HOST];dbname=[DBNAME]',
-                               'username' => '[USERNAME]',
-                               'password' => '[PASSWORD]',
+                              'connectionString' => 'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;dbname=pvt14Group1',
+                               'username' => '[pvt14Group1',
+                               'password' => 'ohfephaenahb',
                                'charset' => 'UTF8',
                                'tablePrefix' => '',
                                'emulatePrepare' => true,
@@ -157,8 +157,8 @@ return array(
     'params' => array(
     'fromEmail' => 'admin@gmail.com',
     'replyEmail' => 'reply-to@gmail.com',
-    'myEmail' => '[MY  EMAIL]',
-    'gmail_password' => 'MY  GMAIL PASSWORD',
+    'myEmail' => 'pvtgroup1@gmail.com',
+    'gmail_password' => 'pvtdsv123',
     'recaptcha_private_key' => '6LetX_ESAAAAAJljh1ufs6xswXTVdaWY9Y9XyXNo', // captcha will not work without these keys!
     'recaptcha_public_key' => '6LetX_ESAAAAAOrKqvLlYIQJr6rjReYPupSjI4ay', //http://www.google.com/recaptcha
     'contactRequireCaptcha' => true,

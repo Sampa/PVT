@@ -67,10 +67,13 @@ class CvController extends Controller
 		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['Cv'])) {
-			$model->attributes=$_POST['Cv'];
-			if ($model->save()) {
+           	$model->attributes=$_POST['Cv'];
+
+            if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
-			}
+			}else{
+
+            }
 		}
 
 		$this->render('create',array(

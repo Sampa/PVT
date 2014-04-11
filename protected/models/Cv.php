@@ -45,7 +45,6 @@ class Cv extends CActiveRecord
 			//array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
 			//array(' typeOfEmployment, title', 'length', 'max'=>255),
 			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
 			//array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
 		);
 	}
@@ -121,7 +120,11 @@ class Cv extends CActiveRecord
 	}
 	public function beforeSave(){
 		$this-> publisherId=yii::app()->user->id;
-	}
+        $this->showUserDetail = 0;
+        $this->pathToPdf ="/pdf/filenamn.pdf";
+        echo var_dump($this->attributes);
+
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

@@ -100,7 +100,7 @@ return array(
         'db' => ($useLocalDatabase) ? $localDbSettings:
                 array(       //SERVER
                     'class' => 'CDbConnection',
-                    'connectionString' => 'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;dbname=pvt14Group1',
+                    'connectionString' => 'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;',
                     'username' => 'pvt14Group1',
                     'password' => 'ohfephaenahb',
                     'charset' => 'UTF8',

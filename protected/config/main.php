@@ -40,7 +40,8 @@ return array(
 //        'bootstrap' => realpath(__DIR__ . DS.'..'.DS.'extensions'.DS.'bootstrap'),
         // yiiwheels configuration
         'yiiwheels' => 'webroot.protected.extensions.yiiwheels',
-        'bootstrap' => 'webroot.protected.extensions.bootstrap'
+        'bootstrap' => 'webroot.protected.extensions.bootstrap',
+        'xupload'=>'webroot.protected.extensions.xupload',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool

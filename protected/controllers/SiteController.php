@@ -14,7 +14,7 @@
 
 class SiteController extends Controller
 {
-
+	public $layout = "//layouts/jumbotron";
 
     /**
      * Declares class-based actions.

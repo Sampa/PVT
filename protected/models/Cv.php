@@ -41,7 +41,8 @@ class Cv extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('showUserDetail, typeOfEmployment,  title', 'required'),
+//			array('showUserDetail, typeOfEmployment,  title', 'required'),
+//			array('typeOfEmployment,  geographicAreaId, title', 'required'),
 			//array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
 			//array(' typeOfEmployment, title', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -77,7 +78,7 @@ class Cv extends CActiveRecord
 			'id' => 'ID',
 			'showUserDetail' => Yii::t('t','Vill du visa dina uppgifter'),
 			'date' => Yii::t('t','Datum'),
-			'pathToPdf' => '',
+			'pathToPdf' =>Yii::t('t','Sökväg till pdf'),
 			'typeOfEmployment' => Yii::t('t','Anställningsform'),
 			'geographicAreaId' => Yii::t('t','Geografiskt area'),
 			'title' => Yii::t('t','Rubrik på ditt CV'),
@@ -122,9 +123,49 @@ class Cv extends CActiveRecord
 	public function beforeSave(){
         $this->geographicAreaId=  1;
 		$this-> publisherId=Yii::app()->user->id;
-//        $this->pathToPdf ="/pdf/filenamn.pdf";
-        return true;
+		parent::beforeSave( );
+		//if we can add the pdf return true so saving to the database tables goes thrue
+		return true;
     }
+	public function afterSave(){
+
+		$this->addPdfFromTmpFolder();
+	}
+	public function addPdfFromTmpFolder( ) {
+		//the cv to be updated with a pdf link
+		$cv = Cv::model()->findByPk($this->id);
+		//if all @ upload went fine we will have a session called pdf created
+		if( Yii::app( )->user->hasState( 'pdf' ) ) {
+			$pdf = Yii::app( )->user->getState( 'pdf' );
+			//Resolve the final path for our pdf's
+			$path = Yii::app( )->getBasePath( )."/../pdf/{$this->id}/";
+			//Create the folder and give permissions if it doesnt exists
+			if( !is_dir( $path ) ) {
+				mkdir( $path );
+				chmod( $path, 0777 );
+			}
+			//code designed for multiple files, hence the loop
+			foreach( $pdf as $file) {
+				if( is_file( $file["path"] ) ) {
+					//direct path
+					$newPath = $path.$file["filename"];
+					//move file from temporary folder to end destination
+					copy($file["path"],$newPath);
+					//a relative public path that we assign to the "pathToPdf" attribute (this gets saved in the database)
+					$cv->pathToPdf =  "/pdf/".$this->id."/".$file["filename"];
+				} else{
+					Yii::log( $file["path"]." is not a file", CLogger::LEVEL_WARNING );
+				}
+			}
+			/*
+			 * Clear the user's session
+			 * saves the updatet cv information, do note change order of these two or endless loop is begun
+			 */
+
+			Yii::app( )->user->setState( 'pdf', null );
+			$cv->save();
+		}
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

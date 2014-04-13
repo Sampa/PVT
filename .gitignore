@@ -12,3 +12,7 @@ protected/runtime/*
 protected/data/*.db
 themes/classic/views/
 protected/config/localdbsettings.php
+pdf/*
+!pdf/.gitignore
+!pdf/tmp
+pdf/tmp/*

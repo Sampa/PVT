@@ -123,9 +123,8 @@ class CvController extends Controller
 					//Move our file to our temporary dir
 					if(!is_dir($path))
 						mkdir($path.$filename);
-					chmod( $path, 0777);
 					$model->file->saveAs( $path.$filename );
-					chmod( $path.$filename, 0777 );
+//					chmod( $path.$filename, 0777 );
 					//here you can also generate the image versions you need
 					//using something like PHPThumb
 

@@ -20,7 +20,7 @@
 
             <?php echo $form->textFieldControlGroup($model,'pathToPdf',array('span'=>5,'maxlength'=>255, 'style'=> 'display:none')); ?>
 
-            <?php echo $form->radioButtonList($model,'typeOfEmployment',array('kon'=>'Konsultuppdrag','anst'=>'Anställning')); ?>
+            <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',array('kon'=>'Konsultuppdrag','anst'=>'Anställning')); ?>
 
             <?php echo $form->textFieldControlGroup($model,'geographicAreaId',array('span'=>5)); ?>
 
@@ -31,8 +31,5 @@
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?>
-    </div>
-
     <?php $this->endWidget(); ?>
-
 </div><!-- form -->

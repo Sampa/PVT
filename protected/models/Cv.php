@@ -45,7 +45,8 @@ class Cv extends CActiveRecord
 			//array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
 			//array(' typeOfEmployment, title', 'length', 'max'=>255),
 			// The following rule is used by search().
-			//array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
+			array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
+			array('date, typeOfEmployment, geographicAreaId, title, pdfText,pathToPdf', 'safe'),
 		);
 	}
 
@@ -119,11 +120,15 @@ class Cv extends CActiveRecord
 
 	}
 	public function beforeSave(){
-		$this-> publisherId=yii::app()->user->id;
-        $this->showUserDetail = 0;
-        $this->pathToPdf ="/pdf/filenamn.pdf";
-        echo var_dump($this->attributes);
-
+//        $this->typeOfEmployment = "fast";
+//        $this->geographicAreaId=  1;
+//        * @property string $title
+//        * @property string $pdfText
+//        * @property integer $publisherId
+//        *
+		$this-> publisherId=Yii::app()->user->id;
+//        $this->pathToPdf ="/pdf/filenamn.pdf";
+        return true;
     }
 
 	/**

@@ -14,8 +14,8 @@
 
 class Controller extends CController
 {
-
-    public function  init()
+    public $layout = "//layouts/jumbotron";
+     public function  init()
     {
         if (app()->params->render_switch_form) {
             $this->getLayoutAndBootswatchSkinFromSession();

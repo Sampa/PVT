@@ -125,11 +125,11 @@ return array(
                     'levels' => 'error, warning',
                 ),
                 // uncomment the following to show log messages on web pages
-                /*
+//                /*
                 array(
                     'class'=>'CWebLogRoute',
                 ),
-                */
+//                */
             ),
         ),
         'clientScript' => array(
@@ -157,13 +157,13 @@ return array(
         //Choose Bootswatch skin.'none' means default bootstrap theme.See http://bootswatch.com/
         //Options for Bootstrap2:(make sure you have 'theme'=>'bootstrap2' in this file.)
         //none,amelia,cerulean,cosmo,cyborg,flatly,journal,readable,simplex,slate,spacelab,spruce,superhero,united
-        'bootswatch2_skin' => 'none',
+        'bootswatch2_skin' => 'flatly',
 
         //Options for Bootstrap3:(no theme specified,default view files from protected/views are used)
         //none,amelia,cerulean,cosmo,cyborg,flatly,journal,readable,simplex,slate,spacelab,united
-        'bootswatch3_skin' => 'cyborg',
+        'bootswatch3_skin' => 'flatly',
 
         //render a form to try out layouts and skins.
-        'render_switch_form' => true
+        'render_switch_form' => false
     ),
 );

@@ -68,11 +68,13 @@ class CvController extends Controller
 
 		if (isset($_POST['Cv'])) {
            	$model->attributes=$_POST['Cv'];
-
             if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}else{
-
+                echo "<br/>";
+                echo "<br/>";
+                echo "<br/>";
+                var_export($model->attributes);
             }
 		}
 

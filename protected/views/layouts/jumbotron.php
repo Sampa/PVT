@@ -15,9 +15,10 @@
                 <?php $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
-                        array('label' => 'Hem', 'url' => array('/site/index')),
+                        array('label' => 'Hem', 'url' => array('//')),
                         array('label' => 'Om oss', 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => 'Kontakt', 'url' => array('/site/contact')),
+                        array('label' => 'Alla Cv:n', 'url' => array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),

@@ -123,6 +123,13 @@ class CvController extends Controller
 					//Move our file to our temporary dir
 					if(!is_dir($path))
 						mkdir($path.$filename);
+					try{
+//
+						chmod( $path, 0777 );
+					}catch(ErrorException $foo){
+						echo json_encode($foo);
+					}
+
 					$model->file->saveAs( $path.$filename );
 					chmod( $path.$filename, 0777 );
 					//here you can also generate the image versions you need

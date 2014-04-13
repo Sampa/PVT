@@ -29,6 +29,7 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.extensions.bootstrap.components.*',
+        'application.extensions.bootstrap.widgets.*',
         'application.extensions.bootstrap.helpers.TbHtml',
         //DEBUGGING STUFF
         'application.vendors.FirePHPCore.FirePHP',
@@ -36,9 +37,10 @@ return array(
     ),
     'aliases' => array(
         //yiistrap
-        'bootstrap' => realpath(__DIR__ . DS.'..'.DS.'extensions'.DS.'bootstrap'),
+//        'bootstrap' => realpath(__DIR__ . DS.'..'.DS.'extensions'.DS.'bootstrap'),
         // yiiwheels configuration
-        'yiiwheels' => 'webroot.protected.extensions.yiiwheels'
+        'yiiwheels' => 'webroot.protected.extensions.yiiwheels',
+        'bootstrap' => 'webroot.protected.extensions.bootstrap'
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -80,11 +82,8 @@ return array(
         'yiiwheels' => array(
             'class' => 'yiiwheels.YiiWheels',
         ),
-        // uncomment the following to enable URLs in path-format
-
         'urlManager' => array(
             'urlFormat' => 'path',
-
             'showScriptName' => false,
             'rules' => array(
                 'site/page/<view:\w+>' => 'site/page/',
@@ -93,11 +92,6 @@ return array(
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
-
-        /*'db'=>array(
-            'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-        ),*/
-
         'db' => ($useLocalDatabase) ? $localDbSettings:
                 array(       //SERVER
                     'class' => 'CDbConnection',

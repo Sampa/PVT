@@ -112,7 +112,7 @@ class Cv extends CActiveRecord
 		$criteria->compare('geographicAreaId',$this->geographicAreaId);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('pdfText',$this->pdfText,true);
-		$criteria->compare('publisherId',$this->publisherId);
+		$criteria->compare('publisherId',Yii::app()->user->id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -120,12 +120,7 @@ class Cv extends CActiveRecord
 
 	}
 	public function beforeSave(){
-//        $this->typeOfEmployment = "fast";
-//        $this->geographicAreaId=  1;
-//        * @property string $title
-//        * @property string $pdfText
-//        * @property integer $publisherId
-//        *
+        $this->geographicAreaId=  1;
 		$this-> publisherId=Yii::app()->user->id;
 //        $this->pathToPdf ="/pdf/filenamn.pdf";
         return true;

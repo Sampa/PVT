@@ -47,19 +47,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'showUserDetail',
-		'date',
-		'pathToPdf',
 		'typeOfEmployment',
-		'geographicAreaId',
-		/*
 		'title',
-		'pdfText',
-		'publisherId',
-		*/
-		array(
-			'class'=>'bootstrap.widgets.TbButtonColumn',
-		),
+		'buttons'=>array(
+			'class'=>'TbButtonColumn',
+            'htmlOptions'=>array('style'=>'width: 250px'),
+            'viewButtonIcon'=>'glyphicon glyphicon-search',
+            'deleteButtonIcon'=>'glyphicon glyphicon-remove',
+            'updateButtonIcon'=>'glyphicon glyphicon-eye-open',
+        ),
 	),
 )); ?>

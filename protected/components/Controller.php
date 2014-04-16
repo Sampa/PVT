@@ -14,7 +14,6 @@
 
 class Controller extends CController
 {
-    public $layout = "//layouts/jumbotron";
      public function  init()
     {
         if (app()->params->render_switch_form) {

@@ -9,15 +9,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><?php echo CHtml::encode(Yii::app()->name); ?></a>
+                <a class="navbar-brand" href="<?php echo Yii::app()->getHomeUrl();?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
             </div>
             <div class="navbar-collapse collapse">
                 <?php $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
-                        array('label' => 'Hem', 'url' => array('//')),
-                        array('label' => 'Om oss', 'url' => array('/site/page', 'view' => 'about')),
-                        array('label' => 'Kontakt', 'url' => array('/site/contact')),
+                        array('label' => 'Guide', 'url' => array('/site/page', 'view' => 'about')),
+                        array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
                         array('label' => 'Alla Cv:n', 'url' => array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
@@ -25,7 +24,7 @@
                             'items' => array(
                                 array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
                                 array('label' => 'Dina CV:n', 'url' => array('/cv/admin')),
-                                array('label' => 'Something else here', 'url' => array('#')),
+                                array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout')),
                                 array('label' => 'Something else here', 'url' => array('#'), 'itemOptions' => array('class' => 'divider')),
                                 array('label' => 'Nav header', 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown-header')),
                                 array('label' => 'Separated link', 'url' => array('#')),

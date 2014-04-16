@@ -30,13 +30,12 @@
 				<?php echo Yii::t("t","Välj ett cv att ladda upp (enbart pdf)");?>
 				<?php
 				$this->widget( 'xupload.XUpload', array(
-						'url' => Yii::app( )->createUrl( "/cv/upload"),
+						'url' => Yii::app( )->createUrl( "/cv/upload"),//vi tar hand om filerna i CvController och metoden actionUpload
 						//our XUploadForm
 						'model' => $pdf,
 						'options'=>array(
-							'maxFileSize' => 3000000,
-							'acceptFileTypes' => "js:/(\.|\/)(pdf)$/i",
-
+							'maxFileSize' => 100000,//I bytes så det här är säger att 100kb är max vad en pdf får vara
+							'acceptFileTypes' => "js:/(\.|\/)(pdf)$/i",//tillåt bara pdf filändelser
 						),
 						//We set this for the widget to be able to target our own form
 						'htmlOptions' => array('id'=>'cv-form'),
@@ -45,8 +44,8 @@
 						//Note that we are using a custom view for our widget
 						//Thats becase the default widget includes the 'form'
 						//which we don't want here
-						'formView' => 'pdf',
-						'autoUpload'=>true,
+						'formView' => 'pdf', //protected/extensions/xupload/views
+						'autoUpload'=>true,//starta uppladdningen direkt användaren valt fil
 					)
 				);
 				?>

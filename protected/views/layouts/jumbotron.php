@@ -22,7 +22,7 @@
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
                             'items' => array(
-                                array('label   ' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
+                                array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
                                 array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
                                 array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout')),
                                 array('label' => 'Something else here', 'url' => array('#'), 'itemOptions' => array('class' => 'divider')),

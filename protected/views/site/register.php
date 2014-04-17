@@ -21,8 +21,8 @@ $this->breadcrumbs = array(
 
     <div class="horizontal-form">
         <?php $form = $this->beginWidget('CActiveForm', array(
+            'enableAjaxValidation'=>true,
             'enableClientValidation' => true,
-            //'enableAjaxValidation'=>true,
             // 'errorMessageCssClass'=>'has-error',
             'htmlOptions' => array('class' => 'form-horizontal',
                 'role' => 'form',

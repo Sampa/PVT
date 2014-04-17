@@ -22,7 +22,6 @@
             <?php echo $form->textFieldControlGroup($model,'pathToPdf',array('span'=>5,'maxlength'=>255, 'style'=> 'display:none')); ?>
 
             <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',array('kon'=>'Konsultuppdrag','anst'=>'Anställning')); ?>
-
             <?php echo $form->textFieldControlGroup($model,'geographicAreaId',array('span'=>5)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'title',array('span'=>5,'maxlength'=>255)); ?>

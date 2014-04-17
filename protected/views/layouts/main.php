@@ -15,6 +15,7 @@
     <![endif]-->
 </head>
 <body>
+<link rel="shortcut icon" href="http://www.pvt.dsv.su.se/Group1/favicon.ico?v=2" />
 <?php  if (app()->params->render_switch_form): ?>
     <div id="switchform-container">
         <?php $this->renderPartial('/layouts/_switch');?>

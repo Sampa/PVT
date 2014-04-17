@@ -106,6 +106,13 @@ class SiteController extends Controller
                 $user->password = $_POST['RegisterForm']['new_password'];
 
                 if ($user->save()) {
+                    if($_POST['RegisterForm']['other_checkbox'] === "1"){
+                        $recruiterModel = new Recruiter();
+                        $recruiterModel->userId = $user->id;
+                        $recruiterModel->orgName = $_POST['RegisterForm']['Companyname'];
+                        $recruiterModel->VAT = $_POST['RegisterForm']['VAT'];
+                        $recruiterModel->save();
+                    }
                     //send email     activation key has been generated on beforeValidate function in User class
                     $activation_url = $this->createAbsoluteUrl('/site/activate', array('key' => $user->activation_key, 'email' => $user->email));
 

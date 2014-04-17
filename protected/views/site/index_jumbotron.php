@@ -13,13 +13,12 @@ Du som söker efter kandidater att anställa kan hitta dem här genom att söka 
         <p><a class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök CV här");?></a> (här lägger vi in en länk till sökfunktionen)</p>
     </div>
 </div>
-<h1><?php echo Yii::t("t","Välkommen till ");?> <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-<p><?php echo Yii::t("t","Här kan vi lägga till text  ");?></p>
+<h2><?php echo Yii::t('t',"3 skäl till att använda CV-Pages");?></h2>
 <ul>
-    <li>Views file: <?php echo __FILE__; ?></li>
-    <li>Layout file: <?php echo $this->getLayoutFile('jumbotron'); ?></li>
-</ul>
-<p>text
+    <li>Du kan söka nya jobb utan att din nuvarande arbetsgivare ser att du gör det.</li>
+    <li>Du kan hitta kandidater inom ett brett spektrum av brancher.</li>
+    <li>du kan följa dina rekryteringsprocesser.</li>
+<ul>
 <div class="row">
     <div class="col-lg-4">
         <h2><?php echo Yii::t("t","Rubrik ");?></h2>

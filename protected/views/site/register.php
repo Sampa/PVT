@@ -124,16 +124,16 @@ $this->breadcrumbs = array(
             </div>
         </div>
         <div class="form-group">
-            <div class="col-lg-5 col-lg-offset-3">
-                <?php echo CHtml::activeLabel($model, 'verify_code'); ?>
-                <?php $this->widget('application.extensions.recaptcha.EReCaptcha',
-                    array('model' => $model, 'attribute' => 'verify_code',
-                        'theme' => 'red', 'language' => 'en',
-                        'publicKey' => Yii::app()->params['recaptcha_public_key']));?>
-                <div class="help-block">
-                    <?php //echo CHtml::error($model, 'verify_code');?>
-                </div>
-            </div>
+<!--            <div class="col-lg-5 col-lg-offset-3">-->
+<!--                --><?php //echo CHtml::activeLabel($model, 'verify_code'); ?>
+<!--                --><?php //$this->widget('application.extensions.recaptcha.EReCaptcha',
+//                    array('model' => $model, 'attribute' => 'verify_code',
+//                        'theme' => 'red', 'language' => 'en',
+//                        'publicKey' => Yii::app()->params['recaptcha_public_key']));?>
+<!--                <div class="help-block">-->
+<!--                    --><?php ////echo CHtml::error($model, 'verify_code');?>
+<!--                </div>-->
+<!--            </div>-->
         </div>
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-10">

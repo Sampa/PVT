@@ -1,6 +1,6 @@
 <center>
     <p style="font-size: 25px; margin-left: auto;  margin-right: auto;width:580px;">
-        <?php echo Yii::t("t", "Hej" echo $username."För att slutföra din registrering måste du aktivera ditt konto.<br>
+        <?php echo Yii::t("t", "Hej".$username."För att slutföra din registrering måste du aktivera ditt konto.<br>
         Klicka på länken nedan.");?>
     </p>
     <div style=" display: block;

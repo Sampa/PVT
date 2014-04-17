@@ -31,9 +31,7 @@ class RegisterForm extends CFormModel
             array('username', 'length', 'min' => User::USERNAME_MIN, 'max' => User::USERNAME_MAX),
             array('username,email', 'unique', 'className' => 'User', 'skipOnError' => false),
             array('password_confirm', 'compare', 'compareAttribute' => 'new_password'),
-           array('verify_code',
-                                         'application.extensions.recaptcha.EReCaptchaValidator',
-                                         'privateKey'=>Yii::app()->params['recaptcha_private_key']),
+//           array('verify_code','application.extensions.recaptcha.EReCaptchaValidator','privateKey'=>Yii::app()->params['recaptcha_private_key']),
         //   array('verify_code', 'captcha'),
         );
     }

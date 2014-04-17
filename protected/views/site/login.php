@@ -15,9 +15,7 @@ $this->breadcrumbs = array(
         </div>
     </div>
     <div class="page-header">
-        <h1>Sign In
-            <small> (username:admin,password:1)</small>
-        </h1>
+        <h1>Sign In</h1>
     </div>
     <div class="horizontal-form">
         <?php $form = $this->beginWidget('CActiveForm', array(
@@ -62,7 +60,8 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'password', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'password', array('class' => 'form-control', 'placeholder' => 'Email')); ?>
+                <?php echo $form->passwordField($model, 'password',
+                    array('value'=>"",'class' => 'form-control',  'placeholder' => 'Email')); ?>
                 <span class="help-block help-inline ">
                 <?php echo $form->error($model, 'password'); ?>
                     </span>

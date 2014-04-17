@@ -41,10 +41,9 @@ class Cv extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-//			array('showUserDetail, typeOfEmployment,  title', 'required'),
-//			array('typeOfEmployment,  geographicAreaId, title', 'required'),
-			//array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
-			//array(' typeOfEmployment, title', 'length', 'max'=>255),
+			array('typeOfEmployment,  title', 'required'),
+			array('showUserDetail, publisherId', 'numerical', 'integerOnly'=>true),
+			array(' typeOfEmployment, title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
 			array('date, typeOfEmployment, geographicAreaId, title, pdfText,pathToPdf', 'safe'),
@@ -121,7 +120,6 @@ class Cv extends CActiveRecord
 
 	}
 	public function beforeSave(){
-        $this->geographicAreaId=  1;
 		$this-> publisherId=Yii::app()->user->id;
 		parent::beforeSave( );
 		//if we can add the pdf return true so saving to the database tables goes thrue

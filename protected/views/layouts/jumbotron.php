@@ -105,6 +105,7 @@
         <?php echo $content; ?>
         <!-- Example row of columns -->
         <hr>
+
         <footer>
             <p>&copy; Company 2013</p>
         </footer>

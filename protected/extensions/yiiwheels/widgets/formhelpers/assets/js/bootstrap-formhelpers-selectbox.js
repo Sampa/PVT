@@ -182,8 +182,7 @@
 
   /* SELECTBOX PLUGIN DEFINITION
    * ========================== */
-
-  $.fn.bfhselectbox = function (option) {
+  jQuery.fn.bfhselectbox = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('bfhselectbox')
@@ -192,7 +191,6 @@
       if (typeof option == 'string') data[option].call($this)
     })
   }
-
   $.fn.bfhselectbox.Constructor = BFHSelectBox
 
   var origHook

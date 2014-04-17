@@ -1,6 +1,20 @@
+<p><?php echo Yii::t("t","Välj land");?></p>
 <?php
+//$this->widget(
+//    'yiiwheels.widgets.formhelpers.WhCountries',
+//    array(
+//        'name' => 'geographicarea',
+//        'value' => 'US',
+//        'useHelperSelectBox' => true,
+//        'pluginOptions' => array(
+//            'country' => 'US',
+//            'flags' => true
+//        ),
+//    )
+//);
 ?>
-<select>
+<div class="row" style="margin-left:0px;">
+<select id="countries" name="countries" >
     <option value="AF">Afghanistan</option>
     <option value="AX">Åland Islands</option>
     <option value="AL">Albania</option>
@@ -251,3 +265,11 @@
     <option value="ZM">Zambia</option>
     <option value="ZW">Zimbabwe</option>
 </select>
+    <section id="geographicAreaForm" style="display:none; " >
+        <span><?php echo Yii::t("t","Region");?></span>
+        <input type="text" id="geoAreaTextfield" name="geoRegion" />
+
+        <span><?php echo Yii::t("t","Stad");?></span>
+        <input type="text" id="geoCityTextfield" name="geoCity" />
+    </section>
+</div>

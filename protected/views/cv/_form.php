@@ -17,17 +17,13 @@
     )); ?>
 
     <p class="help-block"><?php echo Yii::t("t", "Fält markerade med * måste fyllas i");?>
-            <?php $form->checkBoxControlGroup($model,'showUserDetail',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'pathToPdf',array('span'=>5,'maxlength'=>255, 'style'=> 'display:none')); ?>
-
-            <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',array('kon'=>'Konsultuppdrag','anst'=>'Anställning')); ?>
-            <?php echo $form->textFieldControlGroup($model,'geographicAreaId',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'title',array('span'=>5,'maxlength'=>255)); ?>
-			<div class="row">
-				<?php echo Yii::t("t","Välj ett cv att ladda upp (enbart pdf)");?>
-				<?php
+            <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',
+            array('konsult'=>Yii::t("t",'Konsultuppdrag'),'anstallning'=>Yii::t('t','Anställning'))); ?>
+        <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
+        <?php echo $form->textFieldControlGroup($model,'title',array('span'=>5,'maxlength'=>255)); ?>
+			<div class="row" style="margin-left: 5px;"">
+				<?php echo Yii::t("t","Välj en pdf fil som innehåller ditt CV och ladda upp den här");?>
+				<div id="fileSelect" style="margin-left: 8px;margin-top: 10px;"><?php
 				$this->widget( 'xupload.XUpload', array(
 						'url' => Yii::app( )->createUrl( "/cv/upload"),//vi tar hand om filerna i CvController och metoden actionUpload
 						//our XUploadForm
@@ -48,11 +44,13 @@
 					)
 				);
 				?>
+                </div>
+        <div class="form-actions" style="margin-left:-10px;margin-top:-20px">
+            <?php echo TbHtml::submitButton($model->isNewRecord ? yii::t("t",'Publicera') : yii::t("t",'Spara'),array(
+                'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+                'size'=>TbHtml::BUTTON_SIZE_LARGE,
+            )); ?>
 			</div>
-        <div class="form-actions", style= "margin-top:20px">
-        <?php echo TbHtml::submitButton($model->isNewRecord ? yii::t("t",'Publicera') : yii::t("t",'Spara'),array(
-		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
-		)); ?>
+
     <?php $this->endWidget(); ?>
 </div><!-- form -->

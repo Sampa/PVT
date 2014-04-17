@@ -68,7 +68,13 @@ class CvController extends Controller
 		$this->performAjaxValidation($model);
 
 		if (isset($_POST['Cv'])) {
+            $geo = new GeograficArea;
+            $geo->country  = $_POST['countries'];
+            $geo->region  = $_POST['geoRegion'];
+            $geo->city = $_POST['geoCity'];
+            $geo->save();
            	$model->attributes=$_POST['Cv'];
+            $model->geographicAreaId  = $geo->id;
             if ($model->save()){
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -190,9 +196,11 @@ class CvController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
-
+        Yii::import( "xupload.models.XUploadForm" );
+        $pdf = new XUploadForm;
 		$this->render('update',array(
 			'model'=>$model,
+            'pdf'=>$pdf,
 		));
 	}
 

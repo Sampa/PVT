@@ -157,7 +157,7 @@ class TbActiveForm extends CActiveForm
         $html = TbHtml::errorSummary($models, $header, $footer, $htmlOptions);
         if ($html === '') {
             if ($header === null) {
-                $header = '<p>' . Yii::t('yii', 'Please fix the following input errors:') . '</p>';
+                $header = '<p>' . Yii::t('yii', 'Var snäll och fixa följande:') . '</p>';
             }
             TbHtml::addCssClass(TbHtml::$errorSummaryCss, $htmlOptions);
             TbHtml::addCssStyle('display:none', $htmlOptions);

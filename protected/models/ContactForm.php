@@ -50,7 +50,10 @@ class ContactForm extends CFormModel
 	{
 		return array(
 			'verify_code'=>'Verification Code',
-			'name'=>"Namn",
+			'name'=> Yii::t("t", "Namn"),
+			'email' =>  Yii::t("t", "E-post"),
+			'subject' => Yii::t("t", "Ämne"),
+			'body' => Yii::t("t", "Meddelande")
 		);
 	}
 }

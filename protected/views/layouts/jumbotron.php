@@ -15,18 +15,19 @@
                 <?php $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
-                        array('label' => 'Guide', 'url' => array('/site/page', 'view' => 'about')),
+                        array('label' => Yii::t("t","Om oss"), 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
-                        array('label' => 'Alla Cv:n', 'url' => array('/cv/')),
+                        array('label' => Yii::t("t",'Alla Cv:n'), 'url'=>array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
                             'items' => array(
-                                array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
-                                array('label' => 'Dina CV:n', 'url' => array('/cv/admin')),
+                                array('label   ' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
+                                array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
                                 array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout')),
                                 array('label' => 'Something else here', 'url' => array('#'), 'itemOptions' => array('class' => 'divider')),
-                                array('label' => 'Nav header', 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown-header')),
+                                array('label' => 'Nav header', 'url'
+                                => array('#'), 'itemOptions' => array('class' => 'dropdown-header')),
                                 array('label' => 'Separated link', 'url' => array('#')),
                                 array('label' => 'One more separated link', 'url' => array('#')),
                             )
@@ -80,8 +81,8 @@
                     <div class=" navbar-right">
                         <span class="navbar-brand"><small>Welcome,<?php echo app()->user->name; ?></small></span>
                             <span class="navbar-brand">
-                                <a class="navbar-right" href="<?php echo $this->createUrl('site/logout') ?>">
-                                    <small>Logout</small>
+                                <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
+                                    <small><?php echo Yii::t("t","Logga ut");?></small>
                                 </a></span>
                     </div>
                 <?php endif;?>

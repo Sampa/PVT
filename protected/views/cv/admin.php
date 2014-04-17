@@ -55,7 +55,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             'htmlOptions'=>array('style'=>'width: 250px'),
             'viewButtonIcon'=>'glyphicon glyphicon-search',
             'deleteButtonIcon'=>'glyphicon glyphicon-remove',
-            'updateButtonIcon'=>'glyphicon glyphicon-eye-open',
+//            'updateButtonIcon'=>'glyphicon glyphicon-eye-open',
         ),
 	),
 )); ?>

@@ -50,6 +50,7 @@ class ContactForm extends CFormModel
 	{
 		return array(
 			'verify_code'=>'Verification Code',
+			'name'=>"Namn",
 		);
 	}
 }

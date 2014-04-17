@@ -16,7 +16,7 @@ $this->breadcrumbs = array(
     <?php if (Yii::app()->user->hasFlash('contact')): ?>
         <div class="alert alert-info  alert-dismissable">
             <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
-            <strong><?php echo Yii::app()->user->getFlash('contact'); ?>rttrt</strong>
+            <strong><?php echo Yii::app()->user->getFlash('contact'); ?></strong>
         </div>
     <?php else: ?>
         <div class="page-header">

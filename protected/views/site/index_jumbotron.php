@@ -17,7 +17,7 @@ Du som söker efter kandidater att anställa kan hitta dem här genom att söka 
 <ul>
     <li>Du kan söka nya jobb utan att din nuvarande arbetsgivare ser att du gör det.</li>
     <li>Du kan hitta kandidater inom ett brett spektrum av brancher.</li>
-    <li>du kan följa dina rekryteringsprocesser.</li>
+    <li>Du kan följa dina rekryteringsprocesser.</li>
 <ul>
 <div class="row">
     <div class="col-lg-4">

@@ -1,6 +1,6 @@
 <center>
     <p style="font-size: 25px; margin-left: auto;  margin-right: auto;width:580px;">
-        <?php echo Yii::t("t", "Hej" echo $username ",du efterfrågade en lösenordsåterställning.
+        <?php echo Yii::t("t", "Hej".$username.",du efterfrågade en lösenordsåterställning.
         Klicka på länken nedan för att göra återställningen.<br>
         Om du inte efterfrågade en lösenordsåterställning, ignorera det här mailet.");?>
     </p>
@@ -12,9 +12,9 @@
                                  margin-left: auto;
                                   margin-right: auto;
                                  width:180px;
-                                ">
+                                ">>
         <a style="color:#ffdead; font-size: 40px;text-decoration: none" href="<?php echo $reset_url;?>"
-           target="_blank">Reset Password</a>
+           target="_blank"><?php Yii::t("t","Reset Password");?></a>
     </div>
 </center>
 

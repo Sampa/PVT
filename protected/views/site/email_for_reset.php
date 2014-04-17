@@ -8,14 +8,14 @@ $this->breadcrumbs = array(
     <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="">Password Reset</a></li>
+                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
+                <li class="active"><a href=""><?php echo Yii::t("t", "Lösenordsåterställning");?></a></li>
             </ol>
         </div>
     </div>
     <div class="page-header">
-        <h1>Password Reset</h1>
-        <strong><?php echo  Yii::t('passwordreset', 'Please submit your email,we will send you a  password reset link.');?></strong>
+        <h1><?php echo Yii::t("t", "Återställ ditt lösenord");?></h1>
+        <strong><?php echo  Yii::t("t", 'Skriv in din E-post, vi skickar en länk för lösenordsåterställning.', '');?></strong>
     </div>
     <div class="horizontal-form">
 
@@ -38,7 +38,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'email', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->emailField($model, 'email', array('class' => 'form-control input-lg', 'placeholder' => 'Your email here')); ?>
+                <?php echo $form->emailField($model, 'email', array('class' => 'form-control input-lg', 'placeholder' => Yii::t("t", "Din e-post här"))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'email'); ?>
                 </div>
@@ -46,7 +46,7 @@ $this->breadcrumbs = array(
         </div>
         <div class="form-group">
             <div class="col-lg-offset-6 col-lg-10">
-                <?php echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary btn-lg')); ?>
+                <?php echo CHtml::submitButton(Yii::t("t", "Skicka"), array('class' => 'btn btn-primary btn-lg')); ?>
             </div>
         </div>
         <?php $this->endWidget(); ?>

@@ -42,14 +42,14 @@ class RegisterForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'fullname' => Yii::t('app', 'Full name'),
-            'username' => Yii::t('app', 'Username'),
-            'email' => Yii::t('app', 'Email'),
-            'new_password' => Yii::t('app', 'Password'),
-            'password_confirm' => Yii::t('app', 'Password Confirmation'),
+            'fullname' => Yii::t('app','Fullständigt Namn'),
+            'username' => Yii::t('app', 'Användaramn'),
+            'email' => Yii::t('app', 'E-post'),
+            'new_password' => Yii::t('app', 'Lösenord'),
+            'password_confirm' => Yii::t('app', 'Bekräfta lösenordet'),
             'verify_code' => Yii::t('app', 'Captcha'),
-            'other_checkbox' => Yii::t('app', "Recruiter?"),
-            'Companyname' => Yii::t('app', "Companyname"),
+            'other_checkbox' => Yii::t('app', "Kryssa i om du är rekryterare"),
+            'Companyname' => Yii::t('app', "Företagsnamn"),
             'VAT' => Yii::t('app', "VAT")
         );
     }

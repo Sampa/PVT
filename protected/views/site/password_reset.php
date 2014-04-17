@@ -14,7 +14,7 @@ $this->breadcrumbs = array(
         </div>
     </div>
     <div class="page-header">
-        <h1>Password Reset</h1>
+        <h1>Passwffffffffffford Reset</h1>
         <strong> <?php echo  Yii::t('passwordreset', 'Type your new password.');?> </strong>
     </div>
     <div class="horizontal-form">

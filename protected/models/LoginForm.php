@@ -48,8 +48,8 @@ class LoginForm extends CFormModel {
 	 */
 	public function attributeLabels() {
 		return array(
-			'username' => Yii::t('labels', 'Username or e-mail'),
-			'rememberMe' => Yii::t('labels', 'Remember me next time'),
+			'username' => Yii::t('t', 'Användarnamn eller e-post'),
+			'rememberMe' => Yii::t('t', 'Kom ihåg mig nästa gång'),
 		);
 	}
 
@@ -69,12 +69,12 @@ class LoginForm extends CFormModel {
 					$user->saveAttributes(array('login_attempts' => $user->login_attempts + 1));
 
                     if ($errorCode== UserIdentity::ERROR_INACTIVE){
-                      $this->addError('status', Yii::t('errors', 'Your account is  inactive.'));
+                      $this->addError('status', Yii::t('t', 'Ditt konto är inaktivt.'));
                     }
                 if (($errorCode== UserIdentity::ERROR_PASSWORD_INVALID) ||
                     ($errorCode==UserIdentity::ERROR_USERNAME_INVALID)) {
-				$this->addError('username', Yii::t('errors', 'Incorrect username and/or password.'));
-				$this->addError('password', Yii::t('errors', 'Incorrect username and/or password.'));
+				$this->addError('username', Yii::t('t', 'Fel användarnamn och/eller lösenord.'));
+				$this->addError('password', Yii::t('t', 'Fel användarnamn och/eller lösenord.'));
                 }
 
 			}

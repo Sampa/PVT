@@ -9,13 +9,13 @@ $this->breadcrumbs = array(
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="">Login</a></li>
+                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
+                <li class="active"><a href=""><?php echo Yii::t("t", "Logga in");?></a></li>
             </ol>
         </div>
     </div>
     <div class="page-header">
-        <h1>Sign In</h1>
+        <h1><?php echo Yii::t("t", "Logga in");?></h1>
     </div>
     <div class="horizontal-form">
         <?php $form = $this->beginWidget('CActiveForm', array(
@@ -39,7 +39,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <div class="col-lg-3 control-label">
                 <div>
-                    <p class="note">Fields with <span class="required">*</span> are required.</p>
+                    <p class="note"><?php echo Yii::t("t", "Fält markerade med");?> <span class="required">*</span> <?php echo Yii::t("t", "är obligatoriska");?>.</p>
                 </div>
             </div>
             <div class="col-lg-5  has-error">
@@ -51,7 +51,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'username', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'username', array('class' => 'form-control', 'placeholder' => 'Name')); ?>
+                <?php echo $form->textField($model, 'username', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i användarnamn eller e-post"))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'username'); ?>
                 </div>
@@ -61,7 +61,7 @@ $this->breadcrumbs = array(
             <?php echo $form->labelEx($model, 'password', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
                 <?php echo $form->passwordField($model, 'password',
-                    array('value'=>"",'class' => 'form-control',  'placeholder' => 'Email')); ?>
+                    array('value'=>"",'class' => 'form-control',  'placeholder' => Yii::t("t", "Fyll i lösenord"))); ?>
                 <span class="help-block help-inline ">
                 <?php echo $form->error($model, 'password'); ?>
                     </span>
@@ -71,7 +71,7 @@ $this->breadcrumbs = array(
             <div class="col-lg-offset-3 col-lg-10">
                 <div class="checkbox">
                     <label>
-                        <?php echo $form->checkBox($model, 'rememberMe'); ?> Remember me
+                        <?php echo $form->checkBox($model, 'rememberMe'); ?> <?php echo Yii::t("t", "Kom ihåg mig");?>
                     </label>
                 </div>
             </div>
@@ -85,9 +85,9 @@ $this->breadcrumbs = array(
           </div>-->
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-10">
-                <?php echo CHtml::submitButton('Login', array('class' => 'btn btn-primary btn-lg')); ?>
-                <a class="btn btn-primary col-lg-offset-2 btn-sm"
-                   href="<?php echo $this->createUrl('site/email_for_reset') ?>">Forgot My Password,Dammit!</a>
+                <?php echo CHtml::submitButton(Yii::t("t", "Logga in"), array('class' => 'btn btn-primary btn-lg')); ?>
+                <a class="btn btn-warning col-lg-offset-2 btn-sm"
+                   href="<?php echo $this->createUrl('site/email_for_reset') ?>"><?php echo Yii::t("t", "Glömt lösenord?");?></a>
             </div>
         </div>
         <?php if ($model->getRequireCaptcha()) : ?>

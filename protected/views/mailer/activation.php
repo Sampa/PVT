@@ -1,7 +1,7 @@
 <center>
     <p style="font-size: 25px; margin-left: auto;  margin-right: auto;width:580px;">
-        Hello <?php echo $username;?>.In order to complete your registration,you have to activate your account.<br>
-        Click on the link below.
+        <?php echo Yii::t("t", "Hej" echo $username."För att slutföra din registrering måste du aktivera ditt konto.<br>
+        Klicka på länken nedan.");?>
     </p>
     <div style=" display: block;
                                -moz-border-radius:3px;
@@ -16,3 +16,5 @@
            target="_blank">Activate</a>
     </div>
 </center>
+
+

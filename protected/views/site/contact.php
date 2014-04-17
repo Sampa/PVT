@@ -8,8 +8,8 @@ $this->breadcrumbs = array(
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="">Contact</a></li>
+                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
+                <li class="active"><a href=""><?php echo Yii::t("t", "Kontakt");?></a></li>
             </ol>
         </div>
     </div>
@@ -20,7 +20,7 @@ $this->breadcrumbs = array(
         </div>
     <?php else: ?>
         <div class="page-header">
-            <h1>Contact </h1>
+            <h1><?php echo Yii::t("t", "Kontakt");?> </h1>
         </div>
         <div class="horizontal-form">
 
@@ -44,7 +44,7 @@ $this->breadcrumbs = array(
             <div class="form-group">
                 <div class="col-lg-3 control-label">
                     <div>
-                        <p class="note">Fields with <span class="required">*</span> are required.</p>
+                        <p class="note"> <?php echo Yii::t("t", "Fält markerade med");?> <span class="required">*</span> <?php echo Yii::t("t", "är obligatoriska");?>.</p>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ $this->breadcrumbs = array(
             <div class="form-group">
                 <?php echo $form->labelEx($model, 'name', array('class' => 'col-lg-3 control-label')); ?>
                 <div class="col-lg-5">
-                    <?php echo $form->textField($model, 'name', array('class' => 'form-control', 'placeholder' => 'Name')); ?>
+                    <?php echo $form->textField($model, 'name', array('class' => 'form-control', 'placeholder' =>  Yii::t("t", "Namn"))); ?>
                     <div class="help-block">
                         <?php echo $form->error($model, 'name'); ?>
                     </div>
@@ -69,7 +69,7 @@ $this->breadcrumbs = array(
             <div class="form-group">
                 <?php echo $form->labelEx($model, 'email', array('class' => 'col-lg-3 control-label')); ?>
                 <div class="col-lg-5">
-                    <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => 'Email')); ?>
+                    <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => Yii::t("t", "E-post"))); ?>
                     <span class="help-block help-inline ">
                 <?php echo $form->error($model, 'email'); ?>
                     </span>
@@ -79,7 +79,7 @@ $this->breadcrumbs = array(
             <div class="form-group">
                 <?php echo $form->labelEx($model, 'subject', array('class' => 'col-lg-3 control-label')); ?>
                 <div class="col-lg-5">
-                    <?php echo $form->textField($model, 'subject', array('class' => 'form-control', 'placeholder' => 'Subject')); ?>
+                    <?php echo $form->textField($model, 'subject', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Ämne"))); ?>
                     <div class="help-block">
                         <?php echo $form->error($model, 'subject'); ?>
                     </div>
@@ -89,7 +89,7 @@ $this->breadcrumbs = array(
             <div class="form-group">
                 <?php echo $form->labelEx($model, 'body', array('class' => 'col-lg-3 control-label')); ?>
                 <div class="col-lg-5">
-                    <?php echo $form->textArea($model, 'body', array('class' => 'form-control', 'placeholder' => 'Write here', 'rows' => 6, 'cols' => 50)); ?>
+                    <?php echo $form->textArea($model, 'body', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Skriv meddelande här"), 'rows' => 6, 'cols' => 50)); ?>
                     <div class="help-block">
                         <?php echo $form->error($model, 'body'); ?>
                     </div>
@@ -112,7 +112,7 @@ $this->breadcrumbs = array(
 
             <div class="form-group">
                 <div class="col-lg-offset-3 col-lg-10">
-                    <?php echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary btn-lg')); ?>
+                    <?php echo CHtml::submitButton(Yii::t("t", "Skicka"), array('class' => 'btn btn-primary btn-lg')); ?>
                 </div>
             </div>
             <?php $this->endWidget(); ?>

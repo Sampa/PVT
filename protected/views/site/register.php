@@ -9,14 +9,14 @@ $this->breadcrumbs = array(
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="">Register</a></li>
+                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
+                <li class="active"><a href=""><?php echo Yii::t("t", "Registrera dig");?></a></li>
             </ol>
         </div>
     </div>
 
     <div class="page-header">
-        <h1>Sign Up </h1>
+        <h1><?php echo Yii::t("t", "Registrera dig här");?> </h1>
     </div>
 
     <div class="horizontal-form">
@@ -41,7 +41,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <div class="col-lg-3 control-label">
                 <div>
-                    <p class="note">Fields with <span class="required">*</span> are required.</p>
+                    <p class="note"><?php echo Yii::t("t", "Fält markerade med");?> <span class="required">*</span> <?php echo Yii::t("t", "är obligatoriska");?>.</p>
                 </div>
             </div>
             <div class="col-lg-5  has-error">
@@ -53,7 +53,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'fullname', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'fullname', array('class' => 'form-control', 'placeholder' => 'Full Name')); ?>
+                <?php echo $form->textField($model, 'fullname', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i fullständigt namn"))); ?>
                 <span class="help-block help-inline ">
                 <?php echo $form->error($model, 'fullname'); ?>
                     </span>
@@ -62,7 +62,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'email', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => 'Email')); ?>
+                <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i din E-post"))); ?>
                 <span class="help-block help-inline ">
                 <?php echo $form->error($model, 'email'); ?>
                     </span>
@@ -71,7 +71,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'username', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'username', array('class' => 'form-control', 'placeholder' => 'Choose a username')); ?>
+                <?php echo $form->textField($model, 'username', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Välj ett användarnamn"))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'username'); ?>
                 </div>
@@ -80,7 +80,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'new_password', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->passwordField($model, 'new_password', array('class' => 'form-control', 'placeholder' => 'Choose your password')); ?>
+                <?php echo $form->passwordField($model, 'new_password', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Välj ett lösenord"))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'new_password'); ?>
                 </div>
@@ -89,7 +89,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'password_confirm', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->passwordField($model, 'password_confirm', array('type' => 'password', 'class' => 'form-control', 'placeholder' => 'Confirm your password', 'rows' => 6, 'cols' => 50)); ?>
+                <?php echo $form->passwordField($model, 'password_confirm', array('type' => 'password', 'class' => 'form-control', 'placeholder' => Yii::t("t", "Bekräfta ditt lösenord"), 'rows' => 6, 'cols' => 50)); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'password_confirm'); ?>
                 </div>
@@ -108,7 +108,7 @@ $this->breadcrumbs = array(
         <div class="form-group" id='Companyname'>
             <?php echo $form->labelEx($model, 'Companyname', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'Companyname', array('class' => 'form-control', 'placeholder' => 'Enter your companyname')); ?>
+                <?php echo $form->textField($model, 'Companyname', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Skriv in företagsnamn"))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'Companyname'); ?>
                 </div>
@@ -117,7 +117,7 @@ $this->breadcrumbs = array(
   <div class="form-group" id='VAT'>
             <?php echo $form->labelEx($model, 'VAT', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->textField($model, 'VAT', array('class' => 'form-control', 'placeholder' => 'Enter your VAT')); ?>
+                <?php echo $form->textField($model, 'VAT', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Skriv in företagets VAT nummer"))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'VAT'); ?>
                 </div>
@@ -137,7 +137,7 @@ $this->breadcrumbs = array(
         </div>
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-10">
-                <?php echo CHtml::submitButton('Sign Up', array('class' => 'btn btn-primary btn-lg')); ?>
+                <?php echo CHtml::submitButton(Yii::t("t", "Registrera dig"), array('class' => 'btn btn-primary btn-lg')); ?>
             </div>
         </div>
         <?php $this->endWidget(); ?>

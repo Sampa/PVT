@@ -17,7 +17,7 @@
                     'items' => array(
                         array('label' => Yii::t("t","Om oss"), 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
-                        array('label' => Yii::t("t",'Alla Cv:n'), 'url'=>array('/cv/')),
+                        array('label' => Yii::t("t",'Alla CV:n'), 'url'=>array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
@@ -62,17 +62,17 @@
                     ?>
                     <form>
                         <div class="form-group">
-                            <?php echo $form->textField($model, 'username', array('max-length' => '10', 'class' => 'form-control', 'placeholder' => 'email or username')); ?>
+                            <?php echo $form->textField($model, 'username', array('max-length' => '10', 'class' => 'form-control', 'placeholder' => Yii::t("t","email eller användarnamn"))); ?>
                         </div>
                         <div class="form-group">
-                            <?php echo $form->passwordField($model, 'password', array('max-length' => '10', 'class' => 'form-control', 'type' => 'password', 'placeholder' => 'password')); ?>
+                            <?php echo $form->passwordField($model, 'password', array('max-length' => '10', 'class' => 'form-control', 'type' => 'password', 'placeholder' => Yii::t("t","lösenord"))); ?>
                         </div>
 
-                        <?php echo CHtml::submitButton('Login', array('class' => 'btn btn-primary btn-sm')); ?>
+                        <?php echo CHtml::submitButton( Yii::t("t",'Logga in'), array('class' => 'btn btn-primary btn-sm')); ?>
                         <a class="btn btn-primary  btn-sm  btn-warning"
-                           href="<?php echo $this->createUrl('site/email_for_reset') ?>">Forgot!</a>
+                           href="<?php echo $this->createUrl('site/email_for_reset') ?>"><?php echo Yii::t("t", "Glömt lösenord");?></a>
                         <a class=" btn btn-primary btn-sm  btn-info"
-                           href="<?php echo $this->createUrl('site/register') ?>">Sign Up</a>
+                           href="<?php echo $this->createUrl('site/register') ?>"><?php echo Yii::t("t", "Regstrera dig");?></a>
 
                         <?php $this->endWidget(); ?>
                     </form>

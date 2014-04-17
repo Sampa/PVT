@@ -1,8 +1,8 @@
 <center>
     <p style="font-size: 25px; margin-left: auto;  margin-right: auto;width:580px;">
-        Hello <?php echo $username;?>,you requested a password reset.
-        Please click on  the link below in order to perform the reset.<br>
-        If you did not ask for a password reset,please ignore this email.
+        <?php echo Yii::t("t", "Hej" echo $username ",du efterfrågade en lösenordsåterställning.
+        Klicka på länken nedan för att göra återställningen.<br>
+        Om du inte efterfrågade en lösenordsåterställning, ignorera det här mailet.");?>
     </p>
     <div style=" display: block;
                                -moz-border-radius:3px;
@@ -17,3 +17,4 @@
            target="_blank">Reset Password</a>
     </div>
 </center>
+

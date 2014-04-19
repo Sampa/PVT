@@ -126,7 +126,6 @@ class Cv extends CActiveRecord
 		return true;
     }
 	public function afterSave(){
-
 		$this->addPdfFromTmpFolder();
 	}
 	public function addPdfFromTmpFolder( ) {

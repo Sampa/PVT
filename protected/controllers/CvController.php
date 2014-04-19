@@ -25,25 +25,40 @@ class CvController extends Controller
 	 */
 	public function accessRules()
 	{
+        //@ means those who have logged in
+        //* means all users
+        //with expression means the phpcode _within_ ' ' must return true
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','upload'),
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'actions'=>array('index','view'),
+                'users'=>array('*'),
+            ),
+			array('allow', // allow authenticated user to perform 'create' and 'upload' actions
+				'actions'=>array('create','upload'),
 				'users'=>array('@'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+			array('allow', // allow authenticated user to perform 'admin' action
+				'actions'=>array('admin'), //admin action lists users own cv for managing them
+				'users'=>array('@'),
 			),
+            array('allow', // allow owners to perform 'delete' action
+                'actions'=>array('delete'),
+                'users'=>array('@'),
+                'expression'=>'Yii::app()->controller->isOwner()',
+            ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
 	}
-
+    public function isOwner(){
+        $model = Cv::model()->findByPk(Yii::app()->request->getParam('id'));
+       if(is_null($model))
+           throw new CException(Yii::t("t","Cv:et du försöker nå existerar inte")); //häng daniel för skitsvenska
+        if($model->publisher === Yii::app()->user->id)
+            return true;
+        return false;
+    }
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed

@@ -63,6 +63,10 @@ class User extends CActiveRecord
     public $password_confirm;
 
     /**
+     * @var isPublisher attribute used to distinguish publisher role from recruiter
+     */
+    public $isPublisher;
+    /**
      * Returns the static model of the specified AR class.
      * @return Customer the static model class
      */

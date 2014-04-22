@@ -117,3 +117,9 @@
     </div> <!-- /container -->
 <?php $this->endContent(); ?>
 <?php cs()->registerCssFile($this->getBootstrap3LayoutCssFileURL()); ?>
+
+<style>
+    .breadcrumb .active{
+        color:#454A49;
+    }
+</style>

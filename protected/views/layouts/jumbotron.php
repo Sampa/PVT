@@ -17,7 +17,7 @@
                     'items' => array(
                         array('label' => Yii::t("t","Om oss"), 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
-                        array('label' => Yii::t("t",'Alla CV:n'), 'url'=>array('/cv/')),
+                        array('label' => Yii::t("t",'Hitta CV'), 'url'=>array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
@@ -92,9 +92,11 @@
         <!--/.container -->
     </div><!--/.navbar -->
     <div class="container">
-        <div class="row">
-           <?php echo TbHtml::breadcrumbs($this->breadcrumbs);?>
+        <?php if(sizeof($this->breadcrumbs)>0): ?>
+        <div class="row" style="margin-top: 20px;">
+            <?php echo TbHtml::breadcrumbs($this->breadcrumbs);?>
         </div>
+        <?php endif;?>
         <?php
         $flashMessages = Yii::app()->user->getFlashes();
         if ($flashMessages) :?>

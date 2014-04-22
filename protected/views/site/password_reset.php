@@ -1,21 +1,15 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Reset Password';
 $this->breadcrumbs = array(
-    'Password Reset',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t",'Återställ lösenord'),
 );
 ?>
 <div class="container page-min-height">
-    <div class="row">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="">Password Reset</a></li>
-            </ol>
-        </div>
-    </div>
+
     <div class="page-header">
-        <h1>Passwffffffffffford Reset</h1>
-        <strong> <?php echo  Yii::t('passwordreset', 'Type your new password.');?> </strong>
+        <h1><?php echo Yii::t("t","Återställ lösenord");?></h1>
+        <strong> <?php echo Yii::t('t', 'Skriv ditt nya lösenord');?> </strong>
     </div>
     <div class="horizontal-form">
         <?php $form = $this->beginWidget('CActiveForm', array(

@@ -5,14 +5,11 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Cvs'=>array('index'),
-	'Create',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    'CV'=>array('index'),
+	Yii::t("t",'Skapa nytt CV'),
 );
 
-$this->menu=array(
-	array('label'=>'List Cv', 'url'=>array('index')),
-	array('label'=>'Manage Cv', 'url'=>array('admin')),
-);
 ?>
 
 <h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>

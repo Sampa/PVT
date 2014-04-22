@@ -3345,7 +3345,7 @@ EOD;
      */
     public static function breadcrumbs($links, $htmlOptions = array())
     {
-        $divider = TbArray::popValue('divider', $htmlOptions, '/');
+        $divider = "";//TbArray::popValue('divider', $htmlOptions, '/');
         self::addCssClass('breadcrumb', $htmlOptions);
         $output = self::openTag('ul', $htmlOptions);
         foreach ($links as $label => $url) {

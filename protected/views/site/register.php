@@ -1,19 +1,13 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Register';
 $this->breadcrumbs = array(
-    'Register',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t",'Registrera dig'),
 );
 ?>
 
 <div class="container page-min-height">
-    <div class="row">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
-                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
-                <li class="active"><a href=""><?php echo Yii::t("t", "Registrera dig");?></a></li>
-            </ol>
-        </div>
-    </div>
+
 
     <div class="page-header">
         <h1><?php echo Yii::t("t", "Registrera dig här");?> </h1>

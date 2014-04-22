@@ -200,8 +200,8 @@
 .has-switch span.switch-right.disabled,
 .has-switch span.switch-right[disabled] {
   color: #333333;
-  background-color: #ffffff;
-  *background-color: #f2f2f2;
+  /*background-color: #ffffff;*/
+  background-color: #f2f2f2;
 }
 .has-switch span.switch-right:active,
 .has-switch span.switch-right.active {

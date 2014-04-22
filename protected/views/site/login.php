@@ -1,19 +1,12 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Login';
 $this->breadcrumbs = array(
-    'Login',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t","Logga in"),
 );
 ?>
 <div class="container page-min-height">
 
-    <div class="row">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
-                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
-                <li class="active"><a href=""><?php echo Yii::t("t", "Logga in");?></a></li>
-            </ol>
-        </div>
-    </div>
     <div class="page-header">
         <h1><?php echo Yii::t("t", "Logga in");?></h1>
     </div>

@@ -1,18 +1,12 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Email For Reset ';
 $this->breadcrumbs = array(
-    'Email for Reset',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t",'Återställ lösenord'),
 );
 ?>
 <div class="container page-min-height">
-    <div class="row" xmlns="http://www.w3.org/1999/html">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
-                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
-                <li class="active"><a href=""><?php echo Yii::t("t", "Lösenordsåterställning");?></a></li>
-            </ol>
-        </div>
-    </div>
+
     <div class="page-header">
         <h1><?php echo Yii::t("t", "Återställ ditt lösenord");?></h1>
         <strong><?php echo  Yii::t("t", 'Skriv in din E-post, vi skickar en länk för lösenordsåterställning.', '');?></strong>

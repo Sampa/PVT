@@ -4,14 +4,10 @@
 
 
 $this->breadcrumbs=array(
-	'Cvs'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Cv', 'url'=>array('index')),
-	array('label'=>'Create Cv', 'url'=>array('create')),
-);
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+	'CV'=>array('index'),
+    	Yii::t("t",'Hantera dina CV:n'),
+    );
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

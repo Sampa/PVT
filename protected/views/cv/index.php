@@ -5,7 +5,8 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Cvs',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t",'Hitta CV'),
 );
 
 $this->menu=array(

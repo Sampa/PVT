@@ -1,18 +1,12 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Contact Us';
+$this->pageTitle = Yii::app()->name . Yii::t("t","Kontakta oss");
 $this->breadcrumbs = array(
-    'Contact',
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t",'Kontakt'),
 );
 ?>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
-                <li><a href="/"><?php echo Yii::t("t", "Hem");?></a></li>
-                <li class="active"><a href=""><?php echo Yii::t("t", "Kontakt");?></a></li>
-            </ol>
-        </div>
-    </div>
+
     <?php if (Yii::app()->user->hasFlash('contact')): ?>
         <div class="alert alert-info  alert-dismissable">
             <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>

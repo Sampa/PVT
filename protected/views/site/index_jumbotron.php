@@ -10,10 +10,10 @@ Här på CV-Pages kan du enkelt publicera ett eller flera CV:n. Dina CV:n kan va
 
 Du som söker efter kandidater att anställa kan hitta dem här genom att söka på nyckelord och inleda en enkel rekryteringsprocess och hitta din kandidat!");?> </p>
 <br>
-        <p><a href="/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV") ("nu");?></a> </p>
+        <p><a href="/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV");?></a> </p>
     </div>
 </div>
-<h2><?php echo Yii::t('t',"3 skäl till att använda CV-Pages");?></h2>
+<h2><?php echo Yii::t('t',"3 GODA skäl till att använda CV-Pages");?></h2>
 <ul>
     <li>Du kan söka nya jobb utan att din nuvarande arbetsgivare ser att du gör det</li>
     <li>Du kan hitta kandidater inom ett brett spektrum av brancher</li>

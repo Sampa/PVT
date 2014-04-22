@@ -79,7 +79,7 @@
 
                 <?php else: ?>
                     <div class=" navbar-right">
-                        <span class="navbar-brand"><small>Welcome,<?php echo app()->user->name; ?></small></span>
+                        <span class="navbar-brand"><small><?php echo Yii::t("t","Välkommen")." ".Yii::app()->user->name; ?></small></span>
                             <span class="navbar-brand">
                                 <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
                                     <small><?php echo Yii::t("t","Logga ut");?></small>

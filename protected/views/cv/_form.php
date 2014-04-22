@@ -17,7 +17,7 @@
     )); ?>
 
     <p class="help-block"><?php echo Yii::t("t", "Fält markerade med * måste fyllas i");?>
-            <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',
+        <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',
             array('konsult'=>Yii::t("t",'Konsultuppdrag'),'anstallning'=>Yii::t('t','Anställning'))); ?>
         <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
         <?php echo $form->textFieldControlGroup($model,'title',array('span'=>5,'maxlength'=>255)); ?>

@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
     <script>
     $(document).ready(function () {
         $("[type*='submit']").addClass("btn-lg");
-        $("#countries").on("click",function(){
+        $("#countries").on("change",function(){
             $("#geographicAreaForm").fadeIn();
         });
     });

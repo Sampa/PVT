@@ -40,8 +40,8 @@ class RegisterForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'fullname' => Yii::t('t','Fullständigt Namn'),
-            'username' => Yii::t('t', 'Användaramn'),
+            'fullname' => Yii::t('t','Fullständigt namn'),
+            'username' => Yii::t('t', 'Användarnamn'),
             'email' => Yii::t('t', 'E-post'),
             'new_password' => Yii::t('t', 'Lösenord'),
             'password_confirm' => Yii::t('t', 'Bekräfta lösenordet'),

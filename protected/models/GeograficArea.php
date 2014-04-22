@@ -19,7 +19,7 @@ class GeograficArea extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'geograficarea';
+		return 'GeograficArea';
 	}
 
 	/**

@@ -72,7 +72,7 @@
                         <a class="btn btn-primary  btn-sm  btn-warning"
                            href="<?php echo $this->createUrl('site/email_for_reset') ?>"><?php echo Yii::t("t", "Glömt lösenord");?></a>
                         <a class=" btn btn-primary btn-sm  btn-info"
-                           href="<?php echo $this->createUrl('site/register') ?>"><?php echo Yii::t("t", "Regstrera dig");?></a>
+                           href="<?php echo $this->createUrl('site/register') ?>"><?php echo Yii::t("t", "Registrera dig");?></a>
 
                         <?php $this->endWidget(); ?>
                     </form>

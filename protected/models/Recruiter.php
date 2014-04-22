@@ -21,7 +21,7 @@ class Recruiter extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'recruiter';
+		return 'Recruiter';
 	}
 
 	/**

@@ -83,6 +83,8 @@ return array(
         'yiiwheels' => array(
             'class' => 'yiiwheels.YiiWheels',
         ),
+        'sourceLanguage' => 'sv',
+        'language'=>'en',
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,

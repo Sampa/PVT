@@ -14,8 +14,20 @@
 
 class Controller extends CController
 {
-     public function  init()
+    public function  init()
     {
+        parent::init();
+        $app = Yii::app();
+        if (isset($_POST['_lang']))
+        {
+            $app->language = $_POST['_lang'];
+            $app->session['_lang'] = $app->language;
+        }
+        else if (isset($app->session['_lang']))
+        {
+            $app->language = $app->session['_lang'];
+        }
+        $app->language = "sv";
         if (app()->params->render_switch_form) {
             $this->getLayoutAndBootswatchSkinFromSession();
             $this->handleSwitchForm();

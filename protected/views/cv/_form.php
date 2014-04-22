@@ -20,7 +20,19 @@
         <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',
             array('konsult'=>Yii::t("t",'Konsultuppdrag'),'anstallning'=>Yii::t('t','Anställning'))); ?>
         <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
-        <?php echo $form->textFieldControlGroup($model,'title',array('span'=>5,'maxlength'=>255)); ?>
+
+        <div class="control-group row  error col-md-12">
+            <div class="row col-md-5">
+            <?php
+            echo $form->textFieldControlGroup($model,'title',array('class'=>'col-md-5 form-control','maxlength'=>255)); ?>
+
+                <!--            <label class="control-label required" for="Cv_title">Rubrik på ditt CV <span class="required">*</span></label>-->
+<!--            <div class="controls">-->
+<!--                <input name="Cv[title]" class="form-control" id="Cv_title" type="text" maxlength="255">-->
+<!--                <p class="help-block" id="Cv_title_em_">Rubrik på ditt CV får inte vara blankt.</p>-->
+<!--            </div>-->
+            </div>
+        </div>
 			<div class="row" style="margin-left: 5px;"">
 				<?php echo Yii::t("t","Välj en pdf fil som innehåller ditt CV och ladda upp den här");?>
 				<div id="fileSelect" style="margin-left: 8px;margin-top: 10px;"><?php

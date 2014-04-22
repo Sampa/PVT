@@ -83,13 +83,15 @@ class CvController extends Controller
 		$this->performAjaxValidation($model);
 
 		if (isset($_POST['Cv'])) {
-            $geo = new GeograficArea;
-            $geo->country  = $_POST['countries'];
-            $geo->region  = $_POST['geoRegion'];
-            $geo->city = $_POST['geoCity'];
-            $geo->save();
-           	$model->attributes=$_POST['Cv'];
-            $model->geographicAreaId  = $geo->id;
+            if(isset($_POST['geoRegion']) && isset($_POST['geoCity'])){
+                $geo = new GeograficArea;
+                $geo->region  = $_POST['geoRegion'];
+                $geo->country  = $_POST['countries'];
+                $geo->city = $_POST['geoCity'];
+                $geo->save();
+                $model->geographicAreaId  = $geo->id;
+            }
+            $model->attributes=$_POST['Cv'];
             if ($model->save()){
 				$this->redirect(array('view','id'=>$model->id));
 			}

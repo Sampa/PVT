@@ -46,7 +46,7 @@ $this->menu=array(
   <div style="margin-top:15px;">
     <button type="submit" class="btn btn-default"><?php echo Yii::t("t","Sök");?></button>
   </div>
-
+<hr/>
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',

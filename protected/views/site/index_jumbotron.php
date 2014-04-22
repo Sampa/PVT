@@ -7,10 +7,10 @@
 
 Här på CV-Pages kan du enkelt publicera ett eller flera CV:n. Dina CV:n kan vara riktade till den del av världen som du är intresserad av att arbeta i. 
 
-<br><br>
+
 Du som söker efter kandidater att anställa kan hitta dem här genom att söka på nyckelord och inleda en enkel rekryteringsprocess och hitta din kandidat!");?> </p>
 <br>
-        <p><a class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök CV här");?></a> (här lägger vi in en länk till sökfunktionen)</p>
+        <p><a href="/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV");?></a> </p>
     </div>
 </div>
 <h2><?php echo Yii::t('t',"3 skäl till att använda CV-Pages");?></h2>
@@ -21,11 +21,11 @@ Du som söker efter kandidater att anställa kan hitta dem här genom att söka 
 <ul>
 <div class="row">
     <div class="col-lg-4">
-        <h2><?php echo Yii::t("t","Rubrik ");?></h2>
+        <h2><?php echo Yii::t("t","Så här gör du!!  ");?></h2>
 
-        <p><?php echo Yii::t("t","Teeext");?> </p>
+        <p><?php echo Yii::t("t","Instruktioner för att publicera ditt CV");?> </p>
 
-        <p><a class="btn btn-primary" href="#"><?php echo Yii::t("t","En knapp ");?></a></p>
+        <p><a class="btn btn-primary" href="#"><?php echo Yii::t("t","Komigång ");?></a></p>
     </div>
     <div class="col-lg-4">
         <h2><?php echo Yii::t("t","Rubrik ");?></h2>

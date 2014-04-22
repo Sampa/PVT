@@ -5,12 +5,12 @@
 
 <div class="view">
 
-    	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id),array('view','id'=>$data->id)); ?>
+    	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('showUserDetail')); ?>:</b>
-	<?php echo CHtml::encode($data->showUserDetail); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('username')); ?>:</b>
+	<?php echo CHtml::encode($data->publisher->username); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
@@ -28,9 +28,6 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('geographicAreaId')); ?>:</b>
 	<?php echo CHtml::encode($data->geographicAreaId); ?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
 	<br />
 
 	<?php /*

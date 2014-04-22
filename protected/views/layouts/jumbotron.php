@@ -92,6 +92,9 @@
         <!--/.container -->
     </div><!--/.navbar -->
     <div class="container">
+        <div class="row">
+           <?php echo TbHtml::breadcrumbs($this->breadcrumbs);?>
+        </div>
         <?php
         $flashMessages = Yii::app()->user->getFlashes();
         if ($flashMessages) :?>

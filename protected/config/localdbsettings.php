@@ -2,7 +2,7 @@
 	'class' => 'CDbConnection',
 	'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
 	'username' => 'root',
-	'password' => 'root',
+	'password' => '',
 	'charset' => 'UTF8',
 	'tablePrefix' => '', // even empty table prefix required!!!
 	'emulatePrepare' => true,

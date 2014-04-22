@@ -5,6 +5,14 @@
 
 <div class="view">
 
+	<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+
     	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?>
 	<br />

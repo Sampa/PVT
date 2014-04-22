@@ -265,11 +265,16 @@
     <option value="ZM">Zambia</option>
     <option value="ZW">Zimbabwe</option>
 </select>
-    <section id="geographicAreaForm" style="display:none; " >
-        <span><?php echo Yii::t("t","Region");?></span>
-        <input type="text" id="geoAreaTextfield" name="geoRegion" />
+<section id="geographicAreaForm" style="display:block; margin-left:-15px; margin-top:15px;" >
 
-        <span><?php echo Yii::t("t","Stad");?></span>
-        <input type="text" id="geoCityTextfield" name="geoCity" />
-    </section>
+    <div class="col-md-4">
+        <label class="sr-only" for="exampleInputEmail2"><?php echo Yii::t("t","Region");?></label>
+        <input type="text" class="form-control" id="geoAreaTextfield" placeholder="<?php echo Yii::t("t","Region");?>">
+    </div>
+    <div class="form-group col-md-4">
+        <label class="sr-only" for="exampleInputPassword2"><?php echo Yii::t("t","Stad");?></label>
+        <input type="tetxt" class="form-control" id="geoCityTextfield" placeholder="<?php echo Yii::t("t","Stad");?>">
+    </div>
+
+</section>
 </div>

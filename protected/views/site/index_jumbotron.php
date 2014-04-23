@@ -1,44 +1,46 @@
 <?php $this->pageTitle = Yii::app()->name; ?>
 <div class="jumbotron">
     <div class="container">
-        <h1><?php echo Yii::t("t","Välkommen till CV-Pages");?></h1>
+        <h1><?php echo Yii::t("t","CV-Pages");?></h1>
 
-        <p><?php echo Yii::t("t","Vill du synas eller leta efter intressanta kandidater i vår publika CV-databas? Då har du kommit rätt! 
+        <p><?php echo Yii::t("t", "Vill du synas eller leta efter intressanta kandidater i vår publika CV-databas? Då har du kommit rätt! Här kan du,
+        
+    söka nya jobb utan att din nuvarande arbetsgivare ser att du gör det
+    hitta kandidater inom ett brett spektrum av brancher
+    följa dina rekryteringsprocesser
 
-Här på CV-Pages kan du enkelt publicera ett eller flera CV:n. Dina CV:n kan vara riktade till den del av världen som du är intresserad av att arbeta i. 
 
-
-Du som söker efter kandidater att anställa kan hitta dem här genom att söka på nyckelord och inleda en enkel rekryteringsprocess och hitta din kandidat!");?> </p>
+ <br> Prova att söka i vår cv-databas nu ");?> </p>
 <br>
         <p><a href="<?php echo Yii::app()->baseUrl;?>/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV");?></a> </p>
     </div>
 </div>
-<h2><?php echo Yii::t('t',"3 GODA skäl till att använda CV-Pages");?></h2>
-<ul>
-    <li>Du kan söka nya jobb utan att din nuvarande arbetsgivare ser att du gör det</li>
-    <li>Du kan hitta kandidater inom ett brett spektrum av brancher</li>
-    <li>Du kan följa dina rekryteringsprocesser</li>
-<ul>
+
 <div class="row">
     <div class="col-lg-4">
-        <h2><?php echo Yii::t("t","Så här gör du!!  ");?></h2>
+        <h2><?php echo Yii::t("t","Sök nytt jobb anonymt!!  ");?></h2>
 
-        <p><?php echo Yii::t("t","Instruktioner för att publicera ditt CV");?> </p>
+        <p><?php echo Yii::t("t"," Som Publicerare kan du själv välja vilken typ av information som du vill ge ut om dig själv. 
+        I dina publicera CV:n kan du uppge ditt riktiga namn om du vill,
+         men rekryteraren ser endast ditt användarnamn vilket fungerar som en psuedonym. 
+         Du kan rikta cv:t till den del av världen som du är intresserad av att arbeta i. Vill du veta mer om hur anonymiteten fungerar läs mer på om oss.
+");?> </p>
 
-        <p><a class="btn btn-primary" href="#"><?php echo Yii::t("t","Komigång ");?></a></p>
+        <p><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about/" class="btn btn-success btn-btn btn-block"><?php echo Yii::t("t","Om oss");?></a></p>
     </div>
     <div class="col-lg-4">
-        <h2><?php echo Yii::t("t","Rubrik ");?></h2>
+        <h2><?php echo Yii::t("t","Rekrytera ");?></h2>
 
-        <p><?php echo Yii::t("t", "Text text text text");?> </p>
+        <p><?php echo Yii::t("t", "Du som söker efter kandidater att anställa kan hitta dem här genom att söka på nyckelord och inleda en enkel rekryteringsprocess och hitta din kandidat!");?> </p>
 
-        <p><a class="btn btn-primary" href="#"><?php echo Yii::t("t","En knapp ");?></a></p>
+        <p><a class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Registrera mig ");?></a></p>
     </div>
     <div class="col-lg-4">
-        <h2><?php echo Yii::t("t","Rubrik ");?></h2>
+        <h2><?php echo Yii::t("t","Hitta dina toppkandidater ");?></h2>
 
-        <p><?php echo Yii::t("t", "Mer text");?> .</p>
+        <p><?php echo Yii::t("t", "Till dig som behöver kompetent arbetskraft. På CV-pages hittar du enkelt dina kandidater. Vår databas innehåller cv:n från ett brett spektrum av 
+        brancher. Du kan lätt söka efter olika folk som söker olika former av anställning. Databasen har en global räckvidd, vilket innebär att du kan hitta kompetens på olika platser i världen. ");?> .</p>
 
-        <p><a class="btn btn-primary" href="#"><?php echo Yii::t("t","En knapp ");?></a></p>
+        <p><a class="btn btn-primary btn-btn btn-block" href="#"><?php echo Yii::t("t","Sök i cv-databasen ");?></a></p>
     </div>
 </div>

@@ -262,7 +262,7 @@ class CvController extends Controller
         $criteria->order= "date DESC";
         $resultCount = -1;
         //this if checks if we have pressed the submit button in the search form
-        if(isset($_POST)){
+        if(isset($_POST['countries'])){
             /*
              * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
              * where the column "typeOfEmployment" in the database has value "consult"

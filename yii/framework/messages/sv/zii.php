@@ -21,7 +21,7 @@ return array (
   'Displaying {start}-{end} of 1 result.|Displaying {start}-{end} of {count} results.' => 'Visar {start}-{end} av totalt 1 post.|Visar {start}-{end} av totalt {count} poster.',
   'Either "name" or "value" must be specified for CDataColumn.' => 'Antingen "name" eller "value" måste specificeras för CDataColumn.',
   'No results found.' => 'Inget hittades',
-  'Not set' => 'Ej åsatt',
+  'Not set' => 'Ej satt',
   'Please specify the "attributes" property.' => 'Var god specificera propertyn "attributes".',
   'Please specify the "data" property.' => 'Var god specificera propertyn "data".',
   'Sort by: ' => 'Sorterat på: ',

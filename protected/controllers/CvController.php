@@ -246,7 +246,16 @@ class CvController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Cv');
+        $criteria=new CDbCriteria;
+        $criteria->order= "date DESC";
+        if(isset($_POST)){
+            if(isset($_POST['consult']))
+                $criteria->addSearchCondition("typeOfEmployment","consult");
+            if(isset($_POST['employment']))
+                $criteria->addSearchCondition("typeOfEmployment","employment");
+
+        }
+		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

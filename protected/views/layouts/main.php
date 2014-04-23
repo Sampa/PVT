@@ -22,6 +22,5 @@
 <?php endif;?>
 
 <?php  echo $content; ?>
-
 </body>
 </html>

@@ -271,11 +271,11 @@
 
     <div class="col-md-5">
         <label class="sr-only" for="exampleInputEmail2"><?php echo Yii::t("t","Region");?></label>
-        <input type="text" class="form-control" id="geoAreaTextfield" placeholder="<?php echo Yii::t("t","Region");?>">
+        <input type="text" class="form-control" name="geoRegion" id="geoAreaTextfield" placeholder="<?php echo Yii::t("t","Region");?>">
     </div>
     <div class="col-md-5">
         <label class="sr-only" for="exampleInputPassword2"><?php echo Yii::t("t","Stad");?></label>
-        <input type="text" class="form-control" id="geoCityTextfield" placeholder="<?php echo Yii::t("t","Stad");?>">
+        <input type="text" class="form-control" name="geoCity" id="geoCityTextfield" placeholder="<?php echo Yii::t("t","Stad");?>">
     </div>
 
 </section>

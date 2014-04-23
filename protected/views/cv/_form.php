@@ -18,7 +18,7 @@
 
     <p class="help-block"><?php echo Yii::t("t", "Fält markerade med * måste fyllas i");?>
         <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',
-            array('konsult'=>Yii::t("t",'Konsultuppdrag'),'anstallning'=>Yii::t('t','Anställning'))); ?>
+            array('consult'=>Yii::t("t",'Konsultuppdrag'),'employment'=>Yii::t('t','Anställning'))); ?>
         <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
 
         <div class="control-group row  error col-md-12">

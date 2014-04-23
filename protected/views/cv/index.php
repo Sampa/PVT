@@ -27,17 +27,13 @@ $this->menu=array(
         </div>
         <div class="horizontal-form">
 
-<form class="form" role="search">
+<form class="form" role="search" name="search" method="post" >
 	<div class="form-group">
-		<input type="text" class="form-control" placeholder="Search">
+		<input type="text" name="searchbox" class="form-control" placeholder="Search">
 	</div>
-	
-</form>
   <div class="checkbox">
-    <label>
-      <input type="checkbox"> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
-       <input type="checkbox"> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
-       </label>
+      <input name="consult" type="checkbox"/> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
+       <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
   </div>
   <div>
     <?php $this->renderPartial('_allCountriesSelect', array('')); ?>
@@ -46,6 +42,7 @@ $this->menu=array(
   <div style="margin-top:15px;">
     <button type="submit" class="btn btn-default"><?php echo Yii::t("t","Sök");?></button>
   </div>
+</form>
 <hr/>
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

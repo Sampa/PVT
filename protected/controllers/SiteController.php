@@ -111,7 +111,8 @@ class SiteController extends Controller
                         $recruiterModel->userId = $user->id;
                         $recruiterModel->orgName = $_POST['RegisterForm']['Companyname'];
                         $recruiterModel->VAT = $_POST['RegisterForm']['VAT'];
-                        $recruiterModel->save();
+                        if($recruiterModel->validate())
+                            $recruiterModel->save();
                     }
                     //send email     activation key has been generated on beforeValidate function in User class
                     $activation_url = $this->createAbsoluteUrl('/site/activate', array('key' => $user->activation_key, 'email' => $user->email));

@@ -83,18 +83,24 @@ class CvController extends Controller
 		$this->performAjaxValidation($model);
 
 		if (isset($_POST['Cv'])) {
-            if(isset($_POST['geoRegion']) && isset($_POST['geoCity'])){
+            $model->hasGeoArea=false;
+            if(isset($_POST['geoRegion']) && isset($_POST['geoCity']) && $_POST['countries'] != "default"){
                 $geo = new GeograficArea;
                 $geo->region  = $_POST['geoRegion'];
                 $geo->country  = $_POST['countries'];
                 $geo->city = $_POST['geoCity'];
-                $geo->save();
-                $model->geographicAreaId  = $geo->id;
+                if($geo->save()){
+                    $model->hasGeoArea = true;
+                    $model->geographicAreaId  = $geo->id;
+                }
+
             }
-            $model->attributes=$_POST['Cv'];
-            if ($model->save()){
-				$this->redirect(array('view','id'=>$model->id));
-			}
+            if($model->hasGeoArea){
+                $model->attributes=$_POST['Cv'];
+                if ($model->save()){
+                    $this->redirect(array('view','id'=>$model->id));
+                }
+            }
 		}
 
 		$this->render('create',array(
@@ -242,18 +248,20 @@ class CvController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all models (alternative
 	 */
 	public function actionIndex()
 	{
         $criteria=new CDbCriteria;
         $criteria->order= "date DESC";
-        if(isset($_POST)){
+        if(isset($_POST['countries'])){
             if(isset($_POST['consult']))
                 $criteria->addSearchCondition("typeOfEmployment","consult");
             if(isset($_POST['employment']))
                 $criteria->addSearchCondition("typeOfEmployment","employment");
-
+            $geoGraphicAreas  = $this->getGeoModels($_POST["countries"]);
+            foreach($geoGraphicAreas as $area)
+                $criteria->compare("geographicAreaId",$area->id,true,"OR");
         }
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
 		$this->render('index',array(
@@ -304,4 +312,13 @@ class CvController extends Controller
 			Yii::app()->end();
 		}
 	}
+    /*
+     * accepts a country shortname (possible those listed in views/cv/_allCountriesSelect.php
+     * returns the geoGraphicArea models with that country set
+     */
+    private function getGeoModels($countryName)
+    {
+        $geoModels  = GeograficArea::model()->findAll("country = '".$countryName."'");
+        return $geoModels;
+    }
 }

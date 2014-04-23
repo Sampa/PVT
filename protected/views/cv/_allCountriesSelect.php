@@ -1,21 +1,15 @@
 <p><?php echo Yii::t("t","Välj land");?></p>
 <?php
-//$this->widget(
-//    'yiiwheels.widgets.formhelpers.WhCountries',
-//    array(
-//        'name' => 'geographicarea',
-//        'value' => 'US',
-//        'useHelperSelectBox' => true,
-//        'pluginOptions' => array(
-//            'country' => 'US',
-//            'flags' => true
-//        ),
-//    )
-//);
+    $errorClass  = "";
+    if(isset($model)){
+        if(!$model->hasGeoArea)
+            $errorClass ="has-error";
+}
 ?>
 <div class="row col-md-10" style="">
-<div class="row col-md-10" style="margin-left:-15px;margin-bottom:15px; ">
+<div id="selectCountry" class="row col-md-10 <?php echo $errorClass;?>" style="margin-left:-15px;margin-bottom:15px; ">
     <select id="countries" name="countries" class="form-control">
+        <option value="default"><?php echo Yii::t("t","Välj land");?></option>
         <option value="AF">Afghanistan</option>
         <option value="AX">Åland Islands</option>
         <option value="AL">Albania</option>

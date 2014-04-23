@@ -22,9 +22,11 @@
  * @property Message[] $messages
  * @property RecFavorites[] $recFavorites
  * @property ReportedCv[] $reportedCvs
+ * @property mixed        hasGeoArea
  */
 class Cv extends CActiveRecord
 {
+    public $hasGeoArea = false;
 	/**
 	 * @return string the associated database table name
 	 */

@@ -266,13 +266,13 @@ class SiteController extends Controller
                 //try to find a recruiter model associated to the user
                 $recruiterModel = Recruiter::model()->find("userId =".Yii::app()->user->id);
                 if(is_null($recruiterModel)) //we found none, so must be publisher
-                   Yii::app()->user->setState("role","publiserare");
+                   Yii::app()->user->setState("role"," publicerare ");
                 else
                     Yii::app()->user->setState("role","rekryterare"); //there is one
                 //build message string for alittle more readability
                 $message = Yii::t("t",'Välkommen')." " . app()->user->name.".";
-                $message .= Yii::t("t","Du är inloggad som:");
-                $message .= Yii::t("t",Yii::app()->user->getState("role"));
+                $message .= Yii::t("t","Du är inloggad som ");
+                $message .= Yii::t("t",Yii::app()->user->getState(" role "));
 
                 Yii::app()->user->setFlash('success',$message);
                 $this->redirect(Yii::app()->user->returnUrl);

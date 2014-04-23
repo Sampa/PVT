@@ -44,10 +44,16 @@ $this->menu=array(
   </div>
 </form>
 <hr/>
-<?php $this->widget('bootstrap.widgets.TbListView',array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+
+<?php if($resultCount==0):?>
+    <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
+<?php endif;?>
+<?php
+    $this->widget('bootstrap.widgets.TbListView',array(
+	    'dataProvider'=>$dataProvider,
+	    'itemView'=>'_view',
+    ));
+?>
         </div><!-- form -->
     <?php endif;?>
 

@@ -248,25 +248,48 @@ class CvController extends Controller
 	}
 
 	/**
-	 * Lists all models (alternative
+	 * Lists all CVs. If search form is submitted it lists only matching CV's.
+     * If no searchresults are found it reverts to default and shows all CV's
 	 */
 	public function actionIndex()
 	{
+        //CDBcriteria is a Yii class to make it easier to create advanced SQL queries
         $criteria=new CDbCriteria;
+        /*
+         * Sets the order of how the results should be displayed.
+         * date is the column to sort by and DESC means newest first(descending order)
+         */
         $criteria->order= "date DESC";
-        if(isset($_POST['countries'])){
+        $resultCount = -1;
+        //this if checks if we have pressed the submit button in the search form
+        if(isset($_POST)){
+            /*
+             * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
+             * where the column "typeOfEmployment" in the database has value "consult"
+             */
             if(isset($_POST['consult']))
                 $criteria->addSearchCondition("typeOfEmployment","consult");
+            //same as above but for employment
             if(isset($_POST['employment']))
                 $criteria->addSearchCondition("typeOfEmployment","employment");
-            $geoGraphicAreas  = $this->getGeoModels($_POST["countries"]);
+            /*
+             * getGeoModels return an array of all geograficareas that matches the country selected
+             * and the region and/or city values (if something is written in them)
+             */
+            $geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
+            //the code to add conditions based on the models/objects returned above
             foreach($geoGraphicAreas as $area)
                 $criteria->compare("geographicAreaId",$area->id,true,"OR");
+            $resultCount = sizeof($geoGraphicAreas);
+
         }
+        //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
+        //render(display)  views/cv/index.php
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+	        'resultCount'=>$resultCount,
+			));
 	}
 
 	/**
@@ -316,9 +339,18 @@ class CvController extends Controller
      * accepts a country shortname (possible those listed in views/cv/_allCountriesSelect.php
      * returns the geoGraphicArea models with that country set
      */
-    private function getGeoModels($countryName)
+    private function getGeoModels($countryName,$region,$city)
     {
-        $geoModels  = GeograficArea::model()->findAll("country = '".$countryName."'");
+        $criteria = new CDbCriteria();
+        $criteria->addSearchCondition("country",$countryName);
+        if(sizeof($region)>0){
+            $criteria->addSearchCondition("region",$region);
+        }
+        if(sizeof($city)>0){
+            $criteria->addSearchCondition("city",$city);
+        }
+
+        $geoModels  = GeograficArea::model()->findAll($criteria);
         return $geoModels;
     }
 }

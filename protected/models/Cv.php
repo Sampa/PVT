@@ -26,7 +26,12 @@
  */
 class Cv extends CActiveRecord
 {
-    public $hasGeoArea = false;
+    /*
+     * Variable used to determine if we need to add an error class to the "select country dropdown"
+     * If you try to create a CV without choosing country this will be set to
+     * false and a red border will be drawn around the three diffrent GeographicArea fields in the create CV form
+     */
+    public $hasGeoArea = true;
 	/**
 	 * @return string the associated database table name
 	 */

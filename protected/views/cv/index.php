@@ -8,11 +8,6 @@ $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
     Yii::t("t",'Hitta CV'),
 );
-
-$this->menu=array(
-	array('label'=>'Create Cv','url'=>array('create')),
-	array('label'=>'Manage Cv','url'=>array('admin')),
-);
 ?>
 
 
@@ -44,7 +39,6 @@ $this->menu=array(
   </div>
 </form>
 <hr/>
-
 <?php if($resultCount==0):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
 <?php endif;?>

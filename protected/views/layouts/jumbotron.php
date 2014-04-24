@@ -77,6 +77,7 @@
                         <?php $this->endWidget(); ?>
                     </form>
 
+
                 <?php else: ?>
                     <div class=" navbar-right">
                         <span class="navbar-brand"><small><?php echo Yii::t("t","Välkommen")." ".Yii::app()->user->name; ?></small></span>

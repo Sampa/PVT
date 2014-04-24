@@ -39,7 +39,18 @@ class Controller extends CController
         if (!app()->theme)
             $this->registerBootstrap3CoreAssets();
     }
-
+    /*
+     * Returns true or false depending on the logged in users role
+     */
+    public function isRecruiter(){
+        return (Yii::app()->user->getState("role") == "recruiter")? true:false;
+    }
+    /*
+     * Returns true or false depending on the logged in users role
+     */
+    public function isPublisher(){
+        return (Yii::app()->user->getState("role") == "publisher")? true:false;
+    }
     public function getLayoutAndBootswatchSkinFromSession()
     {
         //if we haven't submitted the switch form,grab layout and bootswatch skin from session.

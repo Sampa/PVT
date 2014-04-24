@@ -14,7 +14,9 @@ $this->menu=array(
 	array('label'=>'Manage Cv','url'=>array('admin')),
 );
 ?>
-
+  <script type="text/javascript" src="/js/select2.min.js"></script>
+  <script type="text/javascript" src="/js/select2_locale_sv.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/select2.css" media="screen"/>
 
     <?php if (Yii::app()->user->hasFlash('index')): ?>
         <div class="alert alert-info  alert-dismissable">
@@ -59,6 +61,7 @@ $this->menu=array(
 
 <script>
 $(document).ready(function () {
+    $("#countries").select2();
     $("#countries").on("change",function(){
 	    $("#geographicAreaForm").fadeIn();
     });

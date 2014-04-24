@@ -31,7 +31,9 @@
     <div class="col-lg-4">
         <h2><?php echo Yii::t("t","Rekrytera ");?></h2>
 
-        <p><?php echo Yii::t("t", "Du som söker efter kandidater att anställa kan hitta dem här genom att söka på nyckelord och inleda en enkel rekryteringsprocess och hitta din kandidat!");?> </p>
+        <p><?php echo Yii::t("t", "Du som söker efter kandidater att anställa kan hitta dem 
+        här genom att söka på nyckelord och inleda en enkel rekryteringsprocess och hitta din kandidat! När du är inloggad som rekryterare har du bra överblick och kan ha flera rekryteringsprocesser igång samtidigt.
+        På din sida kan du spara intressanta cv.n i en hotlist, och kontakta kandidater via chatt eller mail");?> </p>
 
         <p><a href="<?php echo Yii::app()->baseUrl;?>/site/register" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Registrera mig ");?></a></p>
     </div>

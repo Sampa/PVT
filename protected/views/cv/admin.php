@@ -23,12 +23,12 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Cvs</h1>
+<div class="page-header">
+        <h1><?php echo Yii::t("t",'Dina publicerade CV:n');?></h1>
+    </div>
 
 <p>
-    You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
-        &lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+   <?php echo Yii::t("t"," Här kan du se på alla dina publicerade CV:n och ta bort de du inte vill ha kvar.");?>
 </p>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>

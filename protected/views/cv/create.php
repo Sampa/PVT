@@ -16,7 +16,9 @@ $this->breadcrumbs=array(
     <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2_locale_sv.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
 
-<h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>
+<div class="page-header">
+        <h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>
+    </div>
     <section class="row" style="width:50%;margin-left: 5px;">
         Här kan du ladda upp en pdf fil från din filkatalog och publicera på vår offentliga CV-databas.
         Välj vilken typ av anställning du är främst intresserad av och i vilken del av världen som du vill arbeta på.

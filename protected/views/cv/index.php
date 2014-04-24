@@ -21,7 +21,7 @@ $this->breadcrumbs=array(
         </div>
     <?php else: ?>
         <div class="page-header">
-            <h1><?php echo Yii::t("t", "Sök CV");?> </h1>
+            <h1><?php echo Yii::t("t", "Hitta CV");?> </h1>
         </div>
         <div class="horizontal-form">
 
@@ -38,7 +38,7 @@ $this->breadcrumbs=array(
   </div>
 
   <div style="margin-top:15px;">
-    <button type="submit" class="btn btn-default"><?php echo Yii::t("t","Sök");?></button>
+    <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>
   </div>
 </form>
 <hr/>

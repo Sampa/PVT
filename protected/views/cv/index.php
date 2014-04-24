@@ -10,6 +10,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
+  <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2_locale_sv.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
 
     <?php if (Yii::app()->user->hasFlash('index')): ?>
         <div class="alert alert-info  alert-dismissable">
@@ -53,6 +56,7 @@ $this->breadcrumbs=array(
 
 <script>
 $(document).ready(function () {
+    $("#countries").select2();
     $("#countries").on("change",function(){
 	    $("#geographicAreaForm").fadeIn();
     });

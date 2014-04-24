@@ -260,7 +260,7 @@ class CvController extends Controller
          * Sets the order of how the results should be displayed.
          * date is the column to sort by and DESC means newest first(descending order)
          */
-        if( Yii::app()->request->isAjaxRequest){
+        if( Yii::app()->request->isAjaxRequest && isset($_POST['sortBy'])){
         	if($_POST['sortBy']=='date'){
         		$criteria->order= "date DESC";
         	}

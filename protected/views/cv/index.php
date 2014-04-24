@@ -45,27 +45,37 @@ $this->breadcrumbs=array(
 
 <h3> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
 		<div class="btn-group">
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Rubrik');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Användarnamn');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Datum');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Anställningsform');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Geografisk area');?></button>
+  <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
+  <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
+  <button id="typeOfEmpolyment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
+  <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
 </div>
 
 <?php if($resultCount==0):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
 <?php endif;?>
-<?php
-    $this->widget('bootstrap.widgets.TbListView',array(
-	    'dataProvider'=>$dataProvider,
-	    'itemView'=>'_view',
-    ));
-?>
+<div id="listOfCvs"> 
+	<?php
+	    $this->widget('bootstrap.widgets.TbListView',array(
+		    'dataProvider'=>$dataProvider,
+		    'itemView'=>'_view',
+	    ));
+	?>
+</div>
         </div><!-- form -->
     <?php endif;?>
 
 <script>
 $(document).ready(function () {
+	$(".sortButton").on("click",function(){
+		$.ajax({
+			type: "POST",
+			url: "cv/index",
+			data: {sortBy: $(this).attr("id")}
+		}).done(function( data ) {
+			$("#listOfCvs").html(data);
+		});
+	});
     $("#countries").select2();
     $("#countries").on("change",function(){
 	    $("#geographicAreaForm").fadeIn();

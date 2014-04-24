@@ -271,7 +271,6 @@ class SiteController extends Controller
                 $message = Yii::t("t",'Välkommen')." " . app()->user->name." ";
                 $message .= Yii::t("t","du är inloggad som ");
                 $message .= Yii::t("t",Yii::app()->user->getState("role"));
-                $message .= $this->isPublisher() ? "publisher" : "fan";
                 Yii::app()->user->setFlash('success',$message);
                 $this->redirect(Yii::app()->user->returnUrl);
             }

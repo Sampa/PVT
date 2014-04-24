@@ -115,7 +115,7 @@
 
         <footer>
 
-            <p>&copy; Company 2013</p>
+            <p>&copy; <?php echo Yii::app()->name; ?> </p>
         </footer>
     </div> <!-- /container -->
 <?php $this->endContent(); ?>

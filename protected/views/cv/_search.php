@@ -31,7 +31,7 @@
                     <?php echo $form->textFieldControlGroup($model,'publisherId',array('class'=>'col-md-5 form-control','maxlength'=>255)); ?>
 
         <div class="form-actions" style="margin-top: 50px">
-        <?php echo TbHtml::submitButton('Search',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
+        <?php echo TbHtml::submitButton('Sök',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
     </div>
 
 

@@ -253,14 +253,11 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
-
         $model = new LoginForm();
-
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
             echo CActiveForm::validate($model, array('username', 'password', 'verify_code'));
             Yii::app()->end();
         }
-
         if (isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
             if ($model->validate(array('username', 'password', 'verify_code')) && $model->login()) {

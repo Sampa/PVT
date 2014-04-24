@@ -272,16 +272,23 @@ class CvController extends Controller
             //same as above but for employment
             if(isset($_POST['employment']))
                 $criteria->addSearchCondition("typeOfEmployment","employment");
-            /*
-             * getGeoModels return an array of all geograficareas that matches the country selected
-             * and the region and/or city values (if something is written in them)
-             */
-            $geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
-            //the code to add conditions based on the models/objects returned above
-            foreach($geoGraphicAreas as $area)
-                $criteria->compare("geographicAreaId",$area->id,true,"OR");
-            $resultCount = sizeof($geoGraphicAreas);
-
+            if($_POST['countries'] != "default"){
+                /*
+                 * getGeoModels return an array of all geograficareas that matches the country selected
+                 * and the region and/or city values (if something is written in them)
+                 */
+                $geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
+                //the code to add conditions based on the models/objects returned above
+                foreach($geoGraphicAreas as $area)
+                    $criteria->compare("geographicAreaId",$area->id,true,"OR");
+                $resultCount = sizeof($geoGraphicAreas);
+            }else{
+                /*man har inte valt något specifikt land så vi sätter ett värde över 0
+                   *för att inte generera error meddelandet
+                 *
+                 */
+                $resultCount = 1;
+            }
         }
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));

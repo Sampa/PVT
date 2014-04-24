@@ -41,7 +41,7 @@
 						//our XUploadForm
 						'model' => $pdf,
 						'options'=>array(
-							'maxFileSize' => 100000,//I bytes så det här är säger att 100kb är max vad en pdf får vara
+							'maxFileSize' => 2700000,//I bytes så det här är säger att 2,5 mb är max vad en pdf får vara
 							'acceptFileTypes' => "js:/(\.|\/)(pdf)$/i",//tillåt bara pdf filändelser
 						),
 						//We set this for the widget to be able to target our own form

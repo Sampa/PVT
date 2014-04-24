@@ -38,14 +38,14 @@ class CvController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'admin' action
-				'actions'=>array('admin'), //admin action lists users own cv for managing them
+				'actions'=>array('admin','delete'), //admin action lists users own cv for managing them
 				'users'=>array('@'),
 			),
-            array('allow', // allow owners to perform 'delete' action
-                'actions'=>array('delete'),
-                'users'=>array('@'),
-                'expression'=>'Yii::app()->controller->isOwner()',
-            ),
+//            array('allow', // allow owners to perform 'delete' action
+//                'actions'=>array('delete'),
+//                'users'=>array('@'),
+//                'expression'=>'Yii::app()->controller->isOwner()',
+//            ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -265,7 +265,7 @@ class CvController extends Controller
         		$criteria->order= "date DESC";
         	}
         	else{
-				$criteria->order= $_POST['sortBy'];
+				$criteria->order= $_POST['sortBy'] .", date DESC";
 			}
 		}else{
 			$criteria->order= "date DESC";

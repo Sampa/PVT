@@ -43,12 +43,13 @@ $this->breadcrumbs=array(
 </form>
 <hr/>
 
+<h3> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
 		<div class="btn-group">
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Sortera på rubrik');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Sortera på användarnamn');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Sortera på datum');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Sortera på anställningsform');?></button>
-  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Sortera på geografisk area');?></button>
+  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Rubrik');?></button>
+  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Användarnamn');?></button>
+  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Datum');?></button>
+  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Anställningsform');?></button>
+  <button type="button" class="btn btn-success"><?php echo Yii::t('t', 'Geografisk area');?></button>
 </div>
 
 <?php if($resultCount==0):?>

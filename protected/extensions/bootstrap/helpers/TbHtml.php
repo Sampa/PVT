@@ -3386,6 +3386,7 @@ EOD;
             }
             $listOptions = TbArray::popValue('listOptions', $htmlOptions, array());
             $output = self::openTag('div', $htmlOptions);
+            $listOptions["class"] ="pagination";
             $output .= self::openTag('ul', $listOptions);
             foreach ($items as $itemOptions) {
                 // todo: consider removing the support for htmlOptions.

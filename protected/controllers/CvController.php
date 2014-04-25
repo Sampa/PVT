@@ -76,7 +76,7 @@ class CvController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Cv;
+            $model=new Cv;
 		Yii::import( "xupload.models.XUploadForm" );
 		$pdf = new XUploadForm;
 		// Uncomment the following line if AJAX validation is needed
@@ -95,13 +95,13 @@ class CvController extends Controller
                 }
 
             }
-            if($model->hasGeoArea){
-                $model->attributes=$_POST['Cv'];
+             $model->attributes=$_POST['Cv'];
                 if ($model->save()){
+
                     $this->redirect(array('view','id'=>$model->id));
                 }
             }
-		}
+
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -283,6 +283,9 @@ class CvController extends Controller
             //same as above but for employment
             if(isset($_POST['employment']))
                 $criteria->addSearchCondition("typeOfEmployment","employment");
+            if(isset($_POST['searchbox']))
+                $criteria->addSearchCondition("pdfText",$_POST['searchbox']);
+
             if($_POST['countries'] != "default"){
                 /*
                  * getGeoModels return an array of all geograficareas that matches the country selected

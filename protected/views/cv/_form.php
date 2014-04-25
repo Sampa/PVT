@@ -56,13 +56,26 @@
 					)
 				);
 				?>
-                </div>
-        <div class="form-actions" style="margin-left:-10px;margin-top:-20px">
+        </div>
+    <div class="row" style="margin-left:-10px;margin-top:-20px;margin-bottom: 15px;">
+        <?php
+        $this->widget('yiiwheels.widgets.select2.WhSelect2', array(
+            'asDropDownList' => false,
+            'name' => 'tags',
+            'pluginOptions' => array(
+                'tags' => array('2amigos','consulting', 'group', 'rocks'),
+                'placeholder' => 'Tag your CV...',
+                'width' => '40%',
+                'tokenSeparators' => array(',', ' ')
+            )));
+        ?>
+    </div>
+        <div class="form-actions" style="margin-left:-10px;">
             <?php echo TbHtml::submitButton($model->isNewRecord ? yii::t("t",'Publicera') : yii::t("t",'Spara'),array(
                 'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
                 'size'=>TbHtml::BUTTON_SIZE_LARGE,
             )); ?>
-			</div>
+		</div>
 
     <?php $this->endWidget(); ?>
 </div><!-- form -->

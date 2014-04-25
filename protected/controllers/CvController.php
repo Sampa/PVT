@@ -96,12 +96,27 @@ class CvController extends Controller
 
             }
              $model->attributes=$_POST['Cv'];
-                if ($model->save()){
+             if ($model->save()){
+                 $tags = explode(",", $_POST['tags']);
+                 foreach($tags as $key=>$tag){
+                     $currentTag=  Tag::model()->find("name='".$tag."'");
+                     if($currentTag){
+                         $currentTag->frequency = $currentTag->frequency +1;
+                     }else{
+                         $currentTag = new Tag;
+                         $currentTag->frequency = 1;
+                         $currentTag->name = $tag;
+                     }
+                     $currentTag->save();
 
-                    $this->redirect(array('view','id'=>$model->id));
-                }
-            }
-
+                     $cvTagRelation = new Cvtag;
+                     $cvTagRelation->tagId = $currentTag->id;
+                     $cvTagRelation->cvId = $model->id;
+                     $cvTagRelation->save();
+                 }
+                 $this->redirect(array('view','id'=>$model->id));
+             }
+        }
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -278,6 +293,7 @@ class CvController extends Controller
              * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
              * where the column "typeOfEmployment" in the database has value "consult"
              */
+
             if(isset($_POST['consult']))
                 $criteria->addSearchCondition("typeOfEmployment","consult");
             //same as above but for employment

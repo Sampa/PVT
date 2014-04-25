@@ -47,13 +47,14 @@
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">
-				<a href="<?php echo Yii::app()->baseUrl."".CHtml::encode($data->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+				<a href="<?php echo Yii::app()->baseUrl.CHtml::encode($data->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-2">
 				<ul class="meta-search">
 					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo CHtml::encode($data->date); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
 					<li><i class="glyphicon glyphicon-globe"></i> <span><?php echo CHtml::encode($data->geographicAreaId); ?></span></li>
+					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">

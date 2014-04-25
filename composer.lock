@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7f0521164c5d8b636d4a2551ba71f399",
+    "hash": "bcc7bde56b75b58249e18f9e8b2fe0cb",
     "packages": [
         {
             "name": "smalot/pdfparser",

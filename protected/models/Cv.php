@@ -161,23 +161,25 @@ class Cv extends CActiveRecord
 					//a relative public path that we assign to the "pathToPdf" attribute (this gets saved in the database)
 					$cv->pathToPdf =  "pdf/".$this->id."/".$file["filename"];
 
-					// Parse pdf file and build necessary objects.
-					$parser = new \Smalot\PdfParser\Parser();
-					$pdf    = $parser->parseFile($cv->pathToPdf);
-					$text = $pdf->getText();
-					$cv->pdfText = $text;
-					$cv->save();
+
 				} else{
 					Yii::log( $file["path"]." is not a file", CLogger::LEVEL_WARNING );
 				}
 			}
 			/*
 			 * Clear the user's session
-			 * saves the updatet cv information, do note change order of these two or endless loop is begun
+			 * saves the updatet cv information,
+			 * do note change order of these two or endless loop is begun
 			 */
 
+            // Parse pdf file and build necessary objects.
+            $parser = new \Smalot\PdfParser\Parser();
+            $pdf    = $parser->parseFile($cv->pathToPdf);
+            $text = $pdf->getText();
+            $cv->pdfText = $text;
 			Yii::app( )->user->setState( 'pdf', null );
-		}
+            $cv->save();
+        }
 	}
 
 	/**

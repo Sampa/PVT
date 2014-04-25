@@ -5,30 +5,30 @@
 
 <div class="view">
 
-    	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('username')); ?>:</b>
-	<?php echo CHtml::encode($data->publisher->username); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
-	<?php echo CHtml::encode($data->date); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('pathToPdf')); ?>:</b>
-    <a href="<?php echo Yii::app()->baseUrl."".CHtml::encode($data->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:</b>
-	<?php echo CHtml::encode($data->typeOfEmployment); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('geographicAreaId')); ?>:</b>
-	<?php echo CHtml::encode($data->geographicAreaId); ?>
-	<br />
-	<br />
+	<table class="table table-hover">
+		<tr>
+		 	<td>
+		 		<?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
+				<?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?>
+		 	</td>
+		 	<td>
+		 		<?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:
+				<?php echo CHtml::encode($data->date); ?>
+		 	</td>		
+		 	<td>
+		 		<?php echo CHtml::encode($data->getAttributeLabel('pathToPdf')); ?>:
+   				<a href="<?php echo Yii::app()->baseUrl."".CHtml::encode($data->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
+		 	</td>
+		 	<td>
+		 		<?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:
+				<?php echo CHtml::encode($data->typeOfEmployment); ?>
+		 	</td>
+		 	<td>
+		 		<?php echo CHtml::encode($data->getAttributeLabel('geographicAreaId')); ?>:
+				<?php echo CHtml::encode($data->geographicAreaId); ?>
+		 	</td>
+		</tr>
+	</table>
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('pdfText')); ?>:</b>

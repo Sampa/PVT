@@ -17,7 +17,7 @@
 		 	</td>		
 		 	<td>
 		 		<?php echo CHtml::encode($data->getAttributeLabel('pathToPdf')); ?>:
-   				<a href="<?php echo Yii::app()->baseUrl."".CHtml::encode($data->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
+   				<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
 		 	</td>
 		 	<td>
 		 		<?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:

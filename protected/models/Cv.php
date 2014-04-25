@@ -1,5 +1,8 @@
 <?php
 
+// Include Composer autoloader if not already done.
+include 'vendor/autoload.php';
+
 /**
  * This is the model class for table "Cv".
  *
@@ -156,7 +159,14 @@ class Cv extends CActiveRecord
 					//move file from temporary folder to end destination
 					copy($file["path"],$newPath);
 					//a relative public path that we assign to the "pathToPdf" attribute (this gets saved in the database)
-					$cv->pathToPdf =  "/pdf/".$this->id."/".$file["filename"];
+					$cv->pathToPdf =  "pdf/".$this->id."/".$file["filename"];
+
+					// Parse pdf file and build necessary objects.
+					$parser = new \Smalot\PdfParser\Parser();
+					$pdf    = $parser->parseFile($cv->pathToPdf);
+					$text = $pdf->getText();
+					$cv->pdfText = $text;
+					$cv->save();
 				} else{
 					Yii::log( $file["path"]." is not a file", CLogger::LEVEL_WARNING );
 				}
@@ -167,7 +177,6 @@ class Cv extends CActiveRecord
 			 */
 
 			Yii::app( )->user->setState( 'pdf', null );
-			$cv->save();
 		}
 	}
 

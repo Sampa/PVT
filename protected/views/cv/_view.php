@@ -3,7 +3,7 @@
 /* @var $data Cv */
 ?>
 
-<div class="view">
+<!-- <div class="view">
 
 	<table class="table table-hover">
 		<tr>
@@ -28,7 +28,7 @@
 				<?php echo CHtml::encode($data->geographicAreaId); ?>
 		 	</td>
 		</tr>
-	</table>
+	</table> -->
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('pdfText')); ?>:</b>
@@ -40,5 +40,33 @@
 	<br />
 
 	*/ ?>
+<div class="container">
+
+   
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+		<article class="search-result row">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<a href="<?php echo Yii::app()->baseUrl."".CHtml::encode($data->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-2">
+				<ul class="meta-search">
+					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo CHtml::encode($data->date); ?></span></li>
+					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
+					<li><i class="glyphicon glyphicon-globe"></i> <span><?php echo CHtml::encode($data->geographicAreaId); ?></span></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+				<h3><a href="#" title=""><?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?></a></h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+			</div>
+			<span class="clearfix borda"></span>
+		</article>
+
+        
+
+	</section>
+</div>
 
 </div>

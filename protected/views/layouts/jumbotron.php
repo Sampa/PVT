@@ -25,11 +25,11 @@
                                 array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
                                 array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
                                 array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout')),
-                                array('label' => 'Something else here', 'url' => array('#'), 'itemOptions' => array('class' => 'divider')),
-                                array('label' => 'Nav header', 'url'
-                                => array('#'), 'itemOptions' => array('class' => 'dropdown-header')),
-                                array('label' => 'Separated link', 'url' => array('#')),
-                                array('label' => 'One more separated link', 'url' => array('#')),
+//                                array('label' => 'Something else here', 'url' => array('#'), 'itemOptions' => array('class' => 'divider')),
+//                                array('label' => 'Nav header', 'url'
+//                                => array('#'), 'itemOptions' => array('class' => 'dropdown-header')),
+//                                array('label' => 'Separated link', 'url' => array('#')),
+//                                array('label' => 'One more separated link', 'url' => array('#')),
                             )
                         )
                     ),

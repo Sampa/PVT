@@ -20,6 +20,10 @@
     width:8%;
 }
 
+body .search-button:hover {
+  color: #2c3e50;
+}
+
 
 
 

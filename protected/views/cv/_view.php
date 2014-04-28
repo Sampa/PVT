@@ -55,11 +55,15 @@
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
 					<?php
 					//DB Query to get the country name.
-					$countryInfo = Yii::app()->db->createCommand()
-					    ->select('country')
-					    ->from('GeograficArea')
-					    ->where('id = '. $data->geographicAreaId)
-					    ->queryRow();
+                    if(isset($data->geographicArea->country))
+                        $countryInfo = $data->geographicArea->country;
+					else
+                       $countryInfo = null;
+//                    $countryInfo = Yii::app()->db->createCommand()
+//					    ->select('country')
+//					    ->from('GeograficArea')
+//					    ->where('id = '. $data->geographicAreaId)
+//					    ->queryRow();
     				?>
 					<li><i class="glyphicon glyphicon-globe"></i> <span><? echo $countryInfo['country']; ?></span></li>
 					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>

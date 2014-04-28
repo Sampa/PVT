@@ -281,6 +281,7 @@ class CvController extends Controller
             else
                 $criteria->order= $_POST['sortBy'] .", date DESC";
         }else{ //defaultvillkor
+            $_POST['sortBy'] = "date";
             $criteria->order= "date DESC";
         }
 
@@ -316,7 +317,7 @@ class CvController extends Controller
                         }
                     }
                 }
-//                $criteria->addInCondition("id",$allCvIds,"OR");
+                $criteria->addInCondition("id",$allCvIds,"OR");
             }
 
             if($_POST['countries'] != "default"){

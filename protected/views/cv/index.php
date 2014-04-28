@@ -66,8 +66,8 @@ $this->breadcrumbs=array(
           <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
           <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
    </div>
-
-<hr>
+    <div class="well" style="display:none;" id="sortSelectionWrapper"><h4><?php echo Yii::t("t","Sorterade listan efter ");?><span id="sortSelection"></span></h4></div>
+            <hr>
 
 <?php if($resultCount==0):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
@@ -75,8 +75,8 @@ $this->breadcrumbs=array(
 <div id="listOfCvs">
 	<?php
 	    $this->widget('bootstrap.widgets.TbListView',array(
-		    'dataProvider'=>$dataProvider,
-		    'itemView'=>'_view',
+	    'dataProvider'=>$dataProvider,
+         'itemView'=>'_view',
 	    ));
 	?>
 </div><!-- form -->
@@ -105,6 +105,17 @@ $(document).ready(function () {
             }).done(function( data ) {
                 document.querySelector("#listOfCvs").innerHTML = "";
                 $("#listOfCvs").html(data);
+                $("#sortSelectionWrapper").fadeIn('slow');
+                var displayText ="anställningsform";
+                switch(post.sortBy){
+                    case "date":
+                        displayText ="datum";
+                    break;
+                    case "title":
+                        displayText = "rubrik";
+                }
+                $("#sortSelection").html(displayText);
+
             });
         });
 });

@@ -276,15 +276,15 @@ class CvController extends Controller
          * date is the column to sort by and DESC means newest first(descending order)
          */
         if( Yii::app()->request->isAjaxRequest){
-	        if(isset($_POST['sort']) && $_POST['sortBy']=='date'){
-        		$criteria->order= "date DESC";
-        	}
-        	else{
-				$criteria->order= $_POST['sortBy'] .", date DESC";
-			}
-		}else{
-			$criteria->order= "date DESC";
-		}
+	        if(isset($_POST['sortBy'])){
+                if($_POST['sortBy']=='date')
+                    $criteria->order= "date DESC";
+                else
+                    $criteria->order= $_POST['sortBy'] .", date DESC";
+            }
+		}else{ //defaultvillkor
+            $criteria->order= "date DESC";
+        }
 
         $resultCount = -1;
         //this if checks if we have pressed the submit button in the search form
@@ -293,7 +293,6 @@ class CvController extends Controller
              * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
              * where the column "typeOfEmployment" in the database has value "consult"
              */
-
             if(isset($_POST['consult']))
                 $criteria->addSearchCondition("typeOfEmployment","consult");
             //same as above but for employment
@@ -301,6 +300,7 @@ class CvController extends Controller
                 $criteria->addSearchCondition("typeOfEmployment","employment");
             if(isset($_POST['searchbox']))
                 $criteria->addSearchCondition("pdfText",$_POST['searchbox']);
+            if(isset($_POST['tags']))
 
             if($_POST['countries'] != "default"){
                 /*

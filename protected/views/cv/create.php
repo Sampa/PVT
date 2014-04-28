@@ -30,12 +30,13 @@ $this->breadcrumbs=array(
         $("#countries").select2();
         $("[type*='submit']").addClass("btn-lg");
         $("#countries").on("change",function(){
-            $("#selectCountry").removeClass("has-error");
-            $("#selectCountry").addClass("has-success");
             if ( $(this).val() == "default" ) { 
                 $("#geographicAreaForm").fadeOut();
+                $("#selectCountry").removeClass("has-error");
+                $("#selectCountry").removeClass("has-success");
             }else {
                 $("#geographicAreaForm").fadeIn();
+                $("#selectCountry").addClass("has-success");
             }
         });
     });

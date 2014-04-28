@@ -40,17 +40,18 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'cv-grid',
+	'type' => 'striped',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'showUserDetail',
+		'date',
 		'typeOfEmployment',
 		'title',
 		'buttons'=>array(
 			'class'=>'TbButtonColumn',
             'htmlOptions'=>array('style'=>'width: 250px'),
-            'viewButtonIcon'=>'glyphicon glyphicon-search',
-            'deleteButtonIcon'=>'glyphicon glyphicon-remove',
+            'viewButtonIcon'=>'glyphicon glyphicon-eye-open',
+            'deleteButtonIcon'=>'glyphicon glyphicon-trash',
 //            'updateButtonIcon'=>'glyphicon glyphicon-eye-open',
         ),
 	),

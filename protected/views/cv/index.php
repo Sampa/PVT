@@ -27,8 +27,24 @@ $this->breadcrumbs=array(
 
 <form class="form" role="search" name="search" method="post" >
 	<div class="form-group">
-		<input type="text" name="searchbox" class="form-control" placeholder="Search">
+		<input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
 	</div>
+
+    <div class="row" style="margin-left:2px;margin-top:0px;margin-bottom: 15px;">
+
+        <?php
+        //remove registration of select2js in this widget
+        $this->widget('yiiwheels.widgets.select2.WhSelect2', array(
+            'asDropDownList' => false,
+            'name' => 'tags',
+            'pluginOptions' => array(
+                'tags' => Tag::getTagsAsStrings(),
+                'placeholder' => Yii::t("t",'Välj ett eller flera nyckelord att söka på'),
+                'width' => '40%',
+                'tokenSeparators' => array(',', ' ')
+            )));
+        ?>
+    </div>
   <div class="checkbox">
       <input name="consult" type="checkbox"/> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
        <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
@@ -44,12 +60,12 @@ $this->breadcrumbs=array(
 <hr/>
 
 <h3> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
-		<div class="btn-group">
-  <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
-  <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
-  <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
-  <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
-</div>
+    <div class="btn-group">
+          <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
+          <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
+          <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
+          <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
+   </div>
 
 <?php if($resultCount==0):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>

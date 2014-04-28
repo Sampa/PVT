@@ -64,7 +64,6 @@
                 </div>
             </div>
     <div class="row" style="margin-left:-10px;margin-top:-20px;margin-bottom: 15px;">
-
         <?php
         //remove registration of select2js in this widget
         $this->widget('yiiwheels.widgets.select2.WhSelect2', array(
@@ -72,7 +71,7 @@
             'name' => 'tags',
             'pluginOptions' => array(
                 'tags' => Tag::getTagsAsStrings(),
-                'placeholder' => 'Tag your CV...',
+                'placeholder' => Yii::t("t",'Välj ett eller flera nyckelord till ditt CV'),
                 'width' => '40%',
                 'tokenSeparators' => array(',', ' ')
             )));

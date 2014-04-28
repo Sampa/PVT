@@ -13,6 +13,11 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>true,
+    'clientOptions'=>array(
+        'validateOnChange'=>true,
+        'validateOnType'=>true,
+
+    ),
     'htmlOptions' => array('enctype' => 'multipart/form-data'),
     )); ?>
 
@@ -33,38 +38,40 @@
 <!--            </div>-->
             </div>
         </div>
-			<div class="row" style="margin-left: 5px;"">
+			<div class="row" style="margin-left: 5px;">
 				<?php echo Yii::t("t","Välj en pdf fil som innehåller ditt CV och ladda upp den här");?>
 				<div id="fileSelect" style="margin-left: 8px;margin-top: 10px;"><?php
-				$this->widget( 'xupload.XUpload', array(
-						'url' => Yii::app( )->createUrl( "/cv/upload"),//vi tar hand om filerna i CvController och metoden actionUpload
-						//our XUploadForm
-						'model' => $pdf,
-						'options'=>array(
-							'maxFileSize' => 100000,//I bytes så det här är säger att 100kb är max vad en pdf får vara
-							'acceptFileTypes' => "js:/(\.|\/)(pdf)$/i",//tillåt bara pdf filändelser
-						),
-						//We set this for the widget to be able to target our own form
-						'htmlOptions' => array('id'=>'cv-form'),
-						'attribute' => 'file',
-						'multiple' => false,
-						//Note that we are using a custom view for our widget
-						//Thats becase the default widget includes the 'form'
-						//which we don't want here
-						'formView' => 'pdf', //protected/extensions/xupload/views
-						'autoUpload'=>true,//starta uppladdningen direkt användaren valt fil
-					)
-				);
-				?>
-        </div>
+                    $this->widget( 'xupload.XUpload', array(
+                            'url' => Yii::app( )->createUrl( "/cv/upload"),//vi tar hand om filerna i CvController och metoden actionUpload
+                            //our XUploadForm
+                            'model' => $pdf,
+                            'options'=>array(
+                                'maxFileSize' => 100000,//I bytes så det här är säger att 100kb är max vad en pdf får vara
+                                'acceptFileTypes' => "js:/(\.|\/)(pdf)$/i",//tillåt bara pdf filändelser
+                            ),
+                            //We set this for the widget to be able to target our own form
+                            'htmlOptions' => array('id'=>'cv-form'),
+                            'attribute' => 'file',
+                            'multiple' => false,
+                            //Note that we are using a custom view for our widget
+                            //Thats becase the default widget includes the 'form'
+                            //which we don't want here
+                            'formView' => 'pdf', //protected/extensions/xupload/views
+                            'autoUpload'=>true,//starta uppladdningen direkt användaren valt fil
+                        )
+                    );
+                    ?>
+                </div>
+            </div>
     <div class="row" style="margin-left:-10px;margin-top:-20px;margin-bottom: 15px;">
+
         <?php
         //remove registration of select2js in this widget
         $this->widget('yiiwheels.widgets.select2.WhSelect2', array(
             'asDropDownList' => false,
             'name' => 'tags',
             'pluginOptions' => array(
-                'tags' => array('2amigos','consulting', 'group', 'rocks'),
+                'tags' => Tag::getTagsAsStrings(),
                 'placeholder' => 'Tag your CV...',
                 'width' => '40%',
                 'tokenSeparators' => array(',', ' ')

@@ -65,7 +65,14 @@ class Tag extends CActiveRecord
 		);
 	}
 
-	
+	public static function  getTagsAsStrings(){
+        $models = Tag::model()->findAll();
+        $stringArray =array();
+        foreach($models as $model){
+            $stringArray[] = $model->name;
+        }
+        return $stringArray;
+    }
 	public static function workOnTags($tags,$howto_id)
 	{
 		if( is_array ( $tags ) )

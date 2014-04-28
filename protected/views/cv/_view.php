@@ -58,14 +58,19 @@
                     if(isset($data->geographicArea->country))
                         $countryInfo = $data->geographicArea->country;
 					else
-                       $countryInfo['country'] = "";
+                       $countryInfo = null;
 //                    $countryInfo = Yii::app()->db->createCommand()
 //					    ->select('country')
 //					    ->from('GeograficArea')
 //					    ->where('id = '. $data->geographicAreaId)
 //					    ->queryRow();
+                    if(isset($countryInfo['country'])){
+                        $testVar = $countryInfo['country'];
+                    }else{
+                        $testVar ="";
+                    }
     				?>
-					<li><i class="glyphicon glyphicon-globe"></i> <span><?= $countryInfo['country']; ?></span></li>
+					<li><i class="glyphicon glyphicon-globe"></i> <span><?= $testVar; ?></span></li>
 					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>
 				</ul>
 			</div>

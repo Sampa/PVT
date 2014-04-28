@@ -67,6 +67,8 @@ $this->breadcrumbs=array(
           <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
    </div>
 
+<hr>
+
 <?php if($resultCount==0):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
 <?php endif;?>

@@ -109,7 +109,7 @@ class CvController extends Controller
                      }
                      $currentTag->save();
 
-                     $cvTagRelation = new Cvtag;
+                     $cvTagRelation = new CvTag;
                      $cvTagRelation->tagId = $currentTag->id;
                      $cvTagRelation->cvId = $model->id;
                      $cvTagRelation->save();

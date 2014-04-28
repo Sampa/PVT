@@ -81,26 +81,31 @@ $this->breadcrumbs=array(
 	?>
 </div><!-- form -->
     <?php endif;?>
+<?php
 
+?>
 <script>
 $(document).ready(function () {
-	$(".sortButton").on("click",function(){
-		$.ajax({
-			type: "POST",
-			url: "cv/",
-			data: {sortBy: $(this).attr("id")}
-		}).done(function( data ) {
-			document.querySelector("#listOfCvs").innerHTML = "";
-			$("#listOfCvs").html(data);
-		});
-	});
     $("#countries").select2();
     $("#countries").on("change",function(){
-      if ( $(this).val() == "default" ) { 
+      if ( $(this).val() == "default" ) {
         $("#geographicAreaForm").fadeOut();
       }else {
         $("#geographicAreaForm").fadeIn();
       }
     });
+
+        $(".sortButton").on("click",function(){
+            var post = <?php echo json_encode($_POST);?>;
+            post.sortBy = $(this).attr("id");
+            $.ajax({
+                type: "POST",
+                url: "cv/",
+                data: post
+            }).done(function( data ) {
+                document.querySelector("#listOfCvs").innerHTML = "";
+                $("#listOfCvs").html(data);
+            });
+        });
 });
 </script>

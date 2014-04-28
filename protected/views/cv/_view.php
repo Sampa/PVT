@@ -72,7 +72,7 @@
 			</div>
 			<span class="clearfix borda"></span>
 		</article>
-
+		<hr>
 
 
 	</section>

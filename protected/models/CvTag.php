@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * abahahahahahaha
  * This is the model class for table "cvtag".
  *
  * The followings are the available columns in table 'cvtag':
@@ -10,15 +11,17 @@
  *
  * The followings are the available model relations:
  * @property Cv $cv
+ *
+ *
  */
-class Cvtag extends CActiveRecord
+class CvTag extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'cvtag';
+		return 'CvTag';
 	}
 
 	/**

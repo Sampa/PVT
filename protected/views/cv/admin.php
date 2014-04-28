@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
-	$('.search-form').toggle();
+	$('.search-form').fadeToggle(1100);
 	return false;
 });
 $('.search-form form').submit(function(){

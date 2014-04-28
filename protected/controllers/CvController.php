@@ -275,14 +275,12 @@ class CvController extends Controller
          * Sets the order of how the results should be displayed.
          * date is the column to sort by and DESC means newest first(descending order)
          */
-        if( Yii::app()->request->isAjaxRequest){
-	        if(isset($_POST['sortBy'])){
-                if($_POST['sortBy']=='date')
-                    $criteria->order= "date DESC";
-                else
-                    $criteria->order= $_POST['sortBy'] .", date DESC";
-            }
-		}else{ //defaultvillkor
+        if(isset($_POST['sortBy'])){
+            if($_POST['sortBy']=='date')
+                $criteria->order= "date DESC";
+            else
+                $criteria->order= $_POST['sortBy'] .", date DESC";
+        }else{ //defaultvillkor
             $criteria->order= "date DESC";
         }
 
@@ -292,12 +290,18 @@ class CvController extends Controller
             /*
              * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
              * where the column "typeOfEmployment" in the database has value "consult"
-             */
-            if(isset($_POST['consult']))
-                $criteria->addSearchCondition("typeOfEmployment","consult");
-            //same as above but for employment
-            if(isset($_POST['employment']))
-                $criteria->addSearchCondition("typeOfEmployment","employment");
+            *  if/else below is critical to display all results if both employment and consult checkboxes
+             * are selected. It makes no change
+            */
+            if(isset($_POST['consult']) && isset($_POST['employment'])){
+                //dont touch this its retarded
+            }else{
+                if(isset($_POST['consult']) && !isset($_POST['employment']))
+                    $criteria->addSearchCondition("typeOfEmployment","consult");
+//                same as above but for employment
+                if(isset($_POST['employment']) && !isset($_POST['consult']))
+                    $criteria->addSearchCondition("typeOfEmployment","employment");
+            }
             if(isset($_POST['searchbox']))
                 $criteria->addSearchCondition("pdfText",$_POST['searchbox']);
             if(isset($_POST['tags'])){
@@ -312,7 +316,7 @@ class CvController extends Controller
                         }
                     }
                 }
-                $criteria->addInCondition("id",$allCvIds,"OR");
+//                $criteria->addInCondition("id",$allCvIds,"OR");
             }
 
             if($_POST['countries'] != "default"){

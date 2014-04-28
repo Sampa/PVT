@@ -48,8 +48,7 @@ class Tag extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-		'howtos'=>array(self::MANY_MANY, 'Howto', 'tbl_howto_tag(tag_id,howto_id)'),
-
+            'cvTags' => array(self::HAS_MANY, 'CvTag', 'tagId'),
 		);
 	}
 

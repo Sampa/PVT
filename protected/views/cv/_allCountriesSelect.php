@@ -7,8 +7,8 @@
 }
 ?>
 <div class="row col-md-10" style="">
-<div id="selectCountry" class="row col-md-10 <?php echo $errorClass;?>" style="margin-left:-15px;margin-bottom:15px; ">
-    <select id="countries" name="countries" class="form-control">
+<div id="selectCountry" class="row col-md-8  <?php echo $errorClass;?>" style="margin-left:-15px;margin-bottom:15px; ">
+    <select id="countries" name="countries" class="form-control ">
         <option value="default"><?php echo Yii::t("t","Välj land");?></option>
         <option value="AF">Afghanistan</option>
         <option value="AX">Åland Islands</option>

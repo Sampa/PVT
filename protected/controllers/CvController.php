@@ -300,7 +300,20 @@ class CvController extends Controller
                 $criteria->addSearchCondition("typeOfEmployment","employment");
             if(isset($_POST['searchbox']))
                 $criteria->addSearchCondition("pdfText",$_POST['searchbox']);
-            if(isset($_POST['tags']))
+            if(isset($_POST['tags'])){
+                $allCvIds = array();
+                $tagsAsArray = explode(",",$_POST['tags']);
+                foreach($tagsAsArray as $tag){
+                    //kontrollera denna query
+                    $tagModel = Tag::model()->find("name='".$tag."'");
+                    if($tagModel !=null){
+                        foreach($tagModel->cvTags as $cvTag){
+                            $allCvIds[] = $cvTag->cvId;
+                        }
+                    }
+                }
+                $criteria->addInCondition("id",$allCvIds,"OR");
+            }
 
             if($_POST['countries'] != "default"){
                 /*

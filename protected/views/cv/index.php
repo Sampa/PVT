@@ -69,7 +69,7 @@ $(document).ready(function () {
 	$(".sortButton").on("click",function(){
 		$.ajax({
 			type: "POST",
-			url: "index",
+			url: "cv/",
 			data: {sortBy: $(this).attr("id")}
 		}).done(function( data ) {
 			document.querySelector("#listOfCvs").innerHTML = "";

@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * abahahahahahaha
  * This is the model class for table "cvtag".
  *
  * The followings are the available columns in table 'cvtag':

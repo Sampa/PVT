@@ -58,7 +58,7 @@
                     if(isset($data->geographicArea->country))
                         $countryInfo = $data->geographicArea->country;
 					else
-                       $countryInfo['country'] = null;
+                       $countryInfo['country'] = "";
 //                    $countryInfo = Yii::app()->db->createCommand()
 //					    ->select('country')
 //					    ->from('GeograficArea')

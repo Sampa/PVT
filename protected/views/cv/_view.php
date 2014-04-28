@@ -53,7 +53,15 @@
 				<ul class="meta-search">
 					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo CHtml::encode($data->date); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
-					<li><i class="glyphicon glyphicon-globe"></i> <span><?php echo CHtml::encode($data->geographicAreaId); ?></span></li>
+					<?php
+					//DB Query to get the country name.
+					$countryInfo = Yii::app()->db->createCommand()
+					    ->select('country')
+					    ->from('GeograficArea')
+					    ->where('id = '. $data->geographicAreaId)
+					    ->queryRow();
+    				?>
+					<li><i class="glyphicon glyphicon-globe"></i> <span><? echo $countryInfo['country']; ?></span></li>
 					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>
 				</ul>
 			</div>
@@ -64,7 +72,7 @@
 			</div>
 			<span class="clearfix borda"></span>
 		</article>
-
+		<hr>
 
 
 	</section>

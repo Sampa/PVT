@@ -94,7 +94,11 @@ $(document).ready(function () {
 	});
     $("#countries").select2();
     $("#countries").on("change",function(){
-	    $("#geographicAreaForm").fadeIn();
+      if ( $(this).val() == "default" ) { 
+        $("#geographicAreaForm").fadeOut();
+      }else {
+        $("#geographicAreaForm").fadeIn();
+      }
     });
 });
 </script>

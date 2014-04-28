@@ -14,7 +14,7 @@
 		 	<td>
 		 		<?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:
 				<?php echo CHtml::encode($data->date); ?>
-		 	</td>		
+		 	</td>
 		 	<td>
 		 		<?php echo CHtml::encode($data->getAttributeLabel('pathToPdf')); ?>:
    				<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
@@ -42,7 +42,7 @@
 	*/ ?>
 <div class="container">
 
-   
+
 
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
@@ -59,15 +59,14 @@
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
 				<h3><a href="#" title=""><?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?></a></h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
                 <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
 			</div>
 			<span class="clearfix borda"></span>
 		</article>
 
-        
+
 
 	</section>
 </div>
 
-</div>

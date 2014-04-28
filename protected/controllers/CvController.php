@@ -268,7 +268,7 @@ class CvController extends Controller
 	 */
 	public function actionIndex()
 	{
-		
+
         //CDBcriteria is a Yii class to make it easier to create advanced SQL queries
         $criteria=new CDbCriteria;
         /*
@@ -276,7 +276,7 @@ class CvController extends Controller
          * date is the column to sort by and DESC means newest first(descending order)
          */
         if( Yii::app()->request->isAjaxRequest){
-        	if($_POST['sortBy']=='date'){
+	        if(isset($_POST['sort']) && $_POST['sortBy']=='date'){
         		$criteria->order= "date DESC";
         	}
         	else{
@@ -285,7 +285,7 @@ class CvController extends Controller
 		}else{
 			$criteria->order= "date DESC";
 		}
-        
+
         $resultCount = -1;
         //this if checks if we have pressed the submit button in the search form
         if(isset($_POST['countries'])){
@@ -323,7 +323,7 @@ class CvController extends Controller
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
         //render(display)  views/cv/index.php
-		
+
 		if( Yii::app()->request->isAjaxRequest){
 			$this->renderPartial('_searchview',array(
 			'dataProvider'=>$dataProvider,

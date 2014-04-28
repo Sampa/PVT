@@ -11,11 +11,10 @@ $this->breadcrumbs=array(
 );
 
 ?>
-    
-    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2.min.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2_locale_sv.js"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
-
+<!--moved registration to /components/controller.php ->methods->registerJs + registerCss-->
+<!--    <script type="text/javascript" src="--><?php //echo Yii::app()->baseUrl;?><!--/js/select2.min.js"></script>-->
+<!--    <script type="text/javascript" src="--><?php //echo Yii::app()->baseUrl;?><!--/js/select2_locale_sv.js"></script>-->
+<!--    <link rel="stylesheet" type="text/css" href="--><?php //echo Yii::app()->baseUrl;?><!--/css/select2.css" media="screen"/>-->
 <div class="page-header">
         <h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>
     </div>

@@ -54,15 +54,14 @@ $this->breadcrumbs=array(
 <?php if($resultCount==0):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
 <?php endif;?>
-<div id="listOfCvs"> 
+<div id="listOfCvs">
 	<?php
 	    $this->widget('bootstrap.widgets.TbListView',array(
 		    'dataProvider'=>$dataProvider,
 		    'itemView'=>'_view',
 	    ));
 	?>
-</div>
-        </div><!-- form -->
+</div><!-- form -->
     <?php endif;?>
 
 <script>
@@ -70,9 +69,10 @@ $(document).ready(function () {
 	$(".sortButton").on("click",function(){
 		$.ajax({
 			type: "POST",
-			url: "cv/index",
+			url: "index",
 			data: {sortBy: $(this).attr("id")}
 		}).done(function( data ) {
+			document.querySelector("#listOfCvs").innerHTML = "";
 			$("#listOfCvs").html(data);
 		});
 	});

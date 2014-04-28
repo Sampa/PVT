@@ -80,12 +80,15 @@ class Controller extends CController
         cs()->registerScriptFile(bu() . '/libs/jquery/jquery.min.js', CClientScript::POS_BEGIN);
         cs()->registerScriptFile(bu() . '/js/plugins.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/main.js', CClientScript::POS_END);
+        cs()->registerScriptFile(bu() . '/js/select2.min.js', CClientScript::POS_END);
+        cs()->registerScriptFile(bu() . '/js/select2_locale_sv.js', CClientScript::POS_END);
     }
 
     //custom application css
     public function registerCss()
     {
         cs()->registerCssFile(bu() . '/css/main.css');
+        cs()->registerCssFile(bu() . '/css/select2.css');
     }
 
 

@@ -56,15 +56,9 @@
 					<?php
 					//DB Query to get the country name.
                     if(isset($data->geographicArea->country)){
-//                        var_dump($data->geographicArea->country);
                         $countryName = $data->geographicArea->country;
                     }else
                        $countryName = null;
-//                    $countryName = Yii::app()->db->createCommand()
-//					    ->select('country')
-//					    ->from('GeograficArea')
-//					    ->where('id = '. $data->geographicAreaId)
-//					    ->queryRow();
     				?>
 					<li><i class="glyphicon glyphicon-globe"></i> <span><?= $countryName; ?></span></li>
 					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>

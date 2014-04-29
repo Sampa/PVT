@@ -278,9 +278,10 @@ class CvController extends Controller
         if(isset($_POST['sortBy'])){
             if($_POST['sortBy']=='date')
                 $criteria->order= "date DESC";
-            else
+            else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
                 $criteria->order= $_POST['sortBy'] .", date DESC";
         }else{ //defaultvillkor
+            $_POST['sortBy'] = "date";
             $criteria->order= "date DESC";
         }
 
@@ -316,7 +317,7 @@ class CvController extends Controller
                         }
                     }
                 }
-//                $criteria->addInCondition("id",$allCvIds,"OR");
+                $criteria->addInCondition("id",$allCvIds,"OR");
             }
 
             if($_POST['countries'] != "default"){

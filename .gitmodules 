@@ -1,3 +1,0 @@
-[submodule "tecnick.com"]
-		path = vendor/tecnick.com
-		url = git://git.code.sf.net/p/tcpdf/code

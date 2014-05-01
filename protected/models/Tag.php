@@ -83,7 +83,7 @@ class Tag extends CActiveRecord
 		}else{
 			Tag::workOnTag($tags,$howto_id);
 		}
-	
+
 	}
 	public static function workOnTag($tag,$cv)
 	{
@@ -108,7 +108,7 @@ class Tag extends CActiveRecord
 	 * @param integer maximum number of tags to be returned
 	 * @return array list of matching tag names
 	 */
-	
+
 	public function suggestTags($keyword,$limit=20)
 	{
 		$tags=$this->findAll(array(
@@ -125,8 +125,8 @@ class Tag extends CActiveRecord
 		return $names;
 	}
 
-	
-	
+
+
 
 	public function addTags($tags)
 {

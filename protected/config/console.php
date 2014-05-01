@@ -17,10 +17,10 @@ return array(
 		),*/
 		// uncomment the following to use a MySQL database
         'db'=>array(
-      			'connectionString' => 'mysql:host=;dbname=',
+		        'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
       			'emulatePrepare' => true,
-      			'username' => '',
-      			'password' => '',
+      			'username' => 'root',
+      			'password' => 'root',
       			'charset' => 'utf8',
       		),
 

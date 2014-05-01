@@ -1,15 +1,12 @@
 <?php
 /* @var $this CvController */
 /* @var $dataProvider CActiveDataProvider */
-?>
 
-<?php
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
     Yii::t("t",'Hitta CV'),
 );
 ?>
-
   <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2_locale_sv.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
@@ -29,9 +26,7 @@ $this->breadcrumbs=array(
 	<div class="form-group">
 		<input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
 	</div>
-
     <div class="row" style="margin-left:2px;margin-top:0px;margin-bottom: 15px;">
-
         <?php
         //remove registration of select2js in this widget
         $this->widget('yiiwheels.widgets.select2.WhSelect2', array(
@@ -47,18 +42,16 @@ $this->breadcrumbs=array(
     </div>
   <div class="checkbox">
       <input name="consult" type="checkbox"/> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
-       <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
+      <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
   </div>
   <div>
     <?php $this->renderPartial('_allCountriesSelect', array('')); ?>
   </div>
-
   <div style="margin-top:15px;">
     <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>
   </div>
 </form>
 <hr/>
-
 <h3> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
     <div class="btn-group">
           <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
@@ -69,7 +62,7 @@ $this->breadcrumbs=array(
     <div class="well" style="display:none;" id="sortSelectionWrapper"><h4><?php echo Yii::t("t","Sorterade listan efter ");?><span id="sortSelection"></span></h4></div>
             <hr>
 
-<?php if($resultCount==0):?>
+<?php if($resultCount< 1):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
 <?php endif;?>
 <div id="listOfCvs">

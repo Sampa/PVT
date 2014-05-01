@@ -285,7 +285,6 @@ class CvController extends Controller
             $criteria->order= "date DESC";
         }
 
-        $resultCount = -1;
         //this if checks if we have pressed the submit button in the search form
         if(isset($_POST['countries'])){
             /*
@@ -295,31 +294,36 @@ class CvController extends Controller
              * are selected. It makes no change
             */
             if(isset($_POST['consult']) && isset($_POST['employment'])){
-                //dont touch this its retarded
+                //dont touch this its retarded that this seems to be needed
             }else{
                 if(isset($_POST['consult']) && !isset($_POST['employment']))
                     $criteria->addSearchCondition("typeOfEmployment","consult");
-//                same as above but for employment
+				// same as above but for employment
                 if(isset($_POST['employment']) && !isset($_POST['consult']))
                     $criteria->addSearchCondition("typeOfEmployment","employment");
             }
+	        //if you write in free text search field
             if(isset($_POST['searchbox']))
                 $criteria->addSearchCondition("pdfText",$_POST['searchbox']);
-            if(isset($_POST['tags'])){
-                $allCvIds = array();
-                $tagsAsArray = explode(",",$_POST['tags']);
-                foreach($tagsAsArray as $tag){
+
+	        //om man valt någon tag att söka på
+            if(isset($_POST['tags']) && strlen($_POST['tags']) > 0){
+                $allCvIds = array(); //initiate empty array
+                $tagsAsArray = explode(",",$_POST['tags']); //transform from one long string with tags to an array of strings
+                foreach($tagsAsArray as $tag){ //loop all tags the user entered
                     //kontrollera denna query
-                    $tagModel = Tag::model()->find("name='".$tag."'");
-                    if($tagModel !=null){
+                    $tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+                    if($tagModel !=null){ //the tag exists
+	                    //loop the array with each row in the table that connects this tag to a cv
                         foreach($tagModel->cvTags as $cvTag){
-                            $allCvIds[] = $cvTag->cvId;
+                            $allCvIds[] = $cvTag->cvId; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
                         }
                     }
                 }
-                $criteria->addInCondition("id",$allCvIds,"OR");
+                $criteria->addInCondition("id",$allCvIds,"OR");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
             }
 
+			//if we selected a specific country to search for
             if($_POST['countries'] != "default"){
                 /*
                  * getGeoModels return an array of all geograficareas that matches the country selected
@@ -329,19 +333,14 @@ class CvController extends Controller
                 //the code to add conditions based on the models/objects returned above
                 foreach($geoGraphicAreas as $area)
                     $criteria->compare("geographicAreaId",$area->id,true,"OR");
-                $resultCount = sizeof($geoGraphicAreas);
-            }else{
-                /*man har inte valt något specifikt land så vi sätter ett värde över 0
-                   *för att inte generera error meddelandet
-                 *
-                 */
-                $resultCount = 1;
             }
         }
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
-        //render(display)  views/cv/index.php
-
+		$resultCount = $dataProvider->getTotalItemCOunt();
+		//render(display)  views/cv/index.php
+		if($resultCount<1) //om sökresultaten var 0 till antalet så nollställ kriteriet och visa alla
+			$dataProvider->setCriteria(new CDbCriteria());
 		if( Yii::app()->request->isAjaxRequest){
 			$this->renderPartial('_searchview',array(
 			'dataProvider'=>$dataProvider,

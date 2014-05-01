@@ -12,9 +12,7 @@ $this->breadcrumbs=array(
 
 ?>
 <!--moved registration to /components/controller.php ->methods->registerJs + registerCss-->
-<!--    <script type="text/javascript" src="--><?php //echo Yii::app()->baseUrl;?><!--/js/select2.min.js"></script>-->
-<!--    <script type="text/javascript" src="--><?php //echo Yii::app()->baseUrl;?><!--/js/select2_locale_sv.js"></script>-->
-<!--    <link rel="stylesheet" type="text/css" href="--><?php //echo Yii::app()->baseUrl;?><!--/css/select2.css" media="screen"/>-->
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
 <div class="page-header">
         <h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>
     </div>
@@ -30,7 +28,7 @@ $this->breadcrumbs=array(
         $("#countries").select2();
         $("[type*='submit']").addClass("btn-lg");
         $("#countries").on("change",function(){
-            if ( $(this).val() == "default" ) { 
+            if ( $(this).val() == "default" ) {
                 $("#geographicAreaForm").fadeOut();
                 $("#selectCountry").removeClass("has-error");
                 $("#selectCountry").removeClass("has-success");

@@ -7,8 +7,6 @@ $this->breadcrumbs=array(
     Yii::t("t",'Hitta CV'),
 );
 ?>
-  <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2.min.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/select2_locale_sv.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
 
     <?php if (Yii::app()->user->hasFlash('index')): ?>

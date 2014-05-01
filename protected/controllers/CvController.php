@@ -333,12 +333,15 @@ class CvController extends Controller
                 //the code to add conditions based on the models/objects returned above
                 foreach($geoGraphicAreas as $area)
                     $criteria->compare("geographicAreaId",$area->id,true,"OR");
+	            if(sizeof($geoGraphicAreas)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+		            $criteria->compare("geographicAreaId",0);
+		            $criteria->compare("geographicAreaId",1);
+	            }
             }
         }
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
-		$resultCount = $dataProvider->getTotalItemCOunt();
-		//render(display)  views/cv/index.php
+		$resultCount = $dataProvider->getTotalItemCount();
 		if($resultCount<1) //om sökresultaten var 0 till antalet så nollställ kriteriet och visa alla
 			$dataProvider->setCriteria(new CDbCriteria());
 		if( Yii::app()->request->isAjaxRequest){
@@ -347,6 +350,7 @@ class CvController extends Controller
 	        'resultCount'=>$resultCount,
 			));
 		}else{
+			//render(display)  views/cv/index.php
 			$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 	        'resultCount'=>$resultCount,

@@ -90,6 +90,8 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
+        if(!Yii::app()->user->isGuest) //redirect if logged in (can be changed later)
+            $this->redirect(bu() . '/cv/admin');
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {

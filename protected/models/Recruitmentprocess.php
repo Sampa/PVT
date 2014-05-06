@@ -21,7 +21,7 @@ class Recruitmentprocess extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Recruitmentprocess';
+		return 'RecruitmentProcess';
 	}
 
 	/**

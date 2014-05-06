@@ -1,9 +1,6 @@
 <?php
 /* @var $this CvController */
 /* @var $model Cv */
-?>
-
-<?php
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
     'CV'=>array('index'),
@@ -24,10 +21,11 @@ $this->breadcrumbs=array(
     </section>
     <?php $this->renderPartial('_form', array('model'=>$model,'pdf'=>$pdf)); ?>
     <script>
-    $(document).ready(function () {
-        $("#countries").select2();
-        $("[type*='submit']").addClass("btn-lg");
-        $("#countries").on("change",function(){
+    jQuery(document).ready(function ($) {
+	    getplaces(2661886,'geoRegion');
+
+	    jQuery("[type*='submit']").addClass("btn-lg");
+	    jQuery("#geoRegion").on("change",function(){
             if ( $(this).val() == "default" ) {
                 $("#geographicAreaForm").fadeOut();
                 $("#selectCountry").removeClass("has-error");
@@ -37,5 +35,11 @@ $this->breadcrumbs=array(
                 $("#selectCountry").addClass("has-success");
             }
         });
+	    jQuery("#continent").select2();
+	    jQuery("#countries").select2();
+	    jQuery("#geoRegion").select2();
+	    jQuery("#geoProvince").select2();
+	    jQuery("#geoCity").select2();
+
     });
 </script>

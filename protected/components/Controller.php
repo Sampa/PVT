@@ -77,6 +77,7 @@ class Controller extends CController
 
     public function registerJs()
     {
+
         cs()->registerScriptFile(bu() . '/libs/jquery/jquery.min.js', CClientScript::POS_BEGIN);
         cs()->registerScriptFile(bu() . '/js/plugins.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/main.js', CClientScript::POS_END);

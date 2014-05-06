@@ -150,7 +150,9 @@ return array(
         'recaptcha_private_key' => '6LetX_ESAAAAAJljh1ufs6xswXTVdaWY9Y9XyXNo', // captcha will not work without these keys!
         'recaptcha_public_key' => '6LetX_ESAAAAAOrKqvLlYIQJr6rjReYPupSjI4ay', //http://www.google.com/recaptcha
         'contactRequireCaptcha' => true,
-
+		'metaTags'=>array(
+			'city',
+		),
         //Choose Bootswatch skin.'none' means default bootstrap theme.See http://bootswatch.com/
         //Options for Bootstrap2:(make sure you have 'theme'=>'bootstrap2' in this file.)
         //none,amelia,cerulean,cosmo,cyborg,flatly,journal,readable,simplex,slate,spacelab,spruce,superhero,united

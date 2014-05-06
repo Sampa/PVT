@@ -1,7 +1,6 @@
 <?php
 /* @var $this CvController */
 /* @var $dataProvider CActiveDataProvider */
-
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
     Yii::t("t",'Hitta CV'),
@@ -77,17 +76,22 @@ if($resultCount< 1):?>
 
 ?>
 <script>
-$(document).ready(function () {
-    $("#countries").select2();
-    $("#countries").on("change",function(){
-      if ( $(this).val() == "default" ) {
-        $("#geographicAreaForm").fadeOut();
-      }else {
-        $("#geographicAreaForm").fadeIn();
-      }
-    });
+jQuery(document).ready(function ($) {
+//	jQuery("#continent").select2();
+//	jQuery("#countries").select2();
+//	jQuery("#geoRegion").select2();
+//	jQuery("#geoProvince").select2();
+//	jQuery("#geoCity").select2();
 
-        $(".sortButton").on("click",function(){
+	jQuery("#geoRegion   ").on("change",function(){
+		if ( $(this).val() == "default" ) {
+			$("#geographicAreaForm").fadeOut();
+		}else {
+			$("#geographicAreaForm").fadeIn();
+		}
+	});
+
+	jQuery(".sortButton").on("click",function(){
             var post = <?php echo json_encode($_POST);?>;
             post.sortBy = $(this).attr("id");
             $.ajax({
@@ -112,3 +116,8 @@ $(document).ready(function () {
         });
 });
 </script>
+
+
+
+
+

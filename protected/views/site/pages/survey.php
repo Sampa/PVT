@@ -50,29 +50,38 @@ $this->breadcrumbs = array(
                 </h3>
             </div>
             <div id="formLayoutDropzoneDiv" class="panel-body dropzone">
-                Panel content
             </div>
         </div>
     </div>
 </div>
 <script>
     $(function() {
+        //fungerar men det fattas något visuellt för att visa att det faktiskt går att göra om storleken
+        $(".resize").resizable();
         $('.survey-component').tooltip();
         $(".draggable" ).draggable({
-            revert: 'invalid',
+            revert: true,
+            start: function(event,ui){
+            },
             stop: function(event,ui) {
+                var copy  = $(this).clone();
                 //extrahera elementets id (som är satt till dess typ)
-                var formFieldType = $( this).attr("id");
-//                alert(formFieldType);
-                switch(formFieldType){
+                var formFieldType = $(this).attr("data-original-title");
+                $("#formLayoutDropzoneDiv").append("du skapade ett "+formFieldType);
 
+                switch(formFieldType){
+                    case "Textfält":
+//                        alert("du skapade ett textfält");
+                        break;
+                    case "Dropdown":
+//                        alert("du skapade ett textfält");
+                        break;
                 }
             }
         });
         $( ".dropzone" ).droppable({
-//            greedy:true,
             drop: function( event, ui ) {
-                $(this).addClass("success");
+                //$(this) är elementet vi droppat något i, antingen trash eller formfieldvyn
             }
         });
     });

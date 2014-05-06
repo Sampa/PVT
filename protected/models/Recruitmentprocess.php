@@ -9,6 +9,12 @@
  * @property integer $recuiterId
  * @property string $startDate
  * @property string $endDate
+ * @property string $typeOfEmployment
+ * @property string $typeOfService
+ * @property integer $salaryOfHired
+ * @property string $company
+ * @property integer $geographicAreaID
+ * @property string $successfulProcess
  *
  * The followings are the available model relations:
  * @property Hotlist[] $hotlists
@@ -32,11 +38,13 @@ class Recruitmentprocess extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, recuiterId, startDate, endDate', 'required'),
-			array('recuiterId', 'numerical', 'integerOnly'=>true),
+			array('title, recuiterId, startDate, typeOfEmployment, typeOfService, company, geographicAreaID, successfulProcess', 'required'),
+			array('recuiterId, salaryOfHired, geographicAreaID', 'numerical', 'integerOnly'=>true),
+			array('typeOfEmployment, typeOfService, successfulProcess', 'length', 'max'=>255),
+			array('endDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, recuiterId, startDate, endDate', 'safe', 'on'=>'search'),
+			array('id, title, recuiterId, startDate, endDate, typeOfEmployment, typeOfService, salaryOfHired, company, geographicAreaID, successfulProcess', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,10 +68,16 @@ class Recruitmentprocess extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => Yii::t("t", "Namn på processen"),
+			'title' => Yii::t("t","Titel"),
 			'recuiterId' => 'Recuiter',
 			'startDate' => 'Start Date',
 			'endDate' => 'End Date',
+			'typeOfEmployment' => Yii::t("t",'Anställningsform'),
+			'typeOfService' => Yii::t("t", "Typ av tjänst"),
+			'salaryOfHired' => Yii::t("t", "Lön för anställd"),
+			'company' => Yii::t("t","Företag"),
+			'geographicAreaID' => Yii::t("t","Geografisk plats"),
+			'successfulProcess' => Yii::t("t","Lyckad rekrytering?"),
 		);
 	}
 
@@ -90,6 +104,12 @@ class Recruitmentprocess extends CActiveRecord
 		$criteria->compare('recuiterId',$this->recuiterId);
 		$criteria->compare('startDate',$this->startDate,true);
 		$criteria->compare('endDate',$this->endDate,true);
+		$criteria->compare('typeOfEmployment',$this->typeOfEmployment,true);
+		$criteria->compare('typeOfService',$this->typeOfService,true);
+		$criteria->compare('salaryOfHired',$this->salaryOfHired);
+		$criteria->compare('company',$this->company,true);
+		$criteria->compare('geographicAreaID',$this->geographicAreaID);
+		$criteria->compare('successfulProcess',$this->successfulProcess,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

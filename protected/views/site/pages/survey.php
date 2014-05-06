@@ -10,17 +10,31 @@ $this->breadcrumbs = array(
         <div class="col-md-7">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Valbara form stuff</h3>
+                    <h3 class="panel-title">
+                   		<span class="glyphicon glyphicon-wrench"></span> Välj delar till enkäten
+					</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+					<div class="btn-group">
+					 	<button type="button" class="btn btn-success draggable">Textfält</button>
+					 	<button type="button" class="btn btn-success draggable">Text</button>
+					 	<button type="button" class="btn btn-success draggable">Radiobuttons</button>
+					 	<button type="button" class="btn btn-success draggable">Checkboxes</button>
+					 	<button type="button" class="btn btn-success draggable">Slider</button>
+					 	<button type="button" class="btn btn-success draggable">Grid</button>
+					 	<button type="button" class="btn btn-success draggable">List</button>
+					 	<button type="button" class="btn btn-success draggable">Date</button>
+					 	<button type="button" class="btn btn-success draggable">File</button>
+					</div>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Trash</h3>
+                    <h3 class="panel-title">
+                   		<span class="glyphicon glyphicon-trash"></span> Papperskorg
+					</h3>
                 </div>
                 <div class="panel-body">
                     Panel content
@@ -34,7 +48,7 @@ $this->breadcrumbs = array(
             <div class="panel-heading">
                 <h3 class="panel-title">Panel title</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="dropzone">
                 Panel content
             </div>
         </div>

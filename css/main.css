@@ -24,6 +24,10 @@ body .search-button:hover {
   color: #2c3e50;
 }
 
+body .btn-success {
+  border-color: #FFFFFF;
+}
+
 
 
 

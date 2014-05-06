@@ -11,18 +11,19 @@ $this->breadcrumbs = array(
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                   		<span class="glyphicon glyphicon-wrench"></span> Välj delar till enkäten
+                   		<span class="glyphicon glyphicon-cog"></span> Välj delar till enkäten
 					</h3>
                 </div>
                 <div class="panel-body">
+                	<p>Dra komponenter från nedan till din layout.</p>
 					<div class="btn-group">
-					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-comment"></span></a>
- 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-collapse-down"></span></a>
-						<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-check"></span></a>
- 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-resize-horizontal"></span></a>
- 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-th"></span></a>
- 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-list-alt"></span></a>
- 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-calendar"></span></a>
+					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
+ 					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span></a>
+						<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Checkbox"><span class="glyphicon glyphicon-check"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Grid"><span class="glyphicon glyphicon-th"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Datum"><span class="glyphicon glyphicon-calendar"></span></a>
 					</div>
                 </div>
             </div>
@@ -44,7 +45,9 @@ $this->breadcrumbs = array(
 
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">Layout</h3>
+                <h3 class="panel-title">
+                	<span class="glyphicon glyphicon-wrench"></span> Skräddarsy din layout
+                </h3>
             </div>
             <div class="panel-body dropzone">
                 Panel content
@@ -61,6 +64,9 @@ $this->breadcrumbs = array(
 </div>
 
 <script>
+	$(document).ready(function(){
+			$('.survey-component').tooltip();
+	});
     $(function() {
         $(".draggable" ).draggable({
             stop: function(event,ui) {

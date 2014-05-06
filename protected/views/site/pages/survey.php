@@ -49,38 +49,42 @@ $this->breadcrumbs = array(
                 	<span class="glyphicon glyphicon-wrench"></span> Skräddarsy din layout
                 </h3>
             </div>
-            <div class="panel-body dropzone">
+            <div id="formLayoutDropzoneDiv" class="panel-body dropzone">
                 Panel content
             </div>
         </div>
     </div>
-    <!--    <div class="list-group">-->
-<!--        <a href="#" class="list-group-item active">-->
-<!--            <h4 class="list-group-item-heading">List group item heading</h4>-->
-<!--            <p class="list-group-item-text"></p>-->
-<!--        </a>-->
-<!--    </div>-->
-
 </div>
-
 <script>
-	$(document).ready(function(){
-			$('.survey-component').tooltip();
-	});
     $(function() {
+        $('.survey-component').tooltip();
         $(".draggable" ).draggable({
+            revert: 'invalid',
             stop: function(event,ui) {
                 //extrahera elementets id (som är satt till dess typ)
                 var formFieldType = $( this).attr("id");
+//                alert(formFieldType);
                 switch(formFieldType){
 
                 }
             }
         });
         $( ".dropzone" ).droppable({
+//            greedy:true,
             drop: function( event, ui ) {
                 $(this).addClass("success");
             }
         });
     });
 </script>
+<style type="text/css">
+    .draggable{
+        z-index:2;
+    }
+    .dropzone{
+        z-index: 1;
+    }
+    #formLayoutDropzoneDiv{
+        min-height: 400px;
+    }
+</style>

@@ -11,7 +11,21 @@
                 <a class="navbar-brand" href="<?php echo Yii::app()->getHomeUrl();?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
             </div>
             <div class="navbar-collapse collapse">
-                <?php $this->widget('zii.widgets.CMenu', array(
+                <?php
+                if(Yii::app()->user->getState("role")== "publisher"){
+                $items = array(
+                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
+                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
+                    array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
+                );}else{
+                $items = array(
+                    array('label' => Yii::t("t",'Skapa ny rekrytering'), 'url' => array('/cv/create')),
+                    array('label' => Yii::t("t",'Hitta CV'), 'url' => array('/cv/')),
+                    array('label' => Yii::t("t","Mina rekryteringar"), 'url' => array('/cv/')),
+                    array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
+                );}
+
+                $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
                         array('label' => Yii::t("t","Om oss"), 'url' => array('/site/page', 'view' => 'about')),
@@ -20,11 +34,7 @@
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
-                            'items' => array(
-                                array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
-                                array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
-                                array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
-                            )
+                            'items' => $items,
                         )
                     ),
                     // 'htmlOptions'=>array('class'=>'main-menu')

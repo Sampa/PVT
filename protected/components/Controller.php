@@ -79,6 +79,7 @@ class Controller extends CController
     {
 
         cs()->registerScriptFile(bu() . '/libs/jquery/jquery.min.js', CClientScript::POS_BEGIN);
+        cs()->registerScriptFile(bu() . '/libs/jquery/jquery-ui.min.js', CClientScript::POS_BEGIN);
         cs()->registerScriptFile(bu() . '/js/plugins.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/main.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/select2.min.js', CClientScript::POS_END);

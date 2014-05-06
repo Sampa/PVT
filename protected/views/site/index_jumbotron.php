@@ -13,7 +13,7 @@
  <br> Prova att söka i vår cv-databas nu ");?> </p>
 <br>
         <p><a href="<?php echo Yii::app()->baseUrl;?>/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV");?></a> </p>
-    </div>
+         </div>
 </div>
 
 <div class="row">

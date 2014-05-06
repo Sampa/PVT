@@ -17,12 +17,12 @@ $this->breadcrumbs = array(
                 <div class="panel-body">
 					<div class="btn-group">
 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-comment"></span></a>
- 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-collapse-down"></span></button>
-						<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-check"></span></button>
- 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-resize-horizontal"></span></button>
- 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-th"></span></button>
- 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-list-alt"></span></button>
- 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-calendar"></span></button>
+ 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-collapse-down"></span></a>
+						<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-check"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-resize-horizontal"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-th"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-list-alt"></span></a>
+ 					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-calendar"></span></a>
 					</div>
                 </div>
             </div>

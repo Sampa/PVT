@@ -16,15 +16,13 @@ $this->breadcrumbs = array(
                 </div>
                 <div class="panel-body">
 					<div class="btn-group">
-					 	<button type="button" class="btn btn-success draggable">Textfält</button>
-					 	<button type="button" class="btn btn-success draggable">Text</button>
-					 	<button type="button" class="btn btn-success draggable">Radiobuttons</button>
-					 	<button type="button" class="btn btn-success draggable">Checkboxes</button>
-					 	<button type="button" class="btn btn-success draggable">Slider</button>
-					 	<button type="button" class="btn btn-success draggable">Grid</button>
-					 	<button type="button" class="btn btn-success draggable">List</button>
-					 	<button type="button" class="btn btn-success draggable">Date</button>
-					 	<button type="button" class="btn btn-success draggable">File</button>
+					 	<a href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-comment"></span></a>
+ 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-collapse-down"></span></button>
+						<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-check"></span></button>
+ 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-resize-horizontal"></span></button>
+ 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-th"></span></button>
+ 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-list-alt"></span></button>
+ 					 	<button href="#" class="btn btn-success draggable"><span class="glyphicon glyphicon-calendar"></span></button>
 					</div>
                 </div>
             </div>
@@ -36,7 +34,7 @@ $this->breadcrumbs = array(
                    		<span class="glyphicon glyphicon-trash"></span> Papperskorg
 					</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body dropzone">
                     Panel content
                 </div>
             </div>
@@ -44,11 +42,11 @@ $this->breadcrumbs = array(
     </div>
     <div class="col-md-10">
 
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
+                <h3 class="panel-title">Layout</h3>
             </div>
-            <div class="panel-body" id="dropzone">
+            <div class="panel-body dropzone">
                 Panel content
             </div>
         </div>
@@ -73,7 +71,7 @@ $this->breadcrumbs = array(
                 }
             }
         });
-        $( "#dropzone" ).droppable({
+        $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
                 $(this).addClass("success");
             }

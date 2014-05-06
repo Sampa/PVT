@@ -16,14 +16,14 @@ $this->breadcrumbs = array(
                 </div>
                 <div class="panel-body">
 					<div class="btn-group">
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-comment"></span></button>
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-collapse-down"></span></button>
+					 	<button type="button" class="btn btn-success draggable">Textfält</button>
+					 	<button type="button" class="btn btn-success draggable">Text</button>
 					 	<button type="button" class="btn btn-success draggable">Radiobuttons</button>
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-check"></span></button>
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-resize-horizontal"></span></button>
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-th"></span></button>
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-list-alt"></span></button>
-					 	<button type="button" class="btn btn-success draggable"><span class="glyphicon glyphicon-calendar"></span></button>
+					 	<button type="button" class="btn btn-success draggable">Checkboxes</button>
+					 	<button type="button" class="btn btn-success draggable">Slider</button>
+					 	<button type="button" class="btn btn-success draggable">Grid</button>
+					 	<button type="button" class="btn btn-success draggable">List</button>
+					 	<button type="button" class="btn btn-success draggable">Date</button>
 					 	<button type="button" class="btn btn-success draggable">File</button>
 					</div>
                 </div>
@@ -62,5 +62,21 @@ $this->breadcrumbs = array(
 
 </div>
 
+<script>
+    $(function() {
+        $(".draggable" ).draggable({
+            stop: function(event,ui) {
+                //extrahera elementets id (som är satt till dess typ)
+                var formFieldType = $( this).attr("id");
+                switch(formFieldType){
 
-
+                }
+            }
+        });
+        $( "#dropzone" ).droppable({
+            drop: function( event, ui ) {
+                $(this).addClass("success");
+            }
+        });
+    });
+</script>

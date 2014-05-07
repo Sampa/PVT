@@ -8,7 +8,7 @@
 
 <div class="container page-min-height">
     <div class="row col-md-12">
-        <div style="padding: 0px;position: fixed;max-width: 160px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="right" data-bootstro-step="0">
+        <div style="padding: 0px;position: fixed;max-width: 180px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="right" data-bootstro-step="0">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <span class="glyphicon glyphicon-cog"></span> Komponenter

@@ -19,9 +19,9 @@
                     array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
                 );}else{
                 $items = array(
-                    array('label' => Yii::t("t",'Skapa ny rekrytering'), 'url' => array('/cv/create')),
+                    array('label' => Yii::t("t",'Skapa ny rekrytering'), 'url' => array('/recruitmentprocess/create')),
+                    array('label' => Yii::t("t","Mina rekryteringar"), 'url' => array('/recruitmentprocess/')),
                     array('label' => Yii::t("t",'Hitta CV'), 'url' => array('/cv/')),
-                    array('label' => Yii::t("t","Mina rekryteringar"), 'url' => array('/cv/')),
                     array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
                 );}
 

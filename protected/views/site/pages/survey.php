@@ -11,18 +11,18 @@ $this->breadcrumbs = array(
         <div style="padding: 0px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="bottom" data-bootstro-step="0">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-cog"></span> Välj delar till enkäten
+                    <span class="glyphicon glyphicon-cog"></span> Komponenter
                 </h3>
             </div>
-            <div class="panel-body " style="">
-                <div style="">
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Checkbox</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>
+            <div class="panel-body component-wrapper">
+                <div>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Checkbox</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>
                     <a href="#" class="btn btn-success draggable survey-component" id="demo">Demo</a>
                 </div>
             </div>
@@ -32,7 +32,7 @@ $this->breadcrumbs = array(
             <div class="panel panel-info resize bootstro" data-bootstro-title="Bygg upp din enkät här" data-bootstro-content="Dra hit de olika sorters frågor du vill ha med i din enkät" data-bootstro-placement="top" data-bootstro-step="1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-wrench "></span> Skräddarsy din layout
+                        <span class="glyphicon glyphicon-wrench "></span>Din layout
                     </h3>
                 </div>
                 <div id="formLayoutDropzoneDiv" class="panel-body dropzone"></div>
@@ -147,5 +147,11 @@ $this->breadcrumbs = array(
     }
     .bootstro-highlight {
         background-color:white;
+    }
+    .component-wrapper {
+        text-align: center;
+    }
+    .survey-component {
+        width: 75%;
     }
 </style>

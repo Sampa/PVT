@@ -80,7 +80,7 @@ $this->breadcrumbs = array(
                 onExit : function(params)
                 {
                     $('.survey-component').addClass("draggable"); 
-
+                },    
             });    
         });
     });

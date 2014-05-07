@@ -82,7 +82,10 @@
     });
     function initialize() {
         //fungerar men det fattas något visuellt för att visa att det faktiskt går att göra om storleken
-        $(".resize").resizable();
+        $( ".resize" ).resizable({
+            animate: true,
+            ghost: true
+        });
         $('.survey-component').tooltip();
         $(".draggable" ).draggable({
             revert: true,

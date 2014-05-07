@@ -31,7 +31,7 @@ $this->breadcrumbs = array(
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="right" data-bootstro-step="2">
+            <div class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="right" data-bootstro-width='272px' data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                    		<span class="glyphicon glyphicon-trash"></span> Papperskorg
@@ -66,19 +66,21 @@ $this->breadcrumbs = array(
             // När vi är klara lägger vi tillbaka classen för att få rätt z-index som hör till classen.
             $('.survey-component').removeClass('draggable')
             bootstro.start(".bootstro", {
+                //Bestämmer att det inte går att klicka på ESC eller i backgrunden för att gå ur guiden.
+                stopOnBackdropClick : false, 
+                nextButtonText : 'Nästa»',
+                prevButtonText : '«Tillbaka',
+                finishButtonText : 'Avsluta guiden',
                 onComplete : function(params)
                 {       
                     $('.survey-component').addClass("draggable"); 
-                    alert("Reached end of introduction with total " + (params.idx + 1)+ " slides");
                 },
                 onExit : function(params)
                 {
                     $('.survey-component').addClass("draggable"); 
-                    alert("Introduction stopped at slide #" + (params.idx + 1));
                 },
             });    
         });
- 
     });
     function initialize() {
         //fungerar men det fattas något visuellt för att visa att det faktiskt går att göra om storleken

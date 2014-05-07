@@ -1,9 +1,9 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Skapa enkät';
-$this->breadcrumbs = array(
-    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-    Yii::t("t",'Survey'),
-);
+    $this->pageTitle = Yii::app()->name . ' - Skapa enkät';
+    $this->breadcrumbs = array(
+        Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+        Yii::t("t",'Survey'),
+    );
 ?>
 
 <div class="container page-min-height">
@@ -16,11 +16,11 @@ $this->breadcrumbs = array(
             </div>
             <div class="panel-body component-wrapper">
                 <div>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Checkbox</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Checkbox</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="slider" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>
                     <a href="#" class="btn btn-success draggable survey-component" id="demo">Demo</a>
@@ -94,39 +94,26 @@ $this->breadcrumbs = array(
 
             }
         });
-
-
         $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
                 if($(this).attr("id") =="formLayoutDropzoneDiv"){
                     bootbox.prompt("Formulera din fråga här:", function(question) {
-                        if (question  === null) {
+                        if (question  === null)
                             return; //skit i resten om användaren inte anger en fråga
-                        } else {
-                            var questionTemplate = $("#questionTemplate").clone();
-                            var formFieldType = ui.draggable.attr("data-original-title");
-                            questionTemplate.children(":last-child").html(question);
-                            switch(formFieldType){
-                                case "Textfält":
-                                    //clona rätt template element
-                                    var clone = $("[name=textTemplate]").clone();
-                                    //hämta antalet likadana element i dropzone för att kunna ge unikt namn
-                                    var currentNumberOfTextFields = $("#formLayoutDropzoneDiv .texttemplate");
-                                    //byt ut name attributet till något unikt med hjälp av antalet ovan
-                                    clone.attr("name","textField"+currentNumberOfTextFields.length);
-                                    //kasta in nya elementet sist i diven
-                                    $("#formLayoutDropzoneDiv").append(clone);
-                                    //kasta in frågan i clone elementet men före formulärfältet
-                                    clone.prepend(questionTemplate);
-
-                                    break;
-                                //etc
-                                case "Dropdown":
-                                    break;
-                            }
-                        }
+                        //clona rätt template element
+                        var questionTemplate = $("#questionTemplate").clone();
+                        var formFieldType = ui.draggable.attr("id");
+                        questionTemplate.children(":last-child").html(question);
+                        var clone = $("[name="+formFieldType+"Template]").clone();
+                        //hämta antalet likadana element i dropzone för att kunna ge unikt namn
+                        var currentNumberOfTextFields = $("#formLayoutDropzoneDiv ."+formFieldType+"Template");
+                        //byt ut name attributet till något unikt med hjälp av antalet ovan
+                        clone.attr("name",formFieldType+currentNumberOfTextFields.length);
+                        //kasta in nya elementet sist i diven
+                        $("#formLayoutDropzoneDiv").append(clone);
+                        //kasta in frågan i clone elementet men före formulärfältet
+                        clone.prepend(questionTemplate);
                     });
-
                 }
             }
         });

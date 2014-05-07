@@ -5,7 +5,14 @@ utan att bryta javascriptet
     <section id="questionTemplate">
         <h4><span class="questionResultTarget"></span></h4>
     </section>
+
     <div name="textTemplate">
-        <input class="form-control texttemplate" type="text"/>
-    </div
+        <input class="form-control textTemplate" type="text"/>
+    </div>
+
+    <div name="dropdownTemplate">
+        <select class="form-control dropdownTemplate">
+            <option>--Välj...--</option>
+        </select>
+    </div>
 </section>

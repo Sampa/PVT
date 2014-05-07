@@ -23,7 +23,7 @@
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>
-                    <a href="#" class="btn btn-warning survey-component" id="demo"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
+                    <a href="#" class="btn btn-warning survey-component" id="help"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
                 </div>
             </div>
         </div>
@@ -59,13 +59,14 @@
 <script>
     $(function(){
         initialize();
-        $("#demo").click(function(){
+        $("#help").click(function(){
             // Survey-components kan inte ha classen draggable när vi kör bootstro, highlight slutar fungera då.
             // Vi tar därför bort classen innan vi kör.
             // När vi är klara lägger vi tillbaka classen för att få rätt z-index som hör till classen.
-            $('.survey-component').removeClass('draggable')
+            $('.survey-component').removeClass('draggable');
+            $('.panel-body').removeClass('dropzone');
             bootstro.start(".bootstro", {
-                //Bestämmer att det inte går att klicka på ESC eller i backgrunden för att gå ur guiden.
+                //Bestämmer att det inte går att klicka i backgrunden för att gå ur guiden.
                 stopOnBackdropClick : false,
                 nextButtonText : 'Nästa»',
                 prevButtonText : '«Tillbaka',
@@ -132,7 +133,7 @@
     #formLayoutDropzoneDiv{
         min-height: 400px;
     }
-    #demo{
+    #help{
         margin-top: 25px;
     }
     body {

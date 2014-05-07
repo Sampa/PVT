@@ -75,7 +75,7 @@ $this->breadcrumbs = array(
                 finishButtonText : 'Avsluta guiden',
                 onComplete : function(params)
                 {       
-                    $('.survey-component').addClass("draggable"); 
+                    
                 },
                 onExit : function(params)
                 {

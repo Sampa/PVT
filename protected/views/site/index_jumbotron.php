@@ -18,7 +18,7 @@
 
 <div class="row">
     <div class="col-lg-4">
-        <h2><?php echo Yii::t("t","Sök nytt jobb anonymt!!  ");?></h2>
+        <h2><?php echo Yii::t("t","Sök nytt jobb anonymt!");?></h2>
 
         <p><?php echo Yii::t("t"," Som Publicerare kan du själv välja vilken typ av information som du vill ge ut om dig själv. 
         I dina publicera CV:n kan du uppge ditt riktiga namn om du vill,

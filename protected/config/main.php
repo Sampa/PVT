@@ -59,6 +59,15 @@ return array(
 
     // application components
     'components' => array(
+        //X-editable config
+        'editable' => array(
+            'class'     => 'editable.EditableConfig',
+            'form'      => 'bootstrap',        //form style: 'bootstrap', 'jqueryui', 'plain'
+            'mode'      => 'popup',            //mode: 'popup' or 'inline'
+            'defaults'  => array(              //default settings for all editable elements
+                'emptytext' => 'Click to edit'
+            )
+        ),
         'user' => array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,

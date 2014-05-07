@@ -128,9 +128,11 @@ class RecruitmentprocessController extends Controller
 	 */
 	public function actionIndex()
 	{
+        $allModels = Recruitmentprocess::model()->findAll();
 		$dataProvider=new CActiveDataProvider('Recruitmentprocess');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+            'allModels'=>$allModels
 		));
 	}
 

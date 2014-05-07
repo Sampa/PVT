@@ -19,7 +19,7 @@ class Hotlist extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'hotlist';
+		return 'HotList';
 	}
 
 	/**

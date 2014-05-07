@@ -53,6 +53,7 @@ $this->breadcrumbs = array(
             <div id="formLayoutDropzoneDiv" class="panel-body dropzone bootstro" data-bootstro-title="Bygg upp din enkät här"  data-bootstro-content="Dra hit de olika sorters frågor du vill ha med i din enkät" data-bootstro-placement="top" data-bootstro-prevButtonText="«Tillbaka">
                 Panel content
             </div>
+            <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
         </div>
     </div>
 </div>
@@ -105,10 +106,10 @@ $this->breadcrumbs = array(
 </script>
 <style type="text/css">
     .draggable{
-        z-index:2;
+        z-index:92;
     }
     .dropzone{
-        z-index: 1;
+        z-index: 91;
     }
     #formLayoutDropzoneDiv{
         min-height: 400px;

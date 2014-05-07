@@ -8,7 +8,7 @@
 
 <div class="container page-min-height">
     <div class="row col-md-12">
-        <div style="padding: 0px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="right" data-bootstro-step="0">
+        <div style="padding: 0px;position: fixed;max-width: 160px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="right" data-bootstro-step="0">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <span class="glyphicon glyphicon-cog"></span> Komponenter
@@ -28,7 +28,19 @@
             </div>
         </div>
 
-        <div class="col-md-8" >
+        <div class="col-md-2 pull-right">
+            <div class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="2">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-trash"></span> Papperskorg
+                    </h3>
+                </div>
+                <div class="panel-body dropzone">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 pull-right" >
             <div class="panel panel-info resize bootstro" data-bootstro-title="Bygg upp din enkät här" data-bootstro-content="Dra hit de olika sorters frågor du vill ha med i din enkät" data-bootstro-placement="left" data-bootstro-step="1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -40,17 +52,6 @@
             </div>
         </div>
 
-        <div class="col-md-2">
-            <div class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="2">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-trash"></span> Papperskorg
-                    </h3>
-                </div>
-                <div class="panel-body dropzone">
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <?php require_once("formFieldTemplates.php");?>

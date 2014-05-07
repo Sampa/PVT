@@ -9,7 +9,9 @@ utan att bryta javascriptet
     <div name="textTemplate">
         <input class="form-control textTemplate" type="text"/>
     </div>
-
+    <div name="checkboxTemplate">
+        <input class="form-control checkboxTemplate" type="checkbox"/>
+    </div>
     <div name="dropdownTemplate">
         <select class="form-control dropdownTemplate">
             <option>--Välj...--</option>

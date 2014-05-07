@@ -43,9 +43,8 @@ $this->breadcrumbs = array(
             </div>
         </div>
     </div>
-    <div class="col-md-10">
-
-        <div class="panel panel-info">
+    <div class="col-md-10" >
+        <div class="panel panel-info resize">
             <div class="panel-heading">
                 <h3 class="panel-title">
                 	<span class="glyphicon glyphicon-wrench"></span> Skräddarsy din layout
@@ -57,43 +56,37 @@ $this->breadcrumbs = array(
         </div>
     </div>
 </div>
-
 <script>
     $(function() {
+        //fungerar men det fattas något visuellt för att visa att det faktiskt går att göra om storleken
+        $(".resize").resizable();
         $('.survey-component').tooltip();
         $(".draggable" ).draggable({
-            revert: 'invalid',
+            revert: true,
+            //har kvar dessa ifall vi kommer på att vi behöver dem senare
+            start: function(event,ui){
+            },
             stop: function(event,ui) {
-                //extrahera elementets id (som är satt till dess typ)
-                var formFieldType = $( this).attr("id");
-//                alert(formFieldType);
-                switch(formFieldType){
 
-                }
             }
         });
         $( ".dropzone" ).droppable({
-//            greedy:true,
             drop: function( event, ui ) {
-                $(this).addClass("success");
+                if($(this).attr("id") =="formLayoutDropzoneDiv"){
+                    var formFieldType = ui.draggable.attr("data-original-title");
+                    $("#formLayoutDropzoneDiv").append("du skapade ett "+formFieldType);
+                    switch(formFieldType){
+                        case "Textfält":
+    //                        alert("du skapade ett textfält");
+                            break;
+                        case "Dropdown":
+    //                        alert("du skapade ett textfält");
+                            break;
+                    }
+                }
             }
         });
     });
-    $(function(){
-        $("#demo").click(function(){
-            bootstro.start(".bootstro", {
-                onComplete : function(params)
-                {
-                    alert("Reached end of introduction with total " + (params.idx + 1)+ " slides");
-                },
-                onExit : function(params)
-                {
-                    alert("Introduction stopped at slide #" + (params.idx + 1));
-                },
-            });    
-        });
-
-});
 </script>
 <style type="text/css">
     .draggable{
@@ -104,11 +97,5 @@ $this->breadcrumbs = array(
     }
     #formLayoutDropzoneDiv{
         min-height: 400px;
-    }
-    body {
-    margin-top:55px;
-    }
-        .bootstro-highlight {
-        background-color:transparent;
     }
 </style>

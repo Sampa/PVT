@@ -87,6 +87,21 @@ $this->breadcrumbs = array(
             }
         });
     });
+    $(function(){
+         $("#demo").click(function(){
+             bootstro.start(".bootstro", {
+                 onComplete : function(params)
+                 {
+                     alert("Reached end of introduction with total " + (params.idx + 1)+ " slides");
+                 },
+                 onExit : function(params)
+                 {
+                     alert("Introduction stopped at slide #" + (params.idx + 1));
+                 },
+             });    
+         });
+ 
+    });
 </script>
 <style type="text/css">
     .draggable{
@@ -97,5 +112,11 @@ $this->breadcrumbs = array(
     }
     #formLayoutDropzoneDiv{
         min-height: 400px;
+    }
+     body {
+        margin-top:55px;
+    }
+    .bootstro-highlight {
+        background-color:transparent;
     }
 </style>

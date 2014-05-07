@@ -14,7 +14,7 @@ $this->breadcrumbs = array(
                     <span class="glyphicon glyphicon-cog"></span> Komponenter
                 </h3>
             </div>
-            <div class="panel-body component-wrapper">
+            <div class="panel-body wrapper-component">
                 <div>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>
@@ -148,7 +148,7 @@ $this->breadcrumbs = array(
     .bootstro-highlight {
         background-color:white;
     }
-    .component-wrapper {
+    .wrapper-component {
         text-align: center;
     }
     .survey-component {

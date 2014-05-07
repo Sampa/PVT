@@ -41,9 +41,8 @@ $this->breadcrumbs = array(
             </div>
         </div>
     </div>
-    <div class="col-md-10">
-
-        <div class="panel panel-info">
+    <div class="col-md-10" >
+        <div class="panel panel-info resize">
             <div class="panel-heading">
                 <h3 class="panel-title">
                 	<span class="glyphicon glyphicon-wrench"></span> Skräddarsy din layout
@@ -61,27 +60,27 @@ $this->breadcrumbs = array(
         $('.survey-component').tooltip();
         $(".draggable" ).draggable({
             revert: true,
+            //har kvar dessa ifall vi kommer på att vi behöver dem senare
             start: function(event,ui){
             },
             stop: function(event,ui) {
-                var copy  = $(this).clone();
-                //extrahera elementets id (som är satt till dess typ)
-                var formFieldType = $(this).attr("data-original-title");
-                $("#formLayoutDropzoneDiv").append("du skapade ett "+formFieldType);
 
-                switch(formFieldType){
-                    case "Textfält":
-//                        alert("du skapade ett textfält");
-                        break;
-                    case "Dropdown":
-//                        alert("du skapade ett textfält");
-                        break;
-                }
             }
         });
         $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
-                //$(this) är elementet vi droppat något i, antingen trash eller formfieldvyn
+                if($(this).attr("id") =="formLayoutDropzoneDiv"){
+                    var formFieldType = ui.draggable.attr("data-original-title");
+                    $("#formLayoutDropzoneDiv").append("du skapade ett "+formFieldType);
+                    switch(formFieldType){
+                        case "Textfält":
+    //                        alert("du skapade ett textfält");
+                            break;
+                        case "Dropdown":
+    //                        alert("du skapade ett textfält");
+                            break;
+                    }
+                }
             }
         });
     });

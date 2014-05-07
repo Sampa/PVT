@@ -19,7 +19,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#hotlist-grid').yiiGridView('update', {
+	$('#hotlist-grid').yiiGridView('up ate', {
 		data: $(this).serialize()
 	});
 	return false;

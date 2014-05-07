@@ -19,6 +19,17 @@
 
                     <?php echo $form->textFieldControlGroup($model,'endDate',array('span'=>5)); ?>
 
+                    <?php echo $form->textFieldControlGroup($model,'startDate',array('span'=>5)); ?>
+
+                    <?php echo $form->textFieldControlGroup($model,'typeOfEmployment',array('span'=>5)); ?>
+
+                    <?php echo $form->textFieldControlGroup($model,'typeOfService',array('span'=>5)); ?>
+
+                    <?php echo $form->textFieldControlGroup($model,'geographicAreaID',array('span'=>5)); ?>
+
+
+
+
         <div class="form-actions">
         <?php echo TbHtml::submitButton('Search',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
     </div>

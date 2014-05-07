@@ -5,8 +5,10 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Rekryterarprocesser'=>array('index'),
-	'Skapa ny process',
+    Yii::t('t', 'Hem') => Yii::app()->getHomeUrl(),
+     'Rekryteringsprocesser'=>array('index'),
+    Yii::t('t','Ny rekrytering'),
+
 );
 
 $this->menu=array(

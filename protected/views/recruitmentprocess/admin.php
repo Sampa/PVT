@@ -1,4 +1,4 @@
-<?php
+    <?php
 /* @var $this RecruitmentprocessController */
 /* @var $model Recruitmentprocess */
 

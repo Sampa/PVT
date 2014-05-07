@@ -9,7 +9,7 @@ $this->breadcrumbs = array(
 <div class="container page-min-height">
     <div class="row col-md-10">
         <div class="col-md-7">
-            <div class="panel panel-info">
+            <div class="panel panel-info bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="bottom" data-bootstro-step="0">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                    		<span class="glyphicon glyphicon-cog"></span> Välj delar till enkäten
@@ -17,7 +17,7 @@ $this->breadcrumbs = array(
                 </div>
                 <div class="panel-body">
                 	<p>Dra komponenter från nedan till din layout.</p>
-					<div class="btn-group bootstro" data-bootstro-title="Välj fråga" data-bootstro-content="Här väljer du vilken sorts fråga som du vill ha i din enkät" data-bootstro-placement="top" data-bootstro-nextButtonText="Nästa»">
+					<div>
 					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
  					 	<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span></a>
 						<a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="bottom" title="Checkbox"><span class="glyphicon glyphicon-check"></span></a>
@@ -31,7 +31,7 @@ $this->breadcrumbs = array(
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-warning">
+            <div class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="right" data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                    		<span class="glyphicon glyphicon-trash"></span> Papperskorg
@@ -44,13 +44,13 @@ $this->breadcrumbs = array(
         </div>
     </div>
     <div class="col-md-10" >
-        <div class="panel panel-info resize">
+        <div class="panel panel-info resize bootstro" data-bootstro-title="Bygg upp din enkät här" data-bootstro-content="Dra hit de olika sorters frågor du vill ha med i din enkät" data-bootstro-placement="top" data-bootstro-step="1">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                	<span class="glyphicon glyphicon-wrench"></span> Skräddarsy din layout
+                	<span class="glyphicon glyphicon-wrench "></span> Skräddarsy din layout
                 </h3>
             </div>
-            <div id="formLayoutDropzoneDiv" class="panel-body dropzone bootstro" data-bootstro-title="Bygg upp din enkät här"  data-bootstro-content="Dra hit de olika sorters frågor du vill ha med i din enkät" data-bootstro-placement="top" data-bootstro-prevButtonText="«Tillbaka">
+            <div id="formLayoutDropzoneDiv" class="panel-body dropzone">
                 Panel content
             </div>
             <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
@@ -58,7 +58,29 @@ $this->breadcrumbs = array(
     </div>
 </div>
 <script>
-    $(function() {
+    $(function(){
+        initialize();
+        $("#demo").click(function(){
+            // Survey-components kan inte ha classen draggable när vi kör bootstro, highlight slutar fungera då.
+            // Vi tar därför bort classen innan vi kör.
+            // När vi är klara lägger vi tillbaka classen för att få rätt z-index som hör till classen.
+            $('.survey-component').removeClass('draggable')
+            bootstro.start(".bootstro", {
+                onComplete : function(params)
+                {       
+                    $('.survey-component').addClass("draggable"); 
+                    alert("Reached end of introduction with total " + (params.idx + 1)+ " slides");
+                },
+                onExit : function(params)
+                {
+                    $('.survey-component').addClass("draggable"); 
+                    alert("Introduction stopped at slide #" + (params.idx + 1));
+                },
+            });    
+        });
+ 
+    });
+    function initialize() {
         //fungerar men det fattas något visuellt för att visa att det faktiskt går att göra om storleken
         $(".resize").resizable();
         $('.survey-component').tooltip();
@@ -87,22 +109,7 @@ $this->breadcrumbs = array(
                 }
             }
         });
-    });
-    $(function(){
-         $("#demo").click(function(){
-             bootstro.start(".bootstro", {
-                 onComplete : function(params)
-                 {
-                     alert("Reached end of introduction with total " + (params.idx + 1)+ " slides");
-                 },
-                 onExit : function(params)
-                 {
-                     alert("Introduction stopped at slide #" + (params.idx + 1));
-                 },
-             });    
-         });
- 
-    });
+    };
 </script>
 <style type="text/css">
     .draggable{
@@ -118,6 +125,6 @@ $this->breadcrumbs = array(
         margin-top:55px;
     }
     .bootstro-highlight {
-        background-color:transparent;
+        background-color:white;
     }
 </style>

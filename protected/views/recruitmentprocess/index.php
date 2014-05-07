@@ -41,11 +41,11 @@ $this->menu=array(
                     <th><?php echo Yii::t('t','Startdatum');?></th>
                     <th><?php echo Yii::t('t','Titel');?></th>
                     <th><?php echo Yii::t('t','Antsällningsform');?></th>
-                    <th><?php echo Yii::t('t','Typ av tjänst');?>t</th>
+                    <th><?php echo Yii::t('t','Typ av tjänst');?></th>
                 </tr>
                 <?php
                 foreach($allModels as $model){
-                    if(!$model->successfulProcess){
+                    if(!$model->successfulProcess && $model->recuiterId ==Yii::app()->user->id){
                 ?>
                 <tr>
                     <td><?php
@@ -72,11 +72,6 @@ $this->menu=array(
 
     </div>
 
-
-
-
-
-
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">
@@ -90,7 +85,7 @@ $this->menu=array(
                 <th><?php echo Yii::t('t','Startdatum');?></th>
                 <th><?php echo Yii::t('t','Titel');?></th>
                 <th><?php echo Yii::t('t','Antsällningsform');?></th>
-                <th><?php echo Yii::t('t','Typ av tjänst');?>t</th>
+                <th><?php echo Yii::t('t','Typ av tjänst');?></th>
                 <th><?php echo Yii::t('t','Slutdatum');?></th>
             </tr>
             <?php

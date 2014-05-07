@@ -23,7 +23,7 @@ $this->breadcrumbs = array(
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>
-                    <a href="#" class="btn btn-success draggable survey-component" id="demo">Demo</a>
+                    <a href="#" class="btn btn-warning survey-component" id="demo"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,6 @@ $this->breadcrumbs = array(
                     </h3>
                 </div>
                 <div class="panel-body dropzone">
-                    Panel content
                 </div>
             </div>
         </div>
@@ -141,6 +140,9 @@ $this->breadcrumbs = array(
     }
     #formLayoutDropzoneDiv{
         min-height: 400px;
+    }
+    #demo{
+        margin-top: 25px;
     }
     body {
         margin-top:55px;

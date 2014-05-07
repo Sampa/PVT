@@ -57,6 +57,8 @@ $this->breadcrumbs = array(
         </div>
     </div>
 </div>
+<?php require_once("formFieldTemplates.php");?>
+
 <script>
     $(function(){
         initialize();
@@ -75,7 +77,7 @@ $this->breadcrumbs = array(
                 {
                     $('.survey-component').addClass("draggable"); 
                     alert("Introduction stopped at slide #" + (params.idx + 1));
-                },
+                }
             });    
         });
  
@@ -93,22 +95,43 @@ $this->breadcrumbs = array(
 
             }
         });
+
+
         $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
                 if($(this).attr("id") =="formLayoutDropzoneDiv"){
-                    var formFieldType = ui.draggable.attr("data-original-title");
-                    $("#formLayoutDropzoneDiv").append("du skapade ett "+formFieldType);
-                    switch(formFieldType){
-                        case "Textfält":
-    //                        alert("du skapade ett textfält");
-                            break;
-                        case "Dropdown":
-    //                        alert("du skapade ett textfält");
-                            break;
-                    }
+                    bootbox.prompt("Formulera din fråga här:", function(question) {
+                        if (question  === null) {
+                            return; //skit i resten om användaren inte anger en fråga
+                        } else {
+                            var questionTemplate = $("#questionTemplate").clone();
+                            var formFieldType = ui.draggable.attr("data-original-title");
+                            questionTemplate.children(":last-child").html(question);
+                            switch(formFieldType){
+                                case "Textfält":
+                                    //clona rätt template element
+                                    var clone = $("[name=textTemplate]").clone();
+                                    //hämta antalet likadana element i dropzone för att kunna ge unikt namn
+                                    var currentNumberOfTextFields = $("#formLayoutDropzoneDiv .texttemplate");
+                                    //byt ut name attributet till något unikt med hjälp av antalet ovan
+                                    clone.attr("name","textField"+currentNumberOfTextFields.length);
+                                    //kasta in nya elementet sist i diven
+                                    $("#formLayoutDropzoneDiv").append(clone);
+                                    //kasta in frågan i clone elementet men före formulärfältet
+                                    clone.prepend(questionTemplate);
+
+                                    break;
+                                //etc
+                                case "Dropdown":
+                                    break;
+                            }
+                        }
+                    });
+
                 }
             }
         });
+
     };
 </script>
 <style type="text/css">

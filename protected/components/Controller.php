@@ -85,6 +85,7 @@ class Controller extends CController
         cs()->registerScriptFile(bu() . '/js/select2.min.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/select2_locale_sv.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/bootstro.js', CClientScript::POS_END);
+        cs()->registerScriptFile(bu() . '/js/bootbox.min.js', CClientScript::POS_END);
     }
 
     //custom application css

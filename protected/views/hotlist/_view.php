@@ -1,6 +1,7 @@
 <?php
 /* @var $this HotlistController */
 /* @var $data Hotlist */
+/* @var $hotlistRating HotlistRating */
 ?>
 
 <div class="view">
@@ -16,9 +17,9 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('rpId')); ?>:</b>
 	<?php echo CHtml::encode($data->rpId); ?>
 	<br />
-    <b><?php echo CHtml::encode($data->getAttributeLabel('raiting')); ?>:</b>
-    <?php echo CHtml::encode($data->raiting); ?>
-    <br />
+<!--    <b>--><?php //echo CHtml::encode($data->getAttributeLabel('rating')); ?><!--:</b>-->
+<!--    --><?php //echo CHtml::encode($data->hotlistRating); ?>
+<!--    <br />-->
     <b><?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:</b>
     <?php echo CHtml::encode($data->cv->typeOfEmployment); ?>
     <br />
@@ -32,24 +33,40 @@
 
 </div>
 <article class="search-result row">
-    <div class="col-xs-12 col-sm-12 col-md-3">
-        <?php
-        if($data->raiting == 3){?>
-        <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/YellowSmily.jpg" /></a>
-       <?php }
-        else if($data->raiting == 1 || $data->raiting == 2){?>
-            <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/RedSmily.png" /></a>
-         <?php }
-         else{ ?>
-             <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/GreenSmily.jpg" /></a>
-        <?php }?>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="">
+            Markera allt
+        </label>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-1">
+    </div>
+    <article class="search-result row">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Markera
+            </label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3">
+<!--        --><?php
+//        if($data->hotlistRating->rating == 3){?>
+<!--        <a href="--><?php //echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?><!--" title="Lorem ipsum" class="thumbnail"><img src="--><?php //echo Yii::app()->baseUrl;?><!--/img/YellowSmily.jpg" /></a>-->
+<!--       --><?php //}
+//        else if($data->hotlistRating->rating == 1 || $data->hotlistRating->rating == 2){?>
+<!--            <a href="--><?php //echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?><!--" title="Lorem ipsum" class="thumbnail"><img src="--><?php //echo Yii::app()->baseUrl;?><!--/img/RedSmily.png" /></a>-->
+<!--         --><?php //}
+//         else{ ?>
+<!--             <a href="--><?php //echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?><!--" title="Lorem ipsum" class="thumbnail"><img src="--><?php //echo Yii::app()->baseUrl;?><!--/img/GreenSmily.jpg" /></a>-->
+<!--        --><?php //}?>
 
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3">
+    <div class="col-xs-12 col-sm-12 col-md-2">
 
-        <?php for($r = 0; $r < $data->raiting; $r++){?>
-            <i class="glyphicon glyphicon-star"></i>
-        <?php } ?><span>rang</span>
+<!--        --><?php //for($r = 0; $r < $data->hotlistRating->rating; $r++){?>
+<!--            <i class="glyphicon glyphicon-star"></i>-->
+<!--        --><?php //} ?><!--<span>rang</span>-->
         <ul class="meta-search">
 
 

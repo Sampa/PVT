@@ -1,25 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "hotlist".
+ * This is the model class for table "HotlistRating".
  *
- * The followings are the available columns in table 'hotlist':
- * @property integer $cvId
- * @property integer $rpId
+ * The followings are the available columns in table 'HotlistRating':
  * @property integer $id
- *
- * The followings are the available model relations:
- * @property Cv $cv
- * @property Recruitmentprocess $rp
+ * @property integer $cvId
+ * @property integer $hotlistId
+ * @property integer $rating
  */
-class Hotlist extends CActiveRecord
+class HotlistRating extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'HotList';
+		return 'HotlistRating';
 	}
 
 	/**
@@ -30,11 +27,11 @@ class Hotlist extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cvId, rpId', 'required'),
-			array('cvId, rpId', 'numerical', 'integerOnly'=>true),
+			array('cvId, hotlistId, rating', 'required'),
+			array('cvId, hotlistId, rating', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('cvId, rpId, id', 'safe', 'on'=>'search'),
+			array('id, cvId, hotlistId, rating', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,9 +43,6 @@ class Hotlist extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'hotlistRating'=>array(self::HAS_MANY,'HotlistRating','hotlistId'),
-			'cv' => array(self::BELONGS_TO, 'Cv', 'cvId'),
-			'rp' => array(self::BELONGS_TO, 'Recruitmentprocess', 'rpId'),
 		);
 	}
 
@@ -58,9 +52,10 @@ class Hotlist extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'cvId' => 'Cv',
-			'rpId' => 'Rp',
 			'id' => 'ID',
+			'cvId' => 'Cv',
+			'hotlistId' => 'Hotlist',
+			'rating' => 'Rating',
 		);
 	}
 
@@ -82,9 +77,10 @@ class Hotlist extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('cvId',$this->cvId);
-		$criteria->compare('rpId',$this->rpId);
 		$criteria->compare('id',$this->id);
+		$criteria->compare('cvId',$this->cvId);
+		$criteria->compare('hotlistId',$this->hotlistId);
+		$criteria->compare('rating',$this->rating);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -95,7 +91,7 @@ class Hotlist extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Hotlist the static model class
+	 * @return HotlistRating the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

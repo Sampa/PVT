@@ -20,8 +20,8 @@ $this->menu=array(
     <p><?php echo Yii::t("t", "Här presenteras de cv:n som du valt att lägga till dina favoriter som hör till [titel] rekryteringen. ");?> <br><br> </p>
     <h3> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
     <div class="btn-group">
-        <button id="raiting" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rangordning');?>Middle</button>
-        <!---"raiting" är inte kopplad till "raiting" i databasen--->
+        <button id="rating" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rangordning');?>Middle</button>
+        <!---"rating" är inte kopplad till "rating" i databasen--->
         <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
         <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
         <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->

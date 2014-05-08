@@ -67,7 +67,32 @@
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
 				<h3><a href="#" title=""><?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?></a></h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
+<!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
+                <!-- Button trigger modal -->
+                <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                    Lägg till hotlist
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Lägg till hotlist</h4>
+                            </div>
+                            <div class="modal-body">
+                               <h2>Välkommen</h2>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 			</div>
 			<span class="clearfix borda"></span>
 		</article>

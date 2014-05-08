@@ -90,7 +90,6 @@ jQuery(document).ready(function ($) {
 			$("#geographicAreaForm").fadeIn();
 		}
 	});
-
 	jQuery(".sortButton").on("click",function(){
             var post = <?php echo json_encode($_POST);?>;
             post.sortBy = $(this).attr("id");
@@ -111,7 +110,6 @@ jQuery(document).ready(function ($) {
                         displayText = "rubrik";
                 }
                 $("#sortSelection").html(displayText);
-
             });
         });
 });

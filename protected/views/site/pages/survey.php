@@ -72,12 +72,12 @@
             // Survey-components kan inte ha classen draggable när vi kör bootstro, highlight slutar fungera då.
             // Vi tar därför bort classen innan vi kör.
             // När vi är klara lägger vi tillbaka classen för att få rätt z-index som hör till classen.
-            $('.survey-component').removeClass('draggable');
-            $('.panel-body').removeClass('dropzone');
             startBootstro();
         });
     });
-    function startBootstro(){     
+    function startBootstro(){ 
+        $('.survey-component').removeClass('draggable');
+        $('.panel-body').removeClass('dropzone');    
         bootstro.start(".bootstro", {
                 //Bestämmer att det inte går att klicka i backgrunden för att gå ur guiden.
             stopOnBackdropClick : false,

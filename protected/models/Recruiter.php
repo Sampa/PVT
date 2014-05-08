@@ -16,6 +16,7 @@
  */
 class Recruiter extends CActiveRecord
 {
+	public $beenToSurveyPage;
 	/**
 	 * @return string the associated database table name
 	 */

@@ -4,6 +4,8 @@
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
         Yii::t("t",'Survey'),
     );
+    $recruiter=Recruiter::model()->findByPk(Yii::app()->user->id);
+    $beenToSurveyPage=$recruiter->beenToSurveyPage;
 ?>
 
 <div class="container page-min-height">
@@ -58,30 +60,41 @@
 <script>
     $(function(){
         initialize();
+        var firstTimer = '<?php echo $beenToSurveyPage ?>';
+        if(firstTimer == 0) {
+            startBootstro();
+            <?php 
+                 $recruiter->beenToSurveyPage=1;
+                 $recruiter->save(false);
+            ?>
+        }
         $("#help").click(function(){
             // Survey-components kan inte ha classen draggable när vi kör bootstro, highlight slutar fungera då.
             // Vi tar därför bort classen innan vi kör.
             // När vi är klara lägger vi tillbaka classen för att få rätt z-index som hör till classen.
             $('.survey-component').removeClass('draggable');
             $('.panel-body').removeClass('dropzone');
-            bootstro.start(".bootstro", {
-                //Bestämmer att det inte går att klicka i backgrunden för att gå ur guiden.
-                stopOnBackdropClick : false,
-                nextButtonText : 'Nästa»',
-                prevButtonText : '«Tillbaka',
-                finishButtonText : 'Avsluta guiden',
-                onComplete : function(params)
-                {
-
-                },
-                onExit : function(params)
-                {
-                    $('.survey-component').addClass("draggable");
-                    $('.panel-body').addClass('dropzone');
-                }
-            });
+            startBootstro();
         });
     });
+    function startBootstro(){     
+        bootstro.start(".bootstro", {
+                //Bestämmer att det inte går att klicka i backgrunden för att gå ur guiden.
+            stopOnBackdropClick : false,
+            nextButtonText : 'Nästa»',
+            prevButtonText : '«Tillbaka',
+            finishButtonText : 'Avsluta guiden',
+            onComplete : function(params)
+            {
+
+            },
+            onExit : function(params)
+            {
+                $('.survey-component').addClass("draggable");
+                $('.panel-body').addClass('dropzone');
+            }
+        });
+    };
     function initialize() {
         //fungerar men det fattas något visuellt för att visa att det faktiskt går att göra om storleken
         $( ".resize" ).resizable({

@@ -304,8 +304,8 @@
 </div>
 <section id="geographicAreaForm" style="display:block; margin-left:-15px; " >
 	<div class="col-md-3">
-		<label class="" for="geoProvince"><?php echo Yii::t("t","Kommun");?></label>
-		<select  class="form-control" name="geoProvince" id="geoProvince" >
+		<label class="" for="geoCity"><?php echo Yii::t("t","Kommun");?></label>
+		<select  class="form-control" name="geoCity" id="geoCity" >
 			<option><?php echo Yii::t("t","Välj Kommun");?></option>
 		</select>
 	</div>
@@ -335,17 +335,15 @@
 			});
 		}
 		$(function(){
-			["continent","countries","geoRegion","geoProvince","geoCity"].forEach(function(item,index,list){
+			["countries","geoRegion","geoCity"].forEach(function(item,index,list){
 				$("#"+item).change(function(){
 					if(list[index+1]){
 						getPlaces(this.value,$("#"+list[index+1]));
 					}
 				});
 			});
-			jQuery("#continent").select2();
 			jQuery("#countries").select2();
 			jQuery("#geoRegion").select2();
-			jQuery("#geoProvince").select2();
 			jQuery("#geoCity").select2();
 		});
 	}(window,jQuery,void(0)));

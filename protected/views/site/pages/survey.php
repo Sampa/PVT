@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-md-2 pull-right">
-            <div class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="2">
+            <div style="position: fixed;max-width: 180px;" class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <span class="glyphicon glyphicon-trash"></span> Papperskorg
@@ -55,7 +55,6 @@
     </div>
 </div>
 <?php require_once("formFieldTemplates.php");?>
-
 <script>
     $(function(){
         initialize();
@@ -78,6 +77,7 @@
                 onExit : function(params)
                 {
                     $('.survey-component').addClass("draggable");
+                    $('.panel-body').addClass('dropzone');
                 }
             });
         });
@@ -115,6 +115,9 @@
         }
         $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
+                if(!$('.panel-body').hasClass('dropzone')){
+                    return;
+                }
                 if($(this).attr("id") =="formLayoutDropzoneDiv"){
                     bootbox.prompt("Formulera din fråga här:", function(question) {
                         if (question  === null)

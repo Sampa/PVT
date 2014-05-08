@@ -68,7 +68,14 @@ class Recruiter extends CActiveRecord
 			'orgName' => 'Org Name',
 		);
 	}
-
+    public static function getProcessesAsList(){
+        $loggedInRecruiter = Recruiter::model()->findByPk(Yii::app()->user->id);
+        if($loggedInRecruiter){
+            Yii::app()->controller->renderPartial("/recruiter/_recruiterProcessesAsList",
+                array("processes"=>$loggedInRecruiter->recruitmentprocesses)
+            );
+        }
+    }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

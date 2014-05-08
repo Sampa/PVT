@@ -18,13 +18,15 @@
             </div>
             <div class="panel-body wrapper-component">
                 <div>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Text</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Checkbox</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="slider" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Textfält</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="textarea" title="Textarea"><span class="glyphicon glyphicon-comment"></span> Textarea</a>
+<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>-->
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Flerval</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="radio" title="Radio"><span class="glyphicon glyphicon-list-alt"></span> Enkelval</a>
+<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="slider" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>-->
+<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>-->
+<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>-->
+<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>-->
                     <a href="#" class="btn btn-warning survey-component" id="help"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
                 </div>
             </div>
@@ -49,15 +51,39 @@
                         <span class="glyphicon glyphicon-wrench "></span> Din layout
                     </h3>
                 </div>
-                <div id="formLayoutDropzoneDiv" class="panel-body dropzone"></div>
-                <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
+                    <div id="formLayoutDropzoneDiv" class="panel-body dropzone"></div>
+                    <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
             </div>
+
         </div>
 
     </div>
 </div>
 <?php require_once("formFieldTemplates.php");?>
+
 <script>
+    $(document).on("click",".addAlternative",function(){
+        var place = $(this);
+        var createRadio = $(this).hasClass("newRadioAlternative");
+        var optionsName = place.closest("div").attr("name");
+        bootbox.prompt("Ange svarsalternativet", function(alternative) {
+            if (alternative === null)
+                return; //skit i resten om användaren inte anger en fråga
+            var clone,title;
+            if(createRadio){
+                clone = $("#radioField").children("label").clone();
+            }else{
+                clone  = $("#checkboxField").children("label").clone();
+            }
+            //närmaste diven har ett unikt namn vi kan använda
+            clone.children("input").attr("name",optionsName);
+            title = $("#optionText").clone();
+            title.attr("id",$(".optionText").length);
+            title.html(alternative);
+            clone.prepend(title);
+            $(clone).insertBefore(place);
+        });
+    });
     $(function(){
         initialize();
         var firstTimer = '<?php echo $beenToSurveyPage ?>';
@@ -111,8 +137,7 @@
 
             }
         });
-        function appendNewFormElements(numofOptions,question,formFieldType){
-            alert(numofOptions);
+        function appendNewFormElements(question,formFieldType){
             //clona rätt template element
             var questionTemplate = $("#questionTemplate").clone();
             questionTemplate.children(":last-child").html(question);
@@ -142,28 +167,9 @@
                         var pause = true;
                         switch (formFieldType){
                             case "dropdown":
-                                alert("hej");
-                                var message = $("#numberOfOptionsDiv").html();
-                                bootbox.dialog({
-                                    message: message,
-                                    title: "Välj antal svarsalternativ",
-                                    buttons: {
-                                        main: {
-                                            label: "Ok",
-                                            className: "btn-success",
-                                            callback: function() {
-                                                numOfOptions =$("#numberOfOptionsSelect").val();
-                                                appendNewFormElements(numOfOptions,question,formFieldType);
-                                            }
-                                        }
-                                    }
-                                });
-                            break;
-                            default:
-                                appendNewFormElements(0,question,formFieldType);
+                                break;
                         }
-
-
+                        appendNewFormElements(question,formFieldType);
                     });
                 }
             }

@@ -67,7 +67,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
 				<h3><a href="#" title=""><?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?></a></h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
+                <span class="plus"><a href="#" title="Lorem ipsum"><i id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->
                 <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">

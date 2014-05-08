@@ -40,7 +40,7 @@ $this->menu=array(
                 <tr>
                     <th><?php echo Yii::t('t','Startdatum');?></th>
                     <th><?php echo Yii::t('t','Titel');?></th>
-                    <th><?php echo Yii::t('t','Antsällningsform');?></th>
+                    <th><?php echo Yii::t('t','Anställnings');?></th>
                     <th><?php echo Yii::t('t','Typ av tjänst');?></th>
                 </tr>
                 <?php
@@ -49,24 +49,30 @@ $this->menu=array(
                 ?>
                 <tr>
                     <td><?php
-                        echo substr($model->startDate, 0, 10);
-                        ?></td>
+                            echo substr($model->startDate, 0, 10);
+                        ?>
+                    </td>
                     <td><?php
-                        echo $model->title;
-                        ?></td>
+                            echo $model->title;
+                        ?>
+                    </td>
                     <td><?php
-                        echo $model->typeOfEmployment;
-                        ?></td>
+                            echo $model->typeOfEmployment;
+                        ?>
+                    </td>
                     <td><?php
-                        echo $model->typeOfService;
-                        ?></td>
+                            echo $model->typeOfService;
+                        ?>
+                    </td>
+                    <td>
+                        <a href="<?php echo Yii::app()->baseUrl;?>/recruitmentprocess/view/<?php echo $model->id?>">
+                            <span class="glyphicon glyphicon-search"></span>  <?php echo Yii::t("t","Granska process");?>
+                        </a>
+                    </td>
                 </tr>
                     <?php
-                     }
-                }
-
-                    ?>
-
+                    }
+                }?>
             </tbody>
         </table>
 

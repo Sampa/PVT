@@ -65,10 +65,11 @@ class RecruitmentprocessController extends Controller
 		$model=new Recruitmentprocess;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if (isset($_POST['Recruitmentprocess'])) {
-			$model->attributes=$_POST['Recruitmentprocess'];
+			$model->attributes = $_POST['Recruitmentprocess'];
+			$model->recuiterId = Yii::app()->user->id;
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}

@@ -70,11 +70,17 @@
                 <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->
-                <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-                    Lägg till hotlist
+                <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
+                    Lägg till hotlist <span class="caret"></span>
                 </button>
+                <ul class="dropdown-menu pull-right">
+                	....
+                </ul>
+
+                
+
                 <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -82,18 +88,18 @@
                                 <h4 class="modal-title" id="myModalLabel">Lägg till hotlist</h4>
                             </div>
                             <div class="modal-body">
-                               <h2>Välkommen</h2>
+                               <h5>Här kan du lägga till detta cv i en hotlist. Varje rekryteringsprocess har en egen hotlist. Välj en befintlig hotlist eller skapa en ny process.</h5>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-primary">Ny rekryteringsprocess</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-			</div>
+			</div> -->
 			<span class="clearfix borda"></span>
 		</article>
 		<hr>

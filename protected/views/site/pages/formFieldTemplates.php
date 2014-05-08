@@ -10,27 +10,37 @@ utan att bryta javascriptet
     <div name="textTemplate">
         <input class="form-control textTemplate" type="text"/>
     </div>
+
+    <!-- för vanliga textareas-->
+    <div name="textareaTemplate">
+        <textarea class="form-control textareaTemplate"></textarea>
+    </div>
     <!-- för select -->
     <div name="dropdownTemplate">
         <select class="form-control dropdownTemplate">
             <option>--Välj...--</option>
         </select>
     </div>
-    <!-- checkboxes-->
+    <!-- checkboxes har bara add alternativ button-->
     <div name="checkboxTemplate">
+        <a class="btn btn-success addAlternative"><?php echo Yii::t("t", "Nytt alternativ");?></a>
+    </div>
+    <!-- mallen för ett checkboxfield -->
+    <div id="checkboxField">
         <label class="checkbox-inline">
-            <input class="form-control checkboxTemplate" type="checkbox"/>
+            <input class="checkboxTemplate" type="checkbox"/>
         </label>
     </div>
-
-    <!-- Template för att välja antal svars alternativ -->
-   <div id="numberOfOptionsDiv">
-        <select id="numberOfOptionsSelect" class="form-control">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-   </div
+    <!-- checkboxes har bara add alternativ button-->
+    <div name="radioTemplate">
+        <a class="newRadioAlternative  btn btn-success addAlternative"><?php echo Yii::t("t", "Nytt alternativ");?></a>
+    </div>
+    <!-- mallen för ett checkboxfield -->
+    <div id="radioField">
+        <label class="radio-inline">
+            <input class="radioTemplate" type="radio"/>
+        </label>
+    </div>
+    <!-- används för alternativens labels-->
+    <span id="optionText" class="optionText"></span>
 </section>

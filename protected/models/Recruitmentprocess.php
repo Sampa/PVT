@@ -38,10 +38,10 @@ class Recruitmentprocess extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, recuiterId, startDate, typeOfEmployment, typeOfService, company, geographicAreaID, successfulProcess', 'required'),
-			array('recuiterId, salaryOfHired, geographicAreaID', 'numerical', 'integerOnly'=>true),
+			array('title, typeOfEmployment', 'required'),
+			// array('recuiterId, salaryOfHired, geographicAreaID', 'numerical', 'integerOnly'=>true),
 			array('typeOfEmployment, typeOfService, successfulProcess', 'length', 'max'=>255),
-			array('endDate', 'safe'),
+			// array('endDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, recuiterId, startDate, endDate, typeOfEmployment, typeOfService, salaryOfHired, company, geographicAreaID, successfulProcess', 'safe', 'on'=>'search'),

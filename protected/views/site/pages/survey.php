@@ -98,25 +98,56 @@
 
             }
         });
+        function appendNewFormElements(numofOptions,question,formFieldType){
+            alert(numofOptions);
+            //clona rätt template element
+            var questionTemplate = $("#questionTemplate").clone();
+            questionTemplate.children(":last-child").html(question);
+            var clone = $("[name="+formFieldType+"Template]").clone();
+            //hämta antalet likadana element i dropzone för att kunna ge unikt namn
+            var currentNumberOfTextFields = $("#formLayoutDropzoneDiv ."+formFieldType+"Template");
+            //byt ut name attributet till något unikt med hjälp av antalet ovan
+            clone.attr("name",formFieldType+currentNumberOfTextFields.length);
+            //kasta in nya elementet sist i diven
+            $("#formLayoutDropzoneDiv").append(clone);
+            //kasta in frågan i clone elementet men före formulärfältet
+            clone.prepend(questionTemplate);
+        }
         $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
                 if($(this).attr("id") =="formLayoutDropzoneDiv"){
                     bootbox.prompt("Formulera din fråga här:", function(question) {
                         if (question  === null)
                             return; //skit i resten om användaren inte anger en fråga
-                        //clona rätt template element
-                        var questionTemplate = $("#questionTemplate").clone();
+                        //vad man valde för typ
                         var formFieldType = ui.draggable.attr("id");
-                        questionTemplate.children(":last-child").html(question);
-                        var clone = $("[name="+formFieldType+"Template]").clone();
-                        //hämta antalet likadana element i dropzone för att kunna ge unikt namn
-                        var currentNumberOfTextFields = $("#formLayoutDropzoneDiv ."+formFieldType+"Template");
-                        //byt ut name attributet till något unikt med hjälp av antalet ovan
-                        clone.attr("name",formFieldType+currentNumberOfTextFields.length);
-                        //kasta in nya elementet sist i diven
-                        $("#formLayoutDropzoneDiv").append(clone);
-                        //kasta in frågan i clone elementet men före formulärfältet
-                        clone.prepend(questionTemplate);
+                        //defaultVärde
+                        var numOfOptions = 0;
+                        var pause = true;
+                        switch (formFieldType){
+                            case "dropdown":
+                                alert("hej");
+                                var message = $("#numberOfOptionsDiv").html();
+                                bootbox.dialog({
+                                    message: message,
+                                    title: "Välj antal svarsalternativ",
+                                    buttons: {
+                                        main: {
+                                            label: "Ok",
+                                            className: "btn-success",
+                                            callback: function() {
+                                                numOfOptions =$("#numberOfOptionsSelect").val();
+                                                appendNewFormElements(numOfOptions,question,formFieldType);
+                                            }
+                                        }
+                                    }
+                                });
+                            break;
+                            default:
+                                appendNewFormElements(0,question,formFieldType);
+                        }
+
+
                     });
                 }
             }

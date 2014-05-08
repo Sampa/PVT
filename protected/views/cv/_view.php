@@ -74,9 +74,11 @@
                     Lägg till hotlist <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu pull-right">
-                	....
+                    <?php echo Recruiter::getProcessesAsList();?>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo Yii::app()->createUrl("/recruitmentprocess/create");?>"><?php echo Yii::t("t","Skapa ny process");?></a></li>
                 </ul>
-
+             </div>
                 
 
                 <!-- Modal -->

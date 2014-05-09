@@ -31,9 +31,14 @@ $this->menu=array(
   <div class="clearfix visible-xs"></div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
 </div>
-
+<?php if ($model->typeOfEmployment=='employment'){
+	$typeOfEmployment='Anställning';
+}else{ 
+	$typeOfEmployment='Konsult';
+}
+?>
 <div class="row">
-  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Anställningsform: </strong>"),"<span style='margin-left:20px'> $model->typeOfEmployment</span>"?></div>
+  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Anställningsform: </strong>"),"<span style='margin-left:20px'> $typeOfEmployment</span>"?></div>
 
 </div>
 <div class="row">

@@ -43,6 +43,6 @@
         <p><?php echo Yii::t("t", "Till dig som behöver kompetent arbetskraft. På CV-pages hittar du enkelt dina kandidater. Vår databas innehåller cv:n från ett brett spektrum av 
         brancher. Du kan lätt söka efter olika folk som söker olika former av anställning. Databasen har en global räckvidd, vilket innebär att du kan hitta kompetens på olika platser i världen. ");?> .</p>
 
-        <p><a href="<?php echo Yii::app()->baseUrl;?>/cv"class="btn btn-primary btn-btn btn-block" href="#"><?php echo Yii::t("t","Sök i cv-databasen ");?></a></p>
+        <p><a href="<?php echo Yii::app()->baseUrl;?>/cv"class="btn btn-primary btn-block" href="#"><?php echo Yii::t("t","Sök i cv-databasen ");?></a></p>
     </div>
 </div>

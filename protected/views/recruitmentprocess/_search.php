@@ -15,7 +15,7 @@
 
                     <?php echo $form->textAreaControlGroup($model,'title',array('rows'=>6,'span'=>8)); ?>
 
-                    <?php echo $form->textFieldControlGroup($model,'recuiterId',array('span'=>5)); ?>
+                    <?php echo $form->textFieldControlGroup($model,'recruiterId',array('span'=>5)); ?>
 
                     <?php echo $form->textFieldControlGroup($model,'endDate',array('span'=>5)); ?>
 

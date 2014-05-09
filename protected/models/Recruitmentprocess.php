@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'recruitmentprocess':
  * @property integer $id
  * @property string $title
- * @property integer $recuiterId
+ * @property integer $recruiterId
  * @property string $startDate
  * @property string $endDate
  * @property string $typeOfEmployment
@@ -18,7 +18,7 @@
  *
  * The followings are the available model relations:
  * @property Hotlist[] $hotlists
- * @property Recruiter $recuiter
+ * @property Recruiter $recruiter
  */
 class Recruitmentprocess extends CActiveRecord
 {
@@ -39,12 +39,12 @@ class Recruitmentprocess extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, typeOfEmployment', 'required'),
-			// array('recuiterId, salaryOfHired, geographicAreaID', 'numerical', 'integerOnly'=>true),
+			// array('recruiterId, salaryOfHired, geographicAreaID', 'numerical', 'integerOnly'=>true),
 			array('typeOfEmployment, typeOfService, successfulProcess', 'length', 'max'=>255),
 			// array('endDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, recuiterId, startDate, endDate, typeOfEmployment, typeOfService, salaryOfHired, company, geographicAreaID, successfulProcess', 'safe', 'on'=>'search'),
+			array('id, title, recruiterId, startDate, endDate, typeOfEmployment, typeOfService, salaryOfHired, company, geographicAreaID, successfulProcess', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +57,7 @@ class Recruitmentprocess extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'hotlists' => array(self::HAS_MANY, 'Hotlist', 'rpId'),
-			'recuiter' => array(self::BELONGS_TO, 'Recruiter', 'recuiterId'),
+			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterId'),
 		);
 	}
 
@@ -69,7 +69,7 @@ class Recruitmentprocess extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => Yii::t("t","Titel"),
-			'recuiterId' => 'Recuiter',
+			'recruiterId' => 'recruiter',
 			'startDate' => 'Start Date',
 			'endDate' => 'End Date',
 			'typeOfEmployment' => Yii::t("t",'Anställningsform'),
@@ -101,7 +101,7 @@ class Recruitmentprocess extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('recuiterId',$this->recuiterId);
+		$criteria->compare('recruiterId',$this->recruiterId);
 		$criteria->compare('startDate',$this->startDate,true);
 		$criteria->compare('endDate',$this->endDate,true);
 		$criteria->compare('typeOfEmployment',$this->typeOfEmployment,true);

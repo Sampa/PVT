@@ -69,7 +69,7 @@ class RecruitmentprocessController extends Controller
 
 		if (isset($_POST['Recruitmentprocess'])) {
 			$model->attributes = $_POST['Recruitmentprocess'];
-			$model->recuiterId = Yii::app()->user->id;
+			$model->recruiterId = Yii::app()->user->id;
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}

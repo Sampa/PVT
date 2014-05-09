@@ -13,8 +13,8 @@
 	<?php echo CHtml::encode($data->title); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('recuiterId')); ?>:</b>
-	<?php echo CHtml::encode($data->recuiterId); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('recruiterId')); ?>:</b>
+	<?php echo CHtml::encode($data->recruiterId); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('endDate')); ?>:</b>

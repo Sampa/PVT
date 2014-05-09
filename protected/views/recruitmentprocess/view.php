@@ -28,7 +28,7 @@ $this->menu=array(
     'attributes'=>array(
 		'id',
 		'title',
-		'recuiterId',
+		'recruiterId',
 		'endDate',
 	),
 )); ?>

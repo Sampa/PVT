@@ -52,7 +52,7 @@ class Recruiter extends CActiveRecord
 		return array(
 			'messages' => array(self::HAS_MANY, 'Message', 'recruiterID'),
 			'user' => array(self::BELONGS_TO, 'User', 'userId'),
-			'recruitmentprocesses' => array(self::HAS_MANY, 'Recruitmentprocess', 'recuiterId'),
+			'recruitmentprocesses' => array(self::HAS_MANY, 'Recruitmentprocess', 'recruiterId'),
 			'surveys' => array(self::HAS_MANY, 'Survey', 'recruiterID'),
 		);
 	}

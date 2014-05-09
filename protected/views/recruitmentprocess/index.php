@@ -45,7 +45,7 @@ $this->menu=array(
                 </tr>
                 <?php
                 foreach($allModels as $model){
-                    if(!$model->successfulProcess && $model->recuiterId ==Yii::app()->user->id){
+                    if(!$model->successfulProcess && $model->recruiterId ==Yii::app()->user->id){
                 ?>
                 <tr>
                     <td><?php

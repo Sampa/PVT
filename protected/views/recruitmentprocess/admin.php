@@ -49,7 +49,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'title',
-		'recuiterId',
+		'recruiterId',
 		'endDate',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',

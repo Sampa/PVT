@@ -5,9 +5,12 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Recruitmentprocesses'=>array('index'),
-	$model->title,
+    Yii::t('t', 'Hem') => Yii::app()->getHomeUrl(),
+     'Rekryteringsprocesser'=>array('index'),
+    $model->title,
+
 );
+
 
 $this->menu=array(
 	array('label'=>'List Recruitmentprocess', 'url'=>array('index')),
@@ -17,9 +20,36 @@ $this->menu=array(
 	array('label'=>'Manage Recruitmentprocess', 'url'=>array('admin')),
 );
 ?>
+ <div class="page-header">
+<h1><?php echo Yii::t('t', 'Visar '),$model->title; ?></h1>
+</div>
 
-<h1>View Recruitmentprocess #<?php echo $model->id; ?></h1>
+<div class="row">
+  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Typ av tjänst: </strong>"), "<span style='margin-left:52px'> $model->typeOfService</span>"?></div>
+  <div class="col-xs-6 col-sm-4"></div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+</div>
 
+<div class="row">
+  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Anställningsform: </strong>"),"<span style='margin-left:20px'> $model->typeOfEmployment</span>"?></div>
+
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Startdatum: </strong>"),"<span style='margin-left:60px'> $model->startDate</span>"?></div>
+  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Slutdatum:</strong>"),"<span style='margin-left:55px'>$model->endDate</span>"?></div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6 col-sm-4"><?php echo Yii::t("t", "<strong>Geografisk plats: </strong>"),"<span style='margin-left:29px'> $model->geographicAreaID</span>"?></div>
+
+</div>
+<h3><?php echo Yii::t("t","Mina kommentarer");?></h3>
+<textarea class="form-control" rows="3"></textarea>
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(
         'class' => 'table table-striped table-condensed table-hover',
@@ -30,5 +60,7 @@ $this->menu=array(
 		'title',
 		'recruiterId',
 		'endDate',
+		'typeOfService',
+		'typeOfEmployment'
 	),
 )); ?>

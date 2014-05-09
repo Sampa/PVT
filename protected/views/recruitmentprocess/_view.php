@@ -21,5 +21,11 @@
 	<?php echo CHtml::encode($data->endDate); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('typeOfService')); ?>:</b>
+	<?php echo CHtml::encode($data->typeOfService); ?>
+	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:</b>
+	<?php echo CHtml::encode($data->endDate); ?>
+	<br />
 </div>

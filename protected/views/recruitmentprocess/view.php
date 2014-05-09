@@ -29,7 +29,29 @@ $this->menu=array(
   <div class="col-xs-6 col-sm-4"></div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix visible-xs"></div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4"><!-- Button trigger modal -->
+<button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
+  <?php echo Yii::t("t","Avsluta Rekryteringsprocessen");?>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Yii::t("t","Avsluta Rekryteringsprocessen");?></h4>
+      </div>
+      <div class="modal-body">
+        <body><?php echo Yii::t("t","Här fyller du i uppgifter om den avslutade processen");?></body>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div></div>
 </div>
 <?php if ($model->typeOfEmployment=='employment'){
 	$typeOfEmployment='Anställning';

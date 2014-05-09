@@ -40,7 +40,7 @@ $this->menu=array(
                 <tr>
                     <th><?php echo Yii::t('t','Startdatum');?></th>
                     <th><?php echo Yii::t('t','Titel');?></th>
-                    <th><?php echo Yii::t('t','Anställnings');?></th>
+                    <th><?php echo Yii::t('t','Anställningsform');?></th>
                     <th><?php echo Yii::t('t','Typ av tjänst');?></th>
                 </tr>
                 <?php

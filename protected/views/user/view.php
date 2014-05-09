@@ -18,7 +18,7 @@ $this->menu=array(
 );
 ?>
 <div class = 'page-header'>
-	<h1>Mina sidor</h1>
+	<h1><?php echo Yii::t('t','Mina sidor');?></h1>
 </div>
 <?php if(!isset($rmodel)): ?>
 	<?php $this->widget('zii.widgets.CDetailView',array(

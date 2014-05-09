@@ -63,9 +63,9 @@ class Recruiter extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'VAT' => 'Vat',
+			'VAT' => Yii::t('t', 'VAT'),
 			'userId' => 'User',
-			'orgName' => 'Org Name',
+			'orgName' => Yii::t('t', 'Företagsnamn'),
 		);
 	}
     public static function getProcessesAsList(){

@@ -22,4 +22,4 @@ $this->menu=array(
         <h1><?php echo Yii::t("t", "Uppdatera användaruppgifter");?></h1>
     </div>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'rmodel' => $rmodel,)); ?>

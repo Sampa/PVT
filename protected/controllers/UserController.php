@@ -49,8 +49,10 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$rmodel=Recruiter::model()->findByPk($id);
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'rmodel'=>$rmodel
 		));
 	}
 
@@ -85,31 +87,46 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$rmodel=Recruiter::model()->findByPk($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
-		if (isset($_POST['User'])) {
-			if(!$_POST['User']['username']===''){
+		if (isset($_POST['User'])||isset($_POST['Recruiter'])){
+			if($_POST['User']['username']!==''){
 				$model->username = $_POST['User']['username'];
 			}
-			if($_POST['User']['fullname']!==''){
+			if($_POST['User']['fullname']!==''){				
 				$model->name = $_POST['User']['fullname'];				
 			}
-			if(!$_POST['User']['email']===''){
+			if($_POST['User']['email']!==''){
 				$model->email = $_POST['User']['email'];
 			}
-			if(!$_POST['User']['new_password']===$_POST['User']['password_confirm']){
-				$model->password = null; // $_POST['User']['new_password'];
+			if($_POST['User']['new_password']===$_POST['User']['password_confirm']){
+				$_POST['User']['new_password'];
 			}
+			
 			$model->notify = $_POST['User']['notify'];
-			if ($model->save()) {
+			if($rmodel){
+				if($_POST['Recruiter']['orgName']!==''){ //Sparar inte stuff!
+					$_POST['Recruiter']['orgName'];
+				}
+				if($_POST['Recruiter']['VAT']!==''){	//Sparar inte heller stuff
+					$_POST['Recruiter']['VAT'];
+				}
+				if ($model->save() || $rmodel->save()) {
+					$this->redirect(array('view','id'=>$model->id));
+				}
+			}
+			if(!$rmodel){
+				if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
+				}
 			}
 		}
-
 		$this->render('update',array(
 			'model'=>$model,
+			'rmodel'=>$rmodel,
 		));
 	}
 

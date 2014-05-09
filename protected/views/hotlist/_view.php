@@ -53,7 +53,7 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
         <h3><a href="#" title=""><?php echo CHtml::encode($data->cv->title); ?> </a></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
+        <p>Början på pdf-texten här?</p>
         <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-comment"></i></a></span><span><?php echo Yii::t("t"," Chatt");?></span>
         <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-file"></i></a></span><span><?php echo Yii::t("t"," Enkät");?></span>
     </div>

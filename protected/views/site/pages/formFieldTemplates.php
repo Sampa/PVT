@@ -18,7 +18,7 @@ utan att bryta javascriptet
     <!-- för select -->
     <div name="dropdownTemplate">
         <select class="form-control dropdownTemplate">
-            <option>--Välj...--</option>
+            <option>--Välj--</option>
         </select>
     </div>
     <!-- checkboxes har bara add alternativ button-->
@@ -43,4 +43,11 @@ utan att bryta javascriptet
     </div>
     <!-- används för alternativens labels-->
     <span id="optionText" class="optionText"></span>
+    <!--sortable li template-->
+    <li id="sortableLiTemplate" class="insideDroppable ">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a></div>
+            <div class="panel-body"></div>
+        </div>
+    </li>
 </section>

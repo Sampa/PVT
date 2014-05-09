@@ -1,0 +1,36 @@
+1. man skapar prototyper för att snabbt kunna få feedback för att veta hur man sedan ska gå vidare. Prototypen kan då testas mot kund för att se om det uppfyller kraven är tänkt.
+
+3. Alla typer av tester som görs på systemet t.ex säkerhets tester, funkionella tester
+4. Gör man en spike så testar man att göra en kritisk uppgift man isolerar för att se om det går och vilka problem man kan stöta på
+5. Produkten uppdateras ofta med de senaste ändringarna under utveckling så att
+man alltid har en fungerande produkt istället för att skapa oberoende moduler som man sen sätter ihop på slutet.
+6. Hur man satt upp systemets miljö, vilka verktyg som används och hur de kommunicerar med varandra. T.ex byggserver, versionshantering
+7. Även känt som VC-system. Ett system som håller reda på olika versioner av mjukvaran, när den ändrades och för att olika utvecklare ska ha samma version av koden.
+8. Legacy code kan referera till kod eller mjukvara  man har ärvt av någon annan, tagit från tidigare versioner av mjukvaran eller kod som inte längre stöds i nuvarande miljö
+9. Tech lead är den i ett team som arbetar med scrum som har bäst koll på tekniken teamet använder och vilka tekniska detaljer teamet arbetar med.
+10.Man  arbetar tillsammans för att undvika misstag en ensam programmerar kan göra. Man programmerar två på en dator, den enda fokuserar på detaljerna i att skriva  koden medans den andra tittar på och funderar mer på val av algoritm och rättar stav- och syntaxfel
+
+A) mvc är en del av presentations lagret
+b)sant, modellen bestämmer relationer till andra och sköter lagring/skapandet/uppdatering av data.
+c)falskt, sådana uträkningar görs innan dom presenteras.
+
+Q3
+1. Exprimentet görs genom att två grupper av tonåringar får under en fest bara använda antingen den ena eller den andra appen.
+Det blir alltså en fältstudie eftersom den görs på plats i en icke simulerad miljö.
+2.Oberoende variabler är exempelvis antalet ungdomar, vilken mobiltelefon man använder i testet (för jämförbarhet)
+Beroende är ungdomarnas tidigare vana av de appar och mobilen som används och hur många bilder som tas totalt.
+3. Resultatet av studien visade att de elever som använt vår app lagt upp många fler bilder under kvällen än de som använt Instagram. De fick dock i snitt färre kommentarer  och mindre uppmärksamhet.
+
+Q4
+a) att inspektera / granska kod manuellt är väldigt snabb och billig metod för att kontrollera om en kod innehåller fel. man kan rätta ennybörjares fel i tid och vet man att ens kod kommer tittas på av andra blir man mer noggrann från början
+
+Nackdelen är att man lätt kan missa svårdetekterade problem och buggar som uppstår när koden körs.
+b)Formal review är praktiskt när ett projekt blir större för att ha struktur för hur code reviews sköt inom gruppen.
+Nackdelen är att det tar mer tid och om kodmängden är liten kan förberedelserna vara oproportioneligt tidskrävande.
+Med en mer lättvikts approach finns det mer utrymme för misstag och slarv när antalet människor minskar och man inte har en väldefinerad metod att gå utifrån.
+
+Q5
+I ett agilt projekt är man beredd att löpande utvärdera arbetsprocessen och tillåter mer ändringar i kravspecifikationen.
+Man fokuserar mer på bra dialog med kunden.
+Agile är en iterativ projekt management strategi medan mer tradionellt följer vattenfalls-flödet.
+Traditionellt är mer styrt och inte kundnyttafokuserad eller kundpriroterad

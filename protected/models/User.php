@@ -127,7 +127,7 @@ class User extends CActiveRecord
     		// NOTE: you should only define rules for those attributes that
     		// will receive user inputs.
     		return array(
-    		/*	array('email', 'required', 'on' => 'checkout'),
+    		/*	array('email', 'required'),
     			array('email', 'unique', 'on' => 'checkout', 'message' => Yii::t('validation', 'Email has already been taken.')),
     			array('email', 'email'),
     			array('newPassword, password_strategy ', 'length', 'max' => 50, 'min' => 8),

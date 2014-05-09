@@ -1,13 +1,13 @@
 <?php
+/* @var $this SurveyController */
+/* @var $model Survey */
     $this->pageTitle = Yii::app()->name . ' - Skapa enkät';
     $this->breadcrumbs = array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
         Yii::t("t",'Survey'),
     );
-
     $recruiter=Recruiter::model()->findByPk(Yii::app()->user->id);
     $beenToSurveyPage=$recruiter->beenToSurveyPage;
-
 ?>
 
 <div class="container page-min-height bootstro" data-bootstro-title="Skapa din personliga enkät" data-bootstro-content="Du använder dig av dessa fält för att bygga upp din enkät så som du vill" data-bootstro-placement="left" data-bootstro-width='150px' data-bootstro-step="0">
@@ -22,28 +22,28 @@
                 <div>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Textfält</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="textarea" title="Textarea"><span class="glyphicon glyphicon-comment"></span> Textarea</a>
-<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>-->
+                    <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>-->
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Flerval</a>
                     <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="radio" title="Radio"><span class="glyphicon glyphicon-list-alt"></span> Enkelval</a>
-<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="slider" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>-->
-<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>-->
-<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>-->
-<!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>-->
+                    <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="slider" title="Slider"><span class="glyphicon glyphicon-resize-horizontal"></span> Slider</a>-->
+                    <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>-->
+                    <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>-->
+                    <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>-->
                     <a href="#" class="btn btn-warning survey-component" id="help"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
                 </div>
             </div>
         </div>
 
-<!--        <div class="col-md-2 pull-right dropzone">-->
-<!--            <div style="position: fixed;max-width: 1800px;min-height: 900px;" class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="3">-->
-<!--                <div class="panel-heading">-->
-<!--                    <h3 class="panel-title">-->
-<!--                        <span class="glyphicon glyphicon-trash"></span>--><?php //echo Yii::t("t","Papperskorg");?>
-<!--                    </h3>-->
-<!--                </div>-->
-<!--                <div id="garbage" name="target" class="panel-body dropzone"></div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="col-md-2 pull-right dropzone">-->
+        <!--            <div style="position: fixed;max-width: 1800px;min-height: 900px;" class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="3">-->
+        <!--                <div class="panel-heading">-->
+        <!--                    <h3 class="panel-title">-->
+        <!--                        <span class="glyphicon glyphicon-trash"></span>--><?php //echo Yii::t("t","Papperskorg");?>
+        <!--                    </h3>-->
+        <!--                </div>-->
+        <!--                <div id="garbage" name="target" class="panel-body dropzone"></div>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="col-md-10 pull-right" >
             <div class="panel panel-info resize bootstro" data-bootstro-title="Bygg upp din enkät här" data-bootstro-content="Dra hit de olika sorters frågor du vill ha med i din enkät" data-bootstro-placement="left" data-bootstro-step="2">
                 <div class="panel-heading">
@@ -51,17 +51,17 @@
                         <span class="glyphicon glyphicon-wrench "></span> Din layout
                     </h3>
                 </div>
-                    <div class="panel-body dropzone" id="formLayoutDropzoneWrapper">
-                        <ul id="formLayoutDropzoneUl"></ul>
-                    </div>
-                    <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
+                <div class="panel-body dropzone" id="formLayoutDropzoneWrapper">
+                    <ul id="formLayoutDropzoneUl"></ul>
+                </div>
+                <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
             </div>
         </div>
     </div>
 </div>
-<?php require_once("formFieldTemplates.php");?>
+<?php $this->renderPartial("formFieldTemplates");?>
 <script>
-//flyttade massor till main.js cvpages/js för läsbarheten
+    //flyttade massor till main.js cvpages/js för läsbarheten
     $(function(){
         initialize();
         var firstTimer = '<?php echo $beenToSurveyPage ?>';
@@ -176,6 +176,6 @@
             }
         });
         $("#formLayoutDropzoneUl").sortable({
-          connectToSortable: '#formLayoutDropzoneUl'
+            connectToSortable: '#formLayoutDropzoneUl'
         });
-}</script>
+    }</script>

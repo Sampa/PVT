@@ -1,13 +1,11 @@
 <?php
 
-class RecruitmentprocessController extends Controller
+class UserController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	
-
 	/**
 	 * @return array action filters
 	 */
@@ -62,15 +60,13 @@ class RecruitmentprocessController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Recruitmentprocess;
+		$model=new User;
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Recruitmentprocess'])) {
-			$model->attributes = $_POST['Recruitmentprocess'];
-			$model->company = $_POST['Recruitmentprocess']['company'];
-			$model->recruiterId = Yii::app()->user->id;
+		if (isset($_POST['User'])) {
+			$model->attributes=$_POST['User'];
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -93,8 +89,20 @@ class RecruitmentprocessController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Recruitmentprocess'])) {
-			$model->attributes=$_POST['Recruitmentprocess'];
+		if (isset($_POST['User'])) {
+			if(!$_POST['User']['username']===''){
+				$model->username = $_POST['User']['username'];
+			}
+			if($_POST['User']['fullname']!==''){
+				$model->name = $_POST['User']['fullname'];				
+			}
+			if(!$_POST['User']['email']===''){
+				$model->email = $_POST['User']['email'];
+			}
+			if(!$_POST['User']['new_password']===$_POST['User']['password_confirm']){
+				$model->password = null; // $_POST['User']['new_password'];
+			}
+			$model->notify = $_POST['User']['notify'];
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -130,11 +138,9 @@ class RecruitmentprocessController extends Controller
 	 */
 	public function actionIndex()
 	{
-        $allModels = Recruitmentprocess::model()->findAll();
-		$dataProvider=new CActiveDataProvider('Recruitmentprocess');
+		$dataProvider=new CActiveDataProvider('User');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-            'allModels'=>$allModels
 		));
 	}
 
@@ -143,10 +149,10 @@ class RecruitmentprocessController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Recruitmentprocess('search');
+		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Recruitmentprocess'])) {
-			$model->attributes=$_GET['Recruitmentprocess'];
+		if (isset($_GET['User'])) {
+			$model->attributes=$_GET['User'];
 		}
 
 		$this->render('admin',array(
@@ -158,12 +164,12 @@ class RecruitmentprocessController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Recruitmentprocess the loaded model
+	 * @return User the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Recruitmentprocess::model()->findByPk($id);
+		$model=User::model()->findByPk($id);
 		if ($model===null) {
 			throw new CHttpException(404,'The requested page does not exist.');
 		}
@@ -172,11 +178,11 @@ class RecruitmentprocessController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Recruitmentprocess $model the model to be validated
+	 * @param User $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax']==='recruitmentprocess-form') {
+		if (isset($_POST['ajax']) && $_POST['ajax']==='user-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}

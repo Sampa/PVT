@@ -36,7 +36,7 @@
     <div class="checkbox">
         <label>
             <input type="checkbox" value="">
-            Markera allt
+            <?php echo Yii::t('t','Markera allt');?>
         </label>
     </div>
 
@@ -46,7 +46,7 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="">
-                Markera
+                 <?php echo Yii::t('t','Markera');?>
             </label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">

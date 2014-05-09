@@ -50,6 +50,7 @@ class User extends CActiveRecord
       * @var integer attribute active,inactive,banned,removed
       */
     public $status;
+    public $name;
 
 
     /**
@@ -129,14 +130,15 @@ class User extends CActiveRecord
     		/*	array('email', 'required', 'on' => 'checkout'),
     			array('email', 'unique', 'on' => 'checkout', 'message' => Yii::t('validation', 'Email has already been taken.')),
     			array('email', 'email'),
-    			array('username, email', 'unique'),
-    			array('passwordConfirm', 'compare', 'compareAttribute' => 'newPassword', 'message' => Yii::t('validation', "Passwords don't match")),
     			array('newPassword, password_strategy ', 'length', 'max' => 50, 'min' => 8),
     			array('email, password, salt', 'length', 'max' => 255),
     			array('requires_new_password, login_attempts', 'numerical', 'integerOnly' => true),*/
     			// The following rule is used by search().
     			// Please remove those attributes that should not be searched.
     			array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
+          array('password_confirm', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('validation', "Passwords don't match")),
+          array('username, email', 'unique'),
+          array('email', 'required'),
     		);
     	}
 
@@ -148,11 +150,13 @@ class User extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'username' => Yii::t('labels', 'Username'),
-            'password' => Yii::t('labels', 'Password'),
-            'new_password' => Yii::t('labels', 'Password'),
-            'password_confirm' => Yii::t('labels', 'Confirm password'),
-            'email' => Yii::t('labels', 'Email'),
+            'username' => Yii::t('t', 'Användarnamn'),
+            'password' => Yii::t('t', 'Password'),
+            'new_password' => Yii::t('t', 'Nytt Lösenord'),
+            'password_confirm' => Yii::t('t', 'Bekräfta lösenord'),
+            'email' => Yii::t('t', 'Email'),
+            'fullname' => Yii::t('t', 'Fullständigt namn'),
+            'notify' => yii::t('t', 'Notifiera mig!'),
         );
     }
 
@@ -163,7 +167,7 @@ class User extends CActiveRecord
     public function getFullName()
     {
 
-        return $this->username;
+        return $this->name;
     }
 
     /**

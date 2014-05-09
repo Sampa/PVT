@@ -22,6 +22,7 @@
  */
 class Recruitmentprocess extends CActiveRecord
 {
+	public $hotlistId;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -56,7 +57,7 @@ class Recruitmentprocess extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'hotlists' => array(self::HAS_MANY, 'Hotlist', 'rpId'),
+			'hotlist' => array(self::BELONGS_TO, 'Hotlist', 'hotlistId'),
 			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterId'),
 		);
 	}

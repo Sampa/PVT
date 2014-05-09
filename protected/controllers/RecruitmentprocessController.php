@@ -51,8 +51,15 @@ class RecruitmentprocessController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$process = $this->loadModel($id);
+		$hotlist = $process->hotlist;
+		
+		$hotlistViewContent = $this->renderPartial('/hotlist/_view',array(
+			'data'=>$hotlist,
+		),true);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$process,
+			'hotlist'=>$hotlistViewContent,
 		));
 	}
 

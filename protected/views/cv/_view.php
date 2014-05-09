@@ -71,7 +71,7 @@
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->
                 <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
-                    Lägg till hotlist <span class="caret"></span>
+                   <?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu pull-right">
                     <?php echo Recruiter::getProcessesAsList();?>

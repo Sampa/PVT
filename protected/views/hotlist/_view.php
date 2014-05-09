@@ -6,49 +6,16 @@
 
 <div class="view">
 
-    	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id),array('view','id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('cvId')); ?>:</b>
-	<?php echo CHtml::encode($data->cvId); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('rpId')); ?>:</b>
-	<?php echo CHtml::encode($data->rpId); ?>
-	<br />
-<!--    <b>--><?php //echo CHtml::encode($data->getAttributeLabel('rating')); ?><!--:</b>-->
-<!--    --><?php //echo CHtml::encode($data->hotlistRating); ?>
-<!--    <br />-->
-    <b><?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:</b>
-    <?php echo CHtml::encode($data->cv->typeOfEmployment); ?>
-    <br />
-    <b><?php echo CHtml::encode($data->getAttributeLabel('geographicAreaId')); ?>:</b>
-    <?php echo CHtml::encode($data->cv->geographicAreaId); ?>
-    <br />
-    <b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
-    <?php echo CHtml::encode($data->cv->date); ?>
-    <br />
-
+ 
 
 </div>
 <article class="search-result row">
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" value="">
-            <?php echo Yii::t('t','Markera allt');?>
-        </label>
-    </div>
+
 
     <div class="col-xs-12 col-sm-12 col-md-1">
     </div>
     <article class="search-result row">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                 <?php echo Yii::t('t','Markera');?>
-            </label>
-        </div>
+        <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
         <div class="col-xs-12 col-sm-12 col-md-3">
 <!--        --><?php
 //        if($data->hotlistRating->rating == 3){?>

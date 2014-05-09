@@ -28,7 +28,7 @@ $this->menu=array(
     </div>
 </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <!-- Default panel contents -->
         <div class="panel-heading">
             <h3><?php echo Yii::t('t','Pågående processer');?></h3>
@@ -83,7 +83,7 @@ $this->menu=array(
 
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">
             <h3><?php echo Yii::t('t','Avslutade processer');?></h3>

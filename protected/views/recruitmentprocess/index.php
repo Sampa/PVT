@@ -40,6 +40,7 @@ $this->menu=array(
                 <tr>
                     <th><?php echo Yii::t('t','Startdatum');?></th>
                     <th><?php echo Yii::t('t','Titel');?></th>
+                    <th><?php echo Yii::t('t','Företag');?></th>
                     <th><?php echo Yii::t('t','Anställningsform');?></th>
                     <th><?php echo Yii::t('t','Typ av tjänst');?></th>
                 </tr>
@@ -54,6 +55,10 @@ $this->menu=array(
                     </td>
                     <td><?php
                             echo $model->title;
+                        ?>
+                    </td>
+                     <td><?php
+                            echo $model->company;
                         ?>
                     </td>
                     <td><?php
@@ -90,6 +95,7 @@ $this->menu=array(
             <tr>
                 <th><?php echo Yii::t('t','Startdatum');?></th>
                 <th><?php echo Yii::t('t','Titel');?></th>
+                <th><?php echo Yii::t('t','Företag');?></th>
                 <th><?php echo Yii::t('t','Antsällningsform');?></th>
                 <th><?php echo Yii::t('t','Typ av tjänst');?></th>
                 <th><?php echo Yii::t('t','Slutdatum');?></th>
@@ -105,6 +111,9 @@ $this->menu=array(
 
                         <td><?php
                             echo $model->title;
+                            ?></td>
+                        <td><?php
+                            echo $model->company;
                             ?></td>
                         <td><?php
                             echo $model->typeOfEmployment;

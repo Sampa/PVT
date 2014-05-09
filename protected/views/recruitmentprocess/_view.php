@@ -26,6 +26,10 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:</b>
-	<?php echo CHtml::encode($data->endDate); ?>
+	<?php echo CHtml::encode($data->typeOfEmployment); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('company')); ?>:</b>
+	<?php echo CHtml::encode($data->company); ?>
 	<br />
 </div>

@@ -4,10 +4,6 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-$useLocalDatabase = true;
-$localDbSettings = include_once(dirname(__FILE__)."/localdbsettings.php");
-if($_SERVER['SERVER_NAME']=="pvt.dsv.su.se")
-	$useLocalDatabase = false;
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'CV-Pages',
@@ -104,8 +100,7 @@ return array(
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
-        'db' => ($useLocalDatabase) ? $localDbSettings:
-                array(       //SERVER
+        'db' => array(       //SERVER
                     'class' => 'CDbConnection',
                     'connectionString' => 'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;',
                     'username' => 'pvt14Group1',

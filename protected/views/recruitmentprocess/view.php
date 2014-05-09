@@ -124,6 +124,9 @@ $this->menu=array(
 </div>
 
 </div>
+ <div class="page-header">
+<h1><?php echo Yii::t("t","Hotlist");?></h1>
+</div>
 <?php echo $hotlist;?>
 
 <!-- 

@@ -279,7 +279,6 @@ class SiteController extends Controller
         }
 
         $this->render('login', array('model' => $model));
-        echo($model);
     }
 
     /**

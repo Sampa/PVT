@@ -164,17 +164,17 @@ class XUpload extends CJuiInputWidget {
             $messages = CJavaScript::encode(array(
                 'fileupload' => array(
                     'errors' => array(
-                        "maxFileSize" => $this->t('File is too big'),
-                        "minFileSize" => $this->t('File is too small'),
-                        "acceptFileTypes" => $this->t('Filetype not allowed'),
-                        "maxNumberOfFiles" => $this->t('Max number of files exceeded'),
-                        "uploadedBytes" => $this->t('Uploaded bytes exceed file size'),
-                        "emptyResult" => $this->t('Empty file upload result'),
+                        "maxFileSize" => Yii::t("t",'Filen är för stor'),
+                        "minFileSize" => Yii::t("t",'Filen är för liten'),
+                        "acceptFileTypes" => Yii::t("t",'Otillåten filtyp'),
+                        "maxNumberOfFiles" => Yii::t("t",'För många filer'),
+                        "uploadedBytes" => Yii::t("t",'Uppladdade bytes är störe än filstorleken'),
+                        "emptyResult" => Yii::t("t",'Tomt resultat'),
                     ),
-                    'error' => $this->t('Error'),
-                    'start' => $this->t('Start'),
-                    'cancel' => $this->t('Cancel'),
-                    'destroy' => $this->t('Delete'),
+                    'error' => Yii::t("t","Fel"),
+                    'start' => Yii::t("t","Starta"),
+                    'cancel' => Yii::t("t","Avbryt"),
+                    'destroy' => Yii::t("t","Ta bort"),
                 ),
             ));
             $js = "window.locale = {$messages}";

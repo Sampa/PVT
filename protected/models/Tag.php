@@ -64,7 +64,7 @@ class Tag extends CActiveRecord
 		);
 	}
 
-	public static function  getTagsAsStrings(){
+	public static function  getTagsAsString(){
         $models = Tag::model()->findAll();
         $stringArray =array();
         foreach($models as $model){

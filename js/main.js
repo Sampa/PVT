@@ -20,6 +20,7 @@
         data.geonames.forEach(function(item){
             target.append( new Option(item.name,item.geonameId) );
         });
+        target.fadeIn();
     }
     $(function(){
         ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
@@ -34,9 +35,9 @@
             });
         });
     });
-    $("#geoRegion").on("change",function(){
-        $(".cityWrapper").fadeIn();
-    });
+//    $("#geoRegion").on("change",function(){
+//        $(".cityWrapper").fadeIn();
+//    });
 }(window,jQuery,void(0)));
 
 

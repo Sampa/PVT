@@ -17,13 +17,16 @@ $this->breadcrumbs=array(
 <!--</div>-->
 <div class="form">
 	<form class="form " role="search" name="search" method="post" >
-		<div class="form-group">
+		<div class="form-group ">
 			<label for="searchbox"><?php echo Yii::t("t","Fritext och meta taggar");?></label>
-			<textarea type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>"></textarea>
+			<div class="input-group">
+				<input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>"/>
+				<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+			</div
 		</div>
 		<div class="row" style="margin-left:2px;margin-top:0px;margin-bottom: 15px; max-width: 50%;">
 			<label for="searchbox"><?php echo Yii::t("t","Nyckelord");?></label>
-			<input type="text" id="taggar" name="tags" class="form-control" placeholder="<?php echo Yii::t("t","Välj en eller flera taggar");?>" />
+			<input type="text" id="taggar" name="tags" class="form-control" placeholder="<?php echo Yii::t("t","Nyckelord att söka på...");?>" />
 		</div>
 		<div>
 			<?php $this->renderPartial('_allCountriesSelect', array('')); ?>

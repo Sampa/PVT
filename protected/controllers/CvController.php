@@ -423,7 +423,9 @@ class CvController extends Controller
 		}
 		return $criteria;
 	}
-
+	/*
+	 * Den här hanterar ifall vi trycker på sökknappen
+	 */
 	private function handleSearch($criteria) {
 		if(isset($_POST['countries'])){
 			$criteria = $this->setTypeOfEmploymentCondition($criteria);

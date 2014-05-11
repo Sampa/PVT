@@ -9,18 +9,18 @@
 		    följa dina rekryteringsprocesser
 		 <br/> Prova att söka i vår cv-databas nu ");?>
 		</p>
-<!--		<br/>-->
+<!--		<br/>
 <!--		<div class="row">-->
 <!--			<div class="input-group input-group-lg">-->
 <!--				<input type="text" class="form-control">-->
 <!--		        <span class="input-group-btn">-->
 <!--			        <a style="font-size: 130%;" href="--><?php //echo Yii::app()->baseUrl;?><!--/cv" class="btn btn-primary">-->
-<!--				        <!--				        -->--><?php ////echo Yii::t("t","Sök");?>
+<!--				        <!--				        --><?php ////echo Yii::t("t","Sök");?>
 <!--				        <i class="glyphicon glyphicon-search"></i>-->
 <!--			        </a>-->
 <!--		        </span>-->
 <!--			</div><!-- /input-group -->
-<!--		</div><!-- /.col-lg-6 -->-->
+<!--		</div><!-- /.col-lg-6 -->
 		<p><a href="<?php echo Yii::app()->baseUrl;?>/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV");?></a> </p>
 	</div>
 </div>

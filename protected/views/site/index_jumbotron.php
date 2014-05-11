@@ -19,7 +19,7 @@
 <!--				        <i class="glyphicon glyphicon-search"></i>-->
 <!--			        </a>-->
 <!--		        </span>-->
-<!--			</div><!-- /input-group -->-->
+<!--			</div><!-- /input-group -->
 <!--		</div><!-- /.col-lg-6 -->-->
 		<p><a href="<?php echo Yii::app()->baseUrl;?>/cv" class="btn btn-primary btn-lg"><?php echo Yii::t("t","Sök efter CV");?></a> </p>
 	</div>

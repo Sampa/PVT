@@ -79,9 +79,11 @@
                 <span class="plus"><a href="#" title="Lorem ipsum"><i id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->
+                <?php if( Yii:: app()->user->getState("role")=="recruiter") { ?>
                 <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
                    <?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
+                <?php } ?>
                 <ul class="dropdown-menu pull-right">
                     <?php echo Recruiter::getProcessesAsList();?>
                     <li class="divider"></li>

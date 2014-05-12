@@ -28,11 +28,11 @@
             </div>
 
             <div class="form-group">
-                <?php echo $form->labelEx($model, 'fullname', array('class' => 'col-lg-12 control-label')); ?>
+                <?php echo $form->labelEx($model, 'name', array('class' => 'col-lg-12 control-label')); ?>
                 <div class="col-lg-5">
-                    <?php echo $form->textField($model, 'fullname', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i fullständigt namn"))); ?>
+                    <?php echo $form->textField($model, 'name', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i fullständigt namn"))); ?>
                     <span class="help-block help-inline ">
-                    <?php echo $form->error($model, 'fullname'); ?>
+                    <?php echo $form->error($model, 'name'); ?>
                         </span>
                 </div>
             </div>

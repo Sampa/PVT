@@ -90,40 +90,40 @@ class UserController extends Controller
 		$rmodel=Recruiter::model()->findByPk($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
-
-		if (isset($_POST['User'])||isset($_POST['Recruiter'])){
+		 $this->performAjaxValidation($model, $rmodel);
+		if (isset($_POST['User'])){
 			if($_POST['User']['username']!==''){
 				$model->username = $_POST['User']['username'];
 			}
-			if($_POST['User']['fullname']!==''){				
-				$model->name = $_POST['User']['fullname'];				
+			if($_POST['User']['name']!==''){				
+				$model->name = $_POST['User']['name'];				
 			}
 			if($_POST['User']['email']!==''){
 				$model->email = $_POST['User']['email'];
 			}
 			if($_POST['User']['new_password']===$_POST['User']['password_confirm']){
-				$_POST['User']['new_password'];
+				$model ->password = $_POST['User']['new_password'];
 			}
-			
 			$model->notify = $_POST['User']['notify'];
-			if($rmodel){
-				if($_POST['Recruiter']['orgName']!==''){ //Sparar inte stuff!
-					$_POST['Recruiter']['orgName'];
-				}
-				if($_POST['Recruiter']['VAT']!==''){	//Sparar inte heller stuff
-					$_POST['Recruiter']['VAT'];
-				}
-				if ($model->save() || $rmodel->save()) {
+			if(!$rmodel){
+				if ($model->save()) {
 					$this->redirect(array('view','id'=>$model->id));
 				}
 			}
-			if(!$rmodel){
-				if ($model->save()) {
+		}
+		
+		if(isset($_POST['Recruiter'])){
+			if($_POST['Recruiter']['orgName']!==''){
+				$rmodel->orgName =$_POST['Recruiter']['orgName'];
+			}
+			if($_POST['Recruiter']['VAT']!==''){
+				$rmodel->VAT = $_POST['Recruiter']['VAT'];
+			}
+			if ($rmodel->save() && $model->save()){
 				$this->redirect(array('view','id'=>$model->id));
-				}
 			}
 		}
+		
 		$this->render('update',array(
 			'model'=>$model,
 			'rmodel'=>$rmodel,
@@ -197,10 +197,10 @@ class UserController extends Controller
 	 * Performs the AJAX validation.
 	 * @param User $model the model to be validated
 	 */
-	protected function performAjaxValidation($model)
+	protected function performAjaxValidation($model, $rmodel)
 	{
 		if (isset($_POST['ajax']) && $_POST['ajax']==='user-form') {
-			echo CActiveForm::validate($model);
+			echo CActiveForm::validate(array($model, $rmodel));
 			Yii::app()->end();
 		}
 	}

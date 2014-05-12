@@ -27,10 +27,31 @@ foreach($model->cvTags as $cvTag){
     ),
     'data'=>$model,
     'attributes'=>array(
-        'date',
+        array(
+            'label' =>'date',
+            'value' => substr($model->date, 0, 10),
+        ),
         'typeOfEmployment',
-        'geographicAreaId',
-        'pdfText',
-        'publisherId'
+        array(
+            'label' => 'Land',
+            'value' => $model->geographicArea->country,
+        ),
+        array(
+            'label' => 'Region',
+            'value' => $model->geographicArea->region,
+        ),
+        array(
+            'label' => 'Stad',
+            'value' => $model->geographicArea->city,
+        ),
+        array(
+            'label' => 'CV:',
+            'type' => 'raw',
+            'value' => Chtml::link($model->title, $model->pathToPdf),
+        ), 
+        array(
+            'label' => 'Ägare',
+            'value' => $model->publisher->username,
+        ),
     ),
 )); ?>

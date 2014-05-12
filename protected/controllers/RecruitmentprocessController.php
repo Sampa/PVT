@@ -76,6 +76,15 @@ class RecruitmentprocessController extends Controller
 		$this->performAjaxValidation($model);
 
 		if (isset($_POST['Recruitmentprocess'])) {
+            if(isset($_POST['geoRegion']) && isset($_POST['geoCity']) && $_POST['countries'] != "default"){
+                $geo = new GeograficArea;
+                $geo->region  = $_POST['geoRegion'];
+                $geo->country  = $_POST['countries'];
+                $geo->city = $_POST['geoCity'];
+                if($geo->save()){
+                    $model->geographicAreaID  = $geo->id;
+                }
+            }
 			$model->attributes = $_POST['Recruitmentprocess'];
 			$model->company = $_POST['Recruitmentprocess']['company'];
 			$model->recruiterId = Yii::app()->user->id;

@@ -53,33 +53,30 @@
                                     <br>
                                     
                                    
-                    <div class="row">
-                            <div class="col-xs-6 col-md-2"></div>
+                    		<div class="row">
+                        		<div class="col-xs-6 col-md-2"></div>
 
-                            <div class="col-xs-6 col-md-8">
-                                <div class="input-group">
-                                	<form action="/cv/index/" method="get"> 
-                                		<input type="text" class="form-control" name="searchKey" placeholder="Sök på Nyckelord">
-                                		<span class="input-group-btn">
-                                			<button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
-                                		</span>
-                                	</form>	
-                            	</div><!-- /input-group -->
+                            		<div class="col-xs-6 col-md-8">
+                            			<form action="/cv/index/" method="get"> 
+                                			<div class="input-group">
+                                				<input type="text" class="form-control" name="searchKey" placeholder="Sök på Nyckelord">
+                                				<span class="input-group-btn">
+                                					<button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
+                                				</span>
+                            				</div><!-- /input-group -->
+                            			</form>
+                            		</div>
 
+                            	<div class="col-xs-6 col-md-2"></div>
 
-                                
-                            	<div class="col-xs-6 col-md-2">
-                           
-                            	</div>
-                            	</div>
+                    		</div>
 
-                        </div>
-                        <br>
+                        	<br>
                             <div class="">
                                <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/cv/">Avancerad sökning</a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register">Registrera dig</a></div>
                         
-                    </div>
-                </div><!-- /header-text -->
+                   		</div>
+                	</div><!-- /header-text -->
                 </div>
                 <div class="item">
                     <img src="http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg" alt="Third slide">

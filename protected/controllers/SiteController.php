@@ -272,9 +272,15 @@ class SiteController extends Controller
                 else
                     Yii::app()->user->setState("role","recruiter"); //there is one
                 //build message string for alittle more readability
+
+                if(Yii::app()->user->getState("role")=='recruiter'){
+                    $roll= Yii::t("t","rekryterare");
+                }else{
+                    $roll=Yii::t("t","publicerare");
+                }
                 $message = Yii::t("t",'Välkommen')." " . app()->user->name." ";
                 $message .= Yii::t("t","du är inloggad som ");
-                $message .= Yii::t("t",Yii::app()->user->getState("role"));
+                $message .= $roll;
                 Yii::app()->user->setFlash('success',$message);
                 $this->redirect(Yii::app()->user->returnUrl);
             }

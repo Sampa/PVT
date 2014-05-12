@@ -277,7 +277,7 @@
 	</div>
 	<div class="col-md-3">
 		<label class="" for="geoRegion"><?php echo Yii::t("t","Region");?></label>
-		<select  class="form-control" name="geoRegion" id="geoRegion" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">
+		<select  class="form-control" name="geoRegion" id="geoRegion" data-placeholder="<?php echo Yii::t("t","Välj region");?>">
 			<option></option>
 			<option id="2721357" value="Blekinge">Blekinge</option>
 			<option id="2699767" value="Dalarna">Dalarna</option>
@@ -302,11 +302,21 @@
 			<option id="2685867" value="Östergötland">Östergötland</option>
 		</select>
 	</div>
-	<div class="col-md-3  cityWrapper" style="display: none;">
-		<label class="" for="geoCity"><?php echo Yii::t("t","Kommun");?></label>
-		<select  class="form-control" name="geoCity" id="geoCity" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">
-			<option></option>
-		</select>
+	<div class="col-md-5 cityWrapper" style="margin-top:7px;display: inline-block;">
+        <div class="col-md-10"
+            <label class="" for="geoCity"><?php echo Yii::t("t","Kommun");?></label>
+            <select  class="form-control" name="geoCity" id="geoCity" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">
+                <option></option>
+            </select>
+        </div>
+        <!-- Vi vill bara visa en add ikon när man skapar cv-->
+        <?php if(isset($showAddButton)):?>
+        <div class="pull-left " id="newAreaWrapper"  style="margin-top: 20px; margin-left: 0px; margin-right: 0px;">
+            <button id="addArea" class="btn btn-success btn-small">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+            </button>
+        </div>
+        <?php endif;?>
 	</div>
 </section>
 <div style="clear:both;"></div>

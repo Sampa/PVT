@@ -32,24 +32,19 @@
         </div>
         <!--Välja geographicAreas-->
         <div class="row" style="">
-            <div class="col-md-1" id="newAreaWrapper"  style="margin-top: 20px; margin-left: 0px; margin-right: -25px;">
-                <a href="#" id="addArea" class="btn btn-success btn-small">
-                    <span class="glyphicon glyphicon-plus-sign"></span>
-                </a>
-            </div>
-            <div class="pull-left col-md-10">
-                <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
+
+            <div class="pull-left col-md-12">
+                <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf,'showAddButton'=>true)); ?>
             </div>
 
         </div>
         <div class="control-group row  error col-md-4">
             <div id="areaNotice" class="alert alert-info" style="display:none;">
                <span id="areaTarget">
-
                </span>
                 Du kan nu välja ett till geografiskt area
             </div>
-            <input type="text" id="listOfAreas" name="geoAreas"/>
+            <input type="hidden" id="listOfAreas" name="geoAreas"/>
         </div>
         <span class="clearfix"></span>
 		<div class="control-group row  error col-md-12">
@@ -90,7 +85,9 @@
 </div><!-- form -->
 <script>
 	$(document).ready(function(){
-        $("#addArea").on("click",function(){
+        $("#addArea").on("click",function(event){
+            //hindra den från att söka i formuläret
+            event.preventDefault();
            var country,region,city;
             country = $("#countries").val();
             region  = $("#geoRegion").val();
@@ -98,7 +95,7 @@
             var currentValue = $("#listOfAreas").val();
             $("#areaTarget").append("<p>Lade till:"+country+", "+region+", "+city+"</p>");
             $("#listOfAreas").val(currentValue+country+", "+region+", "+city+ "//");
-            $("#areaNotice").fadeIn("slow");
+            $("#areaNotice").fadeIn("slow").delay(15000).fadeOut("slow");
         });
 
 		$("#Cv_tags").select2({

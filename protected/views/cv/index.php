@@ -21,24 +21,16 @@ $this->breadcrumbs=array(
 
 <form class="form" role="search" name="search" method="post" >
 	<div class="form-group">
-		<input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
+        <label for="searchbox"><?php echo Yii::t("t","Valfria sökord");?></label>
+		<input id="searchbox" type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
 	</div>
-    <div class="row" style="margin-left:2px;margin-top:0px;margin-bottom: 15px;">
-        <?php
-        //remove registration of select2js in this widget
-        $this->widget('yiiwheels.widgets.select2.WhSelect2', array(
-            'asDropDownList' => false,
-            'name' => 'tags',
-            'pluginOptions' => array(
-                'tags' => Tag::getTagsAsString(),
-                'placeholder' => Yii::t("t",'Välj ett eller flera nyckelord att söka på'),
-                'width' => '40%',
-                'tokenSeparators' => array(',', ' ')
-            )));
-        ?>
+    <div class="form-group row col-md-6"  style="margin-left:-15px;margin-top:0px;margin-bottom: 15px;">
+        <label for="searchTags"><?php echo Yii::t("t","Nyckelord");?></label>
+        <input class="form-control" name="tags" id="searchTags" type="text"/>
     </div>
+    <span class="clearfix"></span>
   <div class="checkbox">
-      <input name="consult" type="checkbox"/> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
+      <input id="consultOption" name="consult" type="checkbox"/> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
       <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
   </div>
   <div>
@@ -76,12 +68,9 @@ if($resultCount< 1):?>
 ?>
 <script>
 jQuery(document).ready(function ($) {
-//	jQuery("#continent").select2();
-//	jQuery("#countries").select2();
-//	jQuery("#geoRegion").select2();
-//	jQuery("#geoProvince").select2();
-//	jQuery("#geoCity").select2();
-
+    jQuery("#searchTags").select2({
+        tags:<?php echo json_encode(Tag::getTagsAsString());?>
+    });
 	jQuery("#geoRegion   ").on("change",function(){
 		if ( $(this).val() == "default" ) {
 			$("#geographicAreaForm").fadeOut();

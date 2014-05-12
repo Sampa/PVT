@@ -95,13 +95,13 @@ class SiteController extends Controller
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
-            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code'));
+            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted',));
             Yii::app()->end();
         }
 
         if (isset($_POST['RegisterForm'])) {
             $model->attributes = $_POST['RegisterForm'];
-            if ($model->validate(array('email', 'username', 'new_password', 'password_confirm','verify_code'))) {
+            if ($model->validate(array('email', 'username', 'new_password', 'password_confirm','verify_code','accepted'))) {
                 $user = new User();
                 $user->email = $_POST['RegisterForm']['email'];
                 $user->username = $_POST['RegisterForm']['username'];

@@ -119,7 +119,7 @@ $this->breadcrumbs = array(
         </div>
         <div class="form-group">
 <!--            <div class="col-lg-5 col-lg-offset-3">-->
-<!--                --><?php //echo CHtml::activeLabel($model, 'verify_code'); ?>
+<!--                --><?php //echo CHtml::activeLabel($model, 'verify_code'); ?> 
 <!--                --><?php //$this->widget('application.extensions.recaptcha.EReCaptcha',
 //                    array('model' => $model, 'attribute' => 'verify_code',
 //                        'theme' => 'red', 'language' => 'en',
@@ -129,6 +129,18 @@ $this->breadcrumbs = array(
 <!--                </div>-->
 <!--            </div>-->
         </div>
+        <div class="form-group">
+            <?php echo $form->labelEx($model, 'accepted', array('class' => 'col-lg-3 control-label')); ?>
+            <div class="col-lg-1">
+                <?php echo $form->checkBox($model, 'accepted', array('class' => 'form-control','id'=>'accepted')); ?>
+                <div class="help-block">
+                    <?php echo $form->error($model, 'accepted'); ?>
+                </div>
+            </div>
+        </div>
+
+        
+
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-10">
                 <?php echo CHtml::submitButton(Yii::t("t", "Registrera dig"), array('class' => 'btn btn-primary btn-lg')); ?>

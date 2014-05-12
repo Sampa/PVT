@@ -76,7 +76,29 @@
                             }
 //                    ?>
                 <br/>
-                <span class="plus"><a href="#" title="Lorem ipsum"><i id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
+                <span class="plus"><a href="#" title="Lorem ipsum"><i data-toggle="modal" data-target="#reportModal" id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
+
+                <!-- Button trigger modal -->
+				<!-- Modal -->
+				<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+  					<div class="modal-dialog">
+    					<div class="modal-content">
+      						<div class="modal-header">
+        						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+       		 					<h4 class="modal-title" id="reportModalLabel"><?php echo Yii::t("t","Rapportera CV");?></h4>
+      						</div>
+      						<div class="modal-body">
+        						<?php echo Yii::t("t", "Varför vill du rapportera det här CV:t?");?>
+      						</div>
+      						<div class="modal-footer">
+        						<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
+        						<button type="button" class="btn btn-primary"><?php echo Yii::t("t", "Rapportera");?></button>
+      						</div>
+    					</div>
+  					</div>
+				</div>
+
+
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->
                 <?php if( Yii:: app()->user->getState("role")=="recruiter") { ?>

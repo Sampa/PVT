@@ -19,9 +19,7 @@ $this->breadcrumbs=array(
 	<form class="form " role="search" name="search" method="post" >
 		<div class="form-group ">
 			<label for="searchbox"><?php echo Yii::t("t","Fritext och meta taggar");?></label>
-			<div class="input-group">
-				<input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>"/>
-			</div
+            <input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>"/>
 		</div>
 		<div class="row" style="margin-left:2px;margin-top:0px;margin-bottom: 15px; max-width: 50%;">
 			<label for="searchbox"><?php echo Yii::t("t","Nyckelord");?></label>

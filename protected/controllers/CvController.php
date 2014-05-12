@@ -97,7 +97,7 @@ class CvController extends Controller
             }
              $model->attributes=$_POST['Cv'];
              if ($model->save()){
-                 $tags = explode(",", $_POST['tags']);
+                 $tags = explode(",", $_POST['Cv']['tags']);
                  foreach($tags as $key=>$tag){
                      $currentTag=  Tag::model()->find("name='".$tag."'");
                      if($currentTag){

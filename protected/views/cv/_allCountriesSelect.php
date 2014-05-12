@@ -5,346 +5,308 @@
             $errorClass ="has-error";
 }
 ?>
-
-<div id="selectCountry" class="col-md-3  <?php echo $errorClass;?>" style=" ">
-	    <label class="" for="countries"><?php echo Yii::t("t","Land");?></label>
-	    <select id="countries" name="countries" class="form-control" >
-            <option><?php echo Yii::t("t","Välj land");?></option>
-            <optgroup label="<?php echo Yii::t("t","Antarktis");?>">
-                <option value="3371123">Bouvet Island</option>
-                <option value="1546748">French Southern Territories</option>
-                <option value="1547314">Heard Island and McDonald Islands</option>
-                <option value="3474415">South Georgia and the South Sandwich Islands</option>
-            </optgroup>
-            <optgroup label="<?php echo Yii::t("t","Afrika");?>">
-                <option value="2589581">Algeria</option>
-                <option value="3351879">Angola</option>
-                <option value="2395170">Benin</option>
-                <option value="933860">Botswana</option>
-                <option value="2361809">Burkina Faso</option>
-                <option value="433561">Burundi</option>
-                <option value="2233387">Cameroon</option>
-                <option value="3374766">Cape Verde</option>
-                <option value="239880">Central African Republic</option>
-                <option value="2434508">Chad</option>
-                <option value="921929">Comoros</option>
-                <option value="203312">Congo</option>
-                <option value="223816">Djibouti</option>
-                <option value="357994">Egypt</option>
-                <option value="2309096">Equatorial Guinea</option>
-                <option value="338010">Eritrea</option>
-                <option value="337996">Ethiopia</option>
-                <option value="2400553">Gabon</option>
-                <option value="2413451">Gambia</option>
-                <option value="2300660">Ghana</option>
-                <option value="2420477">Guinea</option>
-                <option value="2372248">Guinea-Bissau</option>
-                <option value="2287781">Ivory Coast</option>
-                <option value="192950">Kenya</option>
-                <option value="932692">Lesotho</option>
-                <option value="2275384">Liberia</option>
-                <option value="2215636">Libya</option>
-                <option value="1062947">Madagascar</option>
-                <option value="927384">Malawi</option>
-                <option value="2453866">Mali</option>
-                <option value="2378080">Mauritania</option>
-                <option value="934292">Mauritius</option>
-                <option value="1024031">Mayotte</option>
-                <option value="2542007">Morocco</option>
-                <option value="1036973">Mozambique</option>
-                <option value="3355338">Namibia</option>
-                <option value="2440476">Niger</option>
-                <option value="2328926">Nigeria</option>
-                <option value="2260494">Republic of the Congo</option>
-                <option value="49518">Rwanda</option>
-                <option value="935317">Réunion</option>
-                <option value="3370751">Saint Helena</option>
-                <option value="2245662">Senegal</option>
-                <option value="241170">Seychelles</option>
-                <option value="2403846">Sierra Leone</option>
-                <option value="51537">Somalia</option>
-                <option value="953987">South Africa</option>
-                <option value="7909807">South Sudan</option>
-                <option value="366755">Sudan</option>
-                <option value="934841">Swaziland</option>
-                <option value="2410758">São Tomé and Príncipe</option>
-                <option value="149590">Tanzania</option>
-                <option value="2363686">Togo</option>
-                <option value="2464461">Tunisia</option>
-                <option value="226074">Uganda</option>
-                <option value="2461445">Western Sahara</option>
-                <option value="895949">Zambia</option>
-                <option value="878675">Zimbabwe</option>
-            </optgroup>
-            <optgroup label="<?php echo Yii::t("t","Asien");?>">
-                <option value="1149361">Afghanistan</option>
-                <option value="174982">Armenia</option>
-                <option value="587116">Azerbaijan</option>
-                <option value="290291">Bahrain</option>
-                <option value="1210997">Bangladesh</option>
-                <option value="1252634">Bhutan</option>
-                <option value="1282588">British Indian Ocean Territory</option>
-                <option value="1820814">Brunei</option>
-                <option value="1831722">Cambodia</option>
-                <option value="1814991">China</option>
-                <option value="2078138">Christmas Island</option>
-                <option value="1547376">Cocos [Keeling] Islands</option>
-                <option value="614540">Georgia</option>
-                <option value="1819730">Hong Kong</option>
-                <option value="1269750">India</option>
-                <option value="1643084">Indonesia</option>
-                <option value="130758">Iran</option>
-                <option value="99237">Iraq</option>
-                <option value="294640">Israel</option>
-                <option value="1861060">Japan</option>
-                <option value="248816">Jordan</option>
-                <option value="1522867">Kazakhstan</option>
-                <option value="285570">Kuwait</option>
-                <option value="1527747">Kyrgyzstan</option>
-                <option value="1655842">Laos</option>
-                <option value="272103">Lebanon</option>
-                <option value="1821275">Macao</option>
-                <option value="1733045">Malaysia</option>
-                <option value="1282028">Maldives</option>
-                <option value="2029969">Mongolia</option>
-                <option value="1327865">Myanmar [Burma]</option>
-                <option value="1282988">Nepal</option>
-                <option value="1873107">North Korea</option>
-                <option value="286963">Oman</option>
-                <option value="1168579">Pakistan</option>
-                <option value="6254930">Palestine</option>
-                <option value="1694008">Philippines</option>
-                <option value="289688">Qatar</option>
-                <option value="102358">Saudi Arabia</option>
-                <option value="1880251">Singapore</option>
-                <option value="1835841">South Korea</option>
-                <option value="1227603">Sri Lanka</option>
-                <option value="163843">Syria</option>
-                <option value="1668284">Taiwan</option>
-                <option value="1220409">Tajikistan</option>
-                <option value="1605651">Thailand</option>
-                <option value="298795">Turkey</option>
-                <option value="1218197">Turkmenistan</option>
-                <option value="290557">United Arab Emirates</option>
-                <option value="1512440">Uzbekistan</option>
-                <option value="1562822">Vietnam</option>
-                <option value="69543">Yemen</option>
-            </optgroup>
-            <optgroup label="<?php echo Yii::t("t","Europa");?>">
-                <option value="783754">Albania</option>
-                <option value="3041565">Andorra</option>
-                <option value="2782113">Austria</option>
-                <option value="630336">Belarus</option>
-                <option value="2802361">Belgium</option>
-                <option value="3277605">Bosnia and Herzegovina</option>
-                <option value="732800">Bulgaria</option>
-                <option value="3202326">Croatia</option>
-                <option value="146669">Cyprus</option>
-                <option value="3077311">Czech Republic</option>
-                <option value="2623032">Denmark</option>
-                <option value="453733">Estonia</option>
-                <option value="2622320">Faroe Islands</option>
-                <option value="660013">Finland</option>
-                <option value="3017382">France</option>
-                <option value="2921044">Germany</option>
-                <option value="2411586">Gibraltar</option>
-                <option value="390903">Greece</option>
-                <option value="719819">Hungary</option>
-                <option value="2629691">Iceland</option>
-                <option value="2963597">Ireland</option>
-                <option value="3175395">Italy</option>
-                <option value="831053">Kosovo</option>
-                <option value="458258">Latvia</option>
-                <option value="3042058">Liechtenstein</option>
-                <option value="597427">Lithuania</option>
-                <option value="2960313">Luxembourg</option>
-                <option value="718075">Macedonia</option>
-                <option value="2562770">Malta</option>
-                <option value="617790">Moldova</option>
-                <option value="2993457">Monaco</option>
-                <option value="3194884">Montenegro</option>
-                <option value="2750405">Netherlands</option>
-                <option value="3144096">Norway</option>
-                <option value="798544">Poland</option>
-                <option value="2264397">Portugal</option>
-                <option value="798549">Romania</option>
-                <option value="2017370">Russia</option>
-                <option value="3168068">San Marino</option>
-                <option value="6290252">Serbia</option>
-                <option value="3057568">Slovakia</option>
-                <option value="3190538">Slovenia</option>
-                <option value="2510769">Spain</option>
-                <option value="607072">Svalbard and Jan Mayen</option>
-                <option value="2661886" selected>Sweden</option>
-                <option value="2658434">Switzerland</option>
-                <option value="690791">Ukraine</option>
-                <option value="2635167">United Kingdom</option>
-                <option value="3164670">Vatican City</option>
-                <option value="661882">Åland</option>
-            </optgroup>
-            <optgroup label="<?php echo Yii::t("t","Nordamerika");?>">
-                <option value="3573511">Anguilla</option>
-                <option value="3576396">Antigua and Barbuda</option>
-                <option value="3577279">Aruba</option>
-                <option value="3572887">Bahamas</option>
-                <option value="3374084">Barbados</option>
-                <option value="3582678">Belize</option>
-                <option value="3573345">Bermuda</option>
-                <option value="7626844">Bonaire</option>
-                <option value="3577718">British Virgin Islands</option>
-                <option value="6251999">Canada</option>
-                <option value="3580718">Cayman Islands</option>
-                <option value="3624060">Costa Rica</option>
-                <option value="3562981">Cuba</option>
-                <option value="7626836">Curaçao</option>
-                <option value="3575830">Dominica</option>
-                <option value="3508796">Dominican Republic</option>
-                <option value="3585968">El Salvador</option>
-                <option value="3425505">Greenland</option>
-                <option value="3580239">Grenada</option>
-                <option value="3579143">Guadeloupe</option>
-                <option value="3595528">Guatemala</option>
-                <option value="3723988">Haiti</option>
-                <option value="3608932">Honduras</option>
-                <option value="3489940">Jamaica</option>
-                <option value="3570311">Martinique</option>
-                <option value="3996063">Mexico</option>
-                <option value="3578097">Montserrat</option>
-                <option value="3617476">Nicaragua</option>
-                <option value="3703430">Panama</option>
-                <option value="4566966">Puerto Rico</option>
-                <option value="3578476">Saint Barthélemy</option>
-                <option value="3575174">Saint Kitts and Nevis</option>
-                <option value="3576468">Saint Lucia</option>
-                <option value="3578421">Saint Martin</option>
-                <option value="3424932">Saint Pierre and Miquelon</option>
-                <option value="3577815">Saint Vincent and the Grenadines</option>
-                <option value="7609695">Sint Maarten</option>
-                <option value="3573591">Trinidad and Tobago</option>
-                <option value="3576916">Turks and Caicos Islands</option>
-                <option value="4796775">U.S. Virgin Islands</option>
-                <option value="6252001">United States</option>
-            </optgroup>
-            <optgroup label="<?php echo Yii::t("t","Oceanien");?>">
-                <option value="5880801">American Samoa</option>
-                <option value="2077456">Australia</option>
-                <option value="1899402">Cook Islands</option>
-                <option value="2170371">Coral Sea Islands Territory</option>
-                <option value="1966436">East Timor</option>
-                <option value="2205218">Fiji</option>
-                <option value="4030656">French Polynesia</option>
-                <option value="4043988">Guam</option>
-                <option value="8335033">Jervis Bay Territory</option>
-                <option value="4030945">Kiribati</option>
-                <option value="2080185">Marshall Islands</option>
-                <option value="2081918">Micronesia</option>
-                <option value="2110425">Nauru</option>
-                <option value="2139685">New Caledonia</option>
-                <option value="2186224">New Zealand</option>
-                <option value="4036232">Niue</option>
-                <option value="2155115">Norfolk Island</option>
-                <option value="4041468">Northern Mariana Islands</option>
-                <option value="1559582">Palau</option>
-                <option value="2088628">Papua New Guinea</option>
-                <option value="4030699">Pitcairn Islands</option>
-                <option value="4034894">Samoa</option>
-                <option value="2103350">Solomon Islands</option>
-                <option value="2077507">Territory of Ashmore and Cartier Islands</option>
-                <option value="4031074">Tokelau</option>
-                <option value="4032283">Tonga</option>
-                <option value="2110297">Tuvalu</option>
-                <option value="5854968">U.S. Minor Outlying Islands</option>
-                <option value="2134431">Vanuatu</option>
-                <option value="4034749">Wallis and Futuna</option>
-            </optgroup>
-            <optgroup label="<?php echo Yii::t("t","Sydamerika");?>">
-                <option value="3865483">Argentina</option>
-                <option value="3923057">Bolivia</option>
-                <option value="3469034">Brazil</option>
-                <option value="3895114">Chile</option>
-                <option value="3686110">Colombia</option>
-                <option value="3658394">Ecuador</option>
-                <option value="3474414">Falkland Islands</option>
-                <option value="3381670">French Guiana</option>
-                <option value="3378535">Guyana</option>
-                <option value="3437598">Paraguay</option>
-                <option value="3932488">Peru</option>
-                <option value="3382998">Suriname</option>
-                <option value="3439705">Uruguay</option>
-                <option value="3625428">Venezuela</option>
-            </optgroup>
-        </select>
-</div>
-<div class="col-md-3">
-	<label class="" for="geoRegion"><?php echo Yii::t("t","Region");?></label>
-	<select  class="form-control" name="geoRegion" id="geoRegion" >
-		<option><?php echo Yii::t("t","Välj Region");?></option>
-		<option value="2721357">Blekinge</option>
-		<option value="2699767">Dalarna</option>
-		<option value="2711508">Gotland</option>
-		<option value="2712411">Gävleborg</option>
-		<option value="2708794">Halland</option>
-		<option value="2703330">Jämtland</option>
-		<option value="2702976">Jönköping</option>
-		<option value="2702259">Kalmar</option>
-		<option value="2699050">Kronoberg</option>
-		<option value="604010">Norrbotten</option>
-		<option value="3337385">Skåne</option>
-		<option value="2673722">Stockholm</option>
-		<option value="2676207">Södermanland</option>
-		<option value="2666218">Uppsala</option>
-		<option value="2664870">Värmland</option>
-		<option value="2664415">Västerbotten</option>
-		<option value="2664292">Västernorrland</option>
-		<option value="2664179">Västmanland</option>
-		<option value="3337386">Västra Götaland</option>
-		<option value="2686655">Örebro</option>
-		<option value="2685867">Östergötland</option>
-	</select>
-</div>
-<section id="geographicAreaForm" style="display:block; margin-left:-15px; " >
+<section id="geographicAreaForm" class="<?php echo $errorClass;?>" style="display:block; margin-left:-15px;" >
+	<div id="selectCountry" class="col-md-3  " style=" ">
+		    <label class="" for="countries"><?php echo Yii::t("t","Land");?></label>
+		    <select id="countries" name="countries" class="form-control" data-placeholder="<?php echo Yii::t("t","Välj land");?>">
+		        <option></option>
+	            <optgroup label="<?php echo Yii::t("t","Antarktis");?>">
+	                <option id="3371123" value="Bouvet Island">Bouvet Island</option>
+	                <option id="1546748" value="French Southern Territories">French Southern Territories</option>
+	                <option id="1547314" value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+	                <option id="3474415" value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+	            </optgroup>
+	            <optgroup label="<?php echo Yii::t("t","Afrika");?>">
+	                <option id="2589581" value="Algeria">Algeria</option>
+	                <option id="3351879" value="Angola">Angola</option>
+	                <option id="2395170" value="Benin">Benin</option>
+	                <option id="933860" value="Botswana">Botswana</option>
+	                <option id="2361809" value="Burkina Faso">Burkina Faso</option>
+	                <option id="433561" value="Burundi">Burundi</option>
+	                <option id="2233387" value="Cameroon">Cameroon</option>
+	                <option id="3374766" value="Cape Verde">Cape Verde</option>
+	                <option id="239880" value="Central African Republic">Central African Republic</option>
+	                <option id="2434508" value="Chad">Chad</option>
+	                <option id="921929" value="Comoros">Comoros</option>
+	                <option id="203312" value="Congo">Congo</option>
+	                <option id="223816" value="Djibouti">Djibouti</option>
+	                <option id="357994" value="Egypt">Egypt</option>
+	                <option id="2309096" value="Equatorial Guinea">Equatorial Guinea</option>
+	                <option id="338010" value="Eritrea">Eritrea</option>
+	                <option id="337996" value="Ethiopia">Ethiopia</option>
+	                <option id="2400553" value="Gabon">Gabon</option>
+	                <option id="2413451" value="Gambia">Gambia</option>
+	                <option id="2300660" value="Ghana">Ghana</option>
+	                <option id="2420477" value="Guinea">Guinea</option>
+	                <option id="2372248" value="Guinea-Bissau">Guinea-Bissau</option>
+	                <option id="2287781" value="Ivory Coast">Ivory Coast</option>
+	                <option id="192950" value="Kenya">Kenya</option>
+	                <option id="932692" value="Lesotho">Lesotho</option>
+	                <option id="2275384" value="Liberia">Liberia</option>
+	                <option id="2215636" value="Libya">Libya</option>
+	                <option id="1062947" value="Madagascar">Madagascar</option>
+	                <option id="927384" value="Malawi">Malawi</option>
+	                <option id="2453866" value="Mali">Mali</option>
+	                <option id="2378080" value="Mauritania">Mauritania</option>
+	                <option id="934292" value="Mauritius">Mauritius</option>
+	                <option id="1024031" value="Mayotte">Mayotte</option>
+	                <option id="2542007" value="Morocco">Morocco</option>
+	                <option id="1036973" value="Mozambique">Mozambique</option>
+	                <option id="3355338" value="Namibia">Namibia</option>
+	                <option id="2440476" value="Niger">Niger</option>
+	                <option id="2328926" value="Nigeria">Nigeria</option>
+	                <option id="2260494" value="Republic of the Congo">Republic of the Congo</option>
+	                <option id="49518" value="Rwanda">Rwanda</option>
+	                <option id="935317" value="Réunion">Réunion</option>
+	                <option id="3370751" value="Saint Helena">Saint Helena</option>
+	                <option id="2245662" value="Senegal">Senegal</option>
+	                <option id="241170" value="Seychelles">Seychelles</option>
+	                <option id="2403846" value="Sierra Leone">Sierra Leone</option>
+	                <option id="51537" value="Somalia">Somalia</option>
+	                <option id="953987" value="South Africa">South Africa</option>
+	                <option id="7909807" value="South Sudan">South Sudan</option>
+	                <option id="366755" value="Sudan">Sudan</option>
+	                <option id="934841" value="Swaziland">Swaziland</option>
+	                <option id="2410758" value="São Tomé and Príncipe">São Tomé and Príncipe</option>
+	                <option id="149590" value="Tanzania">Tanzania</option>
+	                <option id="2363686" value="Togo">Togo</option>
+	                <option id="2464461" value="Tunisia">Tunisia</option>
+	                <option id="226074" value="Uganda">Uganda</option>
+	                <option id="2461445" value="Western Sahara">Western Sahara</option>
+	                <option id="895949" value="Zambia">Zambia</option>
+	                <option id="878675" value="Zimbabwe">Zimbabwe</option>
+	            </optgroup>
+	            <optgroup label="<?php echo Yii::t("t","Asien");?>">
+	                <option id="1149361" value="Afghanistan">Afghanistan</option>
+	                <option id="174982" value="Armenia">Armenia</option>
+	                <option id="587116" value="Azerbaijan">Azerbaijan</option>
+	                <option id="290291" value="Bahrain">Bahrain</option>
+	                <option id="1210997" value="Bangladesh">Bangladesh</option>
+	                <option id="1252634" value="Bhutan">Bhutan</option>
+	                <option id="1282588" value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+	                <option id="1820814" value="Brunei">Brunei</option>
+	                <option id="1831722" value="Cambodia">Cambodia</option>
+	                <option id="1814991" value="China">China</option>
+	                <option id="2078138" value="Christmas Island">Christmas Island</option>
+	                <option id="1547376" value="Cocos [Keeling] Islands">Cocos [Keeling] Islands</option>
+	                <option id="614540" value="Georgia">Georgia</option>
+	                <option id="1819730" value="Hong Kong">Hong Kong</option>
+	                <option id="1269750" value="India">India</option>
+	                <option id="1643084" value="Indonesia">Indonesia</option>
+	                <option id="130758" value="Iran">Iran</option>
+	                <option id="99237" value="Iraq">Iraq</option>
+	                <option id="294640" value="Israel">Israel</option>
+	                <option id="1861060" value="Japan">Japan</option>
+	                <option id="248816" value="Jordan">Jordan</option>
+	                <option id="1522867" value="Kazakhstan">Kazakhstan</option>
+	                <option id="285570" value="Kuwait">Kuwait</option>
+	                <option id="1527747" value="Kyrgyzstan">Kyrgyzstan</option>
+	                <option id="1655842" value="Laos">Laos</option>
+	                <option id="272103" value="Lebanon">Lebanon</option>
+	                <option id="1821275" value="Macao">Macao</option>
+	                <option id="1733045" value="Malaysia">Malaysia</option>
+	                <option id="1282028" value="Maldives">Maldives</option>
+	                <option id="2029969" value="Mongolia">Mongolia</option>
+	                <option id="1327865" value="Myanmar [Burma]">Myanmar [Burma]</option>
+	                <option id="1282988" value="Nepal">Nepal</option>
+	                <option id="1873107" value="North Korea">North Korea</option>
+	                <option id="286963" value="Oman">Oman</option>
+	                <option id="1168579" value="Pakistan">Pakistan</option>
+	                <option id="6254930" value="Palestine">Palestine</option>
+	                <option id="1694008" value="Philippines">Philippines</option>
+	                <option id="289688" value="Qatar">Qatar</option>
+	                <option id="102358" value="Saudi Arabia">Saudi Arabia</option>
+	                <option id="1880251" value="Singapore">Singapore</option>
+	                <option id="1835841" value="South Korea">South Korea</option>
+	                <option id="1227603" value="Sri Lanka">Sri Lanka</option>
+	                <option id="163843" value="Syria">Syria</option>
+	                <option id="1668284" value="Taiwan">Taiwan</option>
+	                <option id="1220409" value="Tajikistan">Tajikistan</option>
+	                <option id="1605651" value="Thailand">Thailand</option>
+	                <option id="298795" value="Turkey">Turkey</option>
+	                <option id="1218197" value="Turkmenistan">Turkmenistan</option>
+	                <option id="290557" value="United Arab Emirates">United Arab Emirates</option>
+	                <option id="1512440" value="Uzbekistan">Uzbekistan</option>
+	                <option id="1562822" value="Vietnam">Vietnam</option>
+	                <option id="69543" value="Yemen">Yemen</option>
+	            </optgroup>
+	            <optgroup label="<?php echo Yii::t("t","Europa");?>">
+	                <option id="783754" value="Albania">Albania</option>
+	                <option id="3041565" value="Andorra">Andorra</option>
+	                <option id="2782113" value="Austria">Austria</option>
+	                <option id="630336" value="Belarus">Belarus</option>
+	                <option id="2802361" value="Belgium">Belgium</option>
+	                <option id="3277605" value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+	                <option id="732800" value="Bulgaria">Bulgaria</option>
+	                <option id="3202326" value="Croatia">Croatia</option>
+	                <option id="146669" value="Cyprus">Cyprus</option>
+	                <option id="3077311" value="Czech Republic">Czech Republic</option>
+	                <option id="2623032" value="Denmark">Denmark</option>
+	                <option id="453733" value="Estonia">Estonia</option>
+	                <option id="2622320" value="Faroe Islands">Faroe Islands</option>
+	                <option id="660013" value="Finland">Finland</option>
+	                <option id="3017382" value="France">France</option>
+	                <option id="2921044" value="Germany">Germany</option>
+	                <option id="2411586" value="Gibraltar">Gibraltar</option>
+	                <option id="390903" value="Greece">Greece</option>
+	                <option id="719819" value="Hungary">Hungary</option>
+	                <option id="2629691" value="Iceland">Iceland</option>
+	                <option id="2963597" value="Ireland">Ireland</option>
+	                <option id="3175395" value="Italy">Italy</option>
+	                <option id="831053" value="Kosovo">Kosovo</option>
+	                <option id="458258" value="Latvia">Latvia</option>
+	                <option id="3042058" value="Liechtenstein">Liechtenstein</option>
+	                <option id="597427" value="Lithuania">Lithuania</option>
+	                <option id="2960313" value="Luxembourg">Luxembourg</option>
+	                <option id="718075" value="Macedonia">Macedonia</option>
+	                <option id="2562770" value="Malta">Malta</option>
+	                <option id="617790" value="Moldova">Moldova</option>
+	                <option id="2993457" value="Monaco">Monaco</option>
+	                <option id="3194884" value="Montenegro">Montenegro</option>
+	                <option id="2750405" value="Netherlands">Netherlands</option>
+	                <option id="3144096" value="Norway">Norway</option>
+	                <option id="798544" value="Poland">Poland</option>
+	                <option id="2264397" value="Portugal">Portugal</option>
+	                <option id="798549" value="Romania">Romania</option>
+	                <option id="2017370" value="Russia">Russia</option>
+	                <option id="3168068" value="San Marino">San Marino</option>
+	                <option id="6290252" value="Serbia">Serbia</option>
+	                <option id="3057568" value="Slovakia">Slovakia</option>
+	                <option id="3190538" value="Slovenia">Slovenia</option>
+	                <option id="2510769" value="Spain">Spain</option>
+	                <option id="607072" value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+	                <option id="2661886" selected>Sweden</option>
+	                <option id="2658434" value="Switzerland">Switzerland</option>
+	                <option id="690791" value="Ukraine">Ukraine</option>
+	                <option id="2635167" value="United Kingdom">United Kingdom</option>
+	                <option id="3164670" value="Vatican City">Vatican City</option>
+	                <option id="661882" value="Åland">Åland</option>
+	            </optgroup>
+	            <optgroup label="<?php echo Yii::t("t","Nordamerika");?>">
+	                <option id="3573511" value="Anguilla">Anguilla</option>
+	                <option id="3576396" value="Antigua and Barbuda">Antigua and Barbuda</option>
+	                <option id="3577279" value="Aruba">Aruba</option>
+	                <option id="3572887" value="Bahamas">Bahamas</option>
+	                <option id="3374084" value="Barbados">Barbados</option>
+	                <option id="3582678" value="Belize">Belize</option>
+	                <option id="3573345" value="Bermuda">Bermuda</option>
+	                <option id="7626844" value="Bonaire">Bonaire</option>
+	                <option id="3577718" value="British Virgin Islands">British Virgin Islands</option>
+	                <option id="6251999" value="Canada">Canada</option>
+	                <option id="3580718" value="Cayman Islands">Cayman Islands</option>
+	                <option id="3624060" value="Costa Rica">Costa Rica</option>
+	                <option id="3562981" value="Cuba">Cuba</option>
+	                <option id="7626836" value="Curaçao">Curaçao</option>
+	                <option id="3575830" value="Dominica">Dominica</option>
+	                <option id="3508796" value="Dominican Republic">Dominican Republic</option>
+	                <option id="3585968" value="El Salvador">El Salvador</option>
+	                <option id="3425505" value="Greenland">Greenland</option>
+	                <option id="3580239" value="Grenada">Grenada</option>
+	                <option id="3579143" value="Guadeloupe">Guadeloupe</option>
+	                <option id="3595528" value="Guatemala">Guatemala</option>
+	                <option id="3723988" value="Haiti">Haiti</option>
+	                <option id="3608932" value="Honduras">Honduras</option>
+	                <option id="3489940" value="Jamaica">Jamaica</option>
+	                <option id="3570311" value="Martinique">Martinique</option>
+	                <option id="3996063" value="Mexico">Mexico</option>
+	                <option id="3578097" value="Montserrat">Montserrat</option>
+	                <option id="3617476" value="Nicaragua">Nicaragua</option>
+	                <option id="3703430" value="Panama">Panama</option>
+	                <option id="4566966" value="Puerto Rico">Puerto Rico</option>
+	                <option id="3578476" value="Saint Barthélemy">Saint Barthélemy</option>
+	                <option id="3575174" value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+	                <option id="3576468" value="Saint Lucia">Saint Lucia</option>
+	                <option id="3578421" value="Saint Martin">Saint Martin</option>
+	                <option id="3424932" value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+	                <option id="3577815" value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+	                <option id="7609695" value="Sint Maarten">Sint Maarten</option>
+	                <option id="3573591" value="Trinidad and Tobago">Trinidad and Tobago</option>
+	                <option id="3576916" value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+	                <option id="4796775" value="U.S. Virgin Islands">U.S. Virgin Islands</option>
+	                <option id="6252001" value="United States">United States</option>
+	            </optgroup>
+	            <optgroup label="<?php echo Yii::t("t","Oceanien");?>">
+	                <option id="5880801" value="American Samoa">American Samoa</option>
+	                <option id="2077456" value="Australia">Australia</option>
+	                <option id="1899402" value="Cook Islands">Cook Islands</option>
+	                <option id="2170371" value="Coral Sea Islands Territory">Coral Sea Islands Territory</option>
+	                <option id="1966436" value="East Timor">East Timor</option>
+	                <option id="2205218" value="Fiji">Fiji</option>
+	                <option id="4030656" value="French Polynesia">French Polynesia</option>
+	                <option id="4043988" value="Guam">Guam</option>
+	                <option id="8335033" value="Jervis Bay Territory">Jervis Bay Territory</option>
+	                <option id="4030945" value="Kiribati">Kiribati</option>
+	                <option id="2080185" value="Marshall Islands">Marshall Islands</option>
+	                <option id="2081918" value="Micronesia">Micronesia</option>
+	                <option id="2110425" value="Nauru">Nauru</option>
+	                <option id="2139685" value="New Caledonia">New Caledonia</option>
+	                <option id="2186224" value="New Zealand">New Zealand</option>
+	                <option id="4036232" value="Niue">Niue</option>
+	                <option id="2155115" value="Norfolk Island">Norfolk Island</option>
+	                <option id="4041468" value="Northern Mariana Islands">Northern Mariana Islands</option>
+	                <option id="1559582" value="Palau">Palau</option>
+	                <option id="2088628" value="Papua New Guinea">Papua New Guinea</option>
+	                <option id="4030699" value="Pitcairn Islands">Pitcairn Islands</option>
+	                <option id="4034894" value="Samoa">Samoa</option>
+	                <option id="2103350" value="Solomon Islands">Solomon Islands</option>
+	                <option id="2077507" value="Territory of Ashmore and Cartier Islands">Territory of Ashmore and Cartier Islands</option>
+	                <option id="4031074" value="Tokelau">Tokelau</option>
+	                <option id="4032283" value="Tonga">Tonga</option>
+	                <option id="2110297" value="Tuvalu">Tuvalu</option>
+	                <option id="5854968" value="U.S. Minor Outlying Islands">U.S. Minor Outlying Islands</option>
+	                <option id="2134431" value="Vanuatu">Vanuatu</option>
+	                <option id="4034749" value="Wallis and Futuna">Wallis and Futuna</option>
+	            </optgroup>
+	            <optgroup label="<?php echo Yii::t("t","Sydamerika");?>">
+	                <option id="3865483" value="Argentina">Argentina</option>
+	                <option id="3923057" value="Bolivia">Bolivia</option>
+	                <option id="3469034" value="Brazil">Brazil</option>
+	                <option id="3895114" value="Chile">Chile</option>
+	                <option id="3686110" value="Colombia">Colombia</option>
+	                <option id="3658394" value="Ecuador">Ecuador</option>
+	                <option id="3474414" value="Falkland Islands">Falkland Islands</option>
+	                <option id="3381670" value="French Guiana">French Guiana</option>
+	                <option id="3378535" value="Guyana">Guyana</option>
+	                <option id="3437598" value="Paraguay">Paraguay</option>
+	                <option id="3932488" value="Peru">Peru</option>
+	                <option id="3382998" value="Suriname">Suriname</option>
+	                <option id="3439705" value="Uruguay">Uruguay</option>
+	                <option id="3625428" value="Venezuela">Venezuela</option>
+	            </optgroup>
+	        </select>
+	</div>
 	<div class="col-md-3">
+		<label class="" for="geoRegion"><?php echo Yii::t("t","Region");?></label>
+		<select  class="form-control" name="geoRegion" id="geoRegion" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">
+			<option></option>
+			<option id="2721357" value="Blekinge">Blekinge</option>
+			<option id="2699767" value="Dalarna">Dalarna</option>
+			<option id="2711508" value="Gotland">Gotland</option>
+			<option id="2712411" value="Gävleborg">Gävleborg</option>
+			<option id="2708794" value="Halland">Halland</option>
+			<option id="2703330" value="Jämtland">Jämtland</option>
+			<option id="2702976" value="Jönköping">Jönköping</option>
+			<option id="2702259" value="Kalmar">Kalmar</option>
+			<option id="2699050" value="Kronoberg">Kronoberg</option>
+			<option id="604010" value="Norrbotten">Norrbotten</option>  
+			<option id="3337385" value="Skåne">Skåne</option>
+			<option id="2673722" value="Stockholm">Stockholm</option>
+			<option id="2676207" value="Södermanland">Södermanland</option>
+			<option id="2666218" value="Uppsala">Uppsala</option>
+			<option id="2664870" value="Värmland">Värmland</option>
+			<option id="2664415" value="Västerbotten">Västerbotten</option>
+			<option id="2664292" value="Västernorrland">Västernorrland</option>
+			<option id="2664179" value="Västmanland">Västmanland</option>
+			<option id="3337386" value="Västra Götaland">Västra Götaland</option>
+			<option id="2686655" value="Örebro">Örebro</option>
+			<option id="2685867" value="Östergötland">Östergötland</option>
+		</select>
+	</div>
+	<div class="col-md-3  cityWrapper" style="display: none;">
 		<label class="" for="geoCity"><?php echo Yii::t("t","Kommun");?></label>
-		<select  class="form-control" name="geoCity" id="geoCity" >
-			<option><?php echo Yii::t("t","Välj Kommun");?></option>
+		<select  class="form-control" name="geoCity" id="geoCity" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">
+			<option></option>
 		</select>
 	</div>
 </section>
 <div style="clear:both;"></div>
-<script type="text/javascript">
-	(function(window,$,undefined){
-		var target;
-		function getPlaces(gid,new_target){
-			target = new_target;
-			var url = "http://www.geonames.org/childrenJSON";
-			$.ajax({
-				url :url,
-				dataType:"jsonp",
-				jsonp:"callback",
-				data:{
-					geonameId:gid,
-					style:"long"
-				},
-				success: handleResult
-			});
-		}
-		function handleResult(data){
-			target.children('option:not(:first)').remove();
-			data.geonames.forEach(function(item){
-				target.append( new Option(item.name,item.geonameId) );
-			});
-		}
-		$(function(){
-			["countries","geoRegion","geoCity"].forEach(function(item,index,list){
-				$("#"+item).change(function(){
-					if(list[index+1]){
-						getPlaces(this.value,$("#"+list[index+1]));
-					}
-				});
-			});
-			jQuery("#countries").select2();
-			jQuery("#geoRegion").select2();
-			jQuery("#geoCity").select2();
-		});
-	}(window,jQuery,void(0)));
-</script>

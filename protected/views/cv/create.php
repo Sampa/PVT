@@ -8,9 +8,7 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<!--moved registration to /components/controller.php ->methods->registerJs + registerCss-->
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
-<div class="page-header">
+	<div class="page-header">
         <h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>
     </div>
     <section class="row" style="width:50%;margin-left: 5px;">
@@ -19,27 +17,9 @@ $this->breadcrumbs=array(
         Ge ditt CV en rubrik så att du lätt kan hålla reda på dina uppladdade CV:n på
         Mina sidor när du är inloggad som publicerare.
     </section>
-    <?php $this->renderPartial('_form', array('model'=>$model,'pdf'=>$pdf)); ?>
-    <script>
-    jQuery(document).ready(function ($) {
-	    getplaces(2661886,'geoRegion');
-
+	<?php $this->renderPartial('_form', array('model'=>$model,'pdf'=>$pdf)); ?>
+	<script>
+    $(document).ready(function ($) {
 	    jQuery("[type*='submit']").addClass("btn-lg");
-	    jQuery("#geoRegion").on("change",function(){
-            if ( $(this).val() == "default" ) {
-                $("#geographicAreaForm").fadeOut();
-                $("#selectCountry").removeClass("has-error");
-                $("#selectCountry").removeClass("has-success");
-            }else {
-                $("#geographicAreaForm").fadeIn();
-                $("#selectCountry").addClass("has-success");
-            }
-        });
-	    jQuery("#continent").select2();
-	    jQuery("#countries").select2();
-	    jQuery("#geoRegion").select2();
-	    jQuery("#geoProvince").select2();
-	    jQuery("#geoCity").select2();
-
     });
 </script>

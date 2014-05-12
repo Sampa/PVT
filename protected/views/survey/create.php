@@ -29,7 +29,12 @@
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>-->
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>-->
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>-->
-                    <a href="#" class="btn btn-warning survey-component" id="help"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
+                    <a href="#" class="btn btn-warning survey-component" id="help">
+                        <span class="glyphicon glyphicon-question-sign"></span> <?php echo Yii::t("t","Hjälp");?>
+                    </a>
+                    <a href="#" class="btn btn-info survey-component">
+                        <span class="glyphicon glyphicon-floppy-disk"></span> <?php echo Yii::t("t","Spara");?>
+                    </a>
                 </div>
             </div>
         </div>

@@ -14,14 +14,19 @@
                 <?php
                 if(Yii::app()->user->getState("role")== "publisher"){
                 $items = array(
+                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
                     array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
+                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
                 );}else{
                 $items = array(
+                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
                     array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
+                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
                     array('label' => Yii::t("t",'Hitta CV'), 'url' => array('/cv/')),
+                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
                 );}
 

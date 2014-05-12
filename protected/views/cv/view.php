@@ -12,7 +12,9 @@ $this->breadcrumbs=array(
 ?>
 
 <h1><?php echo $model->title; ?></h1>
-<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($model->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
+<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($model->pathToPdf); ?>" rel="pdf">
+    <?php echo Yii::t("t","Öppna cv");?>
+</a>
 <?php
 foreach($model->cvTags as $cvTag){
     echo "<br/>";
@@ -27,10 +29,31 @@ foreach($model->cvTags as $cvTag){
     ),
     'data'=>$model,
     'attributes'=>array(
-        'date',
+        array(
+            'label' =>'date',
+            'value' => substr($model->date, 0, 10),
+        ),
         'typeOfEmployment',
-        'geographicAreaId',
-        'pdfText',
-        'publisherId'
+        array(
+            'label' => 'Land',
+            'value' => $model->geographicArea->country,
+        ),
+        array(
+            'label' => 'Region',
+            'value' => $model->geographicArea->region,
+        ),
+        array(
+            'label' => 'Stad',
+            'value' => $model->geographicArea->city,
+        ),
+        array(
+            'label' => 'CV:',
+            'type' => 'raw',
+            'value' => Chtml::link($model->title, $model->pathToPdf),
+        ), 
+        array(
+            'label' => 'Ägare',
+            'value' => $model->publisher->username,
+        ),
     ),
 )); ?>

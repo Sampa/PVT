@@ -137,7 +137,7 @@ return array(
             'class' => 'CClientScript',
             'scriptMap' => array(
                 //don't allow the framework to load jQuery,we load it manually,(see components/Controller.php).
-                'jquery.js' => false,
+//                'jquery.js' => false,
                 //'jquery.min.js' => false
             ),
             'coreScriptPosition' => CClientScript::POS_END,

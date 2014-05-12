@@ -35,6 +35,7 @@ class Cv extends CActiveRecord
      * false and a red border will be drawn around the three diffrent GeographicArea fields in the create CV form
      */
     public $hasGeoArea = true;
+    public $tags;
 	/**
 	 * @return string the associated database table name
 	 */

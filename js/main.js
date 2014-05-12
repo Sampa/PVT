@@ -1,3 +1,49 @@
+//getting country/region/city
+(function(window,$,undefined){
+    var target;
+    function getPlaces(gid,new_target){
+        target = new_target;
+        var url = "http://www.geonames.org/childrenJSON";
+        $.ajax({
+            url :url,
+            dataType:"jsonp",
+            jsonp:"callback",
+            data:{
+                geonameId:gid,
+                style:"long"
+            },
+            success: handleResult
+        });
+    }
+    function handleResult(data){
+        target.children().remove();
+        data.geonames.forEach(function(item){
+            var foo = new Option(item.name,item.name);
+            $(foo).attr("id",item.geonameId);
+            target.append(foo);
+        });
+        target.fadeIn();
+    }
+    $(function(){
+        ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
+            var next= $("#"+list[index+1]);
+             $("#"+item).select2({
+                placeholder: next.attr("data-default")
+            });
+            $("#"+item).change(function(){
+                if(next){
+                    $("option[value="+this.value+"]").attr("id");
+                    getPlaces($("option[value="+this.value+"]").attr("id"),next);
+                }
+            });
+        });
+    });
+    $("#geoRegion").on("change",function(){
+        $(".cityWrapper").fadeIn();
+    });
+}(window,jQuery,void(0)));
+
+
 //Custom Javascript Here
 jQuery(document).ready(function(){
     jQuery('#VAT').hide();

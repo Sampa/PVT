@@ -30,11 +30,11 @@ class Hotlist extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cvId, rpId', 'required'),
-			array('cvId, rpId', 'numerical', 'integerOnly'=>true),
+			array( 'rpId', 'required'),
+			array('rpId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('cvId, rpId, id', 'safe', 'on'=>'search'),
+			array(' rpId, id', 'safe', 'on'=>'search'),
 		);
 	}
 

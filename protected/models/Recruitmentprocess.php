@@ -59,6 +59,7 @@ class Recruitmentprocess extends CActiveRecord
 		return array(
 			'hotlist' => array(self::BELONGS_TO, 'Hotlist', 'hotlistId'),
 			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterId'),
+            'geographicArea' => array(self::BELONGS_TO, 'GeograficArea', 'geographicAreaID'),
 		);
 	}
 

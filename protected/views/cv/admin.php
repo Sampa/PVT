@@ -31,7 +31,7 @@ $('.search-form form').submit(function(){
    <?php echo Yii::t("t"," Här kan du se på alla dina publicerade CV:n och ta bort de du inte vill ha kvar.");?>
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>
+<?php echo CHtml::link(Yii::t('t', 'Avancerad sökning'),'#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -44,7 +44,11 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'date',
+		array(
+			'header' => 'Date',
+			'name' => 'date',
+			'value' => 'substr($data->date, 0, 10)',
+			),
 		'typeOfEmployment',
 		'title',
 		'buttons'=>array(

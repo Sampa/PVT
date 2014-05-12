@@ -28,11 +28,11 @@
             </div>
 
             <div class="form-group">
-                <?php echo $form->labelEx($model, 'fullname', array('class' => 'col-lg-12 control-label')); ?>
+                <?php echo $form->labelEx($model, 'name', array('class' => 'col-lg-12 control-label')); ?>
                 <div class="col-lg-5">
-                    <?php echo $form->textField($model, 'fullname', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i fullständigt namn"))); ?>
+                    <?php echo $form->textField($model, 'name', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Fyll i fullständigt namn"))); ?>
                     <span class="help-block help-inline ">
-                    <?php echo $form->error($model, 'fullname'); ?>
+                    <?php echo $form->error($model, 'name'); ?>
                         </span>
                 </div>
             </div>
@@ -64,6 +64,29 @@
                    </div>
                 </div>
              </div>
+            <?php if(isset($rmodel)):?>
+                <div class="form-group">
+                    <?php echo $form->labelEx($rmodel, 'orgName', array('class' => 'col-lg-12 control-label')); ?>
+                    <div class="col-lg-5">
+                        <?php echo $form->textField($rmodel, 'orgName', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Nytt företagsnamn"), 'rows' => 6, 'cols' => 50)); ?>
+                        <div class="help-block">
+                             <?php echo $form->error($rmodel, 'orgName'); ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <?php echo $form->labelEx($rmodel, 'VAT', array('class' => 'col-lg-12 control-label')); ?>
+                    <div class="col-lg-5">
+                        <?php echo $form->textField($rmodel, 'VAT', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Nytt VAT-nr"), 'rows' => 6, 'cols' => 50)); ?>
+                        <div class="help-block">
+                             <?php echo $form->error($rmodel, 'VAT'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif;?>
+
+            
 
             <div class="form-group row" style ="margin-left: 1px; clear:both;">
                 <?php echo $form->labelEx($model, 'notify', array('class' => 'col-lg-1 control-label')); ?>

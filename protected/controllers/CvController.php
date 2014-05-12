@@ -97,7 +97,7 @@ class CvController extends Controller
             }
              $model->attributes=$_POST['Cv'];
              if ($model->save()){
-                 $tags = explode(",", $_POST['tags']);
+                 $tags = explode(",", $_POST['Cv']['tags']);
                  foreach($tags as $key=>$tag){
                      $currentTag=  Tag::model()->find("name='".$tag."'");
                      if($currentTag){
@@ -268,93 +268,29 @@ class CvController extends Controller
 	 */
 	public function actionIndex()
 	{
-
-        //CDBcriteria is a Yii class to make it easier to create advanced SQL queries
-        $criteria=new CDbCriteria;
-        /*
-         * Sets the order of how the results should be displayed.
-         * date is the column to sort by and DESC means newest first(descending order)
-         */
-        if(isset($_POST['sortBy'])){
-            if($_POST['sortBy']=='date')
-                $criteria->order= "date DESC";
-            else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
-                $criteria->order= $_POST['sortBy'] .", date DESC";
-        }else{ //defaultvillkor
-            $_POST['sortBy'] = "date";
-            $criteria->order= "date DESC";
-        }
-
+		//CDBcriteria is a Yii class to make it easier to create advanced SQL queries
+		//alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
+		$criteria=new CDbCriteria;
+        $criteria = $this->setSortOrderCondition($criteria);
         //this if checks if we have pressed the submit button in the search form
-        if(isset($_POST['countries'])){
-            /*
-             * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
-             * where the column "typeOfEmployment" in the database has value "consult"
-            *  if/else below is critical to display all results if both employment and consult checkboxes
-             * are selected. It makes no change
-            */
-            if(isset($_POST['consult']) && isset($_POST['employment'])){
-                //dont touch this its retarded that this seems to be needed
-            }else{
-                if(isset($_POST['consult']) && !isset($_POST['employment']))
-                    $criteria->addSearchCondition("typeOfEmployment","consult");
-				// same as above but for employment
-                if(isset($_POST['employment']) && !isset($_POST['consult']))
-                    $criteria->addSearchCondition("typeOfEmployment","employment");
-            }
-	        //if you write in free text search field
-            if(isset($_POST['searchbox']))
-                $criteria->addSearchCondition("pdfText",$_POST['searchbox']);
-
-	        //om man valt någon tag att söka på
-            if(isset($_POST['tags']) && strlen($_POST['tags']) > 0){
-                $allCvIds = array(); //initiate empty array
-                $tagsAsArray = explode(",",$_POST['tags']); //transform from one long string with tags to an array of strings
-                foreach($tagsAsArray as $tag){ //loop all tags the user entered
-                    //kontrollera denna query
-                    $tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
-                    if($tagModel !=null){ //the tag exists
-	                    //loop the array with each row in the table that connects this tag to a cv
-                        foreach($tagModel->cvTags as $cvTag){
-                            $allCvIds[] = $cvTag->cvId; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
-                        }
-                    }
-                }
-                $criteria->addInCondition("id",$allCvIds,"OR");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
-            }
-
-			//if we selected a specific country to search for
-            if($_POST['countries'] != "default"){
-                /*
-                 * getGeoModels return an array of all geograficareas that matches the country selected
-                 * and the region and/or city values (if something is written in them)
-                 */
-                $geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
-                //the code to add conditions based on the models/objects returned above
-                foreach($geoGraphicAreas as $area)
-                    $criteria->compare("geographicAreaId",$area->id,true,"OR");
-	            if(sizeof($geoGraphicAreas)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-		            $criteria->compare("geographicAreaId",0);
-		            $criteria->compare("geographicAreaId",1);
-	            }
-            }
-        }
+        $criteria = $this->handleSearch($criteria);
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
+
+		//hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
 		$resultCount = $dataProvider->getTotalItemCount();
-		if($resultCount<1) //om sökresultaten var 0 till antalet så nollställ kriteriet och visa alla
+		if($resultCount<1)
 			$dataProvider->setCriteria(new CDbCriteria());
+		//vad vi ska skicka till vyn så vi kan använda/visa det där
+		$dataToView = array(
+			'dataProvider'=>$dataProvider,
+			'resultCount'=>$resultCount,
+		);
+		//om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
 		if( Yii::app()->request->isAjaxRequest){
-			$this->renderPartial('_searchview',array(
-			'dataProvider'=>$dataProvider,
-	        'resultCount'=>$resultCount,
-			));
+			$this->renderPartial('_searchview',$dataToView);
 		}else{
-			//render(display)  views/cv/index.php
-			$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-	        'resultCount'=>$resultCount,
-			));
+			$this->render('index',$dataToView);
 		}
 	}
 
@@ -419,4 +355,85 @@ class CvController extends Controller
         $geoModels  = GeograficArea::model()->findAll($criteria);
         return $geoModels;
     }
+	/*
+		 * Sets the order of how the results should be displayed.
+		 * date is the column to sort by and DESC means newest first(descending order)
+	 */
+	private function setSortOrderCondition($criteria) {
+		if(isset($_POST['sortBy'])){
+			if($_POST['sortBy']=='date')
+				$criteria->order= "date DESC";
+			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
+				$criteria->order= $_POST['sortBy'] .", date DESC";
+		}else{ //defaultvillkor
+			$_POST['sortBy'] = "date";
+			$criteria->order= "date DESC";
+		}
+		return $criteria;
+	}
+	/*
+		 * if you have selected "Sök på konsultuppdrag" checkbox add a condition to only find CV
+		 * where the column "typeOfEmployment" in the database has value "consult"
+		*  if/else below is critical to display all results if both employment and consult checkboxes
+		 * are selected. It makes no change
+	*/
+	private function setTypeOfEmploymentCondition($criteria) {
+		if(isset($_POST['consult']) && isset($_POST['employment'])){
+			//dont touch this its retarded that this seems to be needed
+		}else{
+			if(isset($_POST['consult']) && !isset($_POST['employment']))
+				$criteria->addSearchCondition("typeOfEmployment","consult");
+			// same as above but for employment
+			if(isset($_POST['employment']) && !isset($_POST['consult']))
+				$criteria->addSearchCondition("typeOfEmployment","employment");
+		}
+		return $criteria;
+	}
+
+	private function setTagsCondition($criteria) {
+		if(isset($_POST['tags']) && strlen($_POST['tags']) > 0){
+			$allCvIds = array(); //initiate empty array
+			$tagsAsArray = explode(",",$_POST['tags']); //transform from one long string with tags to an array of strings
+			foreach($tagsAsArray as $tag){ //loop all tags the user entered
+				//kontrollera denna query
+				$tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+				if($tagModel !=null){ //the tag exists
+					//loop the array with each row in the table that connects this tag to a cv
+					foreach($tagModel->cvTags as $cvTag){
+						$allCvIds[] = $cvTag->cvId; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
+					}
+				}
+			}
+			$criteria->addInCondition("id",$allCvIds,"OR");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
+		}
+		return $criteria;
+	}
+
+	private function setGeoAreaCondition($criteria) {
+		if($_POST['countries'] != "default"){
+
+			$geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
+			//the code to add conditions based on the models/objects returned above
+			foreach($geoGraphicAreas as $area)
+				$criteria->compare("geographicAreaId",$area->id,true,"OR");
+			if(sizeof($geoGraphicAreas)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+				$criteria->compare("geographicAreaId",0);
+				$criteria->compare("geographicAreaId",1);
+			}
+		}
+		return $criteria;
+	}
+	/*
+	 * Den här hanterar ifall vi trycker på sökknappen
+	 */
+	private function handleSearch($criteria) {
+		if(isset($_POST['countries'])){
+			$criteria = $this->setTypeOfEmploymentCondition($criteria);
+			if(isset($_POST['searchbox']))//if you write in free text search field
+				$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
+			$criteria = $this->setTagsCondition($criteria);//om man valt någon tag att söka på
+			$criteria = $this->setGeoAreaCondition($criteria); //hanterar om man valt att söka på region
+		}
+		return $criteria;
+	}
 }

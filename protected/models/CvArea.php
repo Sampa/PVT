@@ -1,28 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "recruiter".
+ * This is the model class for table "CvArea".
  *
- * The followings are the available columns in table 'recruiter':
- * @property string $VAT
- * @property integer $userId
- * @property string $orgName
- *
- * The followings are the available model relations:
- * @property Message[] $messages
- * @property User $user
- * @property Recruitmentprocess[] $recruitmentprocesses
- * @property Survey[] $surveys
+ * The followings are the available columns in table 'CvArea':
+ * @property integer $id
+ * @property integer $cvId
+ * @property integer $AreaId
  */
-class Recruiter extends CActiveRecord
+class CvArea extends CActiveRecord
 {
-	public $beenToSurveyPage;
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'Recruiter';
+		return 'CvArea';
 	}
 
 	/**
@@ -33,12 +26,11 @@ class Recruiter extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('VAT, userId, orgName', 'required'),
-			array('userId', 'numerical', 'integerOnly'=>true),
-			array('VAT, orgName', 'length', 'max'=>255),
+			array('cvId, AreaId', 'required'),
+			array('cvId, AreaId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('VAT, userId, orgName', 'safe', 'on'=>'search'),
+			array('id, cvId, AreaId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,10 +42,6 @@ class Recruiter extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'messages' => array(self::HAS_MANY, 'Message', 'recruiterID'),
-			'user' => array(self::BELONGS_TO, 'User', 'userId'),
-			'recruitmentprocesses' => array(self::HAS_MANY, 'Recruitmentprocess', 'recruiterId'),
-			'surveys' => array(self::HAS_MANY, 'Survey', 'recruiterID'),
 		);
 	}
 
@@ -63,19 +51,12 @@ class Recruiter extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'VAT' => Yii::t('t', 'VAT'),
-			'userId' => 'User',
-			'orgName' => Yii::t('t', 'Företagsnamn'),
+			'id' => 'ID',
+			'cvId' => 'Cv',
+			'AreaId' => 'Area',
 		);
 	}
-    public static function getProcessesAsList(){
-        $loggedInRecruiter = Recruiter::model()->findByPk(Yii::app()->user->id);
-        if($loggedInRecruiter){
-            Yii::app()->controller->renderPartial("/recruiter/_recruiterProcessesAsList",
-                array("processes"=>$loggedInRecruiter->recruitmentprocesses)
-            );
-        }
-    }
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -94,9 +75,9 @@ class Recruiter extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('VAT',$this->VAT,true);
-		$criteria->compare('userId',$this->userId);
-		$criteria->compare('orgName',$this->orgName,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('cvId',$this->cvId);
+		$criteria->compare('AreaId',$this->AreaId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -107,7 +88,7 @@ class Recruiter extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Recruiter the static model class
+	 * @return CvArea the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

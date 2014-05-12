@@ -51,7 +51,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-2">
 				<ul class="meta-search">
-					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo CHtml::encode($data->date); ?></span></li>
+					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo substr(CHtml::encode($data->date),0,10); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
 					<?php
 					//DB Query to get the country name.
@@ -64,9 +64,18 @@
 					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+			<div class="col-xs-12 col-sm-12 col-md-7 excerpet" style="margin-top:-25px">
 				<h3><a href="#" title=""><?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?></a></h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
+<!--                    <h3>Nyckelord:</h3>-->
+                    <?php
+                            foreach($data->cvTags as $cvTag){
+                                //frequency är hur ofta den använts
+                                $number = $cvTag->tag->frequency+20;
+                                //skriver ut taggen så att mer använda taggar blir större
+                                echo '<span style="font-size:'.$number.'px"> '.$cvTag->tag->name.'</span>';
+                            }
+//                    ?>
+                <br/>
                 <span class="plus"><a href="#" title="Lorem ipsum"><i id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->

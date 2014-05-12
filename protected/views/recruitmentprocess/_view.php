@@ -31,5 +31,8 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('company')); ?>:</b>
 	<?php echo CHtml::encode($data->company); ?>
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('geographicAreaID')); ?>:</b>
+	<?php echo CHtml::encode($data->geographicAreaID); ?>
 	<br />
 </div>

@@ -106,6 +106,8 @@ class SiteController extends Controller
                 $user->email = $_POST['RegisterForm']['email'];
                 $user->username = $_POST['RegisterForm']['username'];
                 $user->password = $_POST['RegisterForm']['new_password'];
+                $user->name = $_POST['RegisterForm']['fullname'];
+
 
                 if ($user->save()) {
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
@@ -279,7 +281,6 @@ class SiteController extends Controller
         }
 
         $this->render('login', array('model' => $model));
-        echo($model);
     }
 
     /**

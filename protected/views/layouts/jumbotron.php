@@ -24,6 +24,7 @@
                     array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
                     array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
+                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
                     array('label' => Yii::t("t",'Hitta CV'), 'url' => array('/cv/')),
                     array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))

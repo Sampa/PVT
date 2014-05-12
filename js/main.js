@@ -18,26 +18,29 @@
     function handleResult(data){
         target.children().remove();
         data.geonames.forEach(function(item){
-            target.append( new Option(item.name,item.geonameId) );
+            var foo = new Option(item.name,item.name);
+            $(foo).attr("id",item.geonameId);
+            target.append(foo);
         });
         target.fadeIn();
     }
     $(function(){
         ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
             var next= $("#"+list[index+1]);
-            $("#"+item).select2({
+             $("#"+item).select2({
                 placeholder: next.attr("data-default")
             });
             $("#"+item).change(function(){
                 if(next){
-                    getPlaces(this.value,next);
+                    $("option[value="+this.value+"]").attr("id");
+                    getPlaces($("option[value="+this.value+"]").attr("id"),next);
                 }
             });
         });
     });
-//    $("#geoRegion").on("change",function(){
-//        $(".cityWrapper").fadeIn();
-//    });
+    $("#geoRegion").on("change",function(){
+        $(".cityWrapper").fadeIn();
+    });
 }(window,jQuery,void(0)));
 
 

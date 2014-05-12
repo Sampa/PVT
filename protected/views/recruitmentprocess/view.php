@@ -86,7 +86,15 @@ $geoid=$model->geographicAreaID;
 <div class="row">
   <div class="controls" style="margin-top:20px">
     <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Geografisk plats: </strong>");?></div>
-    <div class="col-xs-6 col-sm-2"><?php echo $model->geographicAreaID;?> </div>
+      <?php
+        if(isset($model->geographicArea->country)){
+            $countryName = $model->geographicArea->country;
+
+        }else{
+            $countryName=null;
+        }
+      ?>
+    <div class="col-xs-6 col-sm-2"><?php echo $countryName;?> </div>
   </div>
 </div>
 

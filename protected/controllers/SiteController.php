@@ -108,6 +108,7 @@ class SiteController extends Controller
                 $user->password = $_POST['RegisterForm']['new_password'];
                 $user->name = $_POST['RegisterForm']['fullname'];
 
+
                 if ($user->save()) {
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
                         $recruiterModel = new Recruiter();

@@ -41,7 +41,7 @@ $this->breadcrumbs=array(
   </div>
 </form>
 <hr/>
-<h3 id="#results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
+<h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
     <div class="btn-group">
           <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
           <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>

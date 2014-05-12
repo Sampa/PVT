@@ -12,7 +12,9 @@ $this->breadcrumbs=array(
 ?>
 
 <h1><?php echo $model->title; ?></h1>
-<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($model->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
+<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($model->pathToPdf); ?>" rel="pdf">
+    <?php echo Yii::t("t","Öppna cv");?>
+</a>
 <?php
 foreach($model->cvTags as $cvTag){
     echo "<br/>";

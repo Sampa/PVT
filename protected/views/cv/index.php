@@ -59,6 +59,7 @@ if($resultCount< 1):?>
 	    $this->widget('bootstrap.widgets.TbListView',array(
 	    'dataProvider'=>$dataProvider,
          'itemView'=>'_view',
+         'afterAjaxUpdate'=>'scrollToResults',
 	    ));
 	?>
 </div><!-- form -->
@@ -67,7 +68,14 @@ if($resultCount< 1):?>
 
 ?>
 <script>
+    function scrollToResults(i,data){
+        $('html, body').animate({
+                scrollTop: $("#results").offset().top
+            }, 2000);
+        }
+
 jQuery(document).ready(function ($) {
+
     jQuery("#searchTags").select2({
         tags:<?php echo json_encode(Tag::getTagsAsString());?>
     });

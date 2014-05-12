@@ -51,15 +51,12 @@
                                     <br> 
                                     <br>
                                     <br>
-                                    
-                                   
                     		<div class="row">
                         		<div class="col-xs-6 col-md-2"></div>
-
                             		<div class="col-xs-6 col-md-8">
                             			<form action="<?php echo Yii::app()->baseUrl;?>/cv/index/#sortBy" method="get">
                                 			<div class="input-group">
-                                				<input type="text" class="form-control" name="searchKey" placeholder="Sök på Nyckelord">
+                                				<input type="text" class="form-control" name="searchKey" placeholder=<?php echo Yii::t("t","Sökord");?>>
                                 				<span class="input-group-btn">
                                 					<button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
                                 				</span>
@@ -104,11 +101,11 @@
                 </div>
             </div>
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+            <a class="left carousel-control"  href="#carousel-example-generic" data-slide="prev">
+                <span style="margin-left:-85px; "class="glyphicon glyphicon-chevron-left"></span>
             </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+            <a class="right carousel-control"  href="#carousel-example-generic" data-slide="next">
+                <span style="margin-left:35px;width: 50px;" class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div><!-- /carousel -->
     </div>

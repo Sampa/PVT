@@ -58,18 +58,20 @@
 
                             <div class="col-xs-6 col-md-8">
                                 <div class="input-group">
-                                <input type="text" class="form-control"placeholder="Sök på Nyckelord">
-                                <span class="input-group-btn">
-                                <button class="btn btn-info" type="button"><?php echo Yii::t("t","Sök");?></button>
-                                </span>
-                            </div><!-- /input-group -->
+                                	<form action="/cv/index/" method="get"> 
+                                		<input type="text" class="form-control" name="searchKey" placeholder="Sök på Nyckelord">
+                                		<span class="input-group-btn">
+                                			<button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
+                                		</span>
+                                	</form>	
+                            	</div><!-- /input-group -->
 
 
                                 
-                            <div class="col-xs-6 col-md-2">
+                            	<div class="col-xs-6 col-md-2">
                            
-                            </div>
-                            </div>
+                            	</div>
+                            	</div>
 
                         </div>
                         <br>

@@ -83,20 +83,31 @@ class CvController extends Controller
 		$this->performAjaxValidation($model);
 
 		if (isset($_POST['Cv'])) {
-            $model->hasGeoArea=false;
-            if(isset($_POST['geoRegion']) && isset($_POST['geoCity']) && $_POST['countries'] != "default"){
-                $geo = new GeograficArea;
-                $geo->region  = $_POST['geoRegion'];
-                $geo->country  = $_POST['countries'];
-                $geo->city = $_POST['geoCity'];
-                if($geo->save()){
-                    $model->hasGeoArea = true;
-                    $model->geographicAreaId  = $geo->id;
-                }
-
-            }
+             $model->hasGeoArea=false;
+              $model->geographicAreaId = 22;
              $model->attributes=$_POST['Cv'];
              if ($model->save()){
+                 if(isset($_POST['geoRegion']) && isset($_POST['geoCity']) && $_POST['countries'] != "default"){
+                     $areas = explode("//",$_POST['geoAreas']);
+                     foreach($areas as $singleArea){
+                         $area = explode(",", $singleArea);
+                         $geo = new GeograficArea;
+                         if(isset($area[1])){
+                             $geo->country  = $area[0];
+                             $geo->region  = $area[1];
+                             $geo->city = $area[2];
+                             if(!$geo->save()){
+                                 die();
+                             }
+                             $cvArea = new CvArea();
+                             $cvArea->cvId = $model->id;
+                             $cvArea->AreaId = $geo->id;
+                             $cvArea->save();
+                         }
+                     }
+                     $model->hasGeoArea = true;
+                     $model->geographicAreaId  = 1;
+                 }
                  $tags = explode(",", $_POST['Cv']['tags']);
                  foreach($tags as $key=>$tag){
                      $currentTag=  Tag::model()->find("name='".$tag."'");
@@ -114,7 +125,7 @@ class CvController extends Controller
                      $cvTagRelation->cvId = $model->id;
                      $cvTagRelation->save();
                  }
-                 $this->redirect(array('view','id'=>$model->id));
+//                 $this->redirect(array('view','id'=>$model->id));
              }
         }
 

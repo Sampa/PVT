@@ -18,7 +18,9 @@
     function handleResult(data){
         target.children().remove();
         data.geonames.forEach(function(item){
-            var foo = new Option(item.name,item.name);
+            var fixedName = item.name.replace("Municipality","Kommun");
+            fixedName = fixedName.replace("municipality","Kommun");
+            var foo = new Option(fixedName,fixedName);
             $(foo).attr("id",item.geonameId);
             target.append(foo);
         });
@@ -32,8 +34,7 @@
             });
             $("#"+item).change(function(){
                 if(next){
-                    $("option[value="+this.value+"]").attr("id");
-                    getPlaces($("option[value="+this.value+"]").attr("id"),next);
+                    getPlaces($("option[value='"+this.value+"']").attr("id"),next);
                 }
             });
         });

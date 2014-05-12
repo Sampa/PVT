@@ -22,16 +22,36 @@
     )); ?>
 
     <p class="help-block"><?php echo Yii::t("t", "Fält markerade med * måste fyllas i");?>
+
         <?php echo $form->radioButtonListControlGroup($model,'typeOfEmployment',
             array('consult'=>Yii::t("t",'Konsultuppdrag'),'employment'=>Yii::t('t','Anställning'))); ?>
-        <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
-
         <div class="control-group row  error col-md-12">
             <div class="row col-md-5">
                 <?php echo $form->textFieldControlGroup($model,'title',array('class'=>'col-md-5 form-control','maxlength'=>255)); ?>
             </div>
         </div>
+        <!--Välja geographicAreas-->
+        <div class="row" style="">
+            <div class="col-md-1" id="newAreaWrapper"  style="margin-top: 20px; margin-left: 0px; margin-right: -25px;">
+                <a href="#" id="addArea" class="btn btn-success btn-small">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </a>
+            </div>
+            <div class="pull-left col-md-10">
+                <?php $this->renderPartial('_allCountriesSelect', array('model'=>$model,'pdf'=>$pdf)); ?>
+            </div>
 
+        </div>
+        <div class="control-group row  error col-md-4">
+            <div id="areaNotice" class="alert alert-info" style="display:none;">
+               <p id="areaTarget">
+                   Lade till:
+               </p>
+                Du kan nu välja ett till geografiskt area
+            </div>
+            <input type="text" id="listOfAreas" name="geoAreas"/>
+        </div>
+        <span class="clearfix"></span>
 		<div class="control-group row  error col-md-12">
 			<div class="row col-md-5">
 				<?php echo $form->textFieldControlGroup($model,'tags',array('class'=>'col-md-5 form-control','maxlength'=>255)); ?>
@@ -70,6 +90,17 @@
 </div><!-- form -->
 <script>
 	$(document).ready(function(){
+        $("#addArea").on("click",function(){
+           var country,region,city;
+            country = $("#countries").val();
+            region  = $("#geoRegion").val();
+            city = $("#geoCity").val();
+            var currentValue = $("#listOfAreas").val();
+            $("#areaTarget").append(country+", "+region+", "+city);
+            $("#listOfAreas").val(currentValue+country+", "+region+", "+city+ "//");
+            $("#areaNotice").fadeIn("slow");
+        });
+
 		$("#Cv_tags").select2({
 			tags:<?php echo json_encode(Tag::getTagsAsString());?>
 		});

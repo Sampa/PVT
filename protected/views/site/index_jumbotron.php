@@ -57,7 +57,7 @@
                         		<div class="col-xs-6 col-md-2"></div>
 
                             		<div class="col-xs-6 col-md-8">
-                            			<form action="/cv/index/" method="get"> 
+                            			<form action="<?php echo Yii::app()->baseUrl;?>/cv/" method="get">
                                 			<div class="input-group">
                                 				<input type="text" class="form-control" name="searchKey" placeholder="Sök på Nyckelord">
                                 				<span class="input-group-btn">

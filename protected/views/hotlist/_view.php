@@ -15,12 +15,15 @@
 <!--     <div class="col-xs-12 col-sm-12 col-md-1">
     </div> -->
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
  <!--   <article class="search-result row"> -->
     <p> <?php echo Yii::t('t','Markera');?> </p>
 
         <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
         </div>
+        <div class="col-md-2">
+            <a href="--><?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/YellowSmily.jpg" /></a>
+        </div>    
   <!--      <div class="col-xs-12 col-sm-12 col-md-2">-->
 <!--        --><?php
 //        if($data->hotlistRating->rating == 3){?>
@@ -39,7 +42,7 @@
 <!--        --><?php //for($r = 0; $r < $data->hotlistRating->rating; $r++){?>
 <!--            <i class="glyphicon glyphicon-star"></i>-->
 <!--        --><?php //} ?><!--<span>rang</span>-->
-       <div class="col-md-3">
+       <div class="col-md-2">
         <ul class="meta-search">
 <!--            <li><i class="glyphicon glyphicon-calendar"></i> <span>--><?php //echo substr(CHtml::encode($data->cv->date),0,10); ?><!--</span></li>-->
 <!--            <li><i class="glyphicon glyphicon-briefcase"></i> <span>--><?php //echo CHtml::encode($data->cv->typeOfEmployment); ?><!--</span></li>-->

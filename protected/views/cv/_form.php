@@ -44,9 +44,9 @@
         </div>
         <div class="control-group row  error col-md-4">
             <div id="areaNotice" class="alert alert-info" style="display:none;">
-               <p id="areaTarget">
-                   Lade till:
-               </p>
+               <span id="areaTarget">
+
+               </span>
                 Du kan nu välja ett till geografiskt area
             </div>
             <input type="text" id="listOfAreas" name="geoAreas"/>
@@ -96,7 +96,7 @@
             region  = $("#geoRegion").val();
             city = $("#geoCity").val();
             var currentValue = $("#listOfAreas").val();
-            $("#areaTarget").append(country+", "+region+", "+city);
+            $("#areaTarget").append("<p>Lade till:"+country+", "+region+", "+city+"</p>");
             $("#listOfAreas").val(currentValue+country+", "+region+", "+city+ "//");
             $("#areaNotice").fadeIn("slow");
         });

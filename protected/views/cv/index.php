@@ -14,9 +14,9 @@ $this->breadcrumbs=array(
             <strong><?php echo Yii::app()->user->getFlash('index'); ?></strong>
         </div>
     <?php else: ?>
-        <div class="page-header">
-            <h1><?php echo Yii::t("t", "Avancerad sökning");?> </h1>
-        </div>
+<!--        <div class="page-header">-->
+<!--            <h1>--><?php //echo Yii::t("t", "Avancerad sökning");?><!-- </h1>-->
+<!--        </div>-->
         <div class="horizontal-form">
 
 <form class="form" role="search" name="search" method="post" >

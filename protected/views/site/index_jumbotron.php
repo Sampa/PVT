@@ -118,7 +118,7 @@
 <div id="footer">
     <div class="container">
         <div class="row">
-            <h4 class="footertext"><strong><?php echo Yii:: t ("t","Om oss");?></strong></h4>
+           
             <br>
               <div class="col-md-4">
                 <center>

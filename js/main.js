@@ -35,9 +35,9 @@
             });
         });
     });
-//    $("#geoRegion").on("change",function(){
-//        $(".cityWrapper").fadeIn();
-//    });
+    $("#geoRegion").on("change",function(){
+        $(".cityWrapper").fadeIn();
+    });
 }(window,jQuery,void(0)));
 
 

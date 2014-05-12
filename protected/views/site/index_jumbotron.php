@@ -43,11 +43,11 @@
                     <div class="header-text hidden-xs">
                         <div class="col-md-12 text-center">
                             <h2>
-                                <span><strong>CV PAGES</strong></span>
+                                <span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span>
                             </h2>
                             <br>
                             <h3>
-                                <span>Sök efter cv:n i databasen.</span></h3> 
+                                <span><?php echo Yii::t("t","Sök efter cv:n i databasen.");?></span></h3> 
                                     <br> 
                                     <br>
                                     <br>
@@ -60,7 +60,7 @@
                                 <div class="input-group">
                                 <input type="text" class="form-control"placeholder="Sök på Nyckelord">
                                 <span class="input-group-btn">
-                                <button class="btn btn-info" type="button">Sök</button>
+                                <button class="btn btn-info" type="button"><?php echo Yii::t("t","Sök");?></button>
                                 </span>
                             </div><!-- /input-group -->
 
@@ -85,13 +85,13 @@
                     <div class="header-text hidden-xs">
                         <div class="col-md-12 text-center">
                             <h2>
-                                <span><strong>CV PAGES</strong></span>
+                                <span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span>
                             </h2>
                             <br>
                             <br>
                             <br>
                             <h3>
-                                <span>Hitta kandidater i vår CV-databas?</span>
+                                <span><?php echo Yii::t("t","Hitta kandidater i vår CV-databas?");?></span>
                             </h3>
                             <br>
                             <br>
@@ -127,7 +127,8 @@
                   <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
                   <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast 
                     till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare. 
-                    Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga. <br><a>Läs mer</a>");?><br>
+                    Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?> 
+                    <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
                 </center>
               </div>
               <div class="col-md-4">
@@ -138,7 +139,8 @@
                   <p class="footertext"><?php echo Yii:: t("t","Registrering hos CV-Pages innebär att du samtycker till att CV-Pages 
                     behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all 
                     slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer 
-                    och adress. <br><a>Läs mer</a>");?><br>
+                    och adress.");?>
+                    <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
                 </center>
               </div>
               <div class="col-md-4">
@@ -149,12 +151,14 @@
                   <p class="footertext"><?php echo yii:: t("t","Vi vill meddela er att CV-Pages använder sig utav cookies.
                     Syftet med cookies är att få
                     fakta om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning,
-                    samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen <br><a>Läs mer</a>");?><br>
+                    samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen");?> 
+                    <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
                 </center>
               </div>
             </div>
             <div class="row">
-            <p><center><a href="#">Kontakt</a> <p class="footertext"></p></center></p>
+            <p><center><br>
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/contact"><?php echo Yii::t("t","Kontakt");?></a><p class="footertext"></p></center></p>
         </div>
     </div>
 </div>

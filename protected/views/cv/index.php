@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-    Yii::t("t",'Hitta CV'),
+    Yii::t("t",'Avancerad sökning'),
 );
 ?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
         </div>
     <?php else: ?>
         <div class="page-header">
-            <h1><?php echo Yii::t("t", "Hitta CV");?> </h1>
+            <h1><?php echo Yii::t("t", "Avancerad sökning");?> </h1>
         </div>
         <div class="horizontal-form">
 

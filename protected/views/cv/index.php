@@ -21,7 +21,6 @@ $this->breadcrumbs=array(
 			<label for="searchbox"><?php echo Yii::t("t","Fritext och meta taggar");?></label>
 			<div class="input-group">
 				<input type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>"/>
-				<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
 			</div
 		</div>
 		<div class="row" style="margin-left:2px;margin-top:0px;margin-bottom: 15px; max-width: 50%;">

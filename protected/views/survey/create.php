@@ -30,6 +30,7 @@
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>-->
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>-->
                     <a href="#" class="btn btn-warning survey-component" id="help"><span class="glyphicon glyphicon-question-sign"></span> Hjälp</a>
+                    <button class="btn btn-success btn-lg"><?php echo Yii::t("t","Spara");?></button>
                 </div>
             </div>
         </div>

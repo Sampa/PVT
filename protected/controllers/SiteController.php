@@ -95,13 +95,13 @@ class SiteController extends Controller
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
-            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code'));
+            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted',));
             Yii::app()->end();
         }
 
         if (isset($_POST['RegisterForm'])) {
             $model->attributes = $_POST['RegisterForm'];
-            if ($model->validate(array('email', 'username', 'new_password', 'password_confirm','verify_code'))) {
+            if ($model->validate(array('email', 'username', 'new_password', 'password_confirm','verify_code','accepted'))) {
                 $user = new User();
                 $user->email = $_POST['RegisterForm']['email'];
                 $user->username = $_POST['RegisterForm']['username'];
@@ -272,9 +272,15 @@ class SiteController extends Controller
                 else
                     Yii::app()->user->setState("role","recruiter"); //there is one
                 //build message string for alittle more readability
+
+                if(Yii::app()->user->getState("role")=='recruiter'){
+                    $roll= Yii::t("t","rekryterare");
+                }else{
+                    $roll=Yii::t("t","publicerare");
+                }
                 $message = Yii::t("t",'Välkommen')." " . app()->user->name." ";
                 $message .= Yii::t("t","du är inloggad som ");
-                $message .= Yii::t("t",Yii::app()->user->getState("role"));
+                $message .= $roll;
                 Yii::app()->user->setFlash('success',$message);
                 $this->redirect(Yii::app()->user->returnUrl);
             }

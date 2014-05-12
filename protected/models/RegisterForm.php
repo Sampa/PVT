@@ -17,6 +17,7 @@ class RegisterForm extends CFormModel
     public $other_checkbox;
     public $Companyname;
     public $VAT;
+    public $accepted;
 
 
     public function rules()
@@ -24,6 +25,7 @@ class RegisterForm extends CFormModel
         return array(
             array('fullname,email,new_password,password_confirm,username', 'required'),
             array('email,new_password,password_confirm,username', 'required'),
+            array('accepted','required', 'requiredValue' => 1, 'message' =>Yii::t("t",'Acceptera användaravtalet')),
             array('username', 'match', 'allowEmpty' => false, 'pattern' => '/[A-Za-z0-9\x80-\xFF]+$/'),
             array('email', 'email'),
             array('email', 'length', 'min' => User::EMAIL_MIN, 'max' => User::EMAIL_MAX),
@@ -48,7 +50,8 @@ class RegisterForm extends CFormModel
             'verify_code' => Yii::t('t', 'Captcha'),
             'other_checkbox' => Yii::t('t', "Kryssa i om du är rekryterare"),
             'Companyname' => Yii::t('t', "Företagsnamn"),
-            'VAT' => Yii::t('t', "VAT")
+            'VAT' => Yii::t('t', "VAT"),
+            'accepted' => Yii::t('t','Acceptera användaravtal:'),
         );
     }
 }

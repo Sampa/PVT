@@ -283,6 +283,10 @@ class CvController extends Controller
 		//alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
 		$criteria=new CDbCriteria;
         $criteria = $this->setSortOrderCondition($criteria);
+
+        if(isset($_GET['searchKey']))//if you write in free text search field in jumbotron-index
+			$criteria->addSearchCondition("pdfText",$_GET['searchKey']);
+
         //this if checks if we have pressed the submit button in the search form
         $criteria = $this->handleSearch($criteria);
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's

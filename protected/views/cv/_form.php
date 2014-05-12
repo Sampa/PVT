@@ -39,10 +39,9 @@
 
         </div>
         <div class="control-group row  error col-md-4">
-            <div id="areaNotice" class="alert alert-info" style="display:none;">
-               <span id="areaTarget">
-               </span>
-                Du kan nu välja ett till geografiskt area
+            <div id="areaNotice" class="" style="display:none;">
+                <ul class="list-group" id="areaTarget">
+                </ul>
             </div>
             <input type="hidden" id="listOfAreas" name="geoAreas"/>
         </div>
@@ -93,9 +92,13 @@
             region  = $("#geoRegion").val();
             city = $("#geoCity").val();
             var currentValue = $("#listOfAreas").val();
-            $("#areaTarget").append("<p>Lade till:"+country+", "+region+", "+city+"</p>");
+            var html = '<li class="list-group-item list-group-item-info green">';
+            html += country+", "+region+", "+city+"</li>";
+            var obj = $($.parseHTML(html));
+            $("#areaTarget > li").removeClass("green");
+            $("#areaTarget").append(obj);
             $("#listOfAreas").val(currentValue+country+", "+region+", "+city+ "//");
-            $("#areaNotice").fadeIn("slow").delay(15000).fadeOut("slow");
+            $("#areaNotice").fadeIn("slow")
         });
 
 		$("#Cv_tags").select2({
@@ -103,3 +106,13 @@
 		});
 	})
 </script>
+<style>
+    .green{
+        color: #3C763D;
+        background-color: #DFF0D8;
+    }
+    .standard{
+        color: #000;
+        background-color: #fff;
+    }
+</style>

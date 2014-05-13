@@ -63,8 +63,11 @@ class SiteController extends Controller
     /**
      * Displays the contact page
      */
-    public function actionContact()
+    public function actionContact($renderPartial=false)
     {
+        echo $this->getContactForm($renderPartial);
+    }
+    private function getContactForm($renderPartial=false){
         $model = new ContactForm;
         if (isset($_POST['ContactForm'])) {
             $model->attributes = $_POST['ContactForm'];
@@ -75,19 +78,21 @@ class SiteController extends Controller
                     $model->email,
                     $model->subject,
                     array('body' => $model->body,
-                                'name' => $model->name,
-                                'subject' => $model->subject,
-                               'email' => $model->email),
-                  'contact',
-                  'main3'
+                          'name' => $model->name,
+                          'subject' => $model->subject,
+                          'email' => $model->email),
+                    'contact',
+                    'main3'
                 );
                 Yii::app()->user->setFlash('success', '<strong>Message sent!   </strong>Thank you for contacting us. We will respond to you as soon as possible.');
-                $this->refresh();
+                Yii::app()->getController()->refresh();
             }
         }
-        $this->render('contact', array('model' => $model));
+        if($renderPartial){
+            return Yii::app()->getController()->renderPartial('/site/contact', array('model' => $model),true);
+        }else
+            return Yii::app()->getController()->render('/site/contact', array('model' => $model),true);
     }
-
     public function actionRegister()
     {
         if(!Yii::app()->user->isGuest) //redirect if logged in (can be changed later)

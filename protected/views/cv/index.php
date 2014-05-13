@@ -72,7 +72,7 @@ if($resultCount< 1):?>
         $('html, body').animate({
                 scrollTop: $("#results").offset().top
             }, 2000);
-        }
+    }
 
 jQuery(document).ready(function ($) {
 

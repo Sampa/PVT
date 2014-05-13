@@ -165,11 +165,17 @@
                 </div>
                 <div class="row">
                     <p><center><br>
-                        <a href="<?php echo Yii::app()->baseUrl;?>/site/contact"><?php echo Yii::t("t","Kontakt");?></a><p class="footertext"></p></center></p>
+                        <a href="#contactForm" id="showContactForm"><?php echo Yii::t("t","Kontakt");?></a><p class="footertext"></p></center></p>
+<!--                        <a href="--><?php //echo Yii::app()->baseUrl;?><!--/site/contact">--><?php //echo Yii::t("t","Kontakt");?><!--</a><p class="footertext"></p></center></p>-->
                 </div>
             </div>
-
-            <!--            <p>&copy; --><?php //echo Yii::app()->name; ?><!-- </p>-->
+            <!--visar hela kontactformuläret-->
+            <div id="contactFormWrapper" style="display: none;">
+                <?php
+                    $cat=Yii::app()->createController('site');//returns array containing controller instance and action index.
+                    echo $cat[0]->actionContact(true);
+                ?>
+            </div>
         </footer>
     </div> <!-- /container -->
 <?php $this->endContent(); ?>
@@ -180,3 +186,13 @@
         color:#454A49;
     }
 </style>
+<script>
+    $(document).ready(function(){
+    $("#showContactForm").on('click',function(){
+        $("#contactFormWrapper").slideToggle();
+        $('html, body').animate({
+            scrollTop: $("#showContactForm").offset().top
+        }, 2000);
+        });
+    });
+</script>

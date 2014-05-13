@@ -13,9 +13,9 @@ $this->breadcrumbs = array(
             <strong><?php echo Yii::app()->user->getFlash('contact'); ?></strong>
         </div>
     <?php else: ?>
-        <div class="page-header">
-            <h1><?php echo Yii::t("t", "Kontakt");?> </h1>
-        </div>
+<!--        <div class="page-header">-->
+<!--            <h1>--><?php //echo Yii::t("t", "Kontakt");?><!-- </h1>-->
+<!--        </div>-->
         <div class="horizontal-form">
 
             <?php $form = $this->beginWidget('CActiveForm', array(

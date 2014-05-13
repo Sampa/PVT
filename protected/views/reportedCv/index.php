@@ -28,22 +28,22 @@ $this->breadcrumbs=array(
                 <?php
                 foreach($allModels as $model){
                 ?>
-                <!-- <tr onclick="window.document.location ='cv/view/<?php echo $model->cvId;?>';"> -->
+                 <tr id="<?php echo $model->cvId;?>"> 
                     
-                    <tr>
-                    <td><?php
+                   
+                    <td class="onClick"><?php
                             echo substr($model->date, 0, 10);
                         ?>
                     </td>
-                    <td><?php
+                    <td class="onClick"><?php
                             echo $model->reportedBy;
                         ?>
                     </td>
-                     <td><?php
+                     <td class="onClick"><?php
                             echo $model->cvId;
                         ?>
                     </td>
-                    <td><?php
+                    <td class="onClick"><?php
                             echo $model->reason;
                         ?>
                     </td> 
@@ -51,9 +51,7 @@ $this->breadcrumbs=array(
                             <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-trash deleteReportedCV"></span>
                     </td>
                     <td style='text-align:center;'>
-                        <a href="<?php echo Yii::app()->baseUrl;?>/recruitmentprocess/view/<?php echo $model->id?>">
-                            <span class="glyphicon glyphicon-flag"></span> 
-                        </a>
+                            <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-flag OkReportedCv"></span> 
                     </td>
                 </tr>
                     <?php
@@ -65,16 +63,64 @@ $this->breadcrumbs=array(
 		</div>
 	</div>
 </div>
+
+
+
 <script>
 $(".deleteReportedCV").on("click",function(event){
 event.preventDefault();	
+var idToDelete=$(this).attr("id");
+var removeFromDom=true;
+bootbox.confirm("<?php echo Yii::t("t","Är du 100% säker på att du verkligen vill ta bort det här CVt?");?>", function(result) {
+
+if(!result){
+    return;
+} 
 $.ajax({
-	type: "POST",
-	dataType:"json",
-	data: {id:$(this).attr("id")},
-	url: "/cv/delete/"+$(this).attr("id")
-}).done(function( data) { //hamtat antalet links
-		alert(data);
-		});
+    type: "POST",
+    data: {id:idToDelete},
+    url: "/cv/delete/"+idToDelete,
+    success:function(data){
+        $("#"+idToDelete).remove();
+
+    }
+});
+});
+
+ 
+
+});
+</script>
+
+<script>
+$(".onClick").on("click",function(event){
+    event.preventDefault();
+    window.document.location ='cv/view/'+$(this).parent().attr("id");
+});
+</script>
+
+<script>
+$(".OkReportedCv").on("click",function(event){
+    event.preventDefault();
+
+    var idToOk=$(this).attr("id");
+    bootbox.confirm("<?php echo Yii::t("t","Är du 100% säker på att du verkligen vill rapportera det här CVt som OK?");?>", function(result) {
+
+    if(!result){
+        return;
+    } 
+    $.ajax({
+    type: "POST",
+    dataType:"json",
+    data: {id:idToOk},
+    url: "/reportedCv/delete/"+idToOk
+    }).done(function( data) { //hamtat antalet links
+
+        alert(data);
+
+        });
+           window.document.location ='reportedCv';
+    });
+
 });
 </script>

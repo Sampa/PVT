@@ -90,7 +90,14 @@ class UserController extends Controller
 		$rmodel=Recruiter::model()->findByPk($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model, $rmodel);
+		
+		if($rmodel){
+			$this->performAjaxValidation($model, $rmodel);
+		}
+		else{
+			$this->performAjaxValidationSingle($model);
+		}
+
 		if (isset($_POST['User'])){
 			if($_POST['User']['username']!==''){
 				$model->username = $_POST['User']['username'];
@@ -197,6 +204,13 @@ class UserController extends Controller
 	 * Performs the AJAX validation.
 	 * @param User $model the model to be validated
 	 */
+	protected function performAjaxValidationSingle($model)
+	{
+		if (isset($_POST['ajax']) && $_POST['ajax']==='user-form') {
+			echo CActiveForm::validate(array($model));
+			Yii::app()->end();
+		}
+	}
 	protected function performAjaxValidation($model, $rmodel)
 	{
 		if (isset($_POST['ajax']) && $_POST['ajax']==='user-form') {

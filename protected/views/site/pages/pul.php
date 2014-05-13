@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 ?>
 <div class="container page-min-height">
 
-    <h1 class="page-header"><?php echo Yii::t("t", "Om oss");?></h1>
+    <h1 class="page-header"><?php echo Yii::t("t", "Personuppgiftslagen");?></h1>
 
     <p><?php echo Yii::t("t", "Vår affärside går ut på att presentera en publik gemensam databas för cv:n oavsett vilken branch du är intresserad av eller proffessionell inom. Möjligheten att vara anonym ger dig en chans till en objektiv första bedömning vilket är helt valfritt. Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du är personligt ansvarig för att skydda dessa uppgifter.");?> <br><br> </p>
 </div>

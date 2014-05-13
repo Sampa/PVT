@@ -106,7 +106,7 @@
                    <?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
                 <?php } ?>
-                <ul class="dropdown-menu pull-right">
+                <ul class="dropdown-menu pull-right" id="<?php echo $data->id;?>">
                     <?php echo Recruiter::getProcessesAsList();?>
                     <li class="divider"></li>
                     <li><a href="<?php echo Yii::app()->createUrl("/recruitmentprocess/create");?>"><?php echo Yii::t("t","Skapa ny process");?></a></li>

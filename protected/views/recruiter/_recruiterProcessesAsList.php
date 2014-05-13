@@ -3,7 +3,7 @@
         echo "<li>".Yii::t("t","Du har inga processer nu")."</li>";
     else{
         foreach($processes as $process){
-            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$process->title."</a></li>";
+            echo '<li class="listOfProcesses" id="'.$process->id.'" role="presentation"><a role="menuitem" tabindex="-1" href="#">'.$process->title."</a></li>";
         }
     }
 

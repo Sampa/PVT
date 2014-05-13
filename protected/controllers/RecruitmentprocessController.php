@@ -28,7 +28,7 @@ class RecruitmentprocessController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','savecv'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -153,6 +153,25 @@ class RecruitmentprocessController extends Controller
 			'dataProvider'=>$dataProvider,
             'allModels'=>$allModels
 		));
+	}
+
+	/**
+	* Används för att spara ett cv till en hotlist
+	*/
+	public function actionSavecv()
+	{
+		$hasOld = Hotlist::model()->findByAttributes(array("cvId"=>$_POST['cvID'], "rpId"=>$_POST['processID']));
+		if(isset($hasOld)) {
+			echo "Du har sparat detta cv tidigare!";
+			return;
+		} else { 
+			$hotlist = new Hotlist;	
+			$hotlist->cvId = $_POST['cvID'];
+			$hotlist->rpId = $_POST['processID'];
+			if($hotlist->save()) {
+				echo "Vi har nu sparat cvet i din process!";
+			}
+		}
 	}
 
 	/**

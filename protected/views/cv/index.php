@@ -50,6 +50,8 @@ $this->breadcrumbs=array(
    </div>
     <div class="well" style="display:none;" id="sortSelectionWrapper"><h4><?php echo Yii::t("t","Sorterade listan efter ");?><span id="sortSelection"></span></h4></div>
             <hr>
+
+
 <?php
 if($resultCount< 1):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
@@ -63,7 +65,31 @@ if($resultCount< 1):?>
 	    ));
 	?>
 </div><!-- form -->
+
     <?php endif;?>
+
+
+
+            <div class="modal fade" id="hotlistModal" tabindex="-1" role="dialog" aria-labelledby="hotlistTargetLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="hotlistTargetLabel">Cv tillagt i Hotlist</h4>
+                        </div>
+                        <div id="hotlistTarget" class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
 <?php
 
 ?>
@@ -73,6 +99,8 @@ if($resultCount< 1):?>
                 scrollTop: $("#results").offset().top
             }, 2000);
     }
+
+
 
 jQuery(document).ready(function ($) {
 
@@ -98,8 +126,8 @@ jQuery(document).ready(function ($) {
             url: "recruitmentprocess/savecv",
             data: {"processID":processID, "cvID":cvID}
         }).done(function( data ) {
-            console.log( data );
-            alert( data );
+           jQuery('#hotlistModal').modal('show');
+            $("#hotlistTarget").html(data)
         });
     });
 	jQuery(".sortButton").on("click",function(){

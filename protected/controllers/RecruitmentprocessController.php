@@ -168,8 +168,10 @@ class RecruitmentprocessController extends Controller
 			$hotlist = new Hotlist;	
 			$hotlist->cvId = $_POST['cvID'];
 			$hotlist->rpId = $_POST['processID'];
+            $recruitmentProcess = Recruitmentprocess::model()->findByPk($_POST['processID']);
+            $recruitmentProcessName = $recruitmentProcess->title;
 			if($hotlist->save()) {
-				echo "Vi har nu sparat cvet i din process!";
+				echo "Vi har nu sparat cvet i din process!".$recruitmentProcessName;
 			}
 		}
 	}

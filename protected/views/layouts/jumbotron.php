@@ -18,7 +18,7 @@
                     array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
                     array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
                     array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
-                    array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
+
                 );}else{
                 $items = array(
                     array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
@@ -27,15 +27,14 @@
                     array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
                     array('label' => Yii::t("t",'Hitta CV'), 'url' => array('/cv/')),
                     array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
-                    array('label' => Yii::t("t","Logga ut"), 'url' => array('/site/logout'))
+
                 );}
 
                 $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
-                        array('label' => Yii::t("t","Om oss"), 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
-                        array('label' => Yii::t("t",'Hitta CV'), 'url'=>array('/cv/')),
+                        array('label' => Yii::t("t",'Avancerad sökning'), 'url'=>array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
@@ -135,7 +134,7 @@
                             <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
                     till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare.
                     Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
                         </center>
                     </div>
                     <div class="col-md-4">
@@ -147,7 +146,7 @@
                     behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all
                     slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer
                     och adress.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
                         </center>
                     </div>
                     <div class="col-md-4">

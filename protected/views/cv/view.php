@@ -57,16 +57,41 @@ foreach($model->cvTags as $cvTag){
         ),
     ),
 )); ?>
-
+<span id="cvIdContainer" class="hidden">
+    <?php echo $model->id;?>
+</span>
 <script>
+    $.ajax({
+        type: "POST",
+        dataType:"json",
+        url: "/cv/"+$(this).attr("id")
+    }).done(function( data ) { //hämtat antalet links
+        alert(data);
+    });
+        /*
+            * hämtar antalet inbound links för ett cv från google
+            * skickar antalet till server (CvController.php och actionSaveInboundLinks() som sparar det i databasen)
+         */
     $(document).ready(function(){
+        var cvIdentification = $("#cvIdContainer").html();
         $.ajax({
             type: "POST",
-            url: "https://www.google.se/#q=link:http://aftonbladet.se",
-            dataType:"jsonp"
-        }).done(function( data ) {
-            console.log(data);
-            console.log("apa");
+            dataType:"jsonp",
+            url: "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:http://pvt.dsv.su.se/Group1/cv/"+cvIdentification
+        }).done(function( data ) { //hämtat antalet links
+            var numberOfLinks = data.responseData.cursor.resultCount;
+            $.ajax({
+                type: "POST",
+                dataType:"json",
+                url: "/cv/SaveInboundLinks",
+                data: {
+                    linkCount:numberOfLinks,
+                    id:cvIdentification
+                }
+            }).done(function( data ) { //sparat dem i databasen
+//                alert(data.status);
+                //här kan vi notifiera användaren att vi är klara
+            });
         });
     });
 </script>

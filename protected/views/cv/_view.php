@@ -62,6 +62,7 @@
     				?>
 					<li><i class="glyphicon glyphicon-globe"></i> <span><?= $countryName; ?></span></li>
 					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>
+
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet" style="margin-top:-25px">
@@ -102,9 +103,12 @@
 <!--                <button type="button" class="btn btn-primary pull-right">Lägg til hotlist</button>-->
                 <!-- Button trigger modal -->
                 <?php if( Yii:: app()->user->getState("role")=="recruiter") { ?>
-                <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
+
+
+                   <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
                    <?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
+
                 <?php } ?>
                 <ul class="dropdown-menu pull-right" id="<?php echo $data->id;?>">
                     <?php echo Recruiter::getProcessesAsList();?>

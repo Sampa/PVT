@@ -30,7 +30,7 @@ class CvController extends Controller
         //with expression means the phpcode _within_ ' ' must return true
 		return array(
             array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array('index','view'),
+                'actions'=>array('index','view','SaveInboundLinks'),
                 'users'=>array('*'),
             ),
 			array('allow', // allow authenticated user to perform 'create' and 'upload' actions
@@ -134,7 +134,20 @@ class CvController extends Controller
 			'pdf'=>$pdf,
 		));
 	}
+    public function actionSaveInboundLinks(){
+        $linkCount = $_POST['linkCount'];
+        $id = $_POST['id'];
+        $model = Cv::model()->findByPk($id);
+        $model->numberOfLinks = $linkCount;
 
+        if($model->save()){
+            $phpArrayData = array("status"=>"success");
+            $phpArrayDataInJsonFormat = json_encode($phpArrayData);
+            echo $phpArrayDataInJsonFormat;
+        }else{
+            echo json_encode(array("status"=>"failed"));
+        }
+    }
 	/* takes care of pdf upload */
 	public function actionUpload( ) {
 		Yii::import( "xupload.models.XUploadForm" );
@@ -387,7 +400,7 @@ class CvController extends Controller
 				$criteria->order= $_POST['sortBy'] .", date DESC";
 		}else{ //defaultvillkor
 			$_POST['sortBy'] = "date";
-			$criteria->order= "date DESC";
+			$criteria->order= "numberOfLinks DESC, date DESC";
 		}
 		return $criteria;
 	}

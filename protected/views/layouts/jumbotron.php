@@ -123,8 +123,53 @@
         <hr>
 
         <footer>
+            <div class="container">
+                <div class="row">
 
-            <p>&copy; <?php echo Yii::app()->name; ?> </p>
+                    <br>
+                    <div class="col-md-4">
+                        <center>
+                            <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                            <br>
+                            <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
+                            <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
+                    till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare.
+                    Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                            <br>
+                            <h4 class="footertext"><strong><?php echo Yii:: t("t","Personuppgifter");?></strong></h4>
+                            <p class="footertext"><?php echo Yii:: t("t","Registrering hos CV-Pages innebär att du samtycker till att CV-Pages
+                    behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all
+                    slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer
+                    och adress.");?>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                            <br>
+                            <h4 class="footertext"><strong><?php echo YIi:: t("t","Cookies");?></strong></h4>
+                            <p class="footertext"><?php echo yii:: t("t","Vi vill meddela er att CV-Pages använder sig utav cookies.
+                    Syftet med cookies är att få
+                    fakta om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning,
+                    samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen");?>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <p><center><br>
+                        <a href="<?php echo Yii::app()->baseUrl;?>/site/contact"><?php echo Yii::t("t","Kontakt");?></a><p class="footertext"></p></center></p>
+                </div>
+            </div>
+
+            <!--            <p>&copy; --><?php //echo Yii::app()->name; ?><!-- </p>-->
         </footer>
     </div> <!-- /container -->
 <?php $this->endContent(); ?>

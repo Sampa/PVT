@@ -135,7 +135,7 @@
                             <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
                     till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare.
                     Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
                         </center>
                     </div>
                     <div class="col-md-4">
@@ -147,7 +147,7 @@
                     behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all
                     slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer
                     och adress.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
                         </center>
                     </div>
                     <div class="col-md-4">

@@ -109,3 +109,4 @@ $(document).on("click",".addAlternative",function(){
         $(clone).insertBefore(place);
     });
 });
+

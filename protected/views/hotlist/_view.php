@@ -25,8 +25,8 @@
             <a href="" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/YellowSmily.jpg" /></a>
         </div>
 <!--        -->
-<!--  <!--      <div class="col-xs-12 col-sm-12 col-md-2">-->-->
-<!--<!--        -->--><?php
+<!--  <!--      <div class="col-xs-12 col-sm-12 col-md-2">-->
+<!--<!--        --><?php
 //        if($data->hotlistRating->rating == 3){?>
 <!--        <a href="--><?php //echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?><!--" title="Lorem ipsum" class="thumbnail"><img src="--><?php //echo Yii::app()->baseUrl;?><!--/img/YellowSmily.jpg" /></a>-->
 <!--       --><?php //}

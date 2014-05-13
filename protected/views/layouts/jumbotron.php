@@ -122,7 +122,7 @@
         <!-- Example row of columns -->
         <hr>
 
-        <footer>
+        <footer id="footer2">
             <div class="container">
                 <div class="row">
 
@@ -135,7 +135,7 @@
                             <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
                     till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare.
                     Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
                         </center>
                     </div>
                     <div class="col-md-4">
@@ -147,7 +147,7 @@
                     behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all
                     slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer
                     och adress.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
                         </center>
                     </div>
                     <div class="col-md-4">
@@ -159,7 +159,7 @@
                     Syftet med cookies är att få
                     fakta om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning,
                     samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/about">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">Läs mer</a><br>
                         </center>
                     </div>
                 </div>
@@ -182,9 +182,21 @@
 <?php cs()->registerCssFile($this->getBootstrap3LayoutCssFileURL()); ?>
 
 <style>
+    #footer2{
+        color: #FFFFFF;
+        background:
+      /* color overlay */
+        linear-gradient(
+        rgba(240, 212, 0, 0.45),
+        rgba(0, 0, 0, 0.45)
+        ),
+        /* image to overlay */
+        url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+    }
     .breadcrumb .active{
         color:#454A49;
-    }
+      }
+
 </style>
 <script>
     $(document).ready(function(){

@@ -57,3 +57,16 @@ foreach($model->cvTags as $cvTag){
         ),
     ),
 )); ?>
+
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type: "POST",
+            url: "https://www.google.se/#q=link:http://aftonbladet.se",
+            dataType:"jsonp"
+        }).done(function( data ) {
+            console.log(data);
+            console.log("apa");
+        });
+    });
+</script>

@@ -139,25 +139,9 @@ $geoid=$model->geographicAreaID;
   <h1><?php echo Yii::t("t","Hotlist");?></h1>
 </div>
 <div class="page-header">
-  <?php echo $hotlist;?>
+  <?php 
+  $this->widget('bootstrap.widgets.TbListView',array(
+    'dataProvider'=>$dataProvider,
+    'itemView'=>'_hotlistview',
+  ));?>
 </div>
-
-
-
-
-<!-- 
-<?php $this->widget('zii.widgets.CDetailView',array(
-   'htmlOptions' => array(
-        'class' => 'table table-striped table-condensed table-hover',
-    ),
-    'data'=>$model,
-    'attributes'=>array(
-		'id',
-		'title',
-		'recruiterId',
-		'endDate',
-		'typeOfService',
-		'typeOfEmployment',
-		'company',
-	),
-)); ?> -->

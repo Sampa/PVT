@@ -57,7 +57,7 @@ class Recruitmentprocess extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'hotlist' => array(self::BELONGS_TO, 'Hotlist', 'hotlistId'),
+			'hotlists' => array(self::HAS_MANY, 'Hotlist', 'rpId'),
 			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterId'),
             'geographicArea' => array(self::BELONGS_TO, 'GeograficArea', 'geographicAreaID'),
 		);

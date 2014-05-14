@@ -12,7 +12,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <?php
-                if(Yii::app()->user->getState("role")== "publisher"){
+                if(Yii::app()->user->id == 1){
+                $items = array(
+                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
+                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/')),
+                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
+                    );}
+                elseif(Yii::app()->user->getState("role")== "publisher"){
                 $items = array(
                     array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
                     array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),

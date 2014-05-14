@@ -108,7 +108,7 @@
                 <span style="margin-left:35px;width: 50px;" class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div><!-- /carousel -->
-                    <div class="container">
+            <div class="container">
                 <div class="row">
 
                     <br>

@@ -187,7 +187,7 @@
         color:#454A49;
       }
 
-</style>
+</style>w
 <script>
     $(document).ready(function(){
     $("#showContactForm").on('click',function(){

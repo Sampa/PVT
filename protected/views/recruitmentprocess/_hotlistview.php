@@ -34,6 +34,10 @@
     <div class="stars">
         <div id="stars" class="starrr" style="font-size: 15px"></div>
         You gave a rating of <span id="count">0</span> star(s)
+        <div>
+          <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-comment"></i></a></span><span><?php echo Yii::t("t"," Chatt");?></span>
+          <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-file"></i></a></span><span><?php echo Yii::t("t"," Enkät");?></span>
+        </div>
 	</div>
 </div>
   <div class="col-md-3">

@@ -276,8 +276,10 @@ class CvController extends Controller
 		if (Yii::app()->request->isPostRequest) {
 			// we only allow deletion via POST request
 			
-			ReportedCv::model()->findAll("cvId=".$id);
-
+			$ReportedRemove=ReportedCv::model()->findAll("cvId=".$id);
+			foreach ($ReportedRemove as $deletecv){
+				$deletecv->delete();
+			}
 			$this->loadModel($id)->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

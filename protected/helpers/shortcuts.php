@@ -160,9 +160,9 @@ function l($text, $url = '#', $htmlOptions = array())
 /**
  * This is the shortcut to Yii::t() with default category = 'stay'
  */
-function t($category = '',$message , $params = array(), $source = null, $language = null)
+function t($message , $params = array(), $source = null, $language = null)
 {
-    return Yii::t($category, $message, $params, $source, $language);
+    return Yii::t("t", $message, $params, $source, $language);
 }
 
 /**

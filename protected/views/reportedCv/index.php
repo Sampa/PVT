@@ -80,7 +80,7 @@ $.ajax({
     data: {id:idToDelete},
     url: "/cv/delete/"+idToDelete,
     success:function(data){
-        $("#"+idToDelete).remove();
+        $(idToDelete).remove();
 
     }
 });

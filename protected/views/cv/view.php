@@ -73,9 +73,7 @@ foreach($model->cvTags as $cvTag){
             * skickar antalet till server (CvController.php och actionSaveInboundLinks() som sparar det i databasen)
          */
     $(document).ready(function(){
-        bootbox.confirm("Are you sure?", function(result) {
-           "Confirm result: "+result;
-        });
+        
         var cvIdentification = $("#cvIdContainer").html();
         $.ajax({
             type: "POST",

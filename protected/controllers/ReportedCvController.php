@@ -4,14 +4,19 @@ class ReportedCvController extends Controller
 {
 	public function actionIndex()
 	{
-		$allModels=ReportedCv::model()->findAll();
-		$dataProvider=new CActiveDataProvider('ReportedCv');
-		
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'allModels'=>$allModels
-			));
-	}	
+		if(yii::app()->user->Id == 1){
+			$allModels=ReportedCv::model()->findAll();
+			$dataProvider=new CActiveDataProvider('ReportedCv');
+			
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+				'allModels'=>$allModels
+				));
+		}
+		else{
+			throw new CHttpException(401,'Unauthorized request. Please do not repeat this request again.');
+		}
+	}
 
 	public function actionDelete($id)
 	{

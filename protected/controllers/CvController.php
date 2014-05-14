@@ -276,6 +276,11 @@ class CvController extends Controller
 		if (Yii::app()->request->isPostRequest) {
 			// we only allow deletion via POST request
 			
+			//Will go thru Hotlist objects that got the same id as the reported one and add these to the $ReportedRemove
+			$ReportedRemove=Hotlist::model()->findAll("cvId=".$id);
+			foreach ($ReportedRemove as $deletecv){
+				$deletecv->delete();
+			}
 			$ReportedRemove=ReportedCv::model()->findAll("cvId=".$id);
 			foreach ($ReportedRemove as $deletecv){
 				$deletecv->delete();

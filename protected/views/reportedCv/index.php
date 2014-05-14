@@ -28,7 +28,7 @@ $this->breadcrumbs=array(
                 <?php
                 foreach($allModels as $model){
                 ?>
-                 <tr id="<?php echo $model->cvId;?>"> 
+                 <tr id="tr<?php echo $model->cvId;?>"> 
                     
                    
                     <td class="onClick"><?php
@@ -48,10 +48,10 @@ $this->breadcrumbs=array(
                         ?>
                     </td> 
                     <td style='text-align:center;'>
-                            <a href =""; return false;> <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-trash deleteReportedCV"></span> </a>
+                            <a href =""; return false;> <span id="delete<?php echo $model->cvId?>" class="glyphicon glyphicon-trash deleteReportedCV"></span> </a>
                     </td>
                     <td style='text-align:center;'>
-                            <a href =""; return false;> <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-flag OkReportedCv"></span> </a>
+                            <a href =""; return false;> <span id="unreport<?php echo $model->cvId?>" class="glyphicon glyphicon-flag OkReportedCv"></span> </a>
                     </td>
                 </tr>
                     <?php
@@ -80,8 +80,8 @@ $.ajax({
     data: {id:idToDelete},
     url: "/cv/delete/"+idToDelete,
     success:function(data){
-        $("#"+idToDelete).remove();
-
+        $("#tr"+idToDelete).remove();
+        
     }
 });
 });

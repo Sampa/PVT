@@ -119,6 +119,7 @@
 
         <?php echo $content; ?>
         <!-- Example row of columns -->
+
         <hr>
 
         <footer id="footer2">
@@ -128,45 +129,29 @@
                     <br>
                     <div class="col-md-4">
                         <center>
-                            <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains"></a>
                             <br>
-                            <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
-                            <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
-                    till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare.
-                    Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
+                            <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></a></h5>
                         </center>
                     </div>
                     <div class="col-md-4">
                         <center>
-                            <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="..."></a>
                             <br>
-                            <h4 class="footertext"><strong><?php echo Yii:: t("t","Personuppgifter");?></strong></h4>
-                            <p class="footertext"><?php echo Yii:: t("t","Registrering hos CV-Pages innebär att du samtycker till att CV-Pages
-                    behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all
-                    slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer
-                    och adress.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
+                            <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></a></h5>
                         </center>
                     </div>
                     <div class="col-md-4">
                         <center>
-                            <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="..."></a>
                             <br>
-                            <h4 class="footertext"><strong><?php echo YIi:: t("t","Cookies");?></strong></h4>
-                            <p class="footertext"><?php echo yii:: t("t","Vi vill meddela er att CV-Pages använder sig utav cookies.
-                    Syftet med cookies är att få
-                    fakta om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning,
-                    samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">Läs mer</a><br>
+                            <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><strong><?php echo YIi:: t("t","Cookies");?></strong></a></h5>
                         </center>
                     </div>
                 </div>
-                <div class="row">
-                    <p><center><br>
-                        <a href="#contactForm" id="showContactForm"><?php echo Yii::t("t","Kontakt");?></a><p class="footertext"></p></center></p>
+
 <!--                        <a href="--><?php //echo Yii::app()->baseUrl;?><!--/site/contact">--><?php //echo Yii::t("t","Kontakt");?><!--</a><p class="footertext"></p></center></p>-->
-                </div>
+
             </div>
             <!--visar hela kontactformuläret-->
             <div id="contactFormWrapper" style="display: none;">
@@ -182,7 +167,7 @@
 
 <style>
     #footer2{
-        color: #FFFFFF;
+        color: #000000;
         background:
       /* color overlay */
         linear-gradient(
@@ -190,7 +175,7 @@
         rgba(0, 0, 0, 0.45)
         ),
         /* image to overlay */
-        url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+
     }
     .breadcrumb .active{
         color:#454A49;

@@ -171,7 +171,7 @@ class RecruitmentprocessController extends Controller
             $recruitmentProcess = Recruitmentprocess::model()->findByPk($_POST['processID']);
             $recruitmentProcessName = $recruitmentProcess->title;
 			if($hotlist->save()) {
-				echo "Vi har nu sparat cvet i din process!".$recruitmentProcessName;
+				echo "Vi har nu sparat cvet i din process ".$recruitmentProcessName."!";
 			}
 		}
 	}

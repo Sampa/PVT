@@ -48,10 +48,10 @@ $this->breadcrumbs=array(
                         ?>
                     </td> 
                     <td style='text-align:center;'>
-                            <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-trash deleteReportedCV"></span>
+                            <a <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-trash deleteReportedCV"></span> </a>
                     </td>
                     <td style='text-align:center;'>
-                            <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-flag OkReportedCv"></span> 
+                           <a <span id="<?php echo $model->cvId?>" class="glyphicon glyphicon-flag OkReportedCv"></span> </a>
                     </td>
                 </tr>
                     <?php

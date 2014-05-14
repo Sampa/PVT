@@ -103,12 +103,14 @@ $geoid=$model->geographicAreaID;
 
 <h3><?php echo Yii::t("t","Mina kommentarer");?></h3>
 <textarea class="form-control" rows="3"></textarea>
+<button type="button" style="margin-top:10px" class="btn btn-success pull-right">Success</button>
 
 <div class="controls" style="margin-top:50px;margin-bottom:105px;">
   <div class="modal fade" id="mySurvey" tabindex="-1" role="dialog" aria-labelledby="mySurveyLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="mySurveyLabel"><?php echo Yii::t("t","Skicka ut enkät till:");?></h4>
         </div>
@@ -137,12 +139,14 @@ $geoid=$model->geographicAreaID;
     <div class="pull-right col-md-1">
       <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
     </div>
+    <div class="btn-group pull-right">
     <button type="button" class="btn btn-warning btn pull-right" data-toggle="modal">
       <span class="glyphicon glyphicon-trash"></span><?php echo Yii::t("t","Ta bort");?>
     </button>
     <button type="button" class="btn btn-info btn pull-right" data-toggle="modal" data-target="#mySurvey">
       <span class="glyphicon glyphicon-file"></span><?php echo Yii::t("t","Skicka ut enkät");?>
     </button>
+  </div>
 
   </h1>
 </div>

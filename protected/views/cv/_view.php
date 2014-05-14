@@ -46,10 +46,10 @@
 
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
-			<div class="col-xs-12 col-sm-12 col-md-3">
+			<div class="col-xs-12 col-sm-12 col-md-2">
 				<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-2">
+			<div class="col-xs-12 col-sm-12 col-md-3">
 				<ul class="meta-search">
 					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo substr(CHtml::encode($data->date),0,10); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
@@ -92,7 +92,7 @@
         						<?php echo Yii::t("t", "Varför vill du rapportera det här CV:t?");?>
       						</div>
       						<div class="modal-footer">
-        						<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
+        						<button type="button" class="btn btn-info" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
         						<button type="button" class="btn btn-primary"><?php echo Yii::t("t", "Rapportera");?></button>
       						</div>
     					</div>
@@ -106,7 +106,7 @@
 
 
                    <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
-                   <?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
+                   <i class="glyphicon glyphicon-file"></i><?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
 
                 <?php } ?>

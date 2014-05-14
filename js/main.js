@@ -1,8 +1,7 @@
 //getting country/region/city
 (function(window,$,undefined){
-    var target;
     function getPlaces(gid,new_target){
-        target = new_target;
+        var target = new_target;
         var url = "http://www.geonames.org/childrenJSON";
         $.ajax({
             url :url,
@@ -19,7 +18,7 @@
         target.children().remove();
         data.geonames.forEach(function(item){
             var fixedName = item.name.replace("Municipality","Kommun");
-            fixedName = fixedName.replace("municipality","Kommun");
+            fixedName = fixedName.replace("unicipality","Kommun");
             var foo = new Option(fixedName,fixedName);
             $(foo).attr("id",item.geonameId);
             target.append(foo);
@@ -109,4 +108,3 @@ $(document).on("click",".addAlternative",function(){
         $(clone).insertBefore(place);
     });
 });
-

@@ -16,14 +16,18 @@ return array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),*/
 		// uncomment the following to use a MySQL database
-        'db'=>array(
-		        'connectionString' => 'mysql:host=localhost;dbname=pvt14Group1',
-      			'emulatePrepare' => true,
-      			'username' => 'root',
-      			'password' => 'root',
-      			'charset' => 'utf8',
-      		),
-
+        'db' => array(       //SERVER
+            'class' => 'CDbConnection',
+            'connectionString' => 'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;',
+            'username' => 'pvt14Group1',
+            'password' => 'ohfephaenahb',
+            'charset' => 'UTF8',
+            'tablePrefix' => '',
+            'emulatePrepare' => true,
+//               'enableProfiling' => true,
+//            'schemaCacheID' => 'cron',
+//            'schemaCachingDuration' => 1
+        ),
 	)
 
 );

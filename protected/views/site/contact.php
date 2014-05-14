@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 ?>
 <div class="container">
-
     <?php if (Yii::app()->user->hasFlash('contact')): ?>
         <div class="alert alert-info  alert-dismissable">
             <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>

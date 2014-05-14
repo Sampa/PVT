@@ -53,14 +53,10 @@ class RecruitmentprocessController extends Controller
 	{
 		$process = $this->loadModel($id);
 		
-		$hotlist = $process->hotlist;
-		$hotlistViewContent = $this->renderPartial('/hotlist/_view',array(
-			'data'=>$hotlist,
-		),true);
-
+		$dataProvider = new CActiveDataProvider('Hotlist');
 		$this->render('view',array(
 			'model'=>$process,
-			'hotlist'=>$hotlistViewContent,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 

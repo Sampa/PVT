@@ -3,6 +3,10 @@
    Please define your custom styles after this section.
    ========================================================================== */
 /*survey create page*/
+.green{
+    color: #3C763D;
+    background-color: #DFF0D8;
+}
 .draggable{
     z-index:92;
 }

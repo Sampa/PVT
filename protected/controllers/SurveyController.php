@@ -31,7 +31,7 @@ class SurveyController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','admin'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,20 +61,66 @@ class SurveyController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Survey;
+		$survey=new Survey;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		// $this->performAjaxValidation($survey);
 
-		if (isset($_POST['Survey'])) {
-			$model->attributes=$_POST['Survey'];
-			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->id));
+		if (app()->request->isAjaxRequest) {
+//			var_export($_POST);
+			$survey->recruiterID = Yii::app()->user->id;
+			$survey->title = $_POST['title'];
+			$message = array(
+				'survey'=>false,
+				'questions'=>false,
+				'options'=>true,
+			);
+			if ($survey->save(false)) {
+				$message['survey'] = true;
+				foreach($_POST['questions'] as $index=>$data){
+					$question = new SurveyQuestion;
+					$question->surveyID = $survey->id;
+					$question->question = $data['question'];
+					if(isset($data['options'])){
+						$question->haveOptions = 1;
+					}else{
+						$question->haveOptions = 0;
+					}
+
+					if($data['type']=="checkbox"){
+						$question->allowMultipleChoice = 1;
+					}else{
+						$question->allowMultipleChoice =0;
+					}
+					if($question->save()){
+						$message['questions'] = true;
+						if($question->haveOptions === 1){
+							foreach($data['options'] as $index=>$text){
+								$questionOption = new SurveyQuestionOption;
+								$questionOption->questionId = $question->id;
+								$questionOption->text = $text;
+								if(!$questionOption->save()){ //kunde ej spara ett option
+									$message['options'] = false;
+								};
+							}
+						}//slut if haveOptions
+					}else{ //någon fråga kunde ej sparas
+						$message['questions'] = false;
+					}
+
+				}
 			}
+			$success = true;
+			foreach($message as $key=>$boolean){
+				if(!$boolean)
+					$success = false;
+			}
+			echo json_encode(array('success'=>$success,'message'=>$message,'title'=>$survey->title));
+			return;
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$survey,
 		));
 	}
 

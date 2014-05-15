@@ -105,6 +105,7 @@ $(document).on("click",".addAlternative",function(){
         title.attr("id",$(".optionText").length);
         title.html(alternative);
         clone.prepend(title);
+        clone.children("input").attr("id",title)
         $(clone).insertBefore(place);
     });
 });

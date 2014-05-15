@@ -55,7 +55,6 @@
                 $countryName = null;
             ?>
             <li><i class="glyphicon glyphicon-globe"></i> <span><?= $countryName; ?></span></li>
-            <li<a href="#" class="btn btn-inverse disabled"><i class="icon-white icon-thumbs-up"></i></a></li>
 <!--            <li><i class="glyphicon glyphicon-user"></i> <span>--><?php //echo CHtml::encode($data->cv->publisher->username); ?><!--</span></li>-->
         </ul>
     </div>

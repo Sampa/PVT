@@ -99,23 +99,18 @@ class RecruitmentprocessController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
-		$model=$this->loadModel($id);
+		$processID = $_POST["id"];
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$model=$this->loadModel($processID);
 
-		if (isset($_POST['Recruitmentprocess'])) {
-			$model->attributes=$_POST['Recruitmentprocess'];
-			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->id));
-			}
+		$model->endDate = date("Y-m-d");
+		if ($model->save()) {
+			echo "Vi lyckades att spara processen";
+		} else {
+			echo "Vi lyckades inte";
 		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

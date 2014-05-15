@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 ?>
 <div class="container page-min-height">
 
-    <h1 class="page-header"><?php echo Yii::t("t", "Cookies");?></h1>
+    <h1 class="page-header"> <?php echo Yii::t("t", "Cookies");?></h1>
     <div class="row">
         <div class="col-md-6">
             <p id="texts"><?php echo t("Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få

@@ -7,6 +7,8 @@ $this->breadcrumbs=array(
 	t('Enkäter'),
 );
 ?>
+<div class="page-header">
+    <h1><?php echo Yii::t('t','Enkäter');?></h1>
 
   <div align="right">
       <a href="<?php echo Yii::app()->baseUrl;?>/survey/create">
@@ -14,6 +16,7 @@ $this->breadcrumbs=array(
       </a>
 
     </div>
+</div>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'survey-grid',

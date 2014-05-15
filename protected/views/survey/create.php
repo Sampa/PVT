@@ -15,7 +15,7 @@
         <div style="padding: 0px;position: fixed;max-width: 180px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="<?php echo Yii::t("t","Välj fråga");?>" data-bootstro-content="<?php echo Yii::t("t","Här väljer du vilken sorts fråga som du vill ha i din enkät");?>" data-bootstro-placement="right" data-bootstro-step="1">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-cog"></span><?php echo Yii::t("t","Komponenter");?>  
+                    <span class="glyphicon glyphicon-cog"></span><?php echo Yii::t("t","Komponenter");?>
                 </h3>
             </div>
             <div class="panel-body wrapper-component">
@@ -29,12 +29,12 @@
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="grid" title="Grid"><span class="glyphicon glyphicon-th"></span> Grid</a>-->
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Flerval"><span class="glyphicon glyphicon-list-alt"></span> Flerval</a>-->
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" title="Datum"><span class="glyphicon glyphicon-calendar"></span> Datum</a>-->
-                    <a href="#" class="btn btn-warning survey-component" id="help">
+                    <button class="btn btn-warning survey-component" id="help">
                         <span class="glyphicon glyphicon-question-sign"></span> <?php echo Yii::t("t","Hjälp");?>
-                    </a>
-                    <a href="#" class="btn btn-info survey-component">
+                    </button>
+                    <button class="btn btn-info survey-component">
                         <span class="glyphicon glyphicon-floppy-disk"></span> <?php echo Yii::t("t","Spara");?>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="panel panel-info resize bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-wrench "></span><?php echo Yii::t("t","Din layout");?> 
+                        <span class="glyphicon glyphicon-wrench "></span><?php echo Yii::t("t","Din layout");?>
                     </h3>
                 </div>
                 <div class="panel-body dropzone" id="formLayoutDropzoneWrapper">

@@ -177,6 +177,9 @@ $this->breadcrumbs = array(
                                 Det finns möjlighet för användare att rapportera om olämpligt material förekommer. Dock får missbruk av denna funktion inte förekomma.
                                 Vid missbruk kan ditt konto komma att stängas av.");?>
                     </p>
+                    <p><?php echo t("Jag godkänner härmed att jag har läst och förstått användaravtalet och hur mina personuppgifter kommer att hanteras och samtycker till att CV-Pages
+                     hanterar dessa i enlighet med informationen ovan, samt godkänner ovanstående villkor.
+")?></p>
                 </div>
         </div>
         <div class="modal-footer">

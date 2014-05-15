@@ -12,9 +12,9 @@
                                  margin-left: auto;
                                   margin-right: auto;
                                  width:180px;
-                                ">>
+                                ">
         <a style="color:#ffdead; font-size: 40px;text-decoration: none" href="<?php echo $reset_url;?>"
-           target="_blank"><?php Yii::t("t","Reset Password");?></a>
+           target="_blank"><?php echo t("Återställ lösenord");?></a>
     </div>
 </center>
 

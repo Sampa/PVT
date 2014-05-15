@@ -28,7 +28,7 @@ $this->menu=array(
     <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Företag/Organisation: </strong>");?></div>
     <div class="col-xs-6 col-sm-6"><?php echo $model->company; ?></div>
     <div class="col-xs-6 col-sm-4">
-      <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myQuit">
+      <button id="openModalBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myQuit">
          <?php echo Yii::t("t","Avsluta rekryteringsprocessen");?>
       </button>
       <div class="modal fade" id="myQuit" tabindex="-1" role="dialog" aria-labelledby="myQuitLabel" aria-hidden="true">
@@ -39,15 +39,22 @@ $this->menu=array(
               <h4 class="modal-title" id="myQuitLabel"><?php echo Yii::t("t","Avsluta rekryteringsprocessen");?></h4>
             </div>
             <div class="modal-body">
+             <div id="myQuitInputDiv">
               <body><?php echo Yii::t("t","Här fyller du i uppgifter om den avslutade processen");?>
                 <br><br>
         	      <strong> <?php echo Yii::t("t", "Här kan du fylla i lönen (avrunda till jämnt tusental)");?></strong>
             	  <input type="text" class="form-control" id="salary" placeholder=<?php echo Yii::t("t", "Lön");?>>
               </body>
             </div>
+            <h4 id="myQuitTextSuccess"><?php echo Yii::t("t","Vi har nu avslutat processen.");?></h4>
+            </div>
             <div class="modal-footer">
-             <button type="button" class="btn btn-warning" data-dismiss="modal"><?php echo Yii::t("t", "Ångra, avsluta inte processen!");?></button>
-             <button type="button" class="btn btn-success"><?php echo Yii::t("t", "Spara och avsluta rekryteringsprocessen");?></button>
+              <div id="beforeSuccessButtonGroup">
+                <button type="button" id="regretButton" class="btn btn-warning" data-dismiss="modal"><?php echo Yii::t("t", "Ångra, avsluta inte processen!");?></button>
+                <button type="button" id="<?php echo $model->id?>" class="btn btn-success closeProcessBtn"><?php echo Yii::t("t", "Avsluta rekryteringsprocessen");?></button>
+              </div>
+             <button type="button" id="closeButton" class="btn btn-info" data-dismiss="modal"><?php echo t("Stäng");?></button>
+
             </div>
           </div>
         </div>
@@ -157,3 +164,25 @@ $geoid=$model->geographicAreaID;
     'itemView'=>'_hotlistview',
   ));?>
 </div>
+<script>
+  $("#openModalBtn").on("click", function(){
+      $("#myQuitTextSuccess").hide();
+      $("#closeButton").hide();
+      $(".closeProcessBtn").on("click", function(){
+        var closeRecId = $(this).attr("id");
+        $.ajax({
+          type:"POST",
+          url:"/recruitmentprocess/update",
+          data: {"id":closeRecId}
+        }).done(function( data ) {
+            $("#myQuitInputDiv").hide();
+            $("#beforeSuccessButtonGroup").hide();
+            $("#myQuitTextSuccess").fadeIn("slow");
+            $("#closeButton").fadeIn("slow");
+        })
+        $("#closeButton").on("click", function(){
+          window.document.location ='/recruitmentprocess/view/'+closeRecId;
+        });
+    });
+  });
+ </script>

@@ -138,7 +138,7 @@ $this->breadcrumbs = array(
 
                 </div>
             </div>
-            <div class="col-lg-3"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs användaravtal</a></div>
+            <div class="col-lg-3"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement    ">Läs användaravtal</a></div>
 
         </div>
 

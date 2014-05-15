@@ -3,12 +3,17 @@
 /* @var $model Survey */
 
 $this->breadcrumbs=array(
-	t('Enkäter')=>array('index'),
-	t('Hantera'),
+	t('Hem') => Yii::app()->getHomeUrl(),
+	t('Enkäter'),
 );
 ?>
 
+  <div align="right">
+      <a href="<?php echo Yii::app()->baseUrl;?>/survey/create">
+      <span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Skapa ny enkät");?>
+      </a>
 
+    </div>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'survey-grid',

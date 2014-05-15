@@ -24,10 +24,9 @@
 	                );
                 }else{
                     $items = array(
-	                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/'),'visible'=>!Yii::app()->user->isGuest,),
-	                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create'),'visible'=>!Yii::app()->user->isGuest,),
-	                    array('label' => Yii::t("t","Mina enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
-	                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t","Rekryteringsprocesser"), 'url' => array('/recruitmentprocess/'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t","Enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
+	                    // array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create'),'visible'=>!Yii::app()->user->isGuest,),
                     );
                 }
                 //ska alltid synas

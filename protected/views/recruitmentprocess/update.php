@@ -5,9 +5,9 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Recruitmentprocesses'=>array('index'),
+	t('Rekryteringsprocesser')=>array('index'),
 	$model->title=>array('view','id'=>$model->id),
-	'Update',
+	t('Uppdatera'),
 );
 
 $this->menu=array(

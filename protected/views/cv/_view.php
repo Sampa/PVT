@@ -77,11 +77,11 @@
                             }
 //                    ?>
                 <br/>
-                <span class="plus"><a href="#" title="Lorem ipsum"><i data-toggle="modal" data-target="#reportModal" id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
+                <span class="plus"><a href="#" title='<?php echo t("Rapportera CV för olämpligt innehåll");?>'><i data-toggle="modal" data-target="#reportModal<?php echo $data->id;?>" id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera CV");?></span>
 
                 <!-- Button trigger modal -->
 				<!-- Modal -->
-				<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+				<div class="modal fade" id="reportModal<?php echo $data->id;?>" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
   					<div class="modal-dialog">
     					<div class="modal-content">
       						<div class="modal-header">
@@ -89,11 +89,11 @@
        		 					<h4 class="modal-title" id="reportModalLabel"><?php echo Yii::t("t","Rapportera CV");?></h4>
       						</div>
       						<div class="modal-body">
-        						<?php echo Yii::t("t", "Varför vill du rapportera det här CV:t?");?>
-      						</div>
+                    <textarea class="form-control" id="reason" rows="3"></textarea>
+        					</div>
       						<div class="modal-footer">
         						<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
-        						<button type="button" class="btn btn-primary"><?php echo Yii::t("t", "Rapportera");?></button>
+        						<button type="button" id="submitReport" class="btn btn-primary"><?php echo Yii::t("t", "Rapportera CV");?></button>
       						</div>
     					</div>
   					</div>
@@ -146,4 +146,22 @@
 
 	</section>
 </div>
+<script>
+  $("#submitReport").on("click", function(){
+    var reason = $("reason").attr("id");
+    var id = $(this).attr("id");
+    alert(1234);
+    $.ajax ({
+          type: "POST",
+          dataType:"json",       
+          url: "reportedCv/create",
+          data: { data : reason}, //optional
+          success: function(data) {
+              alert(data);
+              //do something after you receive the result
+          }
+    });
+    window.document.location='cv';
+  }
+</script>
 

@@ -149,16 +149,18 @@ jQuery(document).ready(function ($) {
     jQuery(".report-cv-flag").on("click", function() {
         var cvID = $(this).attr("id");
         $("#submitReportBtn").on("click", function() {
-            var reasonText = $("#reasonTextField").val();
-        console.log("Skickar data för POST.");
-        console.log("Anledningstext " + reasonText + " cvID " + cvID);
-        $.ajax ({
-              type: "POST",     
-              url: "reportedCv/create",
-              data: {"reasonText":reasonText, "cvID":cvID}
-          }).done(function( data ) {
-            console.log("POST data skickad");
-          })
+            var reason = $("#reasonTextField").val();
+            var userID = <?php echo Yii::app()->user->id ?>;
+            console.log("Skickar data för POST.");
+            console.log("Anledningstext: " + reason + " cvID: " + cvID + " UserID: " + userID);
+            $.ajax ({
+                  type: "POST",     
+                  url: "reportedcv/create",
+                  data: {"reason":reason, "cvID":cvID, "userID":userID}
+            }).done(function( data ) {
+                console.log("POST data skickad");
+                console.log( data );
+            })
         });
     });
     /*

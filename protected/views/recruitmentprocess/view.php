@@ -6,7 +6,7 @@
 <?php
 $this->breadcrumbs=array(
     Yii::t('t', 'Hem') => Yii::app()->getHomeUrl(),
-     'Rekryteringsprocesser'=>array('index'),
+     t('Rekryteringsprocesser')=>array('index'),
     $model->title,
 
 );

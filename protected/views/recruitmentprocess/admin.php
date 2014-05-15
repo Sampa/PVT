@@ -4,8 +4,8 @@
 
 
 $this->breadcrumbs=array(
-	'Recruitmentprocesses'=>array('index'),
-	'Manage',
+	t('Rekryteringsprocesser')=>array('index'),
+	t('Hantera'),
 );
 
 $this->menu=array(

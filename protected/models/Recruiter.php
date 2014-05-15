@@ -76,6 +76,14 @@ class Recruiter extends CActiveRecord
             );
         }
     }
+    public static function getSurveysAsList(){
+    	$loggedInRecruiter = Recruiter::model()->findByPk(Yii::app()->user->id);
+    	if($loggedInRecruiter) {
+    		Yii::app()->controller->renderPartial("/recruiter/_recruiterSurveysAsList",
+                array("surveys"=>$loggedInRecruiter->surveys)
+            );
+    	}
+    }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

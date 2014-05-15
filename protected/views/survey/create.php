@@ -4,7 +4,7 @@
     $this->pageTitle = Yii::app()->name . ' - Skapa enkät';
     $this->breadcrumbs = array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-        Yii::t("t",'Survey'),
+        Yii::t("t",'Enkät'),
     );
     $recruiter=Recruiter::model()->findByPk(Yii::app()->user->id);
     $beenToSurveyPage=$recruiter->beenToSurveyPage;
@@ -109,7 +109,7 @@
 				dataType:"json",
 				success:function(data){
 					if(data.success){
-						$("#survey-title").html("Sparat som"+title);
+						$("#survey-title").html("Sparat som "+title);
 						$(".survey-layout").addClass("green")
 					}
 				}

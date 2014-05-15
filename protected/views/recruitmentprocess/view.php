@@ -6,7 +6,7 @@
 <?php
 $this->breadcrumbs=array(
     Yii::t('t', 'Hem') => Yii::app()->getHomeUrl(),
-     'Rekryteringsprocesser'=>array('index'),
+     t('Rekryteringsprocesser')=>array('index'),
     $model->title,
 
 );
@@ -129,7 +129,7 @@ $geoid=$model->geographicAreaID;
                     <?php echo Yii::t("t","Välj enkät");?> <span class="caret"></span>
           </button>
               <ul class="dropdown-menu">
-                <?php echo Recruiter::getProcessesAsList();?>
+                <?php echo Recruiter::getSurveysAsList();?>
                 <li class="divider"></li>
                 <li><a href="<?php echo Yii::app()->createUrl("sökväg till enkät HÄR");?>"><?php echo Yii::t("t","Skapa ny enkät");?></a></li>
               </ul>

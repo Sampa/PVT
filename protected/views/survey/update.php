@@ -5,7 +5,7 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Surveys'=>array('index'),
+	t('Enkäter')=>array('index'),
 	$model->title=>array('view','id'=>$model->id),
 	'Update',
 );

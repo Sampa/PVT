@@ -66,6 +66,9 @@ body .report-cv-flag {
 .carousel-indicators .active {
     background-color: #2980b9;
 }
+.listOfSurveys {
+  text-align: center;
+}
 
 .carousel-inner img {
     width: 100%;

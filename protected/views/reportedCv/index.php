@@ -28,7 +28,7 @@ $this->breadcrumbs=array(
                 <?php
                 foreach($allModels as $model){
                 ?>
-                 <tr id="tr<?php echo $model->cvId;?>"> 
+                 <tr id="<?php echo $model->cvId;?>"> 
                     
                    
                     <td class="onClick"><?php

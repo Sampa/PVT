@@ -135,8 +135,11 @@ $this->breadcrumbs = array(
                 <?php echo $form->checkBox($model, 'accepted', array('class' => 'form-control','id'=>'accepted')); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'accepted'); ?>
+
                 </div>
             </div>
+            <div class="col-lg-3"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs användaravtal</a></div>
+
         </div>
 
         

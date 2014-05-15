@@ -72,15 +72,22 @@ if($resultCount< 1):?>
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="reportModalLabel"><?php echo Yii::t("t","Rapportera CV");?></h4>
                         </div>
                         <div class="modal-body">
-                            <textarea class="form-control" id="reasonTextField" rows="3"></textarea>
+                            <div id="reportModalInputDiv">
+                                <h4> <?php echo Yii::t("t","Beskriv varför du vill rapportera detta CV");?></h4>
+                                <textarea class="form-control" id="reasonTextField" rows="3"></textarea>
+                            </div>
+                            <h4 id="reportModalTextSuccess"><?php echo Yii::t("t","Vi har nu sparat din rapport. Tack för din tid!");?></h4>
+                            <h4 id="reportModalTextFailure"><?php echo Yii::t("t", "Ett oväntat fel inträffade, försök igen!");?></h4>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" id="reportModalStartFooter">
                             <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
                             <button type="button" class="btn btn-primary" id="submitReportBtn"><?php echo Yii::t("t", "Rapportera CV");?></button>
+                        </div>
+                        <div class="modal-footer" id="reportModalEndFooter">
+                            <button id="reportModalEndFooterCloseBtn" type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng");?></button>
                         </div>
                     </div>
                 </div>
@@ -147,21 +154,35 @@ jQuery(document).ready(function ($) {
     * När man vill rapportera ett CV
     */
     jQuery(".report-cv-flag").on("click", function() {
+        $("#reportModalTextSuccess").hide();
+        $("#reportModalTextFailure").hide();
+        $("#reportModalEndFooter").hide();
         var cvID = $(this).attr("id");
         $("#submitReportBtn").on("click", function() {
             var reason = $("#reasonTextField").val();
             var userID = <?php echo Yii::app()->user->id ?>;
-            console.log("Skickar data för POST.");
-            console.log("Anledningstext: " + reason + " cvID: " + cvID + " UserID: " + userID);
             $.ajax ({
-                  type: "POST",     
-                  url: "reportedcv/create",
-                  data: {"reason":reason, "cvID":cvID, "userID":userID}
+                type: "POST",     
+                url: "reportedcv/create",
+                data: {"reason":reason, "cvID":cvID, "userID":userID}
             }).done(function( data ) {
-                console.log("POST data skickad");
-                console.log( data );
+                $("#reportModalInputDiv").hide();
+                $("#reportModalStartFooter").hide();
+                if(data == 1) {
+                    $("#reportModalTextSuccess").fadeIn("slow");
+                } else {
+                    $("#reportModalTextFailure").fadeIn("slow");
+                }
+                $("#reportModalEndFooter").fadeIn("slow");
             })
         });
+    });
+    //Återställder report modal
+    jQuery("#reportModalEndFooterCloseBtn").on("click", function() {
+        setTimeout(function() {
+            $("#reportModalInputDiv").show();
+            $("#reportModalStartFooter").show();
+        }, 1000);
     });
     /*
     * Knappar för sortering av CVn

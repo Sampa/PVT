@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-    Yii::t("t",'Avancerad sökning'),
+    Yii::t("t",'Sökning'),
 );
 ?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>

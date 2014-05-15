@@ -5,7 +5,8 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
+	t("Hem")=> Yii::app()->getHomeUrl(),
+	t("Användare")=>array('index'),
 	$model->name,
 );
 ?>

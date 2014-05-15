@@ -1,9 +1,11 @@
 <?php
 $this->pageTitle = Yii::app()->name . Yii::t("t","Kontakta oss");
-$this->breadcrumbs = array(
-    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-    Yii::t("t",'Kontakt'),
-);
+if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"){
+	$this->breadcrumbs = array(
+	    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+	    Yii::t("t",'Kontakt'),
+	);
+}
 ?>
 <div class="container">
     <?php if (Yii::app()->user->hasFlash('contact')): ?>

@@ -275,7 +275,7 @@ class CvController extends Controller
 	{
 		if (Yii::app()->request->isPostRequest) {
 			// we only allow deletion via POST request
-			
+
 			//Will go thru Hotlist objects that got the same id as the reported one and add these to the $ReportedRemove
 			$ReportedRemove=Hotlist::model()->findAll("cvId=".$id);
 			foreach ($ReportedRemove as $deletecv){
@@ -452,12 +452,12 @@ class CvController extends Controller
 
 			$geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
 			//the code to add conditions based on the models/objects returned above
-			foreach($geoGraphicAreas as $area)
-				$criteria->compare("geographicAreaId",$area->id,true,"OR");
-			if(sizeof($geoGraphicAreas)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-				$criteria->compare("geographicAreaId",0);
-				$criteria->compare("geographicAreaId",1);
-			}
+//			foreach($geoGraphicAreas as $area)
+//				$criteria->compare("geographicAreaId",$area->id,true,"OR");
+//			if(sizeof($geoGraphicAreas)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+//				$criteria->compare("geographicAreaId",0);
+//				$criteria->compare("geographicAreaId",1);
+//			}
 		}
 		return $criteria;
 	}

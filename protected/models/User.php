@@ -227,6 +227,12 @@ class User extends CActiveRecord
     {
         return sha1(md5(microtime(true)) . $this->email . $this->password);
     }
+	// class User
 
-
+	public function getSuggest($q) {
+		$c = new CDbCriteria();
+		$c->addSearchCondition('name', $q, true, 'OR');
+		$c->addSearchCondition('email', $q, true, 'OR');
+		return $this->findAll($c);
+	}
 }

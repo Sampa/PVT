@@ -381,17 +381,33 @@ class CvController extends Controller
      */
     private function getGeoModels($countryName,$region,$city)
     {
+	    //starta nytt kriteria objekt för att filtrera sökresultaten
         $criteria = new CDbCriteria();
+	    //country har alltid ett värde
         $criteria->addSearchCondition("country",$countryName);
-        if(sizeof($region)>0){
+        //if antalet tecken i $region är mer än noll så har man valt en region i sökformuläret
+	    if(sizeof($region)>0){
             $criteria->addSearchCondition("region",$region);
         }
-        if(sizeof($city)>0){
-            $criteria->addSearchCondition("city",$city);
+	    //if antalet tecken i $city är mer än noll så har man valt en kommun/city i sökformuläret
+	    if(sizeof($city)>0){
+		    //buggar pga default val o_O
+//	        $criteria->addSearchCondition("city",$city);
         }
-
+	    //hämtar enbart de geo models som uppfyller kraven
         $geoModels  = GeograficArea::model()->findAll($criteria);
-        return $geoModels;
+	    //initiera en tom array vi kan fylla i våra loopar nedan
+	    $relations =array();
+	    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
+		    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
+		    foreach($geo->cvAreas as $areaRelation){
+			    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
+			    if(!in_array($areaRelation->cvId,$relations))
+			        $relations[]= $areaRelation->cvId;
+		    }
+	    }
+	    //returnera en array med alla id:n på CV som har en relation till området användaren söker på
+        return $relations;
     }
 	/*
 		 * Sets the order of how the results should be displayed.
@@ -450,14 +466,18 @@ class CvController extends Controller
 	private function setGeoAreaCondition($criteria) {
 		if($_POST['countries'] != "default"){
 
-			$geoGraphicAreas  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
+			$listOfCvPks  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
+//			$criteria->addInCondition("id",$listOfCvPks);
 			//the code to add conditions based on the models/objects returned above
-//			foreach($geoGraphicAreas as $area)
-//				$criteria->compare("geographicAreaId",$area->id,true,"OR");
-//			if(sizeof($geoGraphicAreas)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-//				$criteria->compare("geographicAreaId",0);
-//				$criteria->compare("geographicAreaId",1);
-//			}
+
+			foreach($listOfCvPks as  $index=>$pk){
+				$criteria->compare("id",$pk,true,"OR");
+			}
+			//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
+			if(sizeof($listOfCvPks)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+				$criteria->compare("geographicAreaId",0);
+				$criteria->compare("geographicAreaId",1);
+			}
 		}
 		return $criteria;
 	}

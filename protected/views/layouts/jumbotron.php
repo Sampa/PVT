@@ -128,7 +128,7 @@
 
         <hr>
         <?php
-        if($_SERVER['REQUEST_URI']!="/" || $_SERVER['REQUEST_URI']!="/Group1/"):?>
+        if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>
         <footer id="footer2">
             <div class="container">
                 <div class="row">

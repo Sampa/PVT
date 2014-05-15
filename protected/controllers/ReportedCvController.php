@@ -23,11 +23,7 @@ class ReportedCvController extends Controller
 		$CV->cvId = $_POST['cvID'];
 		$CV->reason = $_POST['reason'];
 		$CV->reportedBy = $_POST['userID'];
-		if($CV->save()) {
-			echo "Vi har nu sparat din rapport och kommer att granska den. Tack!";
-		} else {
-			echo "Det gick inte att spara rapporten. Ett oväntat fel inträffade.";
-		}
+		echo $CV->save();
 	}
 
 	public function actionDelete($id)

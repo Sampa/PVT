@@ -1,27 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "Survey".
+ * This is the model class for table "SurveyQuestion".
  *
- * The followings are the available columns in table 'Survey':
+ * The followings are the available columns in table 'SurveyQuestion':
  * @property integer $id
- * @property integer $recruiterID
- * @property string $title
- * @property string $date
+ * @property string $question
+ * @property integer $surveyID
+ * @property integer $haveOptions
+ * @property integer $allowMultipleChoice
  *
  * The followings are the available model relations:
- * @property Recruiter $recruiter
- * @property SurveyCandidate[] $surveyCandidates
- * @property SurveyQuestion[] $surveyQuestions
+ * @property SurveyAnswer[] $surveyAnswers
+ * @property Survey $survey
  */
-class Survey extends CActiveRecord
+class SurveyQuestion extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'Survey';
+		return 'SurveyQuestion';
 	}
 
 	/**
@@ -32,12 +32,11 @@ class Survey extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('recruiterID, title, date', 'required'),
-			array('recruiterID', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>255),
+			array('question, surveyID, haveOptions, allowMultipleChoice', 'required'),
+			array('surveyID, haveOptions, allowMultipleChoice', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, recruiterID, title, date', 'safe', 'on'=>'search'),
+			array('id, question, surveyID, haveOptions, allowMultipleChoice', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,9 +48,8 @@ class Survey extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterID'),
-			'surveyCandidates' => array(self::HAS_MANY, 'SurveyCandidate', 'surveyID'),
-			'surveyQuestions' => array(self::HAS_MANY, 'SurveyQuestion', 'surveyID'),
+			'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'surveyQuestionID'),
+			'survey' => array(self::BELONGS_TO, 'Survey', 'surveyID'),
 		);
 	}
 
@@ -62,9 +60,10 @@ class Survey extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'recruiterID' => 'Recruiter',
-			'title' => 'Title',
-			'date' => 'Date',
+			'question' => 'Question',
+			'surveyID' => 'Survey',
+			'haveOptions' => 'Have Options',
+			'allowMultipleChoice' => 'Allow Multiple Choice',
 		);
 	}
 
@@ -87,9 +86,10 @@ class Survey extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('recruiterID',Yii::app()->user->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('date',$this->date,true);
+		$criteria->compare('question',$this->question,true);
+		$criteria->compare('surveyID',$this->surveyID);
+		$criteria->compare('haveOptions',$this->haveOptions);
+		$criteria->compare('allowMultipleChoice',$this->allowMultipleChoice);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -100,7 +100,7 @@ class Survey extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Survey the static model class
+	 * @return SurveyQuestion the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

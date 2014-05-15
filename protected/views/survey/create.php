@@ -49,75 +49,19 @@
         <!--            </div>-->
         <!--        </div>-->
         <div class="col-md-10 pull-right" >
-            <div class="panel panel-info resize bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
+            <div class="panel panel-info survey-layout bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-wrench "></span><?php echo Yii::t("t","Din layout");?>
+                        <span class="glyphicon glyphicon-wrench "></span>
+	                    <span id="survey-title"><?php echo Yii::t("t","Din layout");?></span>
                     </h3>
                 </div>
                 <div class="panel-body dropzone" id="formLayoutDropzoneWrapper">
                     <ul id="formLayoutDropzoneUl">
-	                    <li style="" id="checkbox0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">ooo</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body"><div name="checkbox0">
-					                    <label class="checkbox-inline"><span id="1" class="optionText">1</span>
-						                    <input name="checkbox0" class="checkboxTemplate" type="checkbox">
-					                    </label><label class="checkbox-inline"><span id="2" class="optionText">2</span>
-						                    <input name="checkbox0" class="checkboxTemplate" type="checkbox">
-					                    </label><label class="checkbox-inline"><span id="3" class="optionText">3</span>
-						                    <input name="checkbox0" class="checkboxTemplate" type="checkbox">
-					                    </label><a class="btn btn-success addAlternative">Nytt alternativ</a>
-				                    </div></div>
-		                    </div>
-	                    </li><li style="" id="radio0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">radio</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body"><div name="radio0">
-					                    <label class="radio-inline"><span id="4" class="optionText">aa</span>
-						                    <input name="radio0" class="radioTemplate" type="radio">
-					                    </label><label class="radio-inline"><span id="5" class="optionText">bb</span>
-						                    <input name="radio0" class="radioTemplate" type="radio">
-					                    </label><label class="radio-inline"><span id="6" class="optionText">cc</span>
-						                    <input name="radio0" class="radioTemplate" type="radio">
-					                    </label><a class="newRadioAlternative  btn btn-success addAlternative">Nytt alternativ</a>
-				                    </div></div>
-		                    </div>
-	                    </li><li id="text0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">aa</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body"><div name="text0">
-					                    <input class="form-control textTemplate" type="text">
-				                    </div></div>
-		                    </div>
-	                    </li><li id="textarea0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">ia</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body"><div name="textarea0">
-					                    <textarea class="form-control textareaTemplate"></textarea>
-				                    </div></div>
-		                    </div>
-	                    </li>
 
                     </ul>
                 </div>
-                <div style="z-index: 90; " class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
+                <div style="z-index: 90;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
             </div>
         </div>
     </div>
@@ -126,15 +70,52 @@
 <script>
 	//NÄR MAN KLICKAR PÅ SPARA KNAPPEN
 	$("#saveSurvey").on("click",function(){
-		bootbox.prompt("<?php echo Yii::t("t","Namnge din enkät (kommer vara synligt för *något ska stå här*):");?>", function(title) {
+		var type,title;
+		/*be användaren om en titel*/
+		bootbox.prompt("<?php echo Yii::t("t","Namnge din enkät (kommer vara synligt för *något ska stå här*):");?>", function(text) {
 			//skit i resten om användaren inte anger en titel
-			if (title=== null)
+			if (text=== null)
 				return;
-		});
+			title = text;
+			/*initiera ett jsonObject för hela enkäten med grundinfo */
+			var formInfo = {
+				title:title,
+				questions:{}
+			}
+			/* loopa igenom varje li element i vår dropzone eftersom de innehåller nödvändig info*/
+			$("#formLayoutDropzoneUl").children("li").each(function(index){
+				type = $(this).attr("name"); //possible:checkbox,radio,text,textarea
+				/*initiera ett jsonObject för ETT fält */
+				var fieldInfo = {
+					type:type,
+					question:$(this).find(".questionResultTarget").html()
+				}
+				/*sätt bara options ifall vi ska ha några, kollas sen på servern */
+				if(type=="checkbox" || type=="radio" ){
+					fieldInfo.options = {}
+					//hämtar ut själva svarsalternativets text från alla allternatiz denna fråga har
+					$(this).find("div[name="+$(this).attr("id")+"]").children("label").each(function(index,element){
+						fieldInfo.options[index] = $(this).children(".optionText").html();
+					});
+				}
+				//lägg till det här fältet i enkät objektet
+				formInfo.questions[index] = fieldInfo;
+			});//slut for each loop
+			//skicka enkätobjektet till SurveyController actionCreate.php
+			$.ajax({
+				type:"post",
+				url:"/survey/create",
+				data:formInfo,
+				dataType:"json",
+				success:function(data){
+					if(data.success){
+						$("#survey-title").html("Sparat som"+title);
+						$(".survey-layout").addClass("green")
+					}
+				}
+			});//end ajax
+		});//end bootbox prompt
 	});
-
-
-
 
     //flyttade massor till main.js cvpages/js för läsbarheten
     $(function(){
@@ -147,7 +128,7 @@
                  $recruiter->save(false);
             ?>
         }
-        $("#help").click(function(){
+        $("#help").on('click',function(){
             // Survey-components kan inte ha classen draggable när vi kör bootstro, highlight slutar fungera då.
             // Vi tar därför bort classen innan vi kör.
             // När vi är klara lägger vi tillbaka classen för att få rätt z-index som hör till classen.
@@ -174,6 +155,7 @@
 //kasta in nya elementet sist i diven
             var li = $("#sortableLiTemplate").clone();
             li.attr("id",clone.attr("name"));
+	        li.attr("name",formFieldType);
             li.find(".panel-body").html(clone);
             li.find(".panel-heading").prepend(questionTemplate);
             $("#formLayoutDropzoneUl").append(li);
@@ -193,8 +175,7 @@
                         //vad man valde för typ
                         if (question  === null)
                             return;
-                        var formFieldType = ui.draggable.attr("id");
-//defaultVärde
+                        var formFieldType = ui.draggable.attr("id");//defaultVärde
                         var numOfOptions = 0;
                         var pause = true;
                         switch (formFieldType){
@@ -204,10 +185,10 @@
                         appendNewFormElements(question,formFieldType);
                     });
                 }
-
             }
         });
         $("#formLayoutDropzoneUl").sortable({
             connectToSortable: '#formLayoutDropzoneUl'
         });
-    }</script>
+    }
+</script>

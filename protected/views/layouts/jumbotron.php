@@ -14,28 +14,24 @@
             <div class="navbar-collapse collapse">
                 <?php
                 if(Yii::app()->user->id == 1){
-                $items = array(
-                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
-                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/')),
-                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
-                    );}
-                elseif(Yii::app()->user->getState("role")== "publisher"){
-                $items = array(
-                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
-                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
-                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
-                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
-
-                );}else{
-                $items = array(
-                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
-                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
-                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
-                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
-                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
-
-                );}
-
+                    $items = array(
+	                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
+	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/')),
+	                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
+                    );
+                }else if(Yii::app()->user->getState("role")== "publisher"){
+	                $items = array(
+	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
+	                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
+	                );
+                }else{
+                    $items = array(
+	                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
+	                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
+	                    array('label' => Yii::t("t","Mina enkäter"), 'url' => array('/survey/admin')),
+	                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
+                    );
+                }
                 $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
@@ -50,6 +46,8 @@
                     // 'htmlOptions'=>array('class'=>'main-menu')
                     'htmlOptions' => array('class' => 'nav navbar-nav')
                 )); ?>
+
+
                 <?php if (app()->user->isGuest): ?>
                     <?php
                     $model = new LoginForm();
@@ -96,26 +94,26 @@
         <div class=" navbar-right">
             <ul class="nav navbar-nav">
                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t","")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Medelanden <span class="badge pull-right"> 42 </span></a></li>
+                        <li><a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Favoriter <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>">Mina Sidor<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="<?php echo $this->createUrl('site/logout') ?>">Logga ut<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>
                 </li>
             </ul>
-                        
-                        <span class="navbar-brand">
+
+                       <!--  <span class="navbar-brand">
                             <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
                                 <small><?php echo Yii::t("t","Logga ut");?></small>
                             </a>
-                        </span>
+                        </span> -->
         </div>
                 <?php endif;?>
             </div>

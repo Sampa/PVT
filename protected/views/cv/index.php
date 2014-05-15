@@ -67,8 +67,24 @@ if($resultCount< 1):?>
 </div><!-- form -->
 
     <?php endif;?>
-
-
+                <!-- Modal för att rapportera CV -->
+            <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="reportModalLabel"><?php echo Yii::t("t","Rapportera CV");?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" id="reasonTextField" rows="3"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
+                            <button type="button" class="btn btn-primary" id="submitReportBtn"><?php echo Yii::t("t", "Rapportera CV");?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="modal fade" id="hotlistModal" tabindex="-1" role="dialog" aria-labelledby="hotlistTargetLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -78,7 +94,6 @@ if($resultCount< 1):?>
                             <h4 class="modal-title" id="hotlistTargetLabel">Cv tillagt i Hotlist</h4>
                         </div>
                         <div id="hotlistTarget" class="modal-body">
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
@@ -87,8 +102,6 @@ if($resultCount< 1):?>
                     </div>
                 </div>
             </div>
-
-
 
 <?php
 
@@ -130,6 +143,27 @@ jQuery(document).ready(function ($) {
             $("#hotlistTarget").html(data)
         });
     });
+    /*
+    * När man vill rapportera ett CV
+    */
+    jQuery(".report-cv-flag").on("click", function() {
+        var cvID = $(this).attr("id");
+        $("#submitReportBtn").on("click", function() {
+            var reasonText = $("#reasonTextField").val();
+        console.log("Skickar data för POST.");
+        console.log("Anledningstext " + reasonText + " cvID " + cvID);
+        $.ajax ({
+              type: "POST",     
+              url: "reportedCv/create",
+              data: {"reasonText":reasonText, "cvID":cvID}
+          }).done(function( data ) {
+            console.log("POST data skickad");
+          })
+        });
+    });
+    /*
+    * Knappar för sortering av CVn
+    */
 	jQuery(".sortButton").on("click",function(){
             var post = <?php echo json_encode($_POST);?>;
             post.sortBy = $(this).attr("id");

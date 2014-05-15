@@ -58,76 +58,7 @@
                 </div>
                 <div class="panel-body dropzone" id="formLayoutDropzoneWrapper">
                     <ul id="formLayoutDropzoneUl">
-	                    <li name="checkbox" style="" id="checkbox0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">ooo</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body">
-				                    <div name="checkbox0">
-					                    <label class="checkbox-inline">
-						                    <span id="1" class="optionText">1</span>
-						                    <input name="checkbox0" class="checkboxTemplate" type="checkbox">
-					                    </label>
-					                    <label class="checkbox-inline">
-						                    <span id="2" class="optionText">2</span>
-						                    <input name="checkbox0" class="checkboxTemplate" type="checkbox">
-					                    </label>
-					                    <label class="checkbox-inline">
-						                    <span id="3" class="optionText">3</span>
-						                    <input name="checkbox0" class="checkboxTemplate" type="checkbox">
-					                    </label>
-					                    <a class="btn btn-success addAlternative">Nytt alternativ</a>
-				                    </div></div>
-		                    </div>
-	                    </li>
-	                    <li name="radio" id="radio0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">radio</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body">
-				                    <div name="radio0">
-					                    <label class="radio-inline"><span id="4" class="optionText">aa</span>
-						                    <input name="radio0" class="radioTemplate" type="radio">
-					                    </label><label class="radio-inline"><span id="5" class="optionText">bb</span>
-						                    <input name="radio0" class="radioTemplate" type="radio">
-					                    </label><label class="radio-inline"><span id="6" class="optionText">cc</span>
-						                    <input name="radio0" class="radioTemplate" type="radio">
-					                    </label><a class="newRadioAlternative  btn btn-success addAlternative">Nytt alternativ</a>
-				                    </div>
-			                    </div>
-		                    </div>
-	                    </li><li name="text" id="text0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">aa</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body"><div name="text0">
-					                    <input class="form-control textTemplate" type="text">
-				                    </div></div>
-		                    </div>
-	                    </li>
-	                    <li name="textarea" id="textarea0" class="insideDroppable">
-		                    <div class="panel panel-primary">
-			                    <div class="panel-heading"><section id="questionTemplate">
-					                    <span class="questionResultTarget">ia</span>
-					                    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
-				                    </section>
-			                    </div>
-			                    <div class="panel-body">
-				                    <div name="textarea0">
-					                    <textarea class="form-control textareaTemplate"></textarea>
-				                    </div>
-			                    </div>
-		                    </div>
-	                    </li>
+
                     </ul>
                 </div>
                 <div style="z-index: 90;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>

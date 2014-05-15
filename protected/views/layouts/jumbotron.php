@@ -15,34 +15,33 @@
                 <?php
                 if(Yii::app()->user->id == 1){
                     $items = array(
-	                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
-	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/')),
-	                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
+	                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id),'visible'=>!Yii::app()->user->isGuest),
+	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/'),'visible'=>!Yii::app()->user->isGuest),
+	                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id),'visible'=>!Yii::app()->user->isGuest),
                     );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
-	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
-	                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
+	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin'),'visible'=>!Yii::app()->user->isGuest,),
 	                );
                 }else{
                     $items = array(
-	                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
-	                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
-	                    array('label' => Yii::t("t","Mina enkäter"), 'url' => array('/survey/admin')),
-	                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
+	                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t","Mina enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create'),'visible'=>!Yii::app()->user->isGuest,),
                     );
                 }
+                //ska alltid synas
+				$standardItems = array(
+					array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
+					array('label' => Yii::t("t",' Sökning'), 'url'=>array('/cv/')),
+				);
+                //slå ihop custom items med de som alltid syns
+                $items = array_merge($standardItems,$items);
                 $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
-                    'items' => array(
-                        array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
-                        array('label' => Yii::t("t",' Sökning'), 'url'=>array('/cv/')),
-                        array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
-                            'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
-                            'submenuOptions' => array('class' => 'dropdown-menu'),
-                            'items' => $items,
-                        )
-                    ),
+                    'items' =>$items,
                     // 'htmlOptions'=>array('class'=>'main-menu')
                     'htmlOptions' => array('class' => 'nav navbar-nav')
                 )); ?>

@@ -15,10 +15,8 @@
                 <?php
                 if(Yii::app()->user->id == 1){
                     $items = array(
-	                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id),'visible'=>!Yii::app()->user->isGuest),
-	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/'),'visible'=>!Yii::app()->user->isGuest),
-	                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id),'visible'=>!Yii::app()->user->isGuest),
-                    );
+                        array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/'),'visible'=>!Yii::app()->user->isGuest),
+                   );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
 	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),

@@ -14,9 +14,6 @@ $this->breadcrumbs=array(
             <strong><?php echo Yii::app()->user->getFlash('index'); ?></strong>
         </div>
     <?php else: ?>
-<!--        <div class="page-header">-->
-<!--            <h1>--><?php //echo Yii::t("t", "Avancerad sökning");?><!-- </h1>-->
-<!--        </div>-->
         <div class="horizontal-form">
 
 <form class="form" role="search" name="search" method="post" >
@@ -109,19 +106,12 @@ if($resultCount< 1):?>
                     </div>
                 </div>
             </div>
-
-<?php
-
-?>
 <script>
     function scrollToResults(i,data){
         $('html, body').animate({
                 scrollTop: $("#results").offset().top
             }, 2000);
     }
-
-
-
 jQuery(document).ready(function ($) {
 
     jQuery("#searchTags").select2({

@@ -96,7 +96,7 @@ function dump($target, $depth=10, $highlight = true)
  */
 function user()
 {
-    return Yii::app()->user();
+    return Yii::app()->user;
 }
 
 /**
@@ -300,8 +300,8 @@ function je($json, $opts=null)
  * @param string $json the PHP array to be decoded into json array
  * @param bool $assoc when true, returned objects will be converted into associative arrays.
  * @param int $depth User specified recursion depth.
- * @param int $opts Bitmask of JSON decode options. 
- *	Currently only JSON_BIGINT_AS_STRING is supported 
+ * @param int $opts Bitmask of JSON decode options.
+ *	Currently only JSON_BIGINT_AS_STRING is supported
  *	(default is to cast large integers as floats)
  */
 function jd($json, $assoc=null, $depth=512, $opts=0)
@@ -309,5 +309,5 @@ function jd($json, $assoc=null, $depth=512, $opts=0)
 	return json_decode($json, $assoc, $depth);
 }
 
-  
+
 

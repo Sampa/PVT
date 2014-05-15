@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 ?>
 <div class="container page-min-height">
 
-    <h1 class="page-header"> <?php echo Yii::t("t", "Personuppgiftslagen");?></h1>
+    <h1 class="page-header"><?php echo Yii::t("t", "Personuppgiftslagen");?></h1>
     <div class="row">
         <div class="col-md-6">
             <p id="texts"><?php echo t("Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter

@@ -18,12 +18,15 @@ class ReportedCvController extends Controller
 		}
 	}
 
-	public static function actionCreate($cv, $reason){
-		$model = new reportedCv;
-		$model->cvId = $cv->id;
-		$model->reason = $reason;
-		$model->reportedBy=Yii::app()->user->id;
-		if($model->save()){
+	public function actionCreate(){
+		$CV = new ReportedCV;	
+		$CV->cvId = $_POST['cvID'];
+		$CV->reason = $_POST['reason'];
+		$CV->reportedBy = $_POST['userID'];
+		if($CV->save()) {
+			echo "Vi har nu sparat din rapport och kommer att granska den. Tack!";
+		} else {
+			echo "Det gick inte att spara rapporten. Ett oväntat fel inträffade.";
 		}
 	}
 

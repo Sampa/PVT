@@ -31,7 +31,7 @@ class ReportedCv extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('reportedBy, date, cvId, reason', 'required'),
+			array('reportedBy, cvId', 'required'),
 			array('reportedBy, cvId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

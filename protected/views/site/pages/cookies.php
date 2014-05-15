@@ -2,15 +2,28 @@
 $this->pageTitle = Yii::app()->name . ' - About';
 $this->breadcrumbs = array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-    Yii::t("t",'Om oss'),
+    Yii::t("t",'Cookies'),
 );
 ?>
 <div class="container page-min-height">
 
-    <h1 class="page-header"><?php echo Yii::t("t", "Cookies");?></h1>
+    <h1 class="page-header"> <?php echo Yii::t("t", "Cookies");?></h1>
+    <div class="row">
+        <div class="col-md-6">
+            <p id="texts"><?php echo t("Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få
+                                information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken
+                                sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.")?>
+            </p>
 
-    <p><?php echo Yii::t("t", "Vår affärside går ut på att presentera en publik gemensam databas för cv:n oavsett vilken branch du är intresserad av eller proffessionell inom. Möjligheten att vara anonym ger dig en chans till en objektiv första bedömning vilket är helt valfritt. Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du är personligt ansvarig för att skydda dessa uppgifter.");?> <br><br> </p>
-</div>
+
+        </div>
+        <div class="col-md-4">
+            <p>
+                <img src="http://lorempixel.com/output/sports-h-c-421-652-7.jpg">
+            </p>
+        </div>
+    </div>
+
 
 
 

@@ -32,7 +32,6 @@
                     array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
                     array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
                     array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
-                    array('label' => Yii::t("t",'Hitta CV'), 'url' => array('/cv/')),
                     array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
 
                 );}
@@ -41,7 +40,7 @@
                     'encodeLabel' => true,
                     'items' => array(
                         array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
-                        array('label' => Yii::t("t",'Avancerad sökning'), 'url'=>array('/cv/')),
+                        array('label' => Yii::t("t",' Sökning'), 'url'=>array('/cv/')),
                         array('visible'=>!Yii::app()->user->isGuest,'label' => yii::app()-> user-> name, 'url' => array('#'), 'itemOptions' => array('class' => 'dropdown'),
                             'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
                             'submenuOptions' => array('class' => 'dropdown-menu'),
@@ -94,13 +93,30 @@
 
 
                 <?php else: ?>
-                    <div class=" navbar-right">
-                        <span class="navbar-brand"><small><?php echo Yii::t("t","Välkommen")." ".Yii::app()->user->name; ?></small></span>
-                            <span class="navbar-brand">
-                                <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
-                                    <small><?php echo Yii::t("t","Logga ut");?></small>
-                                </a></span>
-                    </div>
+        <div class=" navbar-right">
+            <ul class="nav navbar-nav">
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t","")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Medelanden <span class="badge pull-right"> 42 </span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Favoriter <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?php echo $this->createUrl('site/logout') ?>">Logga ut<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                    </ul>
+                </li>
+            </ul>
+                        
+                        <span class="navbar-brand">
+                            <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
+                                <small><?php echo Yii::t("t","Logga ut");?></small>
+                            </a>
+                        </span>
+        </div>
                 <?php endif;?>
             </div>
             <!--/.navbar-collapse -->

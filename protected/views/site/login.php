@@ -78,11 +78,13 @@ $this->breadcrumbs = array(
           </div>-->
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-10">
+                <div class="btn-group">
                 <?php echo CHtml::submitButton(Yii::t("t", "Logga in"), array('class' => 'btn btn-primary btn-md')); ?>
                 <a class="btn btn-warning col-lg-offset-2 btn-md"
                    href="<?php echo $this->createUrl('site/email_for_reset') ?>"><?php echo Yii::t("t", "Glömt lösenord?");?></a>
             </div>
         </div>
+    </div>
         <?php if ($model->getRequireCaptcha()) : ?>
             <?php $this->widget('application.extensions.recaptcha.EReCaptcha',
                 array('model' => $user, 'attribute' => 'verify_code',

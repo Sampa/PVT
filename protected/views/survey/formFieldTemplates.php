@@ -4,7 +4,8 @@ utan att bryta javascriptet
 -->
     <!-- för alla frågor -->
     <section id="questionTemplate">
-        <h4><span class="questionResultTarget"></span></h4>
+	    <span class="questionResultTarget"></span>
+	    <a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a>
     </section>
      <!-- för vanliga textfält-->
     <div name="textTemplate">
@@ -46,7 +47,8 @@ utan att bryta javascriptet
     <!--sortable li template-->
     <li id="sortableLiTemplate" class="insideDroppable ">
         <div class="panel panel-primary">
-            <div class="panel-heading"><a href="#" class="removeQuestion"><span class="glyphicon glyphicon-trash pull-right "></span></a></div>
+            <div class="panel-heading">
+            </div>
             <div class="panel-body"></div>
         </div>
     </li>

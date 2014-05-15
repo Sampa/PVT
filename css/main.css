@@ -2,7 +2,33 @@
 /* ==|== Custom CSS ========================================
    Please define your custom styles after this section.
    ========================================================================== */
-
+/*survey create page*/
+.draggable{
+    z-index:92;
+}
+.dropzone{
+    z-index: 91;
+}
+#formLayoutDropzoneUl{
+    list-style: none;
+    min-height: 400px;
+}
+#help{
+    margin-top: 25px;
+}
+body {
+    margin-top:55px;
+}
+.bootstro-highlight {
+    background-color:white;
+}
+.wrapper-component {
+    text-align: center;
+}
+.survey-component {
+    width: 75%;
+}
+/*end survey create page*/
 .page-min-height{
     min-height: 650px;
     }
@@ -62,9 +88,9 @@ body #report-cv-flag {
   padding: 15px;
 }
 
-.carousel-control .glyphicon-chevron-left, 
-.carousel-control .glyphicon-chevron-right, 
-.carousel-control .icon-prev, 
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-prev,
 .carousel-control .icon-next {
   position: absolute;
   top: 45%;
@@ -131,7 +157,7 @@ body #report-cv-flag {
 
 .btn-theme:hover {
     color: #000;
-    background-color: #fff;
+    background-color: #000;
     border-color: #fff;
 }
 
@@ -190,6 +216,9 @@ body #report-cv-flag {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+
+
 
 
 

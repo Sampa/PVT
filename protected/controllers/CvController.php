@@ -472,7 +472,6 @@ class CvController extends Controller
 			$criteria = $this->setTagsCondition($criteria);//om man valt någon tag att söka på
 			$criteria = $this->setGeoAreaCondition($criteria); //hanterar om man valt att söka på region
 		}
-		else{var_dump($_POST);}
 		return $criteria;
 	}
 }

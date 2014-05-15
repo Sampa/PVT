@@ -107,10 +107,7 @@
 	})
 </script>
 <style>
-    .green{
-        color: #3C763D;
-        background-color: #DFF0D8;
-    }
+
     .standard{
         color: #000;
         background-color: #fff;

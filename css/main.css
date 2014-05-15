@@ -3,6 +3,10 @@
    Please define your custom styles after this section.
    ========================================================================== */
 /*survey create page*/
+.green{
+    color: #3C763D;
+    background-color: #DFF0D8;
+}
 .draggable{
     z-index:92;
 }
@@ -157,7 +161,7 @@ body #report-cv-flag {
 
 .btn-theme:hover {
     color: #000;
-    background-color: #fff;
+    background-color: #000;
     border-color: #fff;
 }
 
@@ -217,6 +221,9 @@ body #report-cv-flag {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+
+
 
 
 

@@ -38,6 +38,8 @@
         <div>
             <?php $this->renderPartial('/cv/_allCountriesSelect', array('')); ?>
         </div>
+
+        
         <div class="controls  col-lg-12">
             <div class="form-actions row" style="margin-left:-15px; clear:both;">
                 <?php echo TbHtml::submitButton($model->isNewRecord ? Yii::t("t", "Skapa process") : Yii::t("t", "Spara"),array(
@@ -45,6 +47,7 @@
 		          'size'=>TbHtml::BUTTON_SIZE_LARGE,)); ?>
             </div>
         </div>
+    
     
     <?php $this->endWidget(); ?>
 

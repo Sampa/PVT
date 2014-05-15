@@ -46,10 +46,10 @@
 
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
-			<div class="col-xs-12 col-sm-12 col-md-3">
+			<div class="col-xs-12 col-sm-12 col-md-2">
 				<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-2">
+			<div class="col-xs-12 col-sm-12 col-md-3">
 				<ul class="meta-search">
 					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo substr(CHtml::encode($data->date),0,10); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
@@ -77,11 +77,11 @@
                             }
 //                    ?>
                 <br/>
-                <span class="plus"><a href="#" title="Lorem ipsum"><i data-toggle="modal" data-target="#reportModal" id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera");?></span>
+                <span class="plus"><a href="#" title='<?php echo t("Rapportera CV för olämpligt innehåll");?>'><i data-toggle="modal" data-target="#reportModal<?php echo $data->id;?>" id="report-cv-flag" class="glyphicon glyphicon-flag"></i></a></span><span></span><?php echo Yii::t("t"," Rapportera CV");?></span>
 
                 <!-- Button trigger modal -->
 				<!-- Modal -->
-				<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+				<div class="modal fade" id="reportModal<?php echo $data->id;?>" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
   					<div class="modal-dialog">
     					<div class="modal-content">
       						<div class="modal-header">
@@ -89,11 +89,11 @@
        		 					<h4 class="modal-title" id="reportModalLabel"><?php echo Yii::t("t","Rapportera CV");?></h4>
       						</div>
       						<div class="modal-body">
-        						<?php echo Yii::t("t", "Varför vill du rapportera det här CV:t?");?>
-      						</div>
+                    <textarea class="form-control" id="reason" rows="3"></textarea>
+        					</div>
       						<div class="modal-footer">
         						<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
-        						<button type="button" class="btn btn-primary"><?php echo Yii::t("t", "Rapportera");?></button>
+        						<button type="button" id="submitReport" class="btn btn-primary"><?php echo Yii::t("t", "Rapportera CV");?></button>
       						</div>
     					</div>
   					</div>
@@ -106,7 +106,7 @@
 
 
                    <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
-                   <?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
+                   <i class="glyphicon glyphicon-file"></i><?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
 
                 <?php } ?>
@@ -146,4 +146,22 @@
 
 	</section>
 </div>
+<script>
+  $("#submitReport").on("click", function(){
+    var reason = $("reason").attr("id");
+    var id = $(this).attr("id");
+    alert(1234);
+    $.ajax ({
+          type: "POST",
+          dataType:"json",       
+          url: "reportedCv/create",
+          data: { data : reason}, //optional
+          success: function(data) {
+              alert(data);
+              //do something after you receive the result
+          }
+    });
+    window.document.location='cv';
+  }
+</script>
 

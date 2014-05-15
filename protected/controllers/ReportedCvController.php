@@ -18,6 +18,15 @@ class ReportedCvController extends Controller
 		}
 	}
 
+	public static function actionCreate($cv, $reason){
+		$model = new reportedCv;
+		$model->cvId = $cv->id;
+		$model->reason = $reason;
+		$model->reportedBy=Yii::app()->user->id;
+		if($model->save()){
+		}
+	}
+
 	public function actionDelete($id)
 	{
 		if (Yii::app()->request->isPostRequest) {

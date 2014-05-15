@@ -28,15 +28,15 @@ utan att bryta javascriptet
     </div>
     <!-- mallen för ett checkboxfield -->
     <div id="checkboxField">
-        <label class="checkbox-inline">
-            <input class="checkboxTemplate" type="checkbox"/>
-        </label>
+            <label class="checkbox-inline">
+                <input class="checkboxTemplate" type="checkbox"/>
+            </label>
     </div>
     <!-- checkboxes har bara add alternativ button-->
     <div name="radioTemplate">
         <a class="newRadioAlternative  btn btn-success addAlternative"><?php echo Yii::t("t", "Nytt alternativ");?></a>
     </div>
-    <!-- mallen för ett checkboxfield -->
+    <!-- mallen för ett radiofield -->
     <div id="radioField">
         <label class="radio-inline">
             <input class="radioTemplate" type="radio"/>

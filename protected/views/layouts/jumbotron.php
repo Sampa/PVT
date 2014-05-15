@@ -14,28 +14,24 @@
             <div class="navbar-collapse collapse">
                 <?php
                 if(Yii::app()->user->id == 1){
-                $items = array(
-                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
-                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/')),
-                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
-                    );}
-                elseif(Yii::app()->user->getState("role")== "publisher"){
-                $items = array(
-                    
-                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
-                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
-                    
-
-                );}else{
-                $items = array(
-                    
-                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
-                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
-                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
-                    
-
-                );}
-
+                    $items = array(
+	                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id)),
+	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/')),
+	                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id)),
+                    );
+                }else if(Yii::app()->user->getState("role")== "publisher"){
+	                $items = array(
+	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create')),
+	                    array('label' => Yii::t("t",'Dina CV:n'), 'url' => array('/cv/admin')),
+	                );
+                }else{
+                    $items = array(
+	                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/')),
+	                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create')),
+	                    array('label' => Yii::t("t","Mina enkäter"), 'url' => array('/survey/admin')),
+	                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create')),
+                    );
+                }
                 $this->widget('zii.widgets.CMenu', array(
                     'encodeLabel' => true,
                     'items' => array(
@@ -112,7 +108,7 @@
                     </ul>
                 </li>
             </ul>
-                        
+
                        <!--  <span class="navbar-brand">
                             <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
                                 <small><?php echo Yii::t("t","Logga ut");?></small>

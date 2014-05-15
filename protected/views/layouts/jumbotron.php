@@ -91,10 +91,8 @@
             <ul class="nav navbar-nav">
                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style='width: 250px'>
                         <li><a href="<?php echo $this->createUrl('user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a></li>
                         <li class="divider"></li>

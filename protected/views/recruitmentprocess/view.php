@@ -103,7 +103,7 @@ $geoid=$model->geographicAreaID;
 
 <h3><?php echo Yii::t("t","Mina kommentarer");?></h3>
 <textarea class="form-control" rows="3"></textarea>
-<button type="button" style="margin-top:10px" class="btn btn-success pull-right">Success</button>
+
 
 <div class="controls" style="margin-top:50px;margin-bottom:105px;">
   <div class="modal fade" id="mySurvey" tabindex="-1" role="dialog" aria-labelledby="mySurveyLabel" aria-hidden="true">

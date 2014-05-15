@@ -160,9 +160,10 @@ jQuery(document).ready(function ($) {
         var cvID = $(this).attr("id");
         $("#submitReportBtn").on("click", function() {
             var reason = $("#reasonTextField").val();
-            var userID = <?php echo Yii::app()->user->id ?>;
+	        //sätt userid till 0 om personen är gäst(ej inloggad) annars id:t (shortif syntax) för att undvika issue #29
+            var userID = <?php echo user()->isGuest ? 0:user()->id; ?>;
             $.ajax ({
-                type: "POST",     
+                type: "POST",
                 url: "reportedcv/create",
                 data: {"reason":reason, "cvID":cvID, "userID":userID}
             }).done(function( data ) {
@@ -174,7 +175,7 @@ jQuery(document).ready(function ($) {
                     $("#reportModalTextFailure").fadeIn("slow");
                 }
                 $("#reportModalEndFooter").fadeIn("slow");
-                $("#reasonTextField").val(''); 
+                $("#reasonTextField").val('');
             })
         });
     });

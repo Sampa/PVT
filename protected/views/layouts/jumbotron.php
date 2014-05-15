@@ -127,7 +127,8 @@
         <!-- Example row of columns -->
 
         <hr>
-
+        <?php
+        if($_SERVER['REQUEST_URI']!="/"):?>
         <footer id="footer2">
             <div class="container">
                 <div class="row">
@@ -155,18 +156,10 @@
                         </center>
                     </div>
                 </div>
-
-<!--                        <a href="--><?php //echo Yii::app()->baseUrl;?><!--/site/contact">--><?php //echo Yii::t("t","Kontakt");?><!--</a><p class="footertext"></p></center></p>-->
-
-            </div>
-            <!--visar hela kontactformuläret-->
-            <div id="contactFormWrapper" style="display: none;">
-                <?php
-                    $cat=Yii::app()->createController('site');//returns array containing controller instance and action index.
-                    echo $cat[0]->actionContact(true);
-                ?>
             </div>
         </footer>
+        <!-- end if startpage-->
+        <?php endif;?>
     </div> <!-- /container -->
 <?php $this->endContent(); ?>
 <?php cs()->registerCssFile($this->getBootstrap3LayoutCssFileURL()); ?>
@@ -187,7 +180,7 @@
         color:#454A49;
       }
 
-</style>w
+</style>
 <script>
     $(document).ready(function(){
     $("#showContactForm").on('click',function(){

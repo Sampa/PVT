@@ -109,7 +109,7 @@
 				dataType:"json",
 				success:function(data){
 					if(data.success){
-						$("#survey-title").html("Sparat som"+title);
+						$("#survey-title").html("Sparat som "+title);
 						$(".survey-layout").addClass("green")
 					}
 				}

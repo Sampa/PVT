@@ -26,7 +26,7 @@
 
         <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-             <div class="row form-group">
+            <div class="control-group row  error col-md-12">
                 <div class="col-lg-5">
                     <?php echo $form->textFieldControlGroup($model, 'username', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Välj ett användarnamn"))); ?>
                 </div>

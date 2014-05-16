@@ -91,7 +91,7 @@
                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo $this->createUrl('user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                         <li class="divider"></li>

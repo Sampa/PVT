@@ -7,6 +7,7 @@ class ComposeController extends Controller
 
 	public function actionCompose($id = null) {
 		$message = new Message();
+        $this->performAjaxValidation($message);
 		if (Yii::app()->request->getPost('Message')) {
 			$receiverName = Yii::app()->request->getPost('receiver');
 		    $message->attributes = Yii::app()->request->getPost('Message');
@@ -29,4 +30,15 @@ class ComposeController extends Controller
 		}
 		$this->render(Yii::app()->getModule('message')->viewPath . '/compose', array('model' => $message, 'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
+    /**
+     * Performs the AJAX validation.
+     * @param Cv $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if (isset($_POST['ajax']) && $_POST['ajax']==='message-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
 }

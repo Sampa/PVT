@@ -1,17 +1,18 @@
 <?php $this->pageTitle=Yii::app()->name . ' - '.MessageModule::t("Messages:inbox"); ?>
 <?php
 	$this->breadcrumbs=array(
-		MessageModule::t("Messages"),
-		MessageModule::t("Inbox"),
-	);
+        t("Meddelanden")=>array('/message/'),
+        t("Inkorg")=>array('/message/inbox'),
+    );
 ?>
 
-<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation') ?>
-
-<h2><?php echo MessageModule::t('Inbox'); ?></h2>
+<div class="row col-md-12 col-lg-12">
+    <div class="col-md-3 col-lg-3">
+        <?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation'); ?>
+    </div>
 
 <?php if ($messagesAdapter->data): ?>
-	<?php $form = $this->beginWidget('CActiveForm', array(
+	<?php $form = $this->beginWidget('TbActiveForm', array(
 		'id'=>'message-delete-form',
 		'enableAjaxValidation'=>false,
 		'action' => $this->createUrl('delete/')
@@ -39,7 +40,7 @@
 	<div class="row buttons">
 		<?php echo CHtml::submitButton(MessageModule::t("Delete Selected")); ?>
 	</div>
-
-<?php $this->endWidget(); ?>
+    <?php $this->endWidget(); ?>
+</div>
 	<?php $this->widget('CLinkPager', array('pages' => $messagesAdapter->getPagination())) ?>
 <?php endif; ?>

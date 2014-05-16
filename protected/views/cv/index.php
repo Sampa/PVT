@@ -144,6 +144,7 @@ jQuery(document).ready(function ($) {
     * När man vill rapportera ett CV
     */
     jQuery(".report-cv-flag").on("click", function() {
+        $("#reasonTextField").val("");
         $("#reportModalTextSuccess").hide();
         $("#reportModalTextFailure").hide();
         $("#reportModalEndFooter").hide();
@@ -165,7 +166,7 @@ jQuery(document).ready(function ($) {
                     $("#reportModalTextFailure").fadeIn("slow");
                 }
                 $("#reportModalEndFooter").fadeIn("slow");
-                $("#reasonTextField").val('');
+                $("#reasonTextField").val("");
             })
         });
     });

@@ -153,7 +153,6 @@
 
         <?php echo $content; ?>
         <!-- Example row of columns -->
-
         <hr>
         <?php
         if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>

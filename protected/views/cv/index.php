@@ -69,6 +69,7 @@ if($resultCount< 1):?>
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="reportModalLabel"><?php echo Yii::t("t","Rapportera CV");?></h4>
                         </div>
                         <div class="modal-body">
@@ -144,6 +145,7 @@ jQuery(document).ready(function ($) {
     * När man vill rapportera ett CV
     */
     jQuery(".report-cv-flag").on("click", function() {
+        $("#reasonTextField").val("");
         $("#reportModalTextSuccess").hide();
         $("#reportModalTextFailure").hide();
         $("#reportModalEndFooter").hide();
@@ -154,7 +156,7 @@ jQuery(document).ready(function ($) {
             var userID = <?php echo user()->isGuest ? 0:user()->id; ?>;
             $.ajax ({
                 type: "POST",
-                url: "reportedcv/create",
+                url: "reportedCv/create",
                 data: {"reason":reason, "cvID":cvID, "userID":userID}
             }).done(function( data ) {
                 $("#reportModalInputDiv").hide();
@@ -165,7 +167,6 @@ jQuery(document).ready(function ($) {
                     $("#reportModalTextFailure").fadeIn("slow");
                 }
                 $("#reportModalEndFooter").fadeIn("slow");
-                $("#reasonTextField").val('');
             })
         });
     });

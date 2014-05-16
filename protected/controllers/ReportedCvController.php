@@ -19,7 +19,7 @@ class ReportedCvController extends Controller
 	}
 
 	public function actionCreate(){
-		$CV = new ReportedCv;
+		$CV = new ReportedCv;	
 		$CV->cvId = $_POST['cvID'];
 		$CV->reason = $_POST['reason'];
 		$CV->reportedBy = $_POST['userID'];

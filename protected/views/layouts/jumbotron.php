@@ -15,10 +15,8 @@
                 <?php
                 if(Yii::app()->user->id == 1){
                     $items = array(
-	                    array('label' => Yii::t("t",'Mina sidor'), 'url' => array('/user/'.Yii::app()->user->id),'visible'=>!Yii::app()->user->isGuest),
-	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/'),'visible'=>!Yii::app()->user->isGuest),
-	                    array('label' => Yii::t("t", "Ändra uppgifter"), 'url' => array('/user/update/'.Yii::app()->user->id),'visible'=>!Yii::app()->user->isGuest),
-                    );
+	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedCv/'),'visible'=>!Yii::app()->user->isGuest),
+	              );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
 	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
@@ -26,10 +24,8 @@
 	                );
                 }else{
                     $items = array(
-	                    array('label' => Yii::t("t","Mina rekryteringsprocesser"), 'url' => array('/recruitmentprocess/'),'visible'=>!Yii::app()->user->isGuest,),
-	                    array('label' => Yii::t("t",'Ny rekryteringsprocess'), 'url' => array('/recruitmentprocess/create'),'visible'=>!Yii::app()->user->isGuest,),
-	                    array('label' => Yii::t("t","Mina enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
-	                    array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t","Rekryteringsprocesser"), 'url' => array('/recruitmentprocess/'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t","Enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
                     );
                 }
                 //ska alltid synas
@@ -159,7 +155,6 @@
         <footer id="footer2">
             <div class="container">
                 <div class="row">
-
                     <br>
                     <div class="col-md-4">
                         <center>

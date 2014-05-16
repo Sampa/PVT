@@ -106,6 +106,11 @@ class RecruitmentprocessController extends Controller
 		$model=$this->loadModel($processID);
 
 		$model->endDate = date("Y-m-d");
+
+		$model->salaryOfHired = $_POST["salaryId"];
+
+		$model->successfulProcess = $_POST["radioId"];
+
 		if ($model->save()) {
 			echo "Vi lyckades att spara processen";
 		} else {

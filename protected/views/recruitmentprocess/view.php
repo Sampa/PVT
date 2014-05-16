@@ -144,10 +144,10 @@ $geoid=$model->geographicAreaID;
 <div class="page-header">
   <h1><?php echo Yii::t("t","Hotlist");?>  
     <div class="pull-right col-md-1">
-      <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
+      <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchAll'));?>
     </div>
     <div class="btn-group pull-right">
-    <button type="button" class="btn btn-warning btn pull-right" data-toggle="modal">
+    <button type="button" id='remove' class="btn btn-warning btn pull-right" data-toggle="modal">
       <span class="glyphicon glyphicon-trash"></span><?php echo Yii::t("t","Ta bort");?>
     </button>
     <button type="button" class="btn btn-info btn pull-right" data-toggle="modal" data-target="#mySurvey">
@@ -186,3 +186,32 @@ $geoid=$model->geographicAreaID;
     });
   });
  </script>
+ <script>
+  $("input[name='switchbutton']").on('change',function(){
+    alert($(this).attr("id"))
+  });
+
+  $("input[name='switchAll']").on('change',function(){
+    var isOn = $(this).prop('checked');
+    $("input[name='switchbutton']").each(function(){
+      if(isOn){
+        $(this).prop('checked', true);
+     }
+     else{
+      $(this).prop('checked', false);
+     }
+    });
+
+  });
+
+  $('#remove').on('click', function(event){
+    var isO = $(this).prop('checked');
+    $('input[name="switchbutton"]').each(function(){
+        if(isO){
+          $(this).prop('checked', true);
+          alert('Hej');
+        }
+    });
+  });
+
+</script>

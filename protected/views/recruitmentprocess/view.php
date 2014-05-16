@@ -218,7 +218,6 @@ $geoid=$model->geographicAreaID;
  </script>
  <script>
   $("input[name='switchbutton']").on('change',function(){
-    alert($(this).attr("id"))
   });
 
   $("input[name='switchAll']").on('change',function(){
@@ -228,20 +227,29 @@ $geoid=$model->geographicAreaID;
         $(this).prop('checked', true);
      }
      else{
-      $(this).prop('checked', false);
+        $(this).prop('checked', false);
      }
     });
 
   });
 
   $('#remove').on('click', function(event){
-    var isO = $(this).prop('checked');
     $('input[name="switchbutton"]').each(function(){
+      var cvId = $(this).attr('id');
+      var isO = $(this).prop('checked');
         if(isO){
           $(this).prop('checked', true);
-          alert('Hej');
+          console.log($(this).attr("id"));
+              $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/hotlist/delete/'+cvId
+              }).done(function(data){
+                  alert('apa');
+              });
         }
     });
+
   });
 
 </script>

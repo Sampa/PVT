@@ -42,7 +42,7 @@
 
   <div class="col-md-1">
 <!--         <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbutton', 'id' => $data->cv->id));?> -->
-      <input id="41" name="switchbutton" type="checkbox" value="1">
+      <input id="<?php echo $data->id;?>" name="switchbutton" type="checkbox" value="1">
   </div>
 
 </div>

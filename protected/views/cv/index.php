@@ -166,7 +166,6 @@ jQuery(document).ready(function ($) {
                     $("#reportModalTextFailure").fadeIn("slow");
                 }
                 $("#reportModalEndFooter").fadeIn("slow");
-                $("#reasonTextField").val("");
             })
         });
     });

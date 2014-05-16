@@ -155,7 +155,6 @@
         <footer id="footer2">
             <div class="container">
                 <div class="row">
-
                     <br>
                     <div class="col-md-4">
                         <center>

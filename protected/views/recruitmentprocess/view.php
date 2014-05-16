@@ -25,10 +25,30 @@ $this->menu=array(
 </div>
 
 <div class="row">
-    <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Företag/Organisation: </strong>");?></div>
+    <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("company").":</B>";?></div>
     <div class="col-xs-6 col-sm-6"><?php echo $model->company; ?></div>
     <div class="col-xs-6 col-sm-4">
-      <?php if($model->endDate == NULL) { ?>
+    <div class="form">
+
+      <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+      'id'=>'recruitmentprocess-form',
+      // Please note: When you enable ajax validation, make sure the corresponding
+      // controller action is handling ajax validation correctly.
+      // There is a call to performAjaxValidation() commented in generated controller code.
+      // See class documentation of CActiveForm for details on this.
+          'enableAjaxValidation'=>true,
+          'enableClientValidation'=>true,
+          'clientOptions'=>array(
+            'validateOnType'=>true,
+            'validateOnSubmit' => true,
+            'errorCssClass' => 'has-error',
+            'successCssClass' => 'has-success',
+            'inputContainer' => '.form-control',
+            'validateOnChange' => true
+          ),
+        )); ?>
+
+     <?php if($model->endDate == NULL) { ?>
       <button id="openModalBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myQuit">
          <?php echo Yii::t("t","Avsluta rekryteringsprocessen");?>
       </button>
@@ -79,40 +99,69 @@ $this->menu=array(
           </div>
         </div>
       </div>
+      <?php $this->endWidget(); ?>
+      </div><!-- form end -->
     </div>
 </div>
 <?php if ($model->typeOfEmployment=='employment'){
-	$typeOfEmployment='Anställning';
+	$typeOfEmployment=t('Anställning');
 }else{ 
-	$typeOfEmployment='Konsult';
+	$typeOfEmployment= t('Konsult');
 }
 ?>
-
-<div class="row">
-  <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Typ av tjänst: </strong>");?></div>
-  <div class="col-xs-6 col-sm-2"><?php echo $model->typeOfService;?> </div>
+<?php if ($model->successfulProcess=='CandidateFoundOp'){
+  $successfulProcess=  t('En kandidat hittades via Cvpages');
+}elseif($model->successfulProcess=='OtherOpFound'){
+  $successfulProcess=  t('En kandidat hittades på annat sätt');
+}else{
+  $successfulProcess=  t('Tjänsten tillsattes aldrig');
+}
+?>
+<?php if($model->endDate == NULL) { ?>
+  <div class="row">   
+      <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("typeOfService").":</B>";?></div>
+      <div class="col-xs-6 col-sm-2"><?php echo $model->typeOfService;?> </div>
+  </div>
+<?php }else{ ?>
+ <div class="row">   
+    <div class="controls" style="margin-top:20px">
+      <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("typeOfService").":</B>";?></div>
+      <div class="col-xs-6 col-sm-2"><?php echo $model->typeOfService;?> </div>
+    </div>
 </div>
+<?php } ?>
 <div class="row">
 	<div class="controls" style="margin-top:20px">
-    <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Anställningsform: </strong>");?></div>
+    <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("typeOfEmployment").":</B>";?></div>
     <div class="col-xs-6 col-sm-2"><?php echo $typeOfEmployment;?> </div>
   </div>
 </div>
 <div class="row">
 	<div class="controls" style="margin-top:20px">
-   <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Startdatum: </strong>");?></div>
+    <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("startDate").":</B>";?></div>
    <div class="col-xs-6 col-sm-2"><?php echo substr($model->startDate,0,10);?> </div>
-   <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Slutdatum:</strong>");?></div>
+   <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("endDate").":</B>";?></div>
    <div class="col-xs-6 col-sm-2"><?php echo substr($model->endDate,0,10);?> </div>
   </div>
 </div>
+  <?php if($model->endDate != NULL) { ?>
+  <div class = "row">
+    <div class="controls" style="margin-top:20px">
+      <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("salaryOfHired").":</B>";?></div>
+      <div class="col-xs-6 col-sm-2"><?php echo $model->salaryOfHired;?> </div>
+      <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("successfulProcess").":</B>";?></div>
+      <div class="col-xs-6 col-sm-2"><?php echo $successfulProcess;?> </div>
+    </div>
+  </div> 
+  <?php } ?>
+
 <?php 
 $geoid=$model->geographicAreaID;
 
 ?>
 <div class="row">
   <div class="controls" style="margin-top:20px">
-    <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Geografisk plats: </strong>");?></div>
+    <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("geographicAreaID").":</B>";?></div>
       <?php
         if(isset($model->geographicArea->country)){
             $countryName = $model->geographicArea->country;

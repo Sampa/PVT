@@ -154,7 +154,7 @@ jQuery(document).ready(function ($) {
             var userID = <?php echo user()->isGuest ? 0:user()->id; ?>;
             $.ajax ({
                 type: "POST",
-                url: "reportedcv/create",
+                url: "reportedCv/create",
                 data: {"reason":reason, "cvID":cvID, "userID":userID}
             }).done(function( data ) {
                 $("#reportModalInputDiv").hide();

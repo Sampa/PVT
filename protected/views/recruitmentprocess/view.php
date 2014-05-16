@@ -170,7 +170,7 @@ $geoid=$model->geographicAreaID;
     <button type="button" id='remove' class="btn btn-warning btn pull-right" data-toggle="modal">
       <span class="glyphicon glyphicon-trash"></span><?php echo Yii::t("t","Ta bort");?>
     </button>
-    <button type="button" class="btn btn-info btn pull-right" data-toggle="modal" data-target="#mySurvey">
+    <button type="button" class="btn btn-info btn pull-right" data-toggle="modal" data-target="#mySurvey" style="margin-right: 10px">
       <span class="glyphicon glyphicon-file"></span><?php echo Yii::t("t","Skicka ut enkät");?>
     </button>
   </div>

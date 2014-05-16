@@ -4,10 +4,6 @@
 ?>
 
 <div class="view">
-	hello
-   	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id),array('view','id'=>$data->id)); ?>
-	<br />
 
 <div class="row">
   <div class="col-md-2">
@@ -31,22 +27,22 @@
   </div>
 
   <div class="col-md-4">
-    <div class="stars">
-        <div id="stars" class="starrr" style="font-size: 15px"></div>
-        You gave a rating of <span id="count">0</span> star(s)
-        <div>
+    <div class="row lead" >
+        <div id="stars" class="starrr" style='font-size: 20px'></div>
+         <div style='font-size: 15px'>
           <span class="plus"><a href="#" title="Chatt öppnad"><i class="glyphicon glyphicon-comment"></i></a></span><span><?php echo Yii::t("t"," Starta chatt");?></span>
           <span class="plus"><a href="#" title="Enkät utsänd/besvarad"><i class="glyphicon glyphicon-file"></i></a></span><span><?php echo Yii::t("t"," Enkät");?></span>
         </div>
 	</div>
+
 </div>
   <div class="col-md-3">
   	<h4><strong><?php echo CHtml::encode($data->cv->title); ?></strong></h4>
   </div>
 
-
   <div class="col-md-1">
-        <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
+<!--         <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbutton', 'id' => $data->cv->id));?> -->
+      <input id="41" name="switchbutton" type="checkbox" value="1">
   </div>
 
 </div>

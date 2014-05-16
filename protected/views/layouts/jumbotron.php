@@ -15,7 +15,7 @@
                 <?php
                 if(Yii::app()->user->id == 1){
                     $items = array(
-	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/'),'visible'=>!Yii::app()->user->isGuest),
+	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedCv/'),'visible'=>!Yii::app()->user->isGuest),
 	              );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(

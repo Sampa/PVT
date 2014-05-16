@@ -21,16 +21,18 @@ $this->menu=array(
 );
 ?>
 <div class="page-header">
-  <h1><?php echo Yii::t('t', 'Visar '),$model->title; ?></h1>
+  <h1><?php echo $model->title; ?></h1>
 </div>
 
 <div class="row">
     <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Företag/Organisation: </strong>");?></div>
     <div class="col-xs-6 col-sm-6"><?php echo $model->company; ?></div>
     <div class="col-xs-6 col-sm-4">
+      <?php if($model->endDate == NULL) { ?>
       <button id="openModalBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myQuit">
          <?php echo Yii::t("t","Avsluta rekryteringsprocessen");?>
       </button>
+      <?php } ?>
       <div class="modal fade" id="myQuit" tabindex="-1" role="dialog" aria-labelledby="myQuitLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -42,7 +44,25 @@ $this->menu=array(
              <div id="myQuitInputDiv">
               <body><?php echo Yii::t("t","Här fyller du i uppgifter om den avslutade processen");?>
                 <br><br>
-        	      <strong> <?php echo Yii::t("t", "Här kan du fylla i lönen (avrunda till jämnt tusental)");?></strong>
+        	      <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="CandidateFoundOp" value="CandidateFoundOp" checked>
+                            <?php echo t("Jag hittade en kandidat här på Cvpages")?>
+                    </label>
+                </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="OtherOpFound" value="OtherOpFound">
+                          <?php echo t("Jag hittade en kandidat genom andra medel")?>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="NoCandidateFoundOp" value="NoCandidateFoundOp">
+                          <?php echo t("Processen avslutatdes av annan anledning")?>
+                </label>
+              </div>
+                <strong> <?php echo Yii::t("t", "Här kan du fylla i lönen (avrunda till jämnt tusental)");?></strong>
             	  <input type="text" class="form-control" id="salary" placeholder=<?php echo Yii::t("t", "Lön");?>>
               </body>
             </div>
@@ -170,10 +190,20 @@ $geoid=$model->geographicAreaID;
       $("#closeButton").hide();
       $(".closeProcessBtn").on("click", function(){
         var closeRecId = $(this).attr("id");
+        var salary = document.getElementById("salary").value;
+        var radioValue = "";
+        var optionsradios = document.getElementsByName("optionsRadios");
+            for (var i = 0, length = optionsradios.length; i<length; i++){
+              if(optionsradios[i].checked){
+                  radioValue = optionsradios[i].value;
+                  break;
+              }
+            }
+        
         $.ajax({
           type:"POST",
           url:"/recruitmentprocess/update",
-          data: {"id":closeRecId}
+          data: {"id":closeRecId, "salaryId": salary, "radioId": radioValue}
         }).done(function( data ) {
             $("#myQuitInputDiv").hide();
             $("#beforeSuccessButtonGroup").hide();

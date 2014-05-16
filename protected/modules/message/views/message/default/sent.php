@@ -1,17 +1,18 @@
 <?php $this->pageTitle=Yii::app()->name . ' - '.MessageModule::t("Messages:sent"); ?>
 <?php
 	$this->breadcrumbs=array(
-		MessageModule::t("Messages"),
-		MessageModule::t("Sent"),
+        t("Meddelanden")=>array('/message/'),
+        t("Skickade")=>array('/message/sent'),
 	);
 ?>
 
-<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation') ?>
-
-<h2><?php echo MessageModule::t('Sent'); ?></h2>
-
-<?php if ($messagesAdapter->data): ?>
-	<?php $form = $this->beginWidget('CActiveForm', array(
+<div class="row col-md-12 col-lg-12">
+    <div class="col-md-3 col-lg-3">
+        <?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation'); ?>
+    </div>
+    <div class="col-md-9 col-lg-9">
+    <?php if ($messagesAdapter->data): ?>
+	<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id'=>'message-delete-form',
 		'enableAjaxValidation'=>false,
 		'action' => $this->createUrl('delete/')
@@ -36,10 +37,11 @@
 	</table>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton(MessageModule::t("Delete Selected")); ?>
+		<?php echo CHtml::submitButton(t("Radera markerade")); ?>
 	</div>
-
-	<?php $this->endWidget(); ?>
+    <?php $this->endWidget(); ?>
+    </div>
+</div>
 
 	<?php $this->widget('CLinkPager', array('pages' => $messagesAdapter->getPagination())) ?>
 <?php endif; ?>

@@ -28,7 +28,7 @@ $this->menu=array(
     <div class="col-xs-6 col-sm-2"><?php echo Yii::t("t", "<strong>Företag/Organisation: </strong>");?></div>
     <div class="col-xs-6 col-sm-6"><?php echo $model->company; ?></div>
     <div class="col-xs-6 col-sm-4">
-      <?php if($model->endDate != null) { ?>
+      <?php if($model->endDate == NULL) { ?>
       <button id="openModalBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myQuit">
          <?php echo Yii::t("t","Avsluta rekryteringsprocessen");?>
       </button>

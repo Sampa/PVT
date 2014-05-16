@@ -1,7 +1,8 @@
 //getting country/region/city
 (function(window,$,undefined){
+    var target = $("#geoCity");
     function getPlaces(gid,new_target){
-        var target = new_target;
+        target = new_target;
         var url = "http://www.geonames.org/childrenJSON";
         $.ajax({
             url :url,
@@ -27,11 +28,13 @@
     }
     $(function(){
         ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
+
             var next= $("#"+list[index+1]);
              $("#"+item).select2({
                 placeholder: next.attr("data-default")
             });
             $("#"+item).change(function(){
+                console.log(next);
                 if(next){
                     getPlaces($("option[value='"+this.value+"']").attr("id"),next);
                 }

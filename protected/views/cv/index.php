@@ -14,9 +14,6 @@ $this->breadcrumbs=array(
             <strong><?php echo Yii::app()->user->getFlash('index'); ?></strong>
         </div>
     <?php else: ?>
-<!--        <div class="page-header">-->
-<!--            <h1>--><?php //echo Yii::t("t", "Avancerad sökning");?><!-- </h1>-->
-<!--        </div>-->
         <div class="horizontal-form">
 
 <form class="form" role="search" name="search" method="post" >
@@ -109,19 +106,12 @@ if($resultCount< 1):?>
                     </div>
                 </div>
             </div>
-
-<?php
-
-?>
 <script>
     function scrollToResults(i,data){
         $('html, body').animate({
                 scrollTop: $("#results").offset().top
             }, 2000);
     }
-
-
-
 jQuery(document).ready(function ($) {
 
     jQuery("#searchTags").select2({
@@ -154,16 +144,18 @@ jQuery(document).ready(function ($) {
     * När man vill rapportera ett CV
     */
     jQuery(".report-cv-flag").on("click", function() {
+        $("#reasonTextField").val("");
         $("#reportModalTextSuccess").hide();
         $("#reportModalTextFailure").hide();
         $("#reportModalEndFooter").hide();
         var cvID = $(this).attr("id");
         $("#submitReportBtn").on("click", function() {
             var reason = $("#reasonTextField").val();
-            var userID = <?php echo Yii::app()->user->id ?>;
+	        //sätt userid till 0 om personen är gäst(ej inloggad) annars id:t (shortif syntax) för att undvika issue #29
+            var userID = <?php echo user()->isGuest ? 0:user()->id; ?>;
             $.ajax ({
-                type: "POST",     
-                url: "reportedcv/create",
+                type: "POST",
+                url: "reportedCv/create",
                 data: {"reason":reason, "cvID":cvID, "userID":userID}
             }).done(function( data ) {
                 $("#reportModalInputDiv").hide();
@@ -174,7 +166,6 @@ jQuery(document).ready(function ($) {
                     $("#reportModalTextFailure").fadeIn("slow");
                 }
                 $("#reportModalEndFooter").fadeIn("slow");
-                $("#reasonTextField").val(''); 
             })
         });
     });

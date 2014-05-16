@@ -15,8 +15,8 @@
                 <?php
                 if(Yii::app()->user->id == 1){
                     $items = array(
-                        array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedcv/'),'visible'=>!Yii::app()->user->isGuest),
-                   );
+	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedCv/'),'visible'=>!Yii::app()->user->isGuest),
+	              );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
 	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
@@ -26,7 +26,6 @@
                     $items = array(
 	                    array('label' => Yii::t("t","Rekryteringsprocesser"), 'url' => array('/recruitmentprocess/'),'visible'=>!Yii::app()->user->isGuest,),
 	                    array('label' => Yii::t("t","Enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
-	                    // array('label' => Yii::t("t",'Ny enkät'), 'url' => array('/survey/create'),'visible'=>!Yii::app()->user->isGuest,),
                     );
                 }
                 //ska alltid synas
@@ -91,14 +90,30 @@
             <ul class="nav navbar-nav">
                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
-                    <ul class="dropdown-menu" style='width: 250px'>
+                    <ul class="dropdown-menu">
                         <li><a href="<?php echo $this->createUrl('user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a></li>
+                        <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                        <li class="divider"></li>
+                        <li>
+<!--	                        <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
+	                        <!-- href leder till användarens inbox -->
+	                        <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->inboxUrl[0]);?>"> Meddelanden
+		                        <span class="badge pull-right">
+			                        <?php
+			                        if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
+				                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
+			                        }else{
+				                        echo "";
+			                        }
+			                        ?>
+								</span>
+	                        </a>
+                        </li>
                         <li class="divider"></li>
                         <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>">Mina Sidor<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('site/logout') ?>">Logga ut<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/site/logout') ?>">Logga ut<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -134,14 +149,12 @@
 
         <?php echo $content; ?>
         <!-- Example row of columns -->
-
         <hr>
         <?php
         if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>
         <footer id="footer2">
             <div class="container">
                 <div class="row">
-
                     <br>
                     <div class="col-md-4">
                         <center>

@@ -40,8 +40,12 @@ return array(
         'xupload'=>'webroot.protected.extensions.xupload',
     ),
     'modules' => array(
+	    'message' => array(
+		    'userModel' => 'User',
+		    'getNameMethod' => 'getFullName',
+		    'getSuggestMethod' => 'getSuggest',
+	    ),
         // uncomment the following to enable the Gii tool
-
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => '1',

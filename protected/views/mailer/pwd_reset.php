@@ -14,7 +14,7 @@
                                  width:180px;
                                 ">
         <a style="color:#ffdead; font-size: 40px;text-decoration: none" href="<?php echo $reset_url;?>"
-           target="_blank"><?php echo t("Återställ lösenord");?></a>
+           target="_blank"><?php echo Yii::t("t","Återställ lösenord");?></a>
     </div>
 </center>
 

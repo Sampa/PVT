@@ -40,7 +40,7 @@ class Recruitmentprocess extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, typeOfEmployment', 'required'),
-			// array('recruiterId, salaryOfHired, geographicAreaID', 'numerical', 'integerOnly'=>true),
+			array('salaryOfHired', 'numerical', 'integerOnly'=>true),
 			array('typeOfEmployment, typeOfService, successfulProcess', 'length', 'max'=>255),
 			// array('endDate', 'safe'),
 			// The following rule is used by search().
@@ -72,14 +72,14 @@ class Recruitmentprocess extends CActiveRecord
 			'id' => 'ID',
 			'title' => Yii::t("t","Titel"),
 			'recruiterId' => 'recruiter',
-			'startDate' => 'Start Date',
-			'endDate' => 'End Date',
+			'startDate' => Yii::t('t','Startdatum'),
+			'endDate' => Yii::t('t','Slutdatum'),
 			'typeOfEmployment' => Yii::t("t",'Anställningsform'),
 			'typeOfService' => Yii::t("t", "Typ av tjänst"),
 			'salaryOfHired' => Yii::t("t", "Lön för anställd"),
 			'company' => Yii::t("t","Företag"),
 			'geographicAreaID' => Yii::t("t","Geografisk plats"),
-			'successfulProcess' => Yii::t("t","Lyckad rekrytering?"),
+			'successfulProcess' => Yii::t("t","Rekryteringsstatus"),
 		);
 	}
 

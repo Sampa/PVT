@@ -34,7 +34,7 @@ $this->menu=array(
             <h3><?php echo Yii::t('t','Pågående processer');?></h3>
         </div>
 
-        <table class="table">
+        <table class="table table-bordered table-condensed table-hover">
 
             <tbody>
                 <tr>
@@ -48,7 +48,7 @@ $this->menu=array(
                 foreach($allModels as $model){
                     if($model->endDate == null && $model->recruiterId ==Yii::app()->user->id){
                 ?>
-                <tr>
+                <tr class="onClick" id="<?php echo $model->id;?>">
                     <td><?php
                             echo substr($model->startDate, 0, 10);
                         ?>
@@ -69,11 +69,11 @@ $this->menu=array(
                             echo $model->typeOfService;
                         ?>
                     </td>
-                    <td>
+                   <!--  <td>
                         <a href="<?php echo Yii::app()->baseUrl;?>/recruitmentprocess/view/<?php echo $model->id?>">
                             <span class="glyphicon glyphicon-search"></span>  <?php echo Yii::t("t","Granska process");?>
                         </a>
-                    </td>
+                    </td> -->
                 </tr>
                     <?php
                     }
@@ -89,7 +89,7 @@ $this->menu=array(
             <h3><?php echo Yii::t('t','Avslutade processer');?></h3>
         </div>
 
-        <table class="table">
+        <table class="table table-bordered table-condensed table-hover">
 
             <tbody>
             <tr>
@@ -104,7 +104,7 @@ $this->menu=array(
             foreach($allModels as $model){
                 if($model->endDate!=null && $model->recruiterId ==Yii::app()->user->id){
                     ?>
-                    <tr>
+                    <tr class="onClick" id="<?php echo $model->id;?>">
                         <td><?php
                             echo substr($model->startDate,0,10);
                             ?></td>
@@ -134,3 +134,9 @@ $this->menu=array(
             </tbody>
         </table>
     </div>
+<script>
+$(".onClick").on("click",function(event){
+    event.preventDefault();
+    window.document.location ='view/'+$(this).attr("id");
+});
+</script>

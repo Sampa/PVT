@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-	t("Inkorg") => array("/message/inbox"),
+	t("Konversationer") => array("/message/conversation"),
 	t("Skickade") => array("/message/sent"),
 	t("Nytt") => array('/message/compose'),
 );

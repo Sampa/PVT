@@ -5,7 +5,6 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<span class="glyphicon glyphicon-comment"></span> Chat med <?php echo $senderName; ?>
-
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 								<span class="glyphicon glyphicon-chevron-down"></span>

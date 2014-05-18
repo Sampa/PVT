@@ -39,7 +39,7 @@
     margin-right: 5px;
 }
 
-.panel-body
+.chat .panel-body
 {
     overflow-y: scroll;
     height: 250px;

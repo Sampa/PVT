@@ -6,11 +6,13 @@
 	<div class="chat-body clearfix">
 		<div class="header">
 			<strong class="primary-font"><?php echo $message->getSenderName();?></strong>
-			<small class="pull-right text-muted">
+		</div>
+		<p>
+			<small class="text-muted">
 				<span class="glyphicon glyphicon-time"></span>
 				<?php echo date(Yii::app()->getModule('message')->dateFormat, strtotime($message->created_at));?>
 			</small>
-		</div>
+		</p>
 		<p>
 			<?php echo $message->body;?>
 		</p>

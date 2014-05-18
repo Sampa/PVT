@@ -1,17 +1,6 @@
 <?php $this->pageTitle = Yii::app()->name . ' - ' . MessageModule::t("Compose Message"); ?>
 <?php $isIncomeMessage = $viewedMessage->receiver_id == Yii::app()->user->getId() ?>
 
-<?php
-$this->breadcrumbs = array(
-	MessageModule::t("Messages"),
-	($isIncomeMessage ? MessageModule::t("Inbox") : MessageModule::t("Sent")) => ($isIncomeMessage ? 'inbox' : 'sent'),
-	CHtml::encode($viewedMessage->subject),
-);
-?>
-
-<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_styles') ?>
-<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_flash') ?>
-
 <div class="row">
 
 	<?php //$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation') ?>

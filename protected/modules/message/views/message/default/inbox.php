@@ -1,9 +1,6 @@
-<?php $this->pageTitle = Yii::app()->name . ' - ' . MessageModule::t("Messages:inbox"); ?>
+<?php $this->pageTitle = Yii::app()->name . ' - ' . t("Inkorg"); ?>
 <?php
-$this->breadcrumbs = array(
-	t("Meddelanden") => array('/message/'),
-	t("Inkorg") => array('/message/inbox'),
-);
+	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
 ?>
 	<?php if ($messagesAdapter->data): ?>
 		<?php $form = $this->beginWidget('TbActiveForm', array(

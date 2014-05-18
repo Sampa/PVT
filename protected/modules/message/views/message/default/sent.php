@@ -1,15 +1,8 @@
-<?php $this->pageTitle = Yii::app()->name . ' - ' . MessageModule::t("Messages:sent"); ?>
+<?php $this->pageTitle = Yii::app()->name . ' - ' . t("Skickade"); ?>
 <?php
-$this->breadcrumbs = array(
-	t("Meddelanden") => array('/message/'),
-	t("Skickade") => array('/message/sent'),
-);
+	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
 ?>
-
 <div class="row col-md-12 col-lg-12">
-	<div class="col-md-3 col-lg-3">
-		<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation'); ?>
-	</div>
 	<div class="col-md-9 col-lg-9">
 		<?php if ($messagesAdapter->data): ?>
 		<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(

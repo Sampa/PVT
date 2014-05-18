@@ -1,9 +1,6 @@
-<?php $this->pageTitle = Yii::app()->name . ' - ' . MessageModule::t("Compose Message"); ?>
+<?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
 <?php
-$this->breadcrumbs = array(
-	t("Meddelanden") => array('/message/'),
-	t("Nytt") => array("/message/compose"),
-);
+$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
 ?>
 <div class="container">
 	<div class="row">

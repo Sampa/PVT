@@ -50,6 +50,16 @@
 //Custom Javascript Here
 /* kod som är här kan man ändra på */
 jQuery(document).ready(function(){
+    /*konversationer vänsterspaltsmenyn*/
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+    /*skicka nytt chat meddelande*/
     $(".sendChatMessage").on("click", function (event) {
         event.preventDefault();
         var id = $(this).attr("id");

@@ -1,6 +1,6 @@
 <?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
 <?php
-$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
+	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
 ?>
 <div class="container">
 	<div class="row">
@@ -22,7 +22,7 @@ $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs
 				<!-- meddelanden/chat section -->
 				<div class="bhoechie-tab-content active">
 					<?php
-					//innehållet sätt i composecontroller getInboxContent()
+					//innehållet sätt i composecontroller getInboxContent() och finns i inbox.php
 						echo $inbox;
 					?>
 				</div>
@@ -30,19 +30,16 @@ $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs
 			<!-- enkätsvar section -->
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 				<div class="bhoechie-tab-content">
-						<center>
-							<h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-						</center>
-					</div>
+					<h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+				</div>
 			</div>
 			<!-- Skickade search -->
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 				<div class="bhoechie-tab-content">
-					<center>
-
-						<h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-
-					</center>
+					<?php
+					//innehållet sätt i composecontroller getSentContent() och finns i sent.php
+						echo $sent;
+					?>
 				</div>
 			</div>
 		</div>
@@ -52,13 +49,6 @@ $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs
 <script>
 	$(document).ready(function () {
 		<!--	   -->
-		$("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-			e.preventDefault();
-			$(this).siblings('a.active').removeClass("active");
-			$(this).addClass("active");
-			var index = $(this).index();
-			$("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-			$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-		});
+
 	});
 </script>

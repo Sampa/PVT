@@ -33,7 +33,11 @@ class ConversationController extends Controller
 				}
 			}
 		}
-		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array('inbox'=>$this->getInboxContent(),'model' => $message, 'receiverName' => isset($receiverName) ? $receiverName : null));
+		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array(
+			'inbox'=>$this->getInboxContent(),
+			'sent'=>$this->getSentContent(),
+			'model' => $message,
+			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
     public function getInboxContent() {
         $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
@@ -45,6 +49,16 @@ class ConversationController extends Controller
             'messagesAdapter' => $messagesAdapter
         ),true);
     }
+	public function getSentContent() {
+		$messagesAdapter = Message::getAdapterForSent(Yii::app()->user->getId());
+		$pager = new CPagination($messagesAdapter->totalItemCount);
+		$pager->pageSize = 10;
+		$messagesAdapter->setPagination($pager);
+
+		return $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/sent', array(
+			'messagesAdapter' => $messagesAdapter
+		),true);
+	}
     /**
      * Performs the AJAX validation.
      * @param Cv $model the model to be validated

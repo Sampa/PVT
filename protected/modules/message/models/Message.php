@@ -179,12 +179,13 @@ class Message extends CActiveRecord
 		$c = new CDbCriteria();
 		$c->addCondition('t.sender_id = :senderId OR t.sender_id = :receiverId');
 		$c->addCondition('t.receiver_id = :receiverId OR t.receiver_id = :senderId');
-		$c->addCondition('t.deleted_by <> :deleted_by_sender OR t.deleted_by IS NULL');
+		$c->addCondition('t.deleted_by = :deleted_by_sender OR t.deleted_by IS NULL OR t.deleted_by = :deleted_by_receiver');
 		$c->order = 't.created_at';
 		$c->params = array(
 			'senderId' => $userId,
 			'receiverId' => Yii::app()->user->id,
 			'deleted_by_sender' => Message::DELETED_BY_SENDER,
+			'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,
 		);
 		$messagesProvider = new CActiveDataProvider('Message', array('criteria' => $c));
 		return $messagesProvider;

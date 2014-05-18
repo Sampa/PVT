@@ -1,73 +1,58 @@
-<?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
+<?php $this->pageTitle = Yii::app()->name . ' - ' . MessageModule::t("Compose Message"); ?>
 <?php
-$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
+	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
 ?>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-10 col-xs-9 bhoechie-tab-container">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
-				<div class="list-group">
-					<a href="#" class="list-group-item active text-center">
-						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
-					</a>
-					<a href="#" class="list-group-item text-center">
-						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkätsvar"); ?>
-					</a>
-					<a href="#" class="list-group-item text-center">
-						<h4 class="glyphicon glyphicon-pencil"></h4><br/> <?= t("Skickade");?>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-				<!-- meddelanden/chat section -->
-				<div class="bhoechie-tab-content active">
-					<?php
-					//innehållet sätt i composecontroller getInboxContent()
-						echo $inbox;
-					?>
-				</div>
-			</div>
-			<!-- enkätsvar section -->
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-				<div class="bhoechie-tab-content">
-						<center>
-							<h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-						</center>
-					</div>
-			</div>
-			<!-- Skickade search -->
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-				<div class="bhoechie-tab-content">
-					<center>
 
-						<h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+<div class="row col-md-12 col-lg-12" style="min-height: 140px;">
+	<div class="form">
+		<?php if (Yii::app()->user->hasFlash('messageModule')): ?>
+			<div class="alert-message success">
+				<?php echo Yii::app()->user->getFlash('messageModule'); ?>
+			</div>
+		<?php endif; ?>
 
-					</center>
+		<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+			'id' => 'message-form',
+			'enableAjaxValidation' => true,
+			'enableClientValidation' => true,
+			'clientOptions' => array(
+				'validateOnType' => true,
+				'validateOnSubmit' => true,
+				'errorCssClass' => 'has-error',
+				'successCssClass' => 'has-success',
+				'inputContainer' => '.control-group',
+				'validateOnChange' => true
+			),
+		)); ?>
+
+		<p class="note"><?php echo MessageModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
+
+		<?php echo $form->errorSummary($model); ?>
+		<div class="col-md-8 col-lg-8">
+			<div class="control-group row  error">
+				<div class="row col-lg-10 col-md-10">
+					<?php echo CHtml::textField('receiver', $receiverName) ?>
+					<?php echo $form->textFieldControlGroup($model, 'receiver_id', array('class' => 'col-md-5 form-control', 'maxlength' => 255)); ?>
 				</div>
+			</div>
+
+			<div class="control-group row  error ">
+				<div class="row col-lg-10 col-md-10">
+					<?php echo $form->textFieldControlGroup($model, 'subject', array('class' => 'col-md-5 form-control', 'maxlength' => 255)); ?>
+				</div>
+			</div>
+
+			<div class="control-group row  error ">
+				<div class="row col-lg-10 col-md-10">
+					<?php echo $form->textAreaControlGroup($model, 'body', array('class' => 'col-md-5 form-control', 'maxlength' => 255)); ?>
+				</div>
+			</div>
+			<div class="row buttons">
+				<?php echo CHtml::submitButton(t("Skicka"), array("class" => "btn btn-primary")); ?>
 			</div>
 		</div>
+
+		<?php $this->endWidget(); ?>
 	</div>
 </div>
 
-<script>
-	$(document).ready(function () {
-		<!--	   -->
-
-		$("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-			e.preventDefault();
-			$(this).siblings('a.active').removeClass("active");
-			$(this).addClass("active");
-			var index = $(this).index();
-			$("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-			$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-		});
-	});
-</script>
-
-<script>
-	function submitForm(form) {
-		console.log(form);
-
-	}
-
-</script>

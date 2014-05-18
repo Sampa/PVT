@@ -1,24 +1,29 @@
 <?php
 
-class ComposeController extends Controller
+class ConversationController extends Controller
 {
 
-	public $defaultAction = 'compose';
+	public $defaultAction = 'Conversation';
 
-	public function actionCompose($id = null) {
-		$message = new Message("compose");
-		$this->performAjaxValidation($message);
-		if (Yii::app()->request->getPost('Message')) {
+	public function actionConversation($id = null) {
+		$message = new Message();
+        $this->performAjaxValidation($message);
+		if (Yii::app()->request->isAjaxRequest) {
 			$receiverName = Yii::app()->request->getPost('receiver');
-			$message->attributes = Yii::app()->request->getPost('Message');
-			$message->sender_id = Yii::app()->user->getId();
+		    $message->body= Yii::app()->request->getPost('body');
+		    $message->receiver_id= Yii::app()->request->getPost('receiver_id');
+			$message->sender_id = Yii::app()->user->id;
+			$message->subject = "chat";
 			if ($message->save()) {
 				Yii::app()->user->setFlash('messageModule', MessageModule::t('Message has been sent'));
-				$this->redirect($this->createUrl('inbox/'));
+				$messageView = $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message),true);
+				echo json_encode(array("success"=>true,"message"=>$messageView,"messageId"=>$message->id));
 			} else if ($message->hasErrors('receiver_id')) {
 				$message->receiver_id = null;
 				$receiverName = '';
+				echo json_encode(array("success"=>false));
 			}
+			Yii::app()->end();
 		} else {
 			if ($id) {
 				$receiver = call_user_func(array(call_user_func(array(Yii::app()->getModule('message')->userModel, 'model')), 'findByPk'), $id);
@@ -28,7 +33,7 @@ class ComposeController extends Controller
 				}
 			}
 		}
-		$this->render(Yii::app()->getModule('message')->viewPath . '/compose', array('inbox'=>$this->getInboxContent(),'model' => $message, 'receiverName' => isset($receiverName) ? $receiverName : null));
+		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array('inbox'=>$this->getInboxContent(),'model' => $message, 'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
     public function getInboxContent() {
         $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());

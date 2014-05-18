@@ -57,7 +57,7 @@ jQuery(document).ready(function(){
         console.log(id);
         $.ajax({
             "type": "POST",
-            "url": "/message/compose/",
+            "url": "/message/conversation/",
             "dataType": "json",
             "data": {
                 "body": $("#Message_body" + id).val(),
@@ -181,7 +181,6 @@ $(function(){
     $('.tableWrapper').on('click', '.panel-heading span.filter', function(e){
         var $this = $(this),
             $panel = $this.parents('.panel');
-
         $panel.find('.panel-body').slideToggle();
         if($this.css('display') != 'none') {
             $panel.find('.panel-body input').focus();

@@ -2,7 +2,7 @@
 
 class MessageModule extends CWebModule
 {
-	public $defaultController = 'compose';
+	public $defaultController = 'conversation';
 
 	public $userModel = 'User';
 	public $userModelRelation = null;

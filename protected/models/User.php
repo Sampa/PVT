@@ -163,7 +163,7 @@ class User extends CActiveRecord
     public function getFullName()
     {
 
-        return $this->name;
+        return $this->username;
     }
 
     /**

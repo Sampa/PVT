@@ -15,6 +15,7 @@ class MessageModule extends CWebModule
 	public $dateFormat = 'Y-m-d H:i:s';
 
 	public $inboxUrl = array("/message/inbox");
+	public $defaultUrl = array("/message/");
 
 	public $viewPath = '/message/default';
 

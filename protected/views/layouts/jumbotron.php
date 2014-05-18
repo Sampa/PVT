@@ -98,7 +98,7 @@
                         <li>
 <!--	                        <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
 	                        <!-- href leder till användarens inbox -->
-	                        <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->inboxUrl[0]);?>"> Meddelanden
+	                        <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> Meddelanden
 		                        <span class="badge pull-right">
 			                        <?php
 			                        if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){

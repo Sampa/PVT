@@ -44,7 +44,7 @@
 								<input class="form-control col-md-10 col-lg-10 col-sm-6"
 								       placeholder="Skriv ditt meddelande här..." name="Message[body]"
 								       id="Message_body<?= $model->sender_id; ?>" value="hej" type="text"/>
-								<input id="btn-chat<?= $model->sender_id; ?>" data-url="<?=Yii::app()->baseUrl."/".$this->createUrl("conversation/");?>" class="btn-warning btn sendChatMessage"
+								<input id="btn-chat<?= $model->sender_id; ?>" data-url="<?=$this->createUrl("conversation/");?>" class="btn-warning btn sendChatMessage"
 								       name="<?= $senderName; ?>" value="<?=t("Skicka");?>" type="submit"/>
 							</span>
 						</div>

@@ -57,7 +57,7 @@ jQuery(document).ready(function(){
         console.log(id);
         $.ajax({
             "type": "POST",
-            "url": "message/conversation/",
+            "url": "/message/conversation/",
             "dataType": "json",
             "data": {
                 "body": $("#Message_body" + id).val(),

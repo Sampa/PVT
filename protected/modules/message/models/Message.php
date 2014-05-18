@@ -57,7 +57,7 @@ class Message extends CActiveRecord
 		return array(
 			array('sender_id, receiver_id', 'required'),
 			array('sender_id, receiver_id', 'numerical', 'integerOnly'=>true),
-			array('subject', 'required'),
+//			array('subject', 'required'),
 			array('subject', 'length', 'max'=>256),
 			array('is_read', 'length', 'max'=>1),
 			array('deleted_by', 'length', 'max'=>8),

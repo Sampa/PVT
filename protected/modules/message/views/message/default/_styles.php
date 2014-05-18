@@ -1,5 +1,4 @@
 <style type="text/css">
-	<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_bootstrap.css') ?>
 	tr.unread td {
 		font-weight: bold;
 	}

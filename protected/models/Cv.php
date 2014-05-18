@@ -1,7 +1,6 @@
 <?php
-
 // Include Composer autoloader if not already done.
-include 'vendor/autoload.php';
+//  include 'vendor/autoload.php';
 
 /**
  * This is the model class for table "Cv".
@@ -36,6 +35,7 @@ class Cv extends CActiveRecord
      */
     public $hasGeoArea = true;
     public $tags;
+//    public $numberOfLinks;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -57,7 +57,7 @@ class Cv extends CActiveRecord
 			array(' typeOfEmployment, title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			array('date, typeOfEmployment, geographicAreaId, title, pdfText', 'safe', 'on'=>'search'),
-			array('date, typeOfEmployment, geographicAreaId, title, pdfText,pathToPdf', 'safe'),
+			array('date, typeOfEmployment, geographicAreaId, title, pdfText,pathToPdf,numberOfLinks', 'safe'),
 		);
 	}
 
@@ -131,13 +131,21 @@ class Cv extends CActiveRecord
 
 	}
 	public function beforeSave(){
-		$this-> publisherId=Yii::app()->user->id;
+		try{
+            $this-> publisherId=Yii::app()->user->id;
+        }catch (CException $foo){
+            return true;
+        }
 		parent::beforeSave( );
 		//if we can add the pdf return true so saving to the database tables goes thrue
 		return true;
     }
 	public function afterSave(){
-		$this->addPdfFromTmpFolder();
+        try{
+            $this->addPdfFromTmpFolder();
+        }catch (CException $foo){
+            return true;
+        }
 	}
 	public function addPdfFromTmpFolder( ) {
 		//the cv to be updated with a pdf link
@@ -193,4 +201,9 @@ class Cv extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+    public function registerjs($cvID){
+
+        Yii::app()->controller->renderPartial("/cv/_cronJobJs",array("cvId"=>$cvID));
+        return true;
+    }
 }

@@ -28,8 +28,18 @@ class ComposeController extends Controller
 				}
 			}
 		}
-		$this->render(Yii::app()->getModule('message')->viewPath . '/compose', array('model' => $message, 'receiverName' => isset($receiverName) ? $receiverName : null));
+		$this->render(Yii::app()->getModule('message')->viewPath . '/compose', array('inbox'=>$this->getInboxContent(),'model' => $message, 'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
+    public function getInboxContent() {
+        $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
+        $pager = new CPagination($messagesAdapter->totalItemCount);
+        $pager->pageSize = 10;
+        $messagesAdapter->setPagination($pager);
+
+        return $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
+            'messagesAdapter' => $messagesAdapter
+        ),true);
+    }
     /**
      * Performs the AJAX validation.
      * @param Cv $model the model to be validated

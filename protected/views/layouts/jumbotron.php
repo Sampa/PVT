@@ -185,27 +185,13 @@
     </div> <!-- /container -->
 <?php $this->endContent(); ?>
 <?php cs()->registerCssFile($this->getBootstrap3LayoutCssFileURL()); ?>
-
-<style>
-    #footer2{
-        color: #000000;
-        background:
-      /* color overlay */
-        linear-gradient(
-        rgba(240, 212, 0, 0.45),
-        rgba(0, 0, 0, 0.45)
-        ),
-        /* image to overlay */
-
-    }
-    .breadcrumb .active{
-        color:#454A49;
-      }
-
-</style>
 <script>
     $(document).ready(function(){
-    $("#showContactForm").on('click',function(){
+        $("#chatButton").on('click',function(){
+            $("#chatDiv").fadeIn();
+        });
+
+        $("#showContactForm").on('click',function(){
         $("#contactFormWrapper").slideToggle();
         $('html, body').animate({
             scrollTop: $("#showContactForm").offset().top

@@ -28,6 +28,6 @@ $this->menu=array(
     </div>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
-	'dataProvider'=>$dataProvider,
+        'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>

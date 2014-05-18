@@ -48,7 +48,30 @@
 
 
 //Custom Javascript Here
+/* kod som är här kan man ändra på */
 jQuery(document).ready(function(){
+    $(".sendChatMessage").on("click", function (event) {
+        event.preventDefault();
+        var id = $(this).attr("id");
+        id = id.replace("btn-chat", "");
+        console.log(id);
+        $.ajax({
+            "type": "POST",
+            "url": "/message/compose/",
+            "dataType": "json",
+            "data": {
+                "body": $("#Message_body" + id).val(),
+                "receiver": $(this).attr("name"),
+                "receiver_id": id
+            }
+        }).done(function (data) {
+            if (data.success)
+                $("#chatUl"+id).append(data.message);
+//					$('html, body').animate({
+//						scrollTop: $("#chatLi"+data.messageId).offset().top
+//					}, 2000);
+        });
+    });
     jQuery('#VAT').hide();
     jQuery('#Companyname').hide();
     jQuery('#other_checkbox').change(function(){ // This is used to fadeIn&FadeOut the text filed in the feedback-form
@@ -62,6 +85,7 @@ jQuery(document).ready(function(){
 }
     });
 });
+
 
 //***********************DO NOT CHACKABACKALOLA HERE********************************'//
 //JS för survey

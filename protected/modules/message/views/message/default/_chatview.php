@@ -1,10 +1,8 @@
-<div style="display:block;" id="chatDiv">
-	<div class="container">
-		<div class="row">
+<div style="display:block;" id="">
 			<div class="col-md-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<span class="glyphicon glyphicon-comment"></span> Chat med <?php echo $senderName; ?>
+						<span class="glyphicon glyphicon-comment"></span> <?php echo t("Historik för").$senderName; ?>
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 								<span class="glyphicon glyphicon-chevron-down"></span>
@@ -52,5 +50,3 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>

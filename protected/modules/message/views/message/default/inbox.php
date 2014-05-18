@@ -8,11 +8,11 @@
 			'enableAjaxValidation' => false,
 			'action' => $this->createUrl('delete/')
 		)); ?>
+
 		<div class="container tableWrapper">
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="menu">
-						<div class="accordion">
 							<div class="panel panel-success">
 								<div class="panel-heading messagesHeading">
 									<h3 class="panel-title"><?=t("Konversationer");?></h3>
@@ -32,6 +32,7 @@
 										placeholder="<?=t("Sök");?>"
 									/>
 								</div>
+
 								<table class="table table-hover" id="task-table">
 									<thead>
 										<tr>
@@ -42,7 +43,9 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php
+									<div class="accordion">
+										<div class="accordion-group">
+									<?php
 										$showed = array();
 										foreach ($messagesAdapter->data as $index => $message):
 											if (in_array($message->sender_id, $showed))
@@ -50,8 +53,8 @@
 											else
 												$showed[] = $message->sender_id;
 											?>
-											<div class="accordion-group">
-												<tr class="accordion-heading">
+
+											<tr class="accordion-heading">
 													<td>
 														<?php echo CHtml::checkBox("Message[$index][selected]"); ?>
 														<?php echo $form->hiddenField($message, "[$index]id"); ?>
@@ -67,21 +70,26 @@
 													<td class="clickable accordion-heading accordion-toggle" data-toggle="collapse" href="#acc<?= $index; ?>">
 														Ja
 													</td>
-													<div id="acc<?= $index; ?>" class="accordion-body collapse" style="padding:0px;">
-														<div class="accordion-inner">
-															<div class="panel-body"
-															     style="margin-top:0px;padding:0px;min-height: 400px;">
-																<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(
-																		"model" => $message,
-																		"receiverName" => $message->getReceiverName(),
-																		"senderName" => $message->getSenderName())
-																);?>
-															</div>
+												</tr>
+											<tr>
+												<td colspan="4">
+												<div id="acc<?= $index; ?>" class="accordion-body collapse" style="padding:0px;">
+													<div class="accordion-inner">
+														<div class="panel-body"
+														     style="margin-top:0px;padding:0px;min-height: 400px;">
+															<?php echo $this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(
+																	"model" => $message,
+																	"receiverName" => $message->getReceiverName(),
+																	"senderName" => $message->getSenderName())
+																,true);?>
 														</div>
 													</div>
+												</div>
+												</td>
 												</tr><!-- end table row -->
-											</div><!-- accordion-group-->
 										<?php endforeach ?>
+										</div><!-- accordion-group-->
+									</div>
 									</tbody>
 								</table>
 							</div>

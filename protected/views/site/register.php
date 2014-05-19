@@ -99,6 +99,7 @@ $this->breadcrumbs = array(
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group" id='Companyname'>
                         <?php echo $form->labelEx($model, 'Companyname', array('class' => 'col-lg-3 control-label')); ?>
                         <div class="col-lg-5">
@@ -117,6 +118,16 @@ $this->breadcrumbs = array(
                             </div>
                         </div>
                     </div>
+
+                     <div class="form-group">
+                <?php echo $form->labelEx($model, 'notify', array('class' => 'col-lg-3 control-label')); ?>
+                <div class="col-lg-1">
+                    <?php echo $form->checkBox($model, 'notify', array('class' => 'form-control', 'id'=>'notify')); ?>
+                    <div class="help-block">
+                        <?php echo $form->error($model, 'notify'); ?>
+                    </div>
+                </div>
+            </div>
                     <div class="form-group">
                         <!--            <div class="col-lg-5 col-lg-offset-3">-->
                         <!--                --><?php //echo CHtml::activeLabel($model, 'verify_code'); ?> 

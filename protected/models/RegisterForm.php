@@ -17,6 +17,7 @@ class RegisterForm extends CFormModel
     public $other_checkbox;
     public $Companyname;
     public $VAT;
+    public $notify;
     public $accepted;
 
 
@@ -51,6 +52,7 @@ class RegisterForm extends CFormModel
             'other_checkbox' => Yii::t('t', "Kryssa i om du är rekryterare"),
             'Companyname' => Yii::t('t', "Företagsnamn"),
             'VAT' => Yii::t('t', "VAT"),
+            'notify'=> Yii::t('t', "Notifiering via mail?"),
             'accepted' => Yii::t('t','Acceptera användaravtal:'),
         );
     }

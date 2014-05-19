@@ -248,10 +248,9 @@ $geoid=$model->geographicAreaID;
                   break;
               }
             }
-        
         $.ajax({
           type:"POST",
-          url:"/recruitmentprocess/update",
+          url: "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/update",
           data: {"id":closeRecId, "salaryId": salary, "radioId": radioValue}
         }).done(function( data ) {
             $("#myQuitInputDiv").hide();
@@ -260,7 +259,7 @@ $geoid=$model->geographicAreaID;
             $("#closeButton").fadeIn("slow");
         })
         $("#closeButton").on("click", function(){
-          window.document.location ='/recruitmentprocess/view/'+closeRecId;
+          window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + closeRecId;
         });
     });
   });

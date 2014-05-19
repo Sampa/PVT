@@ -263,6 +263,9 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        if(!Yii::app()->user->isGuest) //redirect if logged in (can be changed later)
+            $this->redirect(bu() . '/');
+
         $model = new LoginForm();
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
             echo CActiveForm::validate($model, array('username', 'password', 'verify_code'));

@@ -94,6 +94,7 @@ class Controller extends CController
         cs()->registerCssFile(bu() . '/css/main.css');
         cs()->registerCssFile(bu() . '/css/select2.css');
         cs()->registerCssFile(bu() . '/css/bootstro.css');
+        cs()->registerCssFile(bu() . '/css/yamm.css');
         cs()->registerCssFile(bu() . '/libs/jquery/jquery-ui.min.css');
     }
 

@@ -206,7 +206,7 @@ class Message extends CActiveRecord
 				$this->delete();
 			} else {
 				$this->deleted_by = self::DELETED_BY_SENDER;
-				$this->save();
+				$this->save(false);
 			}
 
 			return true;
@@ -217,7 +217,7 @@ class Message extends CActiveRecord
 				$this->delete();
 			} else {
 				$this->deleted_by = self::DELETED_BY_RECEIVER;
-				$this->save();
+				$this->save(false);
 			}
 
 			return true;

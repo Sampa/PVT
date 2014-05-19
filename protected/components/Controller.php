@@ -86,6 +86,8 @@ class Controller extends CController
         cs()->registerScriptFile(bu() . '/js/select2_locale_sv.js', CClientScript::POS_END);
         cs()->registerScriptFile(bu() . '/js/bootstro.js', CClientScript::POS_BEGIN);
         cs()->registerScriptFile(bu() . '/js/bootbox.min.js', CClientScript::POS_END);
+        cs()->registerScriptFile(bu() . '/js/autoSave.min.js', CClientScript::POS_END);
+
     }
 
     //custom application css
@@ -96,6 +98,7 @@ class Controller extends CController
         cs()->registerCssFile(bu() . '/css/bootstro.css');
         cs()->registerCssFile(bu() . '/css/yamm.css');
         cs()->registerCssFile(bu() . '/libs/jquery/jquery-ui.min.css');
+
     }
 
 

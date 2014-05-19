@@ -108,7 +108,7 @@ $this->menu=array(
 </div>
 <?php if ($model->typeOfEmployment=='employment'){
 	$typeOfEmployment=t('Anställning');
-}else{ 
+}else{
 	$typeOfEmployment= t('Konsult');
 }
 ?>
@@ -121,12 +121,12 @@ $this->menu=array(
 }
 ?>
 <?php if($model->endDate == NULL) { ?>
-  <div class="row">   
+  <div class="row">
       <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("typeOfService").":</B>";?></div>
       <div class="col-xs-6 col-sm-2"><?php echo $model->typeOfService;?> </div>
   </div>
 <?php }else{ ?>
- <div class="row">   
+ <div class="row">
     <div class="controls" style="margin-top:20px">
       <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("typeOfService").":</B>";?></div>
       <div class="col-xs-6 col-sm-2"><?php echo $model->typeOfService;?> </div>
@@ -155,10 +155,10 @@ $this->menu=array(
       <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("successfulProcess").":</B>";?></div>
       <div class="col-xs-6 col-sm-2"><?php echo $successfulProcess;?> </div>
     </div>
-  </div> 
+  </div>
   <?php } ?>
 
-<?php 
+<?php
 $geoid=$model->geographicAreaID;
 
 ?>
@@ -179,9 +179,11 @@ $geoid=$model->geographicAreaID;
 
 <div class="page-header">
 </div>
-
+<!-- KOMMENTAR AUTOSAVERUTA-->
 <h3><?php echo Yii::t("t","Mina kommentarer");?></h3>
-<textarea class="form-control" rows="3"></textarea>
+<!--i id=msg visas meddelandet när texten sparats-->
+<div class="alert alert-info" style="display:none;" id="msg"></div>
+<textarea id="textSave" class="form-control" rows="3"></textarea>
 
 
 <div class="controls" style="margin-top:50px;margin-bottom:105px;">
@@ -214,7 +216,7 @@ $geoid=$model->geographicAreaID;
   </div>
 </div>
 <div class="page-header">
-  <h1><?php echo Yii::t("t","Hotlist");?>  
+  <h1><?php echo Yii::t("t","Hotlist");?>
     <div class="pull-right col-md-1">
       <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchAll'));?>
     </div>
@@ -230,13 +232,22 @@ $geoid=$model->geographicAreaID;
   </h1>
 </div>
 <div class="page-header">
-  <?php 
+  <?php
   $this->widget('bootstrap.widgets.TbListView',array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_hotlistview',
   ));?>
 </div>
 <script>
+	/*Det här sköterautoSave*/
+	$(function() {
+		$("#textSave").autoSave(function() {
+			var time = new Date().getTime();
+			$("#msg").fadeIn().text("Sparade.." + time);
+		}, 500);
+	});
+
+
   $("#openModalBtn").on("click", function(){
       $("#myQuitTextSuccess").hide();
       $("#salaryErrorText").hide();
@@ -275,8 +286,8 @@ $geoid=$model->geographicAreaID;
         });
     });
   });
- </script>
- <script>
+
+
   $("input[name='switchbutton']").on('change',function(){
   });
 

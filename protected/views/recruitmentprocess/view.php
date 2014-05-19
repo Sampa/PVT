@@ -259,7 +259,7 @@ $geoid=$model->geographicAreaID;
             $("#closeButton").fadeIn("slow");
         })
         $("#closeButton").on("click", function(){
-          window.document.location ='/recruitmentprocess/view/'+closeRecId;
+          window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + closeRecId;
         });
     });
   });

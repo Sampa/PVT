@@ -26,7 +26,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','statistics'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -198,6 +198,42 @@ class UserController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+		public function actionStatistics()
+	{
+		if (Yii::app()->user->id == 1){
+
+			$dataProvider = new CActiveDataProvider('User');
+			$dataProviderRecruiter = new CActiveDataProvider('Recruiter');
+			$dataProviderCv = new CActiveDataProvider('Cv');
+			$dataProviderRecProcessSuccesful = new CActiveDataProvider('Recruitmentprocess',array(
+				'countCriteria'=>array(
+				'condition'=>'successfulProcess="CandidateFoundOp"',
+				)
+			));
+			$dataProviderRecProcessOther = new CActiveDataProvider('Recruitmentprocess',array(
+				'countCriteria'=>array(
+				'condition'=>'successfulProcess="OtherOpFound"',
+				)
+			));
+			$dataProviderRecProcessFailed = new CActiveDataProvider('Recruitmentprocess',array(
+				'countCriteria'=>array(
+				'condition'=>'successfulProcess="NoCandidateFoundOp"',
+				)
+			));
+
+			$this->render('statistics',array(
+				'dataProvider'=>$dataProvider,
+				'dataProviderRecruiter' =>$dataProviderRecruiter,
+				'dataProviderCv'=>$dataProviderCv,
+				'dataProviderRecProcessSuccesful'=>$dataProviderRecProcessSuccesful,
+				'dataProviderRecProcessOther'=>$dataProviderRecProcessOther,
+				'dataProviderRecProcessFailed'=>$dataProviderRecProcessFailed,
+			));
+		}else {
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		}
 	}
 
 	/**

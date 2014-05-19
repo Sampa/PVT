@@ -15,8 +15,9 @@
                 <?php
                 if(Yii::app()->user->id == 1){
                     $items = array(
-	                    array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedCv/'),'visible'=>!Yii::app()->user->isGuest),
-	              );
+	                   array('label' => t('Rapporterade CV:n'), 'url' => array('/reportedCv/'),'visible'=>!Yii::app()->user->isGuest),
+	                   array('label' => t('Statistik'), 'url' => array('/user/statistics/'), 'visible'=>!Yii::app()->user->isGuest),
+                  );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
 	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),

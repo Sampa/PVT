@@ -113,10 +113,10 @@ class RecruitmentprocessController extends Controller
 		$model=$this->loadModel($processID);
 
 		$model->endDate = date("Y-m-d");
-
 		$model->salaryOfHired = $_POST["salaryId"];
-
 		$model->successfulProcess = $_POST["radioId"];
+
+		$this->performAjaxValidation($model);
 
 		if ($model->save()) {
 			echo "Vi lyckades spara processen";

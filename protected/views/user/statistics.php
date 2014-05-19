@@ -84,3 +84,68 @@ $this->breadcrumbs=array(
         </tbody>
     </table>   
 </div>
+
+<div>
+    <h3> <?php echo Yii::t('t','Antal publicerare jämfört med antal rekryterare');?> </h3>
+    <div id="usersBar" style="height: 300px;"></div>
+</div>
+
+<div>
+    <h3> <?php echo Yii::t('t','Avslutade processer. Fördelning mellan orsak.');?> </h3>
+    <div id="searchWordsDonut" style="height: 300px;"></div>
+</div>
+
+<div>
+    <h3> <?php echo Yii::t('t','Antal användare totalt. 2008-2013');?> </h3>
+    <div id="exampelchart" style="height: 300px;"></div>
+</div>
+
+<script>
+
+new Morris.Donut({
+  element: 'searchWordsDonut',
+  data: [
+    {label: "Lyckades via CV-Pages", value: <?php echo $dataProviderRecProcessSuccesful->getTotalItemCount();?>},
+    {label: "Lyckades på annat sätt", value: <?php echo $dataProviderRecProcessOther->getTotalItemCount();?>},
+    {label: "Misslyckade", value: <?php echo $dataProviderRecProcessFailed->getTotalItemCount();?>}
+  ]
+});
+
+new Morris.Bar({
+  element: 'usersBar',
+  data: [
+    { y: '2008', a: 750,  b: 65 },
+    { y: '2009', a: 550,  b: 40 },
+    { y: '2010', a: 755,  b: 65 },
+    { y: '2011', a: 500,  b: 40 },
+    { y: '2012', a: 700,  b: 65 },
+    { y: '2013', a: 1000, b: 168 },
+  ],
+  xkey: 'y',
+  ykeys: ['a', 'b'],
+  labels: ['Publicerare', 'Rekryterare']
+});
+
+new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'exampelchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    { year: '2008', value: 20 },
+    { year: '2009', value: 38 },
+    { year: '2010', value: 52 },
+    { year: '2011', value: 90 },
+    { year: '2012', value: 140 },
+    { year: '2013', value: 232 }
+  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'year',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['value'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Värde']
+});
+
+</script>

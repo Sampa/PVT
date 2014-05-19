@@ -25,6 +25,7 @@ class RegisterForm extends CFormModel
     {
         return array(
             array('fullname,email,new_password,password_confirm,username', 'required'),
+            array('Companyname, VAT', 'validateCompanyInfo'),
             array('email,new_password,password_confirm,username', 'required'),
             array('accepted','required', 'requiredValue' => 1, 'message' =>Yii::t("t",'Acceptera användaravtalet')),
             array('username', 'match', 'allowEmpty' => false, 'pattern' => '/[A-Za-z0-9\x80-\xFF]+$/'),
@@ -37,6 +38,17 @@ class RegisterForm extends CFormModel
 //           array('verify_code','application.extensions.recaptcha.EReCaptchaValidator','privateKey'=>Yii::app()->params['recaptcha_private_key']),
         //   array('verify_code', 'captcha'),
         );
+    }
+
+    public function validateCompanyInfo($attribute, $params)
+    {
+        if( $this->other_checkbox > 0 ) 
+        {
+            if ( $this->$attribute == '')
+            {
+                $this->addError($attribute, 'Fel i validering.');
+            }
+        }
     }
 
 

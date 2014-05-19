@@ -1,7 +1,7 @@
 <?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
 <?php
 	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs',array('sent'=>$sent));
-	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation',array('sent'=>$sent,'inbox'=>$inbox));
+//	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation',array('sent'=>$sent,'inbox'=>$inbox));
 ?>
 <div class="container">
 	<div class="row">

@@ -1,28 +1,14 @@
 <div class="col-md-12">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<span class="glyphicon glyphicon-comment"></span> <?php echo t("Historik för").$senderName; ?>
+			<span class="glyphicon glyphicon-comment"></span> <?php echo t("Historik för dig och ").$senderName; ?>
 			<div class="btn-group pull-right">
-				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-					<span class="glyphicon glyphicon-chevron-down"></span>
-				</button>
-				<ul class="dropdown-menu slidedown">
-					<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
-                </span>Refresh</a></li>
-					<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
-                </span>Available</a></li>
-					<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
-                </span>Busy</a></li>
-					<li><a href="http://www.jquery2dotnet.com"><span
-								class="glyphicon glyphicon-time"></span>
-							Away</a></li>
-					<li class="divider"></li>
-					<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
-							Sign Out</a></li>
-				</ul>
+				<a  class="chatHistoryToggle" data-toggle="collapse" data-parent="#accordion" href="#chatHistoryDiv">
+					<span class="glyphicon glyphicon-arrow-down"></span>
+				</a>
 			</div>
 		</div>
-		<div class="panel-body">
+		<div class="panel-body "id="chatHistoryDiv">
 			<ul class="chat" id="chatUl<?=$model->sender->id;?>">
 				<?php
 					foreach (Message::getAdapterForHistory($model->sender_id)->data as $index => $message):
@@ -31,7 +17,6 @@
 						}else{
 							$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));
 						}
-
 					endforeach;
 				?>
 			</ul>
@@ -49,3 +34,17 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(".chatHistoryToggle").on('click',function(){
+		var iconElement = $(this).children("span");
+		if(iconElement.hasClass("down")){
+			iconElement.removeClass("down");
+			iconElement.removeClass("glyphicon-arrow-down");
+			iconElement.addClass("glyphicon-arrow-up");
+		}else{
+			iconElement.removeClass("glyphicon-arrow-up");
+			iconElement.addClass("down");
+			iconElement.addClass("glyphicon-arrow-down");
+		}
+	});
+</script>

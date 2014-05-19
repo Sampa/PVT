@@ -68,25 +68,10 @@
 				<?php echo CHtml::submitButton(t("Ta bort markerade"), array("class" => "btn btn-danger")); ?>
 			</div>
 			<?php $this->endWidget(); ?>
-		<?php $this->widget('CLinkPager', array('pages' => $messagesAdapter->getPagination())) ?>
+<!--		--><?php //$this->widget('CLinkPager', array('pages' => $messagesAdapter->getPagination())) ?>
 	<?php endif; ?>
-<script>
-	$(".clickable").on('click',function(){
-		var iconElement = $(this).closest("tr").children("td:last-child");
-		if(iconElement.hasClass("down")){
-			iconElement.removeClass("down");
-			iconElement.removeClass("glyphicon-arrow-down");
-			iconElement.addClass("glyphicon-arrow-up");
-		}else{
-			iconElement.removeClass("glyphicon-arrow-up");
-			iconElement.addClass("down");
-			iconElement.addClass("glyphicon-arrow-down");
-		}
-	});
-</script>
 <style>
 	.tableWrapper > .row{
-		/*margin-top:40px;*/
 		padding: 0 10px;
 	}
 	.tableWrapper .clickable{
@@ -97,10 +82,5 @@
 		margin-top: -18px;
 		font-size: 15px;
 	}
-	.messagesHeading div span{
-		/*margin-left:5px;*/
-	}
-	.messagesBody{
-		/*display: none;*/
-	}
+
 </style>

@@ -50,7 +50,20 @@
 //Custom Javascript Here
 /* kod som är här kan man ändra på */
 jQuery(document).ready(function(){
+    $(".clickable").on('click',function(){
+        var iconElement = $(this).closest("tr").children("td:last-child");
+        if(iconElement.hasClass("down")){
+            iconElement.removeClass("down");
+            iconElement.removeClass("glyphicon-arrow-down");
+            iconElement.addClass("glyphicon-arrow-up");
+        }else{
+            iconElement.removeClass("glyphicon-arrow-up");
+            iconElement.addClass("down");
+            iconElement.addClass("glyphicon-arrow-down");
+        }
+    });
     /*konversationer vänsterspaltsmenyn*/
+
     $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
         e.preventDefault();
         $(this).siblings('a.active').removeClass("active");

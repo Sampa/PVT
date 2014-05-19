@@ -28,11 +28,10 @@
 		<p class="note"><?php echo MessageModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
 
 		<?php echo $form->errorSummary($model); ?>
-		<div class="col-md-8 col-lg-8">
 			<div class="control-group row  error">
 				<div class="row col-lg-10 col-md-10">
-					<?php echo CHtml::textField('receiver', $receiverName) ?>
-					<?php echo $form->textFieldControlGroup($model, 'receiver_id', array('class' => 'col-md-5 form-control', 'maxlength' => 255)); ?>
+					<?php echo CHtml::hiddenField('receiver', $receiverName) ?>
+					<?php echo $form->hiddenField($model, 'receiver_id', array('maxlength' => 255)); ?>
 				</div>
 			</div>
 
@@ -50,7 +49,6 @@
 			<div class="row buttons">
 				<?php echo CHtml::submitButton(t("Skicka"), array("class" => "btn btn-primary")); ?>
 			</div>
-		</div>
 
 		<?php $this->endWidget(); ?>
 	</div>

@@ -112,7 +112,8 @@ class SiteController extends Controller
                 $user->username = $_POST['RegisterForm']['username'];
                 $user->password = $_POST['RegisterForm']['new_password'];
                 $user->name = $_POST['RegisterForm']['fullname'];
-
+                $user->notify = $_POST['RegisterForm']['notify'];
+           
 
                 if ($user->save()) {
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
@@ -262,6 +263,9 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        if(!Yii::app()->user->isGuest) //redirect if logged in (can be changed later)
+            $this->redirect(bu() . '/');
+
         $model = new LoginForm();
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
             echo CActiveForm::validate($model, array('username', 'password', 'verify_code'));

@@ -5,6 +5,7 @@ class DeleteController extends Controller {
 	public $defaultAction = 'delete';
 
 	public function actionDelete($id = null) {
+
 		if (!$id) {
 			$messagesData = Yii::app()->request->getParam('Message');
 			$counter = 0;

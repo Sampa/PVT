@@ -5,7 +5,9 @@
 	</span>
 	<div class="chat-body clearfix">
 		<div class="header">
-			<strong class="primary-font"><?php echo $message->getSenderName();?></strong>
+			<strong class="primary-font">
+				<a href="<?=$this->createUrl("view/",array("id"=>$message->sender_id));?>"><?php echo $message->getSenderName();?></a>
+			</strong>
 		</div>
 		<p>
 			<small class="text-muted">

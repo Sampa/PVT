@@ -49,11 +49,16 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$rmodel=Recruiter::model()->findByPk($id);
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'rmodel'=>$rmodel
-		));
+	    if(Yii::app()->user->id ==$id){
+		
+			$rmodel=Recruiter::model()->findByPk($id);
+			$this->render('view',array(
+				'model'=>$this->loadModel($id),
+				'rmodel'=>$rmodel
+			));
+		} else{
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		}
 	}
 
 	/**
@@ -86,56 +91,62 @@ class UserController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-		$rmodel=Recruiter::model()->findByPk($id);
+		if(Yii::app()->user->id ==$id){
+			$model=$this->loadModel($id);
+			$rmodel=Recruiter::model()->findByPk($id);
 
-		// Uncomment the following line if AJAX validation is needed
+			// Uncomment the following line if AJAX validation is needed
 		
-		if($rmodel){
-			$this->performAjaxValidation($model, $rmodel);
-		}
-		else{
-			$this->performAjaxValidationSingle($model);
-		}
+			if($rmodel){
+				$this->performAjaxValidation($model, $rmodel);
+			}
+			else{
+				$this->performAjaxValidationSingle($model);
+			}
 
-		if (isset($_POST['User'])){
-			if($_POST['User']['username']!==''){
-				$model->username = $_POST['User']['username'];
+			if (isset($_POST['User'])){
+				if($_POST['User']['username']!==''){
+					$model->username = $_POST['User']['username'];
+				}
+				if($_POST['User']['name']!==''){				
+					$model->name = $_POST['User']['name'];				
+				}
+				if($_POST['User']['email']!==''){
+					$model->email = $_POST['User']['email'];
+				}
+				if($_POST['User']['new_password']===$_POST['User']['password_confirm']){
+					$model ->password = $_POST['User']['new_password'];
+				}
+				$model->notify = $_POST['User']['notify'];
+				if(!$rmodel){
+					if ($model->save()) {
+						$this->redirect(array('view','id'=>$model->id));
+					}
+				}
 			}
-			if($_POST['User']['name']!==''){				
-				$model->name = $_POST['User']['name'];				
-			}
-			if($_POST['User']['email']!==''){
-				$model->email = $_POST['User']['email'];
-			}
-			if($_POST['User']['new_password']===$_POST['User']['password_confirm']){
-				$model ->password = $_POST['User']['new_password'];
-			}
-			$model->notify = $_POST['User']['notify'];
-			if(!$rmodel){
-				if ($model->save()) {
+
+			if(isset($_POST['Recruiter'])){
+				if($_POST['Recruiter']['orgName']!==''){
+					$rmodel->orgName =$_POST['Recruiter']['orgName'];
+				}
+				if($_POST['Recruiter']['VAT']!==''){
+					$rmodel->VAT = $_POST['Recruiter']['VAT'];
+				}
+				if ($rmodel->save() && $model->save()){
 					$this->redirect(array('view','id'=>$model->id));
 				}
 			}
+
+			$this->render('update',array(
+				'model'=>$model,
+				'rmodel'=>$rmodel,
+				));
 		}
-		
-		if(isset($_POST['Recruiter'])){
-			if($_POST['Recruiter']['orgName']!==''){
-				$rmodel->orgName =$_POST['Recruiter']['orgName'];
-			}
-			if($_POST['Recruiter']['VAT']!==''){
-				$rmodel->VAT = $_POST['Recruiter']['VAT'];
-			}
-			if ($rmodel->save() && $model->save()){
-				$this->redirect(array('view','id'=>$model->id));
-			}
+		else{
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
-		
-		$this->render('update',array(
-			'model'=>$model,
-			'rmodel'=>$rmodel,
-		));
 	}
+
 
 	/**
 	 * Deletes a particular model.
@@ -162,10 +173,15 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if(Yii::app()->user->id ==1){
+			$dataProvider=new CActiveDataProvider('User');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
+		}
+		else{
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		}
 	}
 
 	/**

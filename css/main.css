@@ -38,7 +38,17 @@
 {
     margin-right: 5px;
 }
+.tableWrapper > .row{
+    padding: 0 10px;
+}
+.tableWrapper .clickable{
+    cursor: pointer;
+}
 
+.messagesHeading div {
+    margin-top: -18px;
+    font-size: 15px;
+}
 .chat .panel-body
 {
     overflow-y: scroll;

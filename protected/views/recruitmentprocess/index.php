@@ -137,6 +137,6 @@ $this->menu=array(
 <script>
 $(".onClick").on("click",function(event){
     event.preventDefault();
-    window.document.location ='view/'+$(this).attr("id");
+    window.document.location ='recruitmentprocess/view/'+$(this).attr("id");
 });
 </script>

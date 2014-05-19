@@ -79,8 +79,11 @@ $this->menu=array(
               <div class="radio">
                 <label>
                     <input type="radio" name="optionsRadios" id="NoCandidateFoundOp" value="NoCandidateFoundOp">
-                          <?php echo t("Processen avslutatdes av annan anledning")?>
+                          <?php echo t("Processen avslutades av annan anledning")?>
                 </label>
+              </div>
+              <div class="alert alert-danger" id="salaryErrorText">
+                <p><strong> <?php echo Yii::t("t", "Lönen är inte numerisk. Vill du inte ange lön, sätt 0.");?></strong></p>
               </div>
                 <strong> <?php echo Yii::t("t", "Här kan du fylla i lönen (avrunda till jämnt tusental)");?></strong>
             	  <input type="text" class="form-control" id="salary" placeholder=<?php echo Yii::t("t", "Lön");?>>
@@ -236,10 +239,19 @@ $geoid=$model->geographicAreaID;
 <script>
   $("#openModalBtn").on("click", function(){
       $("#myQuitTextSuccess").hide();
+      $("#salaryErrorText").hide();
       $("#closeButton").hide();
+      $("#salary").keyup(function () {
+          var salary = document.getElementById("salary").value;
+          if(!$.isNumeric(salary)) {
+            $("#salaryErrorText").fadeIn("slow");
+          } else {
+            $("#salaryErrorText").fadeOut("slow");
+          }
+        });
       $(".closeProcessBtn").on("click", function(){
-        var closeRecId = $(this).attr("id");
         var salary = document.getElementById("salary").value;
+        var closeRecId = $(this).attr("id");
         var radioValue = "";
         var optionsradios = document.getElementsByName("optionsRadios");
             for (var i = 0, length = optionsradios.length; i<length; i++){
@@ -248,10 +260,9 @@ $geoid=$model->geographicAreaID;
                   break;
               }
             }
-        
         $.ajax({
           type:"POST",
-          url:"/recruitmentprocess/update",
+          url: "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/update",
           data: {"id":closeRecId, "salaryId": salary, "radioId": radioValue}
         }).done(function( data ) {
             $("#myQuitInputDiv").hide();
@@ -260,7 +271,7 @@ $geoid=$model->geographicAreaID;
             $("#closeButton").fadeIn("slow");
         })
         $("#closeButton").on("click", function(){
-          window.document.location ='/recruitmentprocess/view/'+closeRecId;
+          window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + closeRecId;
         });
     });
   });

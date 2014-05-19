@@ -68,7 +68,7 @@
 				<?php echo CHtml::submitButton(t("Ta bort markerade"), array("class" => "btn btn-danger")); ?>
 			</div>
 			<?php $this->endWidget(); ?>
-<!--		--><?php //$this->widget('CLinkPager', array('pages' => $messagesAdapter->getPagination())) ?>
+		<?php $this->widget('CLinkPager', array('pages' => $messagesAdapter->getPagination())) ?>
 	<?php endif; ?>
 <style>
 	.tableWrapper > .row{

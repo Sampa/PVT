@@ -3,6 +3,8 @@
 /* @var $model User */
 ?>
 
+
+
 <?php
 $this->breadcrumbs=array(
 	t("Hem")=> Yii::app()->getHomeUrl(),

@@ -77,7 +77,7 @@ class Recruitmentprocess extends CActiveRecord
 			'typeOfEmployment' => Yii::t("t",'Anställningsform'),
 			'typeOfService' => Yii::t("t", "Typ av tjänst"),
 			'salaryOfHired' => Yii::t("t", "Lön för anställd"),
-			'company' => Yii::t("t","Företag"),
+			'company' => Yii::t("t","Företag/Organisation"),
 			'geographicAreaID' => Yii::t("t","Geografisk plats"),
 			'successfulProcess' => Yii::t("t","Rekryteringsstatus"),
 		);

@@ -52,12 +52,19 @@ class RecruitmentprocessController extends Controller
 	public function actionView($id)
 	{
 		$process = $this->loadModel($id);
+
+		if($process->recruiterId ==Yii::app()->user->id){
+
+			$dataProvider = new CActiveDataProvider('Hotlist');
+			$this->render('view',array(
+				'model'=>$process,
+				'dataProvider'=>$dataProvider,
+				));
+		}
+		else{
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		}
 		
-		$dataProvider = new CActiveDataProvider('Hotlist');
-		$this->render('view',array(
-			'model'=>$process,
-			'dataProvider'=>$dataProvider,
-		));
 	}
 
 	/**
@@ -112,7 +119,7 @@ class RecruitmentprocessController extends Controller
 		$model->successfulProcess = $_POST["radioId"];
 
 		if ($model->save()) {
-			echo "Vi lyckades att spara processen";
+			echo "Vi lyckades spara processen";
 		} else {
 			echo "Vi lyckades inte";
 		}
@@ -143,12 +150,16 @@ class RecruitmentprocessController extends Controller
 	 */
 	public function actionIndex()
 	{
-        $allModels = Recruitmentprocess::model()->findAll();
-		$dataProvider=new CActiveDataProvider('Recruitmentprocess');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-            'allModels'=>$allModels
-		));
+		if(Yii::app()->user->getState("role")== "recruiter"){
+			$allModels = Recruitmentprocess::model()->findAll();
+			$dataProvider=new CActiveDataProvider('Recruitmentprocess');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+				'allModels'=>$allModels
+				));
+		}else{
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');	
+		}
 	}
 
 	/**
@@ -167,7 +178,7 @@ class RecruitmentprocessController extends Controller
             $recruitmentProcess = Recruitmentprocess::model()->findByPk($_POST['processID']);
             $recruitmentProcessName = $recruitmentProcess->title;
 			if($hotlist->save()) {
-				echo "Vi har nu sparat cvet i din process ".$recruitmentProcessName."!";
+				echo "Vi har nu sparat CVt i din process ".$recruitmentProcessName."!";
 			}
 		}
 	}

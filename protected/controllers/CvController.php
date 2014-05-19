@@ -309,9 +309,9 @@ class CvController extends Controller
 
         if(isset($_GET['searchKey']))//if you write in free text search field in jumbotron-index
 			$criteria->addSearchCondition("pdfText",$_GET['searchKey']);
-
-        //this if checks if we have pressed the submit button in the search form
-        $criteria = $this->handleSearch($criteria);
+		else{//this if checks if we have pressed the submit button in the search form
+            $criteria = $this->handleSearch($criteria);
+		}
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
 
@@ -386,11 +386,11 @@ class CvController extends Controller
 	    //country har alltid ett värde
         $criteria->addSearchCondition("country",$countryName);
         //if antalet tecken i $region är mer än noll så har man valt en region i sökformuläret
-	    if(sizeof($region)>0){
+	    if(!is_null($region)){
             $criteria->addSearchCondition("region",$region);
         }
 	    //if antalet tecken i $city är mer än noll så har man valt en kommun/city i sökformuläret
-	    if(sizeof($city)>0){
+	    if(!is_null($city)>0){
 		    //buggar pga default val o_O
 //	        $criteria->addSearchCondition("city",$city);
         }
@@ -465,9 +465,11 @@ class CvController extends Controller
 
 	private function setGeoAreaCondition($criteria) {
 		if($_POST['countries'] != "default"){
-
-			$listOfCvPks  = $this->getGeoModels($_POST["countries"],$_POST["geoRegion"],$_POST["geoCity"]);
-//			$criteria->addInCondition("id",$listOfCvPks);
+			$region = isset($_POST['region']) ? $_POST['region'] : null;
+			$countries = isset($_POST['countries']) ? $_POST['countries'] : null;
+			$city = isset($_POST['city']) ? $_POST['city'] : null;
+			$listOfCvPks  = $this->getGeoModels($_POST["countries"],$region,$city);
+			$criteria->addInCondition("id",$listOfCvPks);
 			//the code to add conditions based on the models/objects returned above
 
 			foreach($listOfCvPks as  $index=>$pk){
@@ -485,10 +487,11 @@ class CvController extends Controller
 	 * Den här hanterar ifall vi trycker på sökknappen
 	 */
 	private function handleSearch($criteria) {
+//		var_export($_POST);die();
+		if(isset($_POST['searchbox']))//if you write in free text search field
+			$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
 		if(isset($_POST['countries'])){
 			$criteria = $this->setTypeOfEmploymentCondition($criteria);
-			if(isset($_POST['searchbox']))//if you write in free text search field
-				$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
 			$criteria = $this->setTagsCondition($criteria);//om man valt någon tag att söka på
 			$criteria = $this->setGeoAreaCondition($criteria); //hanterar om man valt att söka på region
 		}

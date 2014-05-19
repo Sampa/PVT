@@ -9,8 +9,8 @@
 	<div id="selectCountry" class="col-md-3  " style=" ">
 		    <label class="" for="countries"><?php echo Yii::t("t","Land");?></label>
 		    <select id="countries" name="countries" class="form-control" data-placeholder="<?php echo Yii::t("t","Välj land");?>">
-		        <option></option>
-	            <optgroup label="<?php echo Yii::t("t","Antarktis");?>">
+		    <option value="default" selected></option>
+		    <optgroup label="<?php echo Yii::t("t","Antarktis");?>">
 	                <option id="3371123" value="Bouvet Island">Bouvet Island</option>
 	                <option id="1546748" value="French Southern Territories">French Southern Territories</option>
 	                <option id="1547314" value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
@@ -175,7 +175,7 @@
 	                <option id="3190538" value="Slovenia">Slovenia</option>
 	                <option id="2510769" value="Spain">Spain</option>
 	                <option id="607072" value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
-	                <option id="2661886" selected>Sweden</option>
+	                <option id="2661886" value="Sweden">Sweden</option>
 	                <option id="2658434" value="Switzerland">Switzerland</option>
 	                <option id="690791" value="Ukraine">Ukraine</option>
 	                <option id="2635167" value="United Kingdom">United Kingdom</option>
@@ -278,7 +278,7 @@
 	<div class="col-md-3">
 		<label class="" for="geoRegion"><?php echo Yii::t("t","Region");?></label>
 		<select  class="form-control" name="geoRegion" id="geoRegion" data-placeholder="<?php echo Yii::t("t","Välj region");?>">
-			<option></option>
+			<option value="default" selected></option>
 			<option id="2721357" value="Blekinge">Blekinge</option>
 			<option id="2699767" value="Dalarna">Dalarna</option>
 			<option id="2711508" value="Gotland">Gotland</option>
@@ -288,7 +288,7 @@
 			<option id="2702976" value="Jönköping">Jönköping</option>
 			<option id="2702259" value="Kalmar">Kalmar</option>
 			<option id="2699050" value="Kronoberg">Kronoberg</option>
-			<option id="604010" value="Norrbotten">Norrbotten</option>  
+			<option id="604010" value="Norrbotten">Norrbotten</option>
 			<option id="3337385" value="Skåne">Skåne</option>
 			<option id="2673722" value="Stockholm">Stockholm</option>
 			<option id="2676207" value="Södermanland">Södermanland</option>
@@ -306,7 +306,7 @@
         <div class="col-md-10"
             <label class="" for="geoCity"><?php echo Yii::t("t","Kommun");?></label>
             <select  class="form-control" name="geoCity" id="geoCity" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">
-                <option></option>
+	            <option value="default" selected></option>
             </select>
         </div>
         <!-- Vi vill bara visa en add ikon när man skapar cv-->

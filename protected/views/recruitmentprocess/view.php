@@ -248,10 +248,9 @@ $geoid=$model->geographicAreaID;
                   break;
               }
             }
-        
         $.ajax({
           type:"POST",
-          url:"/recruitmentprocess/update",
+          url: "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/update",
           data: {"id":closeRecId, "salaryId": salary, "radioId": radioValue}
         }).done(function( data ) {
             $("#myQuitInputDiv").hide();

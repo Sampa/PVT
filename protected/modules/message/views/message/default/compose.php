@@ -24,8 +24,9 @@
 				'validateOnChange' => true
 			),
 		)); ?>
-
-		<p class="note"><?php echo MessageModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
+      <h2><?php echo Yii::t('t','Starta chatt med ').$receiverName;
+          ?></h2>
+		<p class="note"><?php echo Yii::t('t','Fält markerade med');?> <span class="required">*</span> <?php echo Yii::t('t',' är obligatoriska.');?></p>
 
 		<?php echo $form->errorSummary($model); ?>
 			<div class="control-group row  error">
@@ -36,13 +37,13 @@
 			</div>
 
 			<div class="control-group row  error ">
-				<div class="row col-lg-10 col-md-10">
+				<div class="row col-lg-6 col-md-6">
 					<?php echo $form->textFieldControlGroup($model, 'subject', array('class' => 'col-md-5 form-control', 'maxlength' => 255)); ?>
 				</div>
 			</div>
 
 			<div class="control-group row  error ">
-				<div class="row col-lg-10 col-md-10">
+				<div class="row col-lg-6 col-md-6">
 					<?php echo $form->textAreaControlGroup($model, 'body', array('class' => 'col-md-5 form-control', 'maxlength' => 255)); ?>
 				</div>
 			</div>

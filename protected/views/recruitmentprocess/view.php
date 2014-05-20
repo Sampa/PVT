@@ -183,7 +183,10 @@ $geoid=$model->geographicAreaID;
 <h3><?php echo Yii::t("t","Mina kommentarer");?></h3>
 <!--i id=msg visas meddelandet när texten sparats-->
 <div class="alert alert-info" style="display:none;" id="msg"></div>
-<textarea id="textSave" class="form-control" rows="3"></textarea>
+<textarea id="textSave" class="form-control" rows="3">
+     <?php echo $model->commentArea;?>
+
+</textarea>
 
 
 <div class="controls" style="margin-top:50px;margin-bottom:105px;">
@@ -243,18 +246,15 @@ $geoid=$model->geographicAreaID;
 	$(function() {
 		$("#textSave").autoSave(function() {
 			var time = new Date().getTime();
-      var comment ="hejj";
+      var comment = document.getElementById('textSave').value;
       var recId = <?php echo $model->id?>;
-			$("#msg").fadeIn().text("Dina kommentarer är nu sparade:-)" + time);
+			$("#msg").fadeIn().text("Dina kommentarer är nu sparade" + time);
+
       $.ajax({
        type:"POST",
        url: "/recruitmentprocess/commentUpdate",
        data:{"recId":recId, "comment":comment},
-
       });
-      console.log();
-      
-
 		}, 500);
 	});
 

@@ -127,8 +127,11 @@ class RecruitmentprocessController extends Controller
 	public function actionCommentUpdate()
 	{
 		$processID = $_POST["recId"];
+
 		$model=$this->loadModel($processID);
-		$model->comment = "Hej";
+
+		$model->commentArea = $_POST['comment'];
+		
 		$model->save(false);
 	}
 

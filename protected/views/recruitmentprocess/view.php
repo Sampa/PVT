@@ -243,7 +243,18 @@ $geoid=$model->geographicAreaID;
 	$(function() {
 		$("#textSave").autoSave(function() {
 			var time = new Date().getTime();
-			$("#msg").fadeIn().text("Sparade.." + time);
+      var comment ="hejj";
+      var recId = <?php echo $model->id?>;
+			$("#msg").fadeIn().text("Dina kommentarer är nu sparade:-)" + time);
+      $.ajax({
+       type:"POST",
+       url: "/recruitmentprocess/commentUpdate",
+       data:{"recId":recId, "comment":comment},
+
+      });
+      console.log();
+      
+
 		}, 500);
 	});
 

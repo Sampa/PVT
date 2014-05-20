@@ -51,8 +51,8 @@
                         'id' => 'nav-bar_login-form',
                         'enableClientValidation' => true,
                         'action' => $this->createUrl('site/login'),
-                        //'enableAjaxValidation'=>true,
-                        'errorMessageCssClass' => 'has-error',
+                        'enableAjaxValidation'=>true,
+//                        'errorMessageCssClass' => 'has-error',
                         'htmlOptions' => array(
                             'id' => 'login-form',
                             'class' => 'navbar-form navbar-right',
@@ -91,7 +91,7 @@
             <ul class="nav navbar-nav">
                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="width:200px">
                         <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>

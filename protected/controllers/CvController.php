@@ -488,8 +488,49 @@ class CvController extends Controller
 	 */
 	private function handleSearch($criteria) {
 //		var_export($_POST);die();
-		if(isset($_POST['searchbox']))//if you write in free text search field
-			$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
+		if(isset($_POST['searchbox'])){
+			if(strpos($_POST['searchbox'], ":")!==false){
+				$metaTag = strstr($_POST['searchbox'],":", true);
+				$pos = strpos($_POST['searchbox'], ":");
+				$search = substr($_POST['searchbox'], $pos+1);
+				/*if($metaTag == "city"){
+					$_POST['countries'] = 'notDefault';
+					$_POST['city'] = $search;
+					$criteria = $this->setGeoAreaCondition($criteria);
+				}
+				elseif($metaTag == "region")
+					$criteria = $this->setGeoAraCondition($criteria);
+				elseif($metaTag == "country")
+					$criteria = $this->setGeoAreaCondition($criteria);*/
+				if($metaTag == "tag"){ //tag:tag1,tag2,tag3
+					$allCvIds = array(); //initiate empty array
+					$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
+					foreach($tagsAsArray as $tag){ //loop all tags the user entered
+					//kontrollera denna query
+						$tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+						if($tagModel !=null){ //the tag exists
+							//loop the array with each row in the table that connects this tag to a cv
+							foreach($tagModel->cvTags as $cvTag){
+								$allCvIds[] = $cvTag->cvId; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
+							}
+						}
+					}
+					$criteria->addInCondition("id",$allCvIds,"OR");
+				}
+					
+				elseif($metaTag == "employment"){//employment:consult || employment:employment
+					if($search == 'consult')
+						$criteria->addSearchCondition("typeOfEmployment","consult");
+					if($search == 'employment')
+						$criteria->addSearchCondition("typeOfEmployment","employment");
+				}
+				elseif($metaTag == 'title'){
+					$criteria->addSearchCondition("title",$search);
+				}
+			}
+			else//if you write in free text search field
+				$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
+		}
 		if(isset($_POST['countries'])){
 			$criteria = $this->setTypeOfEmploymentCondition($criteria);
 			$criteria = $this->setTagsCondition($criteria);//om man valt någon tag att söka på

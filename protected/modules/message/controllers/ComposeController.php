@@ -6,6 +6,7 @@ class ComposeController extends Controller
 	public $defaultAction = 'compose';
 
 	public function actionCompose($id = null) {
+
         if(Yii::app()->user->getState("role")== "publisher"){
             throw new CHttpException(404, t('Sidan kunde inte hittas'));
         }
@@ -18,6 +19,17 @@ class ComposeController extends Controller
 			if ($message->save()) {
 				Yii::app()->user->setFlash('messageModule', t("Meddelandet har skickats"));
 				$this->redirect($this->createUrl('inbox/'));
+                sendHtmlEmail(
+                    $message->sender->email,
+                    "CvPages",
+                    "no-reply@cvpages.se",
+                    "Recruiter started a conversation with you",
+                    array(
+                        'username' => "Något name",
+                    ),
+                    'notifier',
+                    'main3'
+                );
 			} else if ($message->hasErrors('receiver_id')) {
 				$message->receiver_id = null;
 				$receiverName = '';

@@ -89,7 +89,7 @@ jQuery(document).ready(function(){
             }
         }).done(function (data) {
             if (data.success)
-                $("#chatUl"+id).append(data.message);
+                 $("#chatUl"+id).append(data.message);
 //					$('html, body').animate({
 //						scrollTop: $("#chatLi"+data.messageId).offset().top
 //					}, 2000);

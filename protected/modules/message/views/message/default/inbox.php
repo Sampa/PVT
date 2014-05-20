@@ -33,7 +33,7 @@
 								<tr>
 									<th><?=t("Ta bort");?></th>
 									<th><?=t("Antal meddelanden");?></th>
-									<th><?=t("Avsändare");?></th>
+									<th><?=t("Användare");?></th>
 									<th><?=t("Alla lästa");?></th>
 									<th></th>
 								</tr>

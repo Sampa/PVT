@@ -178,7 +178,7 @@ class Message extends CActiveRecord
 
 		$c = new CDbCriteria();
 		$c->addCondition('t.sender_id = :senderId OR t.sender_id = :receiverId');
-		$c->addCondition('t.receiver_id = :receiverId OR t.receiver_id = :senderId');
+		//$c->addCondition('t.receiver_id = :receiverId OR t.receiver_id = :senderId');
 		$c->addCondition('t.deleted_by = :deleted_by_sender OR t.deleted_by IS NULL OR t.deleted_by = :deleted_by_receiver');
 		$c->order = 't.created_at';
 		$c->params = array(
@@ -249,5 +249,21 @@ class Message extends CActiveRecord
 		}
 
 		return $this->unreadMessagesCount;
+	}
+
+	public function getUnreadMessages($userId) {
+		
+		$c = new CDbCriteria();
+		$c->addCondition('t.receiver_id = :receiverId');
+		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
+		$c->addCondition('t.is_read = "0"');
+		$c->params = array(
+			'receiverId' => $userId,
+			'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,
+			);
+		$messages = self::model()->findAll($c);
+		
+
+		return $messages;
 	}
 }

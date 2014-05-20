@@ -40,7 +40,7 @@ class ConversationController extends Controller
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
     public function getInboxContent() {
-        $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
+        $messagesAdapter = Message::getAdapterForHistory(Yii::app()->user->getId());
         $pager = new CPagination($messagesAdapter->totalItemCount);
         $pager->pageSize = 10;
         $messagesAdapter->setPagination($pager);

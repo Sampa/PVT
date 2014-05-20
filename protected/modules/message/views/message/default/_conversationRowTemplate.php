@@ -4,10 +4,19 @@
 		<?php echo $form->hiddenField($message, "[$index]id"); ?>
 	</td>
 	<td class="clickable accordion-heading accordion-toggle" data-toggle="collapse" href="#acc<?= $index; ?>">
-		6
+		5
 	</td>
 	<td class=" accordion-heading" href="#acc<?= $index; ?>">
-		<a href="<?=$this->createUrl("view/",array("id"=>$message->sender_id));?>"><?php echo $message->getSenderName();?></a>
+		<a href="<?=$this->createUrl("view/",array("id"=>$message->sender_id));?>"><?php 
+		if($message->sender_id== Yii::app()->user->id){
+			echo $message->getReceiverName();
+		} 
+		else{
+			echo $message->getSenderName();
+		}
+			?></a>
+
+			
 	</td>
 	<td class="clickable accordion-heading accordion-toggle" data-toggle="collapse" href="#acc<?= $index; ?>">
 		Ja

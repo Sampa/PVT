@@ -185,7 +185,6 @@ $geoid=$model->geographicAreaID;
 <div class="alert alert-info" style="display:none;" id="msg"></div>
 <textarea id="textSave" class="form-control" rows="3">
      <?php echo $model->commentArea;?>
-
 </textarea>
 
 
@@ -245,15 +244,14 @@ $geoid=$model->geographicAreaID;
 	/*Det här sköterautoSave*/
 	$(function() {
 		$("#textSave").autoSave(function() {
-			var time = new Date().getTime();
       var comment = document.getElementById('textSave').value;
       var recId = <?php echo $model->id?>;
-			$("#msg").fadeIn().text("Dina kommentarer är nu sparade" + time);
+			$("#msg").fadeIn().text("Dina kommentarer sparas i realtid ");
 
       $.ajax({
        type:"POST",
        url: "/recruitmentprocess/commentUpdate",
-       data:{"recId":recId, "comment":comment},
+       data:{"recId":recId, "comment":comment}
       });
 		}, 500);
 	});

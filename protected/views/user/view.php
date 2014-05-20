@@ -7,8 +7,8 @@
 
 <?php
 $this->breadcrumbs=array(
-	t("Hem")=> Yii::app()->getHomeUrl(),
-	t("Användare")=>array('index'),
+	t("Hem");=> Yii::app()->getHomeUrl(),
+	t("Användare");=>array('index'),
 	$model->name,
 );
 ?>
@@ -49,11 +49,11 @@ $this->breadcrumbs=array(
 			'fullname',
 			'email',
 			array(
-			'label' => 'Företagsnamn',
+			'label' => t('Företagsnamn');,
       		'value' => $rmodel->orgName,
       		),
       		array(
-      		'label' => 'VAT-nr',
+      		'label' => t('VAT-nr');,
 			'value' => $rmodel->VAT,
 			),
 		),

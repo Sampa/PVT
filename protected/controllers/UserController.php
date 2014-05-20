@@ -57,7 +57,7 @@ class UserController extends Controller
 				'rmodel'=>$rmodel
 			));
 		} else{
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,t('Ogiltig begäran.'););
 		}
 	}
 
@@ -143,7 +143,7 @@ class UserController extends Controller
 				));
 		}
 		else{
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,t('Ogiltig begäran'););
 		}
 	}
 
@@ -164,7 +164,7 @@ class UserController extends Controller
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 			}
 		} else {
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,t('Ogiltig begäran'););
 		}
 	}
 
@@ -180,7 +180,7 @@ class UserController extends Controller
 			));
 		}
 		else{
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,t('Ogiltig begäran'););
 		}
 	}
 
@@ -232,7 +232,7 @@ class UserController extends Controller
 				'dataProviderRecProcessFailed'=>$dataProviderRecProcessFailed,
 			));
 		}else {
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,t('Ogiltig begäran'););
 		}
 	}
 
@@ -247,7 +247,7 @@ class UserController extends Controller
 	{
 		$model=User::model()->findByPk($id);
 		if ($model===null) {
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,t('Sidan existerar inte'););
 		}
 		return $model;
 	}

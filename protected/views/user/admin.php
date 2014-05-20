@@ -4,13 +4,13 @@
 
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Manage',
+	t('Användare');=>array('index'),
+	t('Hantera');,
 );
 
 $this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
+	array('label'=>t('Lista användare');, 'url'=>array('index')),
+	array('label'=>t('Skapa användare');, 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -27,12 +27,12 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Users</h1>
+<h1><?php echo t('Hantera användare');?></h1>
 
 <p>
-    You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
+    <?php echo t('Du har möjligheten att använda jämförelseoperatorerna '); ?> (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
         &lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+<?php echo t('eller');?><b>=</b>) <?php echo t('i början av varje sökvärde för att bestämma hur jämförelserna ska göras.');?>
 </p>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>

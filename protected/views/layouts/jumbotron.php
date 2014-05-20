@@ -151,7 +151,10 @@
         <?php echo $content; ?>
         <!-- Example row of columns -->
         <hr>
-        <?php
+	    <?php $this->widget("LangBox",array());?>
+
+	    <?php
+
         if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>
         <footer id="footer2">
             <div class="container">
@@ -180,6 +183,7 @@
                     </div>
                 </div>
             </div>
+
         </footer>
         <!-- end if startpage-->
         <?php endif;?>

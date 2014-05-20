@@ -92,8 +92,8 @@ return array(
         'yiiwheels' => array(
             'class' => 'yiiwheels.YiiWheels',
         ),
-        'sourceLanguage' => 'sv',
-        'language'=>'en',
+        'sourceLanguage' => '00',
+        'language'=>'sv',
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,

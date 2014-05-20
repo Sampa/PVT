@@ -1,6 +1,10 @@
 <center>
     <p style="font-size: 25px; margin-left: auto;  margin-right: auto;width:580px;">
-        <?php echo Yii::t("t", "Hej, ".$username." du har fått ett meddelande från en rekryterare på CV-Pages, logga in för att läsa det. Logga in genom att klicka på länken nedan!");?>
+        <?php
+            echo Yii::t("t", "Hej, ").
+	            $username.
+	            t(" du har fått ett meddelande från en rekryterare på CV-Pages, logga in för att läsa det. Logga in genom att klicka på länken nedan!");
+        ?>
     </p>
     <div style=" display: block;
                                -moz-border-radius:3px;

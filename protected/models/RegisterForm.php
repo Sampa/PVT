@@ -24,6 +24,7 @@ class RegisterForm extends CFormModel
     public function rules()
     {
         return array(
+            //array('VAT,Companyname,','required','except' => 'other_checkbok'),
             array('fullname,email,new_password,password_confirm,username', 'required'),
             array('email,new_password,password_confirm,username', 'required'),
             array('accepted','required', 'requiredValue' => 1, 'message' =>Yii::t("t",'Acceptera användaravtalet')),

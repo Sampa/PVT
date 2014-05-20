@@ -528,8 +528,10 @@ class CvController extends Controller
 					$criteria->addSearchCondition("title",$search);
 				}
 			}
-			else//if you write in free text search field
+			else{//if you write in free text search field
 				$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
+				$criteria->addSearchCondition("title",$_POST['searchbox'],true, 'OR');
+			}
 		}
 		if(isset($_POST['countries'])){
 			$criteria = $this->setTypeOfEmploymentCondition($criteria);

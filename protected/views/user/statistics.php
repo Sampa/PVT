@@ -86,12 +86,12 @@ $this->breadcrumbs=array(
 </div>
 
 <div>
-    <h3> <?php echo Yii::t('t','Antal publicerare jämfört med antal rekryterare');?> </h3>
+    <h3> <?php echo Yii::t('t','Avslutade processer. Fördelning mellan orsak.');?> </h3>
     <div id="usersBar" style="height: 300px;"></div>
 </div>
 
 <div>
-    <h3> <?php echo Yii::t('t','Avslutade processer. Fördelning mellan orsak.');?> </h3>
+    <h3> <?php echo Yii::t('t','Antal publicerare jämfört med antal rekryterare');?> </h3>
     <div id="searchWordsDonut" style="height: 300px;"></div>
 </div>
 
@@ -105,25 +105,21 @@ $this->breadcrumbs=array(
 new Morris.Donut({
   element: 'searchWordsDonut',
   data: [
-    {label: "Lyckades via CV-Pages", value: <?php echo $dataProviderRecProcessSuccesful->getTotalItemCount();?>},
-    {label: "Lyckades på annat sätt", value: <?php echo $dataProviderRecProcessOther->getTotalItemCount();?>},
-    {label: "Misslyckade", value: <?php echo $dataProviderRecProcessFailed->getTotalItemCount();?>}
+    {label: "Publicerare", value: <?php echo $dataProvider->getTotalItemCount()-$dataProviderRecruiter->getTotalItemCount()-1;?> },
+    {label: "Rekryterare", value: <?php echo $dataProviderRecruiter->getTotalItemCount();?> },
   ]
 });
 
 new Morris.Bar({
   element: 'usersBar',
   data: [
-    { y: '2008', a: 750,  b: 65 },
-    { y: '2009', a: 550,  b: 40 },
-    { y: '2010', a: 755,  b: 65 },
-    { y: '2011', a: 500,  b: 40 },
-    { y: '2012', a: 700,  b: 65 },
-    { y: '2013', a: 1000, b: 168 },
+    { y: '2014', a: <?php echo $dataProviderRecProcessSuccesful->getTotalItemCount();?>,
+    b: <?php echo $dataProviderRecProcessOther->getTotalItemCount();?>,
+    c: <?php echo $dataProviderRecProcessFailed->getTotalItemCount();?> },
   ],
   xkey: 'y',
-  ykeys: ['a', 'b'],
-  labels: ['Publicerare', 'Rekryterare']
+  ykeys: ['a', 'b', 'c'],
+  labels: ['Lyckades via CV-Pages', 'Lyckades på annat sätt', 'Misslyckade']
 });
 
 new Morris.Line({

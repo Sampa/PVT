@@ -6,6 +6,9 @@ class ComposeController extends Controller
 	public $defaultAction = 'compose';
 
 	public function actionCompose($id = null) {
+        if(Yii::app()->user->getState("role")== "publisher"){
+            throw new CHttpException(404, t('Sidan kunde inte hittas'));
+        }
 		$message = new Message("compose");
 		$this->performAjaxValidation($message);
 		if (Yii::app()->request->getPost('Message')) {
@@ -13,7 +16,7 @@ class ComposeController extends Controller
 			$message->attributes = Yii::app()->request->getPost('Message');
 			$message->sender_id = Yii::app()->user->getId();
 			if ($message->save()) {
-				Yii::app()->user->setFlash('messageModule', MessageModule::t('Message has been sent'));
+				Yii::app()->user->setFlash('messageModule', t("Meddelandet har skickats"));
 				$this->redirect($this->createUrl('inbox/'));
 			} else if ($message->hasErrors('receiver_id')) {
 				$message->receiver_id = null;

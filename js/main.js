@@ -77,7 +77,6 @@ jQuery(document).ready(function(){
         event.preventDefault();
         var id = $(this).attr("id");
         id = id.replace("btn-chat", "");
-        console.log(id);
         $.ajax({
             "type": "POST",
             "url": $(this).attr("data-url"),
@@ -90,6 +89,7 @@ jQuery(document).ready(function(){
         }).done(function (data) {
             if (data.success)
                  $("#chatUl"+id).append(data.message);
+                 $("#Message_body" + id).val("");
 //					$('html, body').animate({
 //						scrollTop: $("#chatLi"+data.messageId).offset().top
 //					}, 2000);

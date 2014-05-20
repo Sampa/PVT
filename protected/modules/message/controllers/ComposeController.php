@@ -18,18 +18,19 @@ class ComposeController extends Controller
 			$message->sender_id = Yii::app()->user->getId();
 			if ($message->save()) {
 				Yii::app()->user->setFlash('messageModule', t("Meddelandet har skickats"));
-				$this->redirect($this->createUrl('inbox/'));
+
                 sendHtmlEmail(
-                    $message->sender->email,
-                    "CvPages",
+                    $message->receiver->email,
+                    "Cv-Pages",
                     "no-reply@cvpages.se",
-                    "Recruiter started a conversation with you",
+                    t("Cv-Pages: En rekryterare har startat en konversation med dig"),
                     array(
-                        'username' => "Något name",
+                        'username' => $message->getReceiverName(),
                     ),
                     'notifier',
                     'main3'
                 );
+                $this->redirect($this->createUrl('inbox/'));
 			} else if ($message->hasErrors('receiver_id')) {
 				$message->receiver_id = null;
 				$receiverName = '';

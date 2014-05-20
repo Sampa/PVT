@@ -70,9 +70,13 @@ class Recruiter extends CActiveRecord
 	}
     public static function getProcessesAsList(){
         $loggedInRecruiter = Recruiter::model()->findByPk(Yii::app()->user->id);
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('endDate IS NULL');
+        $criteria->compare("recruiterId", Yii::app()->user->id);
+        $activeProcesses = Recruitmentprocess::model()->findAll($criteria);
         if($loggedInRecruiter){
             Yii::app()->controller->renderPartial("/recruiter/_recruiterProcessesAsList",
-                array("processes"=>$loggedInRecruiter->recruitmentprocesses)
+                array("processes"=>$activeProcesses)
             );
         }
     }

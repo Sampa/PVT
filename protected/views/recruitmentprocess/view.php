@@ -297,11 +297,8 @@ $geoid=$model->geographicAreaID;
         });
     });
   });
-
-
   $("input[name='switchbutton']").on('change',function(){
   });
-
   $("input[name='switchAll']").on('change',function(){
     var isOn = $(this).prop('checked');
     $("input[name='switchbutton']").each(function(){
@@ -312,22 +309,22 @@ $geoid=$model->geographicAreaID;
         $(this).prop('checked', false);
      }
     });
-
   });
 
   $('#remove').on('click', function(event){
     $('input[name="switchbutton"]').each(function(){
       var cvId = $(this).attr('id');
       var isO = $(this).prop('checked');
+      var processId = <?php echo $model->id?>;
         if(isO){
           $(this).prop('checked', true);
-          console.log($(this).attr("id"));
               $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 url: '/hotlist/delete/'+cvId
               }).done(function(data){
-                  alert('apa');
+                  window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + processId;
+                  console.log("Klar");
               });
         }
     });

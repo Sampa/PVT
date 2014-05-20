@@ -21,9 +21,9 @@
 
                     <?php echo $form->textFieldControlGroup($model,'status',array('span'=>5)); ?>
 
-                                    <?php echo $form->textFieldControlGroup($model,'salt',array('span'=>5,'maxlength'=>255)); ?>
+                    <?php echo $form->textFieldControlGroup($model,'salt',array('span'=>5,'maxlength'=>255)); ?>
 
-                            <?php echo $form->textFieldControlGroup($model,'reset_token',array('span'=>5,'maxlength'=>255)); ?>
+                    <?php echo $form->textFieldControlGroup($model,'reset_token',array('span'=>5,'maxlength'=>255)); ?>
 
                     <?php echo $form->textFieldControlGroup($model,'login_attempts',array('span'=>5)); ?>
 

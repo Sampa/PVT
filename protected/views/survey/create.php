@@ -4,6 +4,7 @@
     $this->pageTitle = Yii::app()->name . ' - Skapa enkät';
     $this->breadcrumbs = array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+        t('Enkäter')=>array('admin'),
         Yii::t("t",'Enkät'),
     );
     $recruiter=Recruiter::model()->findByPk(Yii::app()->user->id);

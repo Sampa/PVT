@@ -183,7 +183,9 @@ $geoid=$model->geographicAreaID;
 <h3><?php echo Yii::t("t","Mina kommentarer");?></h3>
 <!--i id=msg visas meddelandet när texten sparats-->
 <div class="alert alert-info" style="display:none;" id="msg"></div>
-<textarea id="textSave" class="form-control" rows="3"></textarea>
+<textarea id="textSave" class="form-control" rows="3">
+     <?php echo $model->commentArea;?>
+</textarea>
 
 
 <div class="controls" style="margin-top:50px;margin-bottom:105px;">
@@ -242,8 +244,15 @@ $geoid=$model->geographicAreaID;
 	/*Det här sköterautoSave*/
 	$(function() {
 		$("#textSave").autoSave(function() {
-			var time = new Date().getTime();
-			$("#msg").fadeIn().text("Sparade.." + time);
+      var comment = document.getElementById('textSave').value;
+      var recId = <?php echo $model->id?>;
+			$("#msg").fadeIn().text("Dina kommentarer sparas i realtid ");
+
+      $.ajax({
+       type:"POST",
+       url: "/recruitmentprocess/commentUpdate",
+       data:{"recId":recId, "comment":comment}
+      });
 		}, 500);
 	});
 
@@ -286,11 +295,8 @@ $geoid=$model->geographicAreaID;
         });
     });
   });
-
-
   $("input[name='switchbutton']").on('change',function(){
   });
-
   $("input[name='switchAll']").on('change',function(){
     var isOn = $(this).prop('checked');
     $("input[name='switchbutton']").each(function(){
@@ -301,22 +307,22 @@ $geoid=$model->geographicAreaID;
         $(this).prop('checked', false);
      }
     });
-
   });
 
   $('#remove').on('click', function(event){
     $('input[name="switchbutton"]').each(function(){
       var cvId = $(this).attr('id');
       var isO = $(this).prop('checked');
+      var processId = <?php echo $model->id?>;
         if(isO){
           $(this).prop('checked', true);
-          console.log($(this).attr("id"));
               $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 url: '/hotlist/delete/'+cvId
               }).done(function(data){
-                  alert('apa');
+                  window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + processId;
+                  console.log("Klar");
               });
         }
     });

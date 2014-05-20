@@ -32,7 +32,7 @@ class RecruitmentprocessController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','commentUpdate'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -123,6 +123,16 @@ class RecruitmentprocessController extends Controller
 		} else {
 			echo "Vi lyckades inte";
 		}
+	}
+	public function actionCommentUpdate()
+	{
+		$processID = $_POST["recId"];
+
+		$model=$this->loadModel($processID);
+
+		$model->commentArea = $_POST['comment'];
+		
+		$model->save(false);
 	}
 
 	/**

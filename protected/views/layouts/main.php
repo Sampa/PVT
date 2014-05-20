@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="sv">
+<!---$lang = $_GET['lang'];//Yii::app()->language;
+echo $lang.'<br/>';
+Yii::app()->setLanguage($lang);
+echo Yii::t(:-))--->
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

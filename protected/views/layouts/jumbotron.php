@@ -51,8 +51,8 @@
                         'id' => 'nav-bar_login-form',
                         'enableClientValidation' => true,
                         'action' => $this->createUrl('site/login'),
-                        //'enableAjaxValidation'=>true,
-                        'errorMessageCssClass' => 'has-error',
+                        'enableAjaxValidation'=>true,
+//                        'errorMessageCssClass' => 'has-error',
                         'htmlOptions' => array(
                             'id' => 'login-form',
                             'class' => 'navbar-form navbar-right',

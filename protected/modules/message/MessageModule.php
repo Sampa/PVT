@@ -70,4 +70,8 @@ class MessageModule extends CWebModule
 		return Message::model()->getCountUnreaded($userId);
 	}
 
+	public function getUnreadMessages($userId) {
+		return Message::model()->getUnreadMessages($userId);
+	}
+
 }

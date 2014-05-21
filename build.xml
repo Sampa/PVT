@@ -22,10 +22,10 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="cmd" failonerror="true"/>
+    <exec executable="cmd" failonerror="true">
          <arg value="/c"/>
          <arg value="phpunit.bat"/>
          <arg value="..."/>
-    </exec>
+     </exec>
   </target>
 </project>

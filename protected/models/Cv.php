@@ -1,6 +1,6 @@
 <?php
 // Include Composer autoloader if not already done.
-//  include 'vendor/autoload.php';
+  include 'vendor/autoload.php';
 
 /**
  * This is the model class for table "Cv".
@@ -69,7 +69,7 @@ class Cv extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'geographicArea' => array(self::BELONGS_TO, 'GeograficArea', 'geographicAreaId'),
+			'area' => array(self::MANY_MANY, 'GeograficArea','CvArea(AreaId,cvId)'),
 			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
 			'cvTags' => array(self::HAS_MANY, 'CvTag', 'cvId'),
 			'hotLists' => array(self::HAS_MANY, 'HotList', 'cvId'),

@@ -666,10 +666,7 @@
         
     </div>
 	
-	<div id="about">
-		<img src="../../images/468x15_4.gif"><br/>
-	    <p style="color: black;"> Source code >> <a href="games/mario/mario.zip">  Download</a></p>
-	</div>
+
 	
 </body>
 </html>

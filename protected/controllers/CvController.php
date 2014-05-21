@@ -66,7 +66,7 @@ class CvController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>Cv::model()->with("area")->findByPk($id),
 		));
 	}
 
@@ -84,7 +84,7 @@ class CvController extends Controller
 
 		if (isset($_POST['Cv'])) {
              $model->hasGeoArea=false;
-              $model->geographicAreaId = 22;
+             $model->geographicAreaId = 22;
              $model->attributes=$_POST['Cv'];
              if ($model->save()){
                  if(isset($_POST['geoRegion']) && isset($_POST['geoCity']) && $_POST['countries'] != "default"){
@@ -295,7 +295,13 @@ class CvController extends Controller
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-
+    private function setSeveralSearchWordCriteria($criteria,$searchFieldContent){
+        $searchWords = explode(" ",$searchFieldContent);
+        foreach($searchWords as $index=>$searchWord){
+            $criteria->compare("pdfText",$searchWord,"OR");
+        }
+        return $criteria;
+    }
 	/**
 	 * Lists all CVs. If search form is submitted it lists only matching CV's.
      * If no searchresults are found it reverts to default and shows all CV's
@@ -307,9 +313,10 @@ class CvController extends Controller
 		$criteria=new CDbCriteria;
         $criteria = $this->setSortOrderCondition($criteria);
 
+
         if(isset($_GET['searchKey']))//if you write in free text search field in jumbotron-index
-			$criteria->addSearchCondition("pdfText",$_GET['searchKey']);
-		else{//this if checks if we have pressed the submit button in the search form
+            $this->setSeveralSearchWordCriteria($criteria,$_GET['searchKey']);
+    	else{//this if checks if we have pressed the submit button in the search form
             $criteria = $this->handleSearch($criteria);
 		}
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
@@ -517,7 +524,6 @@ class CvController extends Controller
 					}
 					$criteria->addInCondition("id",$allCvIds,"OR");
 				}
-					
 				elseif($metaTag == "employment"){//employment:consult || employment:employment
 					if($search == 'consult')
 						$criteria->addSearchCondition("typeOfEmployment","consult");
@@ -529,8 +535,8 @@ class CvController extends Controller
 				}
 			}
 			else{//if you write in free text search field
-				$criteria->addSearchCondition("pdfText",$_POST['searchbox']);
-				$criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
+                $this->setSeveralSearchWordCriteria($criteria,$_POST['searchbox']);
+                $criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
 			}
 		}
 		if(isset($_POST['countries'])){

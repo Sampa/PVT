@@ -105,8 +105,8 @@ $this->breadcrumbs=array(
 new Morris.Donut({
   element: 'searchWordsDonut',
   data: [
-    {label: t("Publicerare");, value: <?php echo $dataProvider->getTotalItemCount()-$dataProviderRecruiter->getTotalItemCount()-1;?> },
-    {label: t("Rekryterare");, value: <?php echo $dataProviderRecruiter->getTotalItemCount();?> },
+    {label: ("Publicerare"), value: <?php echo $dataProvider->getTotalItemCount()-$dataProviderRecruiter->getTotalItemCount()-1;?> },
+    {label: ("Rekryterare"), value: <?php echo $dataProviderRecruiter->getTotalItemCount();?> },
   ]
 });
 
@@ -119,7 +119,7 @@ new Morris.Bar({
   ],
   xkey: 'y',
   ykeys: ['a', 'b', 'c'],
-  labels: [t('Lyckades via CV-Pages');, t('Lyckades på annat sätt');, t('Misslyckade');]
+  labels: ['Lyckades via CV-Pages', 'Lyckades på annat sätt', 'Misslyckade']
 });
 
 new Morris.Line({
@@ -141,7 +141,7 @@ new Morris.Line({
   ykeys: ['value'],
   // Labels for the ykeys -- will be displayed when you hover over the
   // chart.
-  labels: [t('Värde');]
+  labels: ['Värde']
 });
 
 </script>

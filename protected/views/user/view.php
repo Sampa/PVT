@@ -3,15 +3,14 @@
 /* @var $model User */
 ?>
 
-
-
 <?php
-$this->breadcrumbs=array(
-	t("Hem");=> Yii::app()->getHomeUrl(),
-	t("Användare");=>array('index'),
-	$model->name,
-);
+	$this->breadcrumbs=array(
+		t("Hem")=> Yii::app()->getHomeUrl(),
+		t("Användare")=>array('index'),
+  		$model->name,
+	);
 ?>
+
 <div class = 'page-header'>
 	<h1><?php echo Yii::t('t','Mina sidor');?></h1>
 </div>
@@ -49,11 +48,11 @@ $this->breadcrumbs=array(
 			'fullname',
 			'email',
 			array(
-			'label' => t('Företagsnamn');,
+			'label' => t('Företagsnamn'),
       		'value' => $rmodel->orgName,
       		),
       		array(
-      		'label' => t('VAT-nr');,
+      		'label' => t('VAT-nr'),
 			'value' => $rmodel->VAT,
 			),
 		),

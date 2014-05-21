@@ -14,7 +14,7 @@ class ReportedCvController extends Controller
 				));
 		}
 		else{
-			throw new CHttpException(401,'Unauthorized request. Please do not repeat this request again.');
+			throw new CHttpException(401,t('Behörighet saknas.'));
 		}
 	}
 
@@ -41,7 +41,7 @@ class ReportedCvController extends Controller
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 			}
 		} else {
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,t('Ogiltig begäran.'));
 		}
 	}
 

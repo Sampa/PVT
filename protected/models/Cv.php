@@ -69,7 +69,7 @@ class Cv extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'area' => array(self::MANY_MANY, 'GeograficArea','CvArea(AreaId,cvId)'),
+			'area' => array(self::MANY_MANY, 'GeograficArea','CvArea(cvId,AreaId)'),
 			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
 			'cvTags' => array(self::HAS_MANY, 'CvTag', 'cvId'),
 			'hotLists' => array(self::HAS_MANY, 'HotList', 'cvId'),

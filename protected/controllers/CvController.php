@@ -66,7 +66,7 @@ class CvController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>Cv::model()->with("area")->findByPk($id),
+			'model'=>$this->loadModel($id), //Cv::model()->with("area")->findByPk($id),
 		));
 	}
 
@@ -390,17 +390,12 @@ class CvController extends Controller
     {
 	    //starta nytt kriteria objekt för att filtrera sökresultaten
         $criteria = new CDbCriteria();
-	    //country har alltid ett värde
-        $criteria->addSearchCondition("country",$countryName);
+        $criteria->addSearchCondition("country",$countryName,true,"OR");
         //if antalet tecken i $region är mer än noll så har man valt en region i sökformuläret
-	    if(!is_null($region)){
-            $criteria->addSearchCondition("region",$region);
-        }
+        $criteria->addSearchCondition("region",$region,true,"OR");
 	    //if antalet tecken i $city är mer än noll så har man valt en kommun/city i sökformuläret
-	    if(!is_null($city)>0){
-		    //buggar pga default val o_O
-//	        $criteria->addSearchCondition("city",$city);
-        }
+        $criteria->addSearchCondition("city",$city,true,"OR");
+
 	    //hämtar enbart de geo models som uppfyller kraven
         $geoModels  = GeograficArea::model()->findAll($criteria);
 	    //initiera en tom array vi kan fylla i våra loopar nedan
@@ -471,11 +466,11 @@ class CvController extends Controller
 	}
 
 	private function setGeoAreaCondition($criteria) {
-		if($_POST['countries'] != "default"){
-			$region = isset($_POST['region']) ? $_POST['region'] : null;
-			$countries = isset($_POST['countries']) ? $_POST['countries'] : null;
-			$city = isset($_POST['city']) ? $_POST['city'] : null;
-			$listOfCvPks  = $this->getGeoModels($_POST["countries"],$region,$city);
+            $country = isset($_POST['countries']) && $_POST['countries'] !="default" ? $_POST['countries'] : null;
+            $region = isset($_POST['geoRegion']) && $_POST['geoRegion'] != "default" ? $_POST['geoRegion'] : null;
+            $city = isset($_POST['geoCity']) && $_POST['geoCity'] != "default" ? $_POST['geoCity'] : null;
+
+            $listOfCvPks  = $this->getGeoModels($country,$region,$city);
 			$criteria->addInCondition("id",$listOfCvPks);
 			//the code to add conditions based on the models/objects returned above
 
@@ -487,7 +482,6 @@ class CvController extends Controller
 				$criteria->compare("geographicAreaId",0);
 				$criteria->compare("geographicAreaId",1);
 			}
-		}
 		return $criteria;
 	}
 	/*

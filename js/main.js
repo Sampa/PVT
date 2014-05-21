@@ -16,7 +16,7 @@
         });
     }
     function handleResult(data){
-        target.children().remove();
+        target.children(":not(:first-child)").remove();
         data.geonames.forEach(function(item){
             var fixedName = item.name.replace("Municipality","Kommun");
             fixedName = fixedName.replace("unicipality","Kommun");
@@ -34,7 +34,7 @@
                 placeholder: next.attr("data-default")
             });
             $("#"+item).change(function(){
-                console.log(next);
+//                console.log(next);
                 if(next){
                     getPlaces($("option[value='"+this.value+"']").attr("id"),next);
                 }

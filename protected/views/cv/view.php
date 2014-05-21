@@ -24,6 +24,7 @@ foreach($model->area as $area){
     echo $area->city;
 }
 ?>
+<h3>tags</h3>
 <?php
 foreach($model->cvTags as $cvTag){
     echo "<br/>";
@@ -63,7 +64,7 @@ foreach($model->cvTags as $cvTag){
         dataType:"json",
         url: "/cv/"+$(this).attr("id")
     }).done(function( data ) { //hämtat antalet links
-        alert(data);
+//        alert(data);
     });
         /*
             * hämtar antalet inbound links för ett cv från google

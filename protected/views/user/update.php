@@ -4,9 +4,9 @@
 ?>
 <?php
 $this->breadcrumbs=array(
-	t('Användare');=>array('index'),
+	t('Användare')=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	t('Updatera användaruppgifter');,
+	t('Updatera användaruppgifter'),
 );
 ?>
     <div class="page-header">

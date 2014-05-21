@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="name-of-project" default="build">
  <target name="build"
-   depends="prepare,lint,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit"/>
+   depends="prepare,lint,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit"/>
 
  <target name="build-parallel"
    depends="prepare,lint,tools-parallel,phpunit"/>
 
  <target name="tools-parallel" description="Run tools in parallel">
   <parallel threadCount="2">
-   <sequential>
-    <antcall target="pdepend"/>
-   </sequential>
    <antcall target="phpcpd"/>
    <antcall target="phpcs-ci"/>
    <antcall target="phploc"/>
@@ -49,15 +46,6 @@
   </apply>
  </target>
 
-
- <target name="pdepend" description="Calculate software metrics using PHP_Depend">
-  <exec executable="pdepend">
-   <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
-   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
-   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
-   <arg path="${basedir}/src" />
-  </exec>
- </target>
 
  <target name="phpmd"
          description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">

@@ -50,12 +50,13 @@
 				<ul class="meta-search">
 					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo substr(CHtml::encode($data->date),0,10); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
-					<?php
+					<!-- En loop som Skriver ut regionerna -->
+                    <?php
                         foreach($data->area as $area){?>
                         <li>
                             <i class="glyphicon glyphicon-globe"></i>
-                            <span><?= $area->country; ?></span>
-                            <span><?= $area->region; ?></span>
+                            <span><?= $area->country; ?>, </span>
+                            <span><?= $area->region; ?>, </span>
                             <span><?= $area->city; ?></span>
                         </li>
                     <?php }?>

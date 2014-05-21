@@ -100,7 +100,7 @@ class SiteController extends Controller
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
-            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted',));
+            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted'));
             Yii::app()->end();
         }
 
@@ -113,8 +113,6 @@ class SiteController extends Controller
                 $user->password = $_POST['RegisterForm']['new_password'];
                 $user->name = $_POST['RegisterForm']['fullname'];
                 $user->notify = $_POST['RegisterForm']['notify'];
-           
-
                 if ($user->save()) {
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
                         $recruiterModel = new Recruiter();
@@ -155,7 +153,6 @@ class SiteController extends Controller
 
     public function actionEmail_for_reset()
     {
-
         if (isset($_POST['EmailForm'])) {
             $user_email = $_POST['EmailForm']['email'];
             $criteria = new CDbCriteria;

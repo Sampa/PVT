@@ -35,6 +35,7 @@ class Cv extends CActiveRecord
      */
     public $hasGeoArea = true;
     public $tags;
+    public $geographicArea = null;
 //    public $numberOfLinks;
 	/**
 	 * @return string the associated database table name

@@ -130,7 +130,7 @@ $this->breadcrumbs = array(
             </div>
                     <div class="form-group">
                         <!--            <div class="col-lg-5 col-lg-offset-3">-->
-                        <!--                --><?php //echo CHtml::activeLabel($model, 'verify_code'); ?> 
+                        <!--                --><?php //echo CHtml::activeLabel($model, 'verify_code'); ?>
 <!--                --><?php //$this->widget('application.extensions.recaptcha.EReCaptcha',
 //                    array('model' => $model, 'attribute' => 'verify_code',
 //                        'theme' => 'red', 'language' => 'en',
@@ -148,7 +148,7 @@ $this->breadcrumbs = array(
             <?php echo $form->error($model, 'accepted'); ?>
         </div>
     </div>
-    <div class="col-lg-3"><a href="" data-toggle="modal" data-target="#agreementPopup">Läs användaravtal</a></div>
+    <div class="col-lg-3"><a href="" data-toggle="modal" data-target="#agreementPopup"><?php echo t('Läs användaravtal');?></a></div>
 </div>
 <div class="form-group">
     <div class="col-lg-offset-3 col-lg-10">
@@ -165,7 +165,7 @@ $this->breadcrumbs = array(
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="agreementPopupLabel">Användaravtal</h2>
+                <h2 class="modal-title" id="agreementPopupLabel"><?php echo t('Användaravtal');?></h2>
             </div>
             <div class="modal-body">
                 <div class="row">

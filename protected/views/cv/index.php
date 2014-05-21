@@ -37,7 +37,7 @@ $this->breadcrumbs=array(
   </div>
 </form>
 <hr/>
-<h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
+    <h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
     <div class="btn-group">
           <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
           <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
@@ -95,12 +95,12 @@ if($resultCount< 1):?>
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="hotlistTargetLabel">Cv tillagt i Hotlist</h4>
+                            <h4 class="modal-title" id="hotlistTargetLabel"><?php echo t("Cv tillagt i Hotlist");?></h4>
                         </div>
                         <div id="hotlistTarget" class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal"><?php echo t("OK");?></button>
 
                         </div>
                     </div>

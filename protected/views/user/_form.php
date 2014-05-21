@@ -25,8 +25,8 @@
     )); ?>
 
         <p class="help-block"><?php echo t('Fält markerade med');?> <span class="required">*</span> <?php echo t(' är obligatoriska');?>.</p>
-
-            <div class="control-group row  error col-md-12">
+        <!--control-group row  error col-md-12-->
+            <div class="row form-group">
                 <div class="col-lg-5">
                     <?php echo $form->textFieldControlGroup($model, 'username', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Välj ett användarnamn"))); ?>
                 </div>

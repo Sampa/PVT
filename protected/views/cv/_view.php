@@ -81,7 +81,6 @@
 
                 <?php if( Yii:: app()->user->getState("role")=="recruiter") { ?>
 
-
                    <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
                    <i class="glyphicon glyphicon-file"></i><?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
                 </button>
@@ -93,8 +92,6 @@
                     <li><a href="<?php echo Yii::app()->createUrl("/recruitmentprocess/create");?>"><?php echo Yii::t("t","Skapa ny process");?></a></li>
                 </ul>
              </div>
-                
-
                 <!-- Modal -->
                 <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

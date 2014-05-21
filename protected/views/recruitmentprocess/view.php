@@ -197,8 +197,10 @@ $geoid=$model->geographicAreaID;
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="mySurveyLabel"><?php echo Yii::t("t","Skicka ut enkät till:");?></h4>
         </div>
-        <div class="modal-body">
-           Här listas alla cvn man har valt att skicka till
+        <div class="modal-body" >
+          Här är alla cvn du valt att skicka enkäten: 
+          <ul id="modalText"></ul>
+           
         </div>
         <div class="modal-footer">
        	  <button class="btn btn-primary btn dropdown-toggle" type="button"data-toggle="dropdown">
@@ -226,7 +228,7 @@ $geoid=$model->geographicAreaID;
     <button type="button" id='remove' class="btn btn-warning btn pull-right" data-toggle="modal">
       <span class="glyphicon glyphicon-trash"></span><?php echo Yii::t("t","Ta bort");?>
     </button>
-    <button type="button" class="btn btn-info btn pull-right" data-toggle="modal" data-target="#mySurvey" style="margin-right: 10px">
+    <button type="button" class="btn btn-info btn pull-right" id="printOutCheckedCv" data-toggle="modal" data-target="#mySurvey" style="margin-right: 10px">
       <span class="glyphicon glyphicon-file"></span><?php echo Yii::t("t","Skicka ut enkät");?>
     </button>
   </div>
@@ -324,6 +326,21 @@ $geoid=$model->geographicAreaID;
                   window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + processId;
                   console.log("Klar");
               });
+        }
+    });
+
+  });
+  $('#printOutCheckedCv').on('click', function(event){
+    $('#modalText').html("");
+    $('input[name="switchbutton"]').each(function(){
+      var cvId = $(this).attr('id');
+      var isO = $(this).prop('checked');
+      console.log(this);
+      var processId = <?php echo $model->id?>;
+      
+        if(isO){
+          $('#modalText').append("<li>" +  $(this).attr('data-title')+ "</li>");
+            
         }
     });
 

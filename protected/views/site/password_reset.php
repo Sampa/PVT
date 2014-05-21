@@ -31,7 +31,7 @@ $this->breadcrumbs = array(
         <div class="form-group">
             <?php echo $form->labelEx($model, 'password', array('class' => 'col-lg-3 control-label')); ?>
             <div class="col-lg-5">
-                <?php echo $form->passwordField($model, 'password', array('class' => 'form-control input-lg', 'placeholder' => 'Your new password.Don\'t forget it!')); ?>
+                <?php echo $form->passwordField($model, 'password', array('class' => 'form-control input-lg', 'placeholder' => t('Ditt nya lösenord. Glöm inte bort det!'))); ?>
                 <div class="help-block">
                     <?php echo $form->error($model, 'password'); ?>
                 </div>
@@ -41,7 +41,7 @@ $this->breadcrumbs = array(
         <?php echo $form->hiddenField($model, 'email', array('value' => $email));?>
         <div class="form-group">
             <div class="col-lg-offset-6 col-lg-10">
-                <?php echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary btn-lg')); ?>
+                <?php echo CHtml::submitButton(t('Skicka'), array('class' => 'btn btn-primary btn-lg')); ?>
             </div>
         </div>
         <?php $this->endWidget(); ?>

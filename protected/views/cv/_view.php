@@ -64,7 +64,11 @@
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet" style="margin-top:-25px">
-				<h3><a href="#" title=""><?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?></a></h3>
+				<h3>
+					<a href="<?php echo $data->pathToPdf;?>" title="till cv-pdf">
+						<?php echo ($data->title);?>
+					</a>
+				</h3>
 <!--                    <h3>Nyckelord:</h3>-->
                     <?php
                             foreach($data->cvTags as $cvTag){

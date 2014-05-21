@@ -8,35 +8,10 @@ $this->breadcrumbs=array(
 	'CV'=>array('index'),
     	Yii::t("t",'Hantera dina CV:n'),
     );
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').fadeToggle(1100);
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#cv-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
-
 <div class="page-header">
         <h1><?php echo Yii::t("t",'Dina publicerade CV:n');?></h1>
-    </div>
-
-<p>
-   <?php echo Yii::t("t"," Här kan du se på alla dina publicerade CV:n och ta bort de du inte vill ha kvar.");?>
-</p>
-
-<?php echo CHtml::link(Yii::t('t', 'Avancerad sökning'),'#',array('class'=>'search-button btn')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+</div>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'cv-grid',

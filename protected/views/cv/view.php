@@ -15,6 +15,15 @@ $this->breadcrumbs=array(
 <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($model->pathToPdf); ?>" rel="pdf">
     <?php echo t("Öppna cv");?>
 </a>
+<!-- skriva ut alla areas -->
+<h3>Söker jobb i följande områden:</h3>
+<?php
+foreach($model->area as $area){
+    echo $area->country;
+    echo $area->region;
+    echo $area->city;
+}
+?>
 <?php
 foreach($model->cvTags as $cvTag){
     echo "<br/>";
@@ -34,18 +43,6 @@ foreach($model->cvTags as $cvTag){
             'value' => substr($model->date, 0, 10),
         ),
         'typeOfEmployment',
-        array(
-            'label' => 'Land',
-            'value' => $model->geographicArea->country,
-        ),
-        array(
-            'label' => 'Region',
-            'value' => $model->geographicArea->region,
-        ),
-        array(
-            'label' => 'Stad',
-            'value' => $model->geographicArea->city,
-        ),
         array(
             'label' => 'CV:',
             'type' => 'raw',

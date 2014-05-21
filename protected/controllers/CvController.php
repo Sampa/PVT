@@ -469,19 +469,20 @@ class CvController extends Controller
             $country = isset($_POST['countries']) && $_POST['countries'] !="default" ? $_POST['countries'] : null;
             $region = isset($_POST['geoRegion']) && $_POST['geoRegion'] != "default" ? $_POST['geoRegion'] : null;
             $city = isset($_POST['geoCity']) && $_POST['geoCity'] != "default" ? $_POST['geoCity'] : null;
-
+            if(is_null($country) && is_null($region) && is_null($city))
+                return $criteria;
             $listOfCvPks  = $this->getGeoModels($country,$region,$city);
-			$criteria->addInCondition("id",$listOfCvPks);
-			//the code to add conditions based on the models/objects returned above
+            $criteria->addInCondition("id",$listOfCvPks);
+            //the code to add conditions based on the models/objects returned above
 
-			foreach($listOfCvPks as  $index=>$pk){
-				$criteria->compare("id",$pk,true,"OR");
-			}
-			//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
-			if(sizeof($listOfCvPks)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-				$criteria->compare("geographicAreaId",0);
-				$criteria->compare("geographicAreaId",1);
-			}
+            foreach($listOfCvPks as  $index=>$pk){
+                $criteria->compare("id",$pk,true,"OR");
+            }
+            //om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
+            if(sizeof($listOfCvPks)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+                $criteria->compare("geographicAreaId",0);
+                $criteria->compare("geographicAreaId",1);
+            }
 		return $criteria;
 	}
 	/*

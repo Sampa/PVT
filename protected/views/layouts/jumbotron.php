@@ -221,7 +221,7 @@ $(document).keyup(function(e) {
 function check_input() {
     if(input == secret) {
         // window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/mario/mario.php";
-        window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/FullscreenMario/mario.html";
+        window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/FullScreenMario/mario.html";
         //the code used to reveal mario and the world is then put here           
     }
 };

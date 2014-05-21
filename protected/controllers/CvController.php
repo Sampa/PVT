@@ -314,11 +314,11 @@ class CvController extends Controller
         $criteria = $this->setSortOrderCondition($criteria);
 
 
-        if(isset($_GET['searchKey']))//if you write in free text search field in jumbotron-index
-            $this->setSeveralSearchWordCriteria($criteria,$_GET['searchKey']);
-    	else{//this if checks if we have pressed the submit button in the search form
-            $criteria = $this->handleSearch($criteria);
-		}
+//        if(isset($_GET['searchKey']))//if you write in free text search field in jumbotron-index
+//            $this->setSeveralSearchWordCriteria($criteria,$_GET['searchKey']);
+//    	else{//this if checks if we have pressed the submit button in the search form
+        $criteria = $this->handleSearch($criteria);
+//		}
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
 		$dataProvider=new CActiveDataProvider('Cv',array("criteria"=>$criteria));
 
@@ -491,11 +491,11 @@ class CvController extends Controller
 	private function handleSearch($criteria) {
 		if(isset($_POST['searchbox'])){//if you write in free text search field
 			if(strpos($_POST['searchbox'], ":")!==false){
-				
+
 				$metaTag = strstr($_POST['searchbox'],":", true);
 				$pos = strpos($_POST['searchbox'], ":");
 				$search = substr($_POST['searchbox'], $pos+1);
-				
+
 				if($metaTag == "city"){
 					$criteria2 = new CDbCriteria();
 					$criteria2->addSearchCondition("city",$search);
@@ -509,7 +509,7 @@ class CvController extends Controller
 						    if(!in_array($areaRelation->cvId,$relations))
 						        $relations[]= $areaRelation->cvId;
 					    }
-				    } 
+				    }
 			        $criteria->addInCondition("id",$relations);
 					//the code to add conditions based on the models/objects returned above
 
@@ -536,7 +536,7 @@ class CvController extends Controller
 						    if(!in_array($areaRelation->cvId,$relations))
 						        $relations[]= $areaRelation->cvId;
 					    }
-				    } 
+				    }
 			        $criteria->addInCondition("id",$relations);
 					//the code to add conditions based on the models/objects returned above
 
@@ -563,7 +563,7 @@ class CvController extends Controller
 						    if(!in_array($areaRelation->cvId,$relations))
 						        $relations[]= $areaRelation->cvId;
 					    }
-				    } 
+				    }
 			        $criteria->addInCondition("id",$relations);
 					//the code to add conditions based on the models/objects returned above
 

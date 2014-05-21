@@ -25,7 +25,7 @@
                             <h3>
                                 <span><?php echo Yii::t("t","Ladda upp dina cv:n i vår publika CV-databas");?></span>
                             </h3>
-                            
+
                             <br>
                             <br>
                             <br>
@@ -47,16 +47,16 @@
                             </h2>
                             <br>
                             <h3>
-                                <span><?php echo Yii::t("t","Sök efter cv:n i databasen.");?></span></h3> 
-                                    <br> 
+                                <span><?php echo Yii::t("t","Sök efter cv:n i databasen.");?></span></h3>
+                                    <br>
                                     <br>
                                     <br>
                     		<div class="row">
                         		<div class="col-xs-6 col-md-2"></div>
                             		<div class="col-xs-6 col-md-8">
-                            			<form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="get">
+                            			<form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
                                 			<div class="input-group">
-                                				<input type="text" class="form-control" name="searchKey" placeholder=<?php echo Yii::t("t","Sökord");?>>
+                                				<input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sökord");?>>
                                 				<span class="input-group-btn">
                                 					<button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
                                 				</span>
@@ -71,7 +71,7 @@
                         	<br>
                             <div class="">
                                <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/cv/"><?php echo t('Avancerad sökning')?></a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo t('Registrera dig')?></a></div>
-                        
+
                    		</div>
                 	</div><!-- /header-text -->
                 </div>
@@ -93,7 +93,7 @@
                             <br>
                             <br>
                             <br>
-                            
+
                             <div class="">
                                 <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/login"><?php echo t('Logga in')?></a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo t('Registrera dig')?></a></div>
                         </div>

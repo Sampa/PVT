@@ -1,7 +1,7 @@
 <?php
 /* @var $this SurveyController */
 /* @var $model Survey */
-    $this->pageTitle = Yii::app()->name . ' - Skapa enkät';
+    $this->pageTitle = Yii::app()->name . t(' - Skapa enkät');
     $this->breadcrumbs = array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
         t('Enkäter')=>array('admin'),
@@ -21,11 +21,11 @@
             </div>
             <div class="panel-body wrapper-component">
                 <div>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span> Textfält</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="textarea" title="Textarea"><span class="glyphicon glyphicon-comment"></span> Textarea</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span><?php echo t('Textfält'); ?></a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="textarea" title="Textarea"><span class="glyphicon glyphicon-comment"></span><?php echo t(' Textarea'); ?></a>
                     <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>-->
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span> Flerval</a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="radio" title="Radio"><span class="glyphicon glyphicon-list-alt"></span> Enkelval</a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span><?php echo t(' Flerval'); ?></a>
+                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="radio" title="Radio"><span class="glyphicon glyphicon-list-alt"></span><?php echo t(' Enkelval'); ?></a>
 
 
 	                <!-- spara och hjälp-->
@@ -110,7 +110,7 @@
 				dataType:"json",
 				success:function(data){
 					if(data.success){
-						$("#survey-title").html("Sparat som "+title);
+						$("#survey-title").html(t("Sparat som ")+title);
 						$(".survey-layout").addClass("green")
 					}
 				}

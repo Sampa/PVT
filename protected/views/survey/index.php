@@ -5,12 +5,12 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Surveys',
+	t('Enkäter'),
 );
 
 $this->menu=array(
-	array('label'=>'Create Survey','url'=>array('create')),
-	array('label'=>'Manage Survey','url'=>array('admin')),
+	array('label'=>t('Skapa enkäter'),'url'=>array('create')),
+	array('label'=>t('Hantera enkäter'),'url'=>array('admin')),
 );
 ?>
 

@@ -102,7 +102,7 @@
 	                       <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>" 
                             <?php echo t("Meddelanden");?>
 		                      <span class="badge pull-right">
-			                        <?php>
+			                        <?php
 			                        if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
 				                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
 			                        }else{

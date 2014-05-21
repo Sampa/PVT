@@ -220,7 +220,8 @@ $(document).keyup(function(e) {
 //Once the time is up, this function is run to see if the user’s input is the same as the secret code
 function check_input() {
     if(input == secret) {
-        window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/mario/mario.php";
+        // window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/mario/mario.php";
+        window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/FullscreenMario/mario.html";
         //the code used to reveal mario and the world is then put here           
     }
 };

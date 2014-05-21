@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
             <tbody>
                 <tr>
 
-                     <th><?php echo Yii::t('t','Rapporteringsdatum');?></th>
+                    <th><?php echo Yii::t('t','Rapporteringsdatum');?></th>
                     <th><?php echo Yii::t('t','Rapporterad av');?></th>
                     <th><?php echo Yii::t('t','CVId');?></th>
                     <th><?php echo Yii::t('t','Anledning');?></th>

@@ -84,7 +84,7 @@ class SiteController extends Controller
                     'contact',
                     'main3'
                 );
-                Yii::app()->user->setFlash('success', '<strong>Message sent!   </strong>Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::app()->user->setFlash('success', '<strong>'. t('Meddelandet har skickats!').' </strong>'. t('Tack för ditt meddelande. Vi återkommer med svar så fort vi kan.'));
                 Yii::app()->getController()->refresh();
             }
         }
@@ -100,7 +100,7 @@ class SiteController extends Controller
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
-            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted',));
+            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted'));
             Yii::app()->end();
         }
 
@@ -113,8 +113,6 @@ class SiteController extends Controller
                 $user->password = $_POST['RegisterForm']['new_password'];
                 $user->name = $_POST['RegisterForm']['fullname'];
                 $user->notify = $_POST['RegisterForm']['notify'];
-           
-
                 if ($user->save()) {
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
                         $recruiterModel = new Recruiter();
@@ -137,12 +135,12 @@ class SiteController extends Controller
                         'main2'
                     )
                     ) {
-                        $msg = Yii::t('register', 'Please check your email inbox for the activation link.It is valid for 24 hours.');
+                        $msg = Yii::t('register', 'Vänligen kontrollera din e-post efter ett mail med en aktiveringslänk. Den är giltig i 24 timmar.');
                         Yii::app()->user->setFlash('success', $msg);
                         $this->redirect(bu() . '/site/login');
                     } else {
                         $user->delete();
-                        $msg = Yii::t('register', 'Error.Activation email could not be sent.Please register again.');
+                        $msg = Yii::t('register', 'Något gick fel. E-post med aktiveringslänk kunde inte skickas. Var vänlig gör om registreringen.');
                         Yii::app()->user->setFlash('danger', $msg);
                         $this->redirect(bu() . '/site/register');
                     }
@@ -155,7 +153,6 @@ class SiteController extends Controller
 
     public function actionEmail_for_reset()
     {
-
         if (isset($_POST['EmailForm'])) {
             $user_email = $_POST['EmailForm']['email'];
             $criteria = new CDbCriteria;
@@ -163,7 +160,7 @@ class SiteController extends Controller
             $criteria->params = array(':email' => $user_email);
             $user = User::model()->find($criteria);
             if (!$user) {
-                $errormsg = Yii::t('passwordreset', 'No user with this email in our records');
+                $errormsg = Yii::t('passwordreset', 'Finns ingen användare med denna e-post.');
                 Yii::app()->user->setFlash('danger', $errormsg);
                 $this->refresh();
             }
@@ -182,11 +179,11 @@ class SiteController extends Controller
                 'main'
             )
             ) {
-                $infomsg = Yii::t('passwordreset', 'We have sent you a reset link,please check your email inbox.');
+                $infomsg = Yii::t('passwordreset', 'Återställningslänk har skickats. Kontrollera din e-post.');
                 Yii::app()->user->setFlash('info', $infomsg);
                 $this->refresh();
             } else {
-                $errormsg = Yii::t('passwordreset', 'We could not email you the password reset link');
+                $errormsg = Yii::t('passwordreset', 'Det gick inte att skicka meddelandet med återställningslänken.');
                 Yii::app()->user->setFlash('danger', $errormsg);
                 $this->refresh();
             }
@@ -211,8 +208,7 @@ class SiteController extends Controller
             $user = User::model()->find($criteria);
 
             if (!$user) {
-                $errormsg = Yii::t('passwordreset', 'Error,your account information was not found.
-                Your reset token has probably been used or  expired.Please repeat the password reset process.');
+                $errormsg = Yii::t('passwordreset', 'Fel, din kontoinformation kunde inte hittas. Återställningslänken har förmodligen redan använts eller gått ut. Vänlig försök igen.');
                 Yii::app()->user->setFlash('danger', $errormsg);
                 $this->refresh();
             }
@@ -220,11 +216,11 @@ class SiteController extends Controller
             $user->reset_token = NULL;
 
             if ($user->save()) {
-                $msg = Yii::t('passwordreset', 'Your password has been reset.Log in with your new password.');
+                $msg = Yii::t('passwordreset', 'Ditt lösenord har återställts. Logga in med ditt nya lösenord.');
                 Yii::app()->user->setFlash('success', $msg);
                 $this->redirect(bu() . '/site/login');
             } else {
-                $error = Yii::t('passwordreset', 'Error,could not reset your password.');
+                $error = Yii::t('passwordreset', 'Fel, kunde inte återställa ditt lösenord.');
                 Yii::app()->user->setFlash('danger', $error);
                 $this->refresh();
             }
@@ -245,11 +241,11 @@ class SiteController extends Controller
             $user->activation_key = NULL;
             $user->status = User::STATUS_ACTIVE;
             $user->save(false); //user has already  been validated when saved for the forst time.
-            $successmsg = Yii::t('registration', ',welcome! Your account has been activated.Now you can log in.');
+            $successmsg = Yii::t('registration', ', välkommen! Ditt konto är aktiverat och du kan nu logga in.');
             Yii::app()->user->setFlash('success', $user->username . $successmsg);
             $this->redirect(bu() . '/site/login');
         } else {
-            $errormsg = Yii::t('registration', ' Error.Your account could not be activated,please repeat the registration process.');
+            $errormsg = Yii::t('registration', ' Något gick fel. Ditt konto kunde inte aktiveras. Var vänlig gör om registreringen.');
             $criteria = new CDbCriteria;
             $criteria->condition = ' email=:email';
             $criteria->params = array(':email' => $email);

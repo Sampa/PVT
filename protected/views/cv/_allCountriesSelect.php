@@ -302,7 +302,7 @@
 			<option id="2685867" value="Östergötland">Östergötland</option>
 		</select>
 	</div>
-	<div class="col-md-4 cityWrapper" style="margin-top:7px;display: inline-block;">
+	<div class="col-md-4 cityWrapper" style="margin-top:7px;display: none;">
         <div class="col-md-10"
             <label class="" for="geoCity"><?php echo Yii::t("t","Kommun");?></label>
             <select  class="form-control" name="geoCity" id="geoCity" data-placeholder="<?php echo Yii::t("t","Välj kommun");?>">

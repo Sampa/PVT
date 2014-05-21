@@ -66,7 +66,7 @@ class CvController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>Cv::model()->with("area")->findByPk($id),
+			'model'=>$this->loadModel($id), //Cv::model()->with("area")->findByPk($id),
 		));
 	}
 
@@ -390,17 +390,12 @@ class CvController extends Controller
     {
 	    //starta nytt kriteria objekt för att filtrera sökresultaten
         $criteria = new CDbCriteria();
-	    //country har alltid ett värde
-        $criteria->addSearchCondition("country",$countryName);
+        $criteria->addSearchCondition("country",$countryName,true,"OR");
         //if antalet tecken i $region är mer än noll så har man valt en region i sökformuläret
-	    if(!is_null($region)){
-            $criteria->addSearchCondition("region",$region);
-        }
+        $criteria->addSearchCondition("region",$region,true,"OR");
 	    //if antalet tecken i $city är mer än noll så har man valt en kommun/city i sökformuläret
-	    if(!is_null($city)>0){
-		    //buggar pga default val o_O
-//	        $criteria->addSearchCondition("city",$city);
-        }
+        $criteria->addSearchCondition("city",$city,true,"OR");
+
 	    //hämtar enbart de geo models som uppfyller kraven
         $geoModels  = GeograficArea::model()->findAll($criteria);
 	    //initiera en tom array vi kan fylla i våra loopar nedan
@@ -471,11 +466,11 @@ class CvController extends Controller
 	}
 
 	private function setGeoAreaCondition($criteria) {
-		if($_POST['countries'] != "default"){
-			$region = isset($_POST['region']) ? $_POST['region'] : null;
-			$countries = isset($_POST['countries']) ? $_POST['countries'] : null;
-			$city = isset($_POST['city']) ? $_POST['city'] : null;
-			$listOfCvPks  = $this->getGeoModels($_POST["countries"],$region,$city);
+            $country = isset($_POST['countries']) && $_POST['countries'] !="default" ? $_POST['countries'] : null;
+            $region = isset($_POST['geoRegion']) && $_POST['geoRegion'] != "default" ? $_POST['geoRegion'] : null;
+            $city = isset($_POST['geoCity']) && $_POST['geoCity'] != "default" ? $_POST['geoCity'] : null;
+
+            $listOfCvPks  = $this->getGeoModels($country,$region,$city);
 			$criteria->addInCondition("id",$listOfCvPks);
 			//the code to add conditions based on the models/objects returned above
 
@@ -487,29 +482,101 @@ class CvController extends Controller
 				$criteria->compare("geographicAreaId",0);
 				$criteria->compare("geographicAreaId",1);
 			}
-		}
 		return $criteria;
 	}
 	/*
 	 * Den här hanterar ifall vi trycker på sökknappen
 	 */
 	private function handleSearch($criteria) {
-//		var_export($_POST);die();
-		if(isset($_POST['searchbox'])){
+		if(isset($_POST['searchbox'])){//if you write in free text search field
+                $this->setSeveralSearchWordCriteria($criteria,$_POST['searchbox']);
+                $criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
 			if(strpos($_POST['searchbox'], ":")!==false){
 				$metaTag = strstr($_POST['searchbox'],":", true);
 				$pos = strpos($_POST['searchbox'], ":");
 				$search = substr($_POST['searchbox'], $pos+1);
-				/*if($metaTag == "city"){
-					$_POST['countries'] = 'notDefault';
-					$_POST['city'] = $search;
-					$criteria = $this->setGeoAreaCondition($criteria);
+				if($metaTag == "city"){
+					$criteria2 = new CDbCriteria();
+					$criteria2->addSearchCondition("city",$search);
+					$geoModels  = GeograficArea::model()->findAll($criteria2);
+	    			//initiera en tom array vi kan fylla i våra loopar nedan
+				    $relations =array();
+				    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
+					    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
+					    foreach($geo->cvAreas as $areaRelation){
+						    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
+						    if(!in_array($areaRelation->cvId,$relations))
+						        $relations[]= $areaRelation->cvId;
+					    }
+				    } 
+			        $criteria->addInCondition("id",$relations);
+					//the code to add conditions based on the models/objects returned above
+
+					foreach($relations as  $index=>$pk){
+						$criteria->compare("id",$pk,true,"OR");
+					}
+					//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
+					if(sizeof($relations)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+						$criteria->compare("geographicAreaId",0);
+						$criteria->compare("geographicAreaId",1);
+					}
+					return $criteria;//city:city
 				}
-				elseif($metaTag == "region")
-					$criteria = $this->setGeoAraCondition($criteria);
-				elseif($metaTag == "country")
-					$criteria = $this->setGeoAreaCondition($criteria);*/
-				if($metaTag == "tag"){ //tag:tag1,tag2,tag3
+				elseif($metaTag == "region"){
+					$criteria2 = new CDbCriteria();
+					$criteria2->addSearchCondition("region",$search);
+					$geoModels  = GeograficArea::model()->findAll($criteria2);
+	    			//initiera en tom array vi kan fylla i våra loopar nedan
+				    $relations =array();
+				    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
+					    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
+					    foreach($geo->cvAreas as $areaRelation){
+						    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
+						    if(!in_array($areaRelation->cvId,$relations))
+						        $relations[]= $areaRelation->cvId;
+					    }
+				    } 
+			        $criteria->addInCondition("id",$relations);
+					//the code to add conditions based on the models/objects returned above
+
+					foreach($relations as  $index=>$pk){
+						$criteria->compare("id",$pk,true,"OR");
+					}
+					//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
+					if(sizeof($relations)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+						$criteria->compare("geographicAreaId",0);
+						$criteria->compare("geographicAreaId",1);
+					}
+					return $criteria;//region:region
+				}
+				elseif($metaTag == "country"){
+					$criteria2 = new CDbCriteria();
+					$criteria2->addSearchCondition("country",$search);
+					$geoModels  = GeograficArea::model()->findAll($criteria2);
+	    			//initiera en tom array vi kan fylla i våra loopar nedan
+				    $relations =array();
+				    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
+					    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
+					    foreach($geo->cvAreas as $areaRelation){
+						    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
+						    if(!in_array($areaRelation->cvId,$relations))
+						        $relations[]= $areaRelation->cvId;
+					    }
+				    } 
+			        $criteria->addInCondition("id",$relations);
+					//the code to add conditions based on the models/objects returned above
+
+					foreach($relations as  $index=>$pk){
+						$criteria->compare("id",$pk,true,"OR");
+					}
+					//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
+					if(sizeof($relations)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
+						$criteria->compare("geographicAreaId",0);
+						$criteria->compare("geographicAreaId",1);
+					}
+					return $criteria;//country:country
+				}
+				elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3
 					$allCvIds = array(); //initiate empty array
 					$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
 					foreach($tagsAsArray as $tag){ //loop all tags the user entered
@@ -530,13 +597,11 @@ class CvController extends Controller
 					if($search == 'employment')
 						$criteria->addSearchCondition("typeOfEmployment","employment");
 				}
-				elseif($metaTag == 'title'){
+				elseif($metaTag == 'title'){//title:title
 					$criteria->addSearchCondition("title",$search);
 				}
 			}
-			else{//if you write in free text search field
-                $this->setSeveralSearchWordCriteria($criteria,$_POST['searchbox']);
-                $criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
+			else{
 			}
 		}
 		if(isset($_POST['countries'])){

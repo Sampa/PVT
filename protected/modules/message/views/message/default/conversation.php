@@ -2,7 +2,7 @@
 <?php
 	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs',array('sent'=>$sent));
 //	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation',array('sent'=>$sent,'inbox'=>$inbox));
-?>
+//?>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-10 col-xs-9 bhoechie-tab-container">

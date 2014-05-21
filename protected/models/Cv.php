@@ -168,7 +168,7 @@ class Cv extends CActiveRecord
 					//move file from temporary folder to end destination
 					copy($file["path"],$newPath);
 					//a relative public path that we assign to the "pathToPdf" attribute (this gets saved in the database)
-					$cv->pathToPdf =  "pdf/".$this->id."/".$file["filename"];
+					$cv->pathToPdf =  "/pdf/".$this->id."/".$file["filename"];
 
 
 				} else{

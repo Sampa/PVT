@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="navbar navbar-inverse  yamm">
 		<div id="navbar-collapse-2" class="navbar-collapse collapse">

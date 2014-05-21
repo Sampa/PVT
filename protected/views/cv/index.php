@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 );
 ?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
-
     <?php if (Yii::app()->user->hasFlash('index')): ?>
         <div class="alert alert-info  alert-dismissable">
             <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>

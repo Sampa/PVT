@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Users',
+	t('Användare');,
 );
 
 $this->menu=array(
-	array('label'=>'Create User','url'=>array('create')),
-	array('label'=>'Manage User','url'=>array('admin')),
+	array('label'=>t('Skapa användare');,'url'=>array('create')),
+	array('label'=>t('Hantera användare');,'url'=>array('admin')),
 );
 ?>
 
-<h1>Users</h1>
+<h1><?php echo t('Användare');?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

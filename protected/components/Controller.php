@@ -21,13 +21,12 @@ class Controller extends CController
         if (isset($_POST['_lang']))
         {
             $app->language = $_POST['_lang'];
-            $app->session['_lang'] = $app->language;
+            $app->session['_lang'] = $app->getLanguage();
         }
         else if (isset($app->session['_lang']))
         {
             $app->language = $app->session['_lang'];
         }
-        $app->language = "sv";
         if (app()->params->render_switch_form) {
             $this->getLayoutAndBootswatchSkinFromSession();
             $this->handleSwitchForm();

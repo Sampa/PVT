@@ -1,6 +1,10 @@
 <center>
     <p style="font-size: 25px; margin-left: auto;  margin-right: auto;width:580px;">
-        <?php echo Yii::t("t", "Hej").$username.t("För att slutföra din registrering måste du aktivera ditt konto")."<br/>".t("Klicka på länken nedan.");?>
+        <?php
+            echo Yii::t("t", "Hej, ").
+	            $username.
+	            t(" du har fått ett meddelande från en rekryterare på CV-Pages, logga in för att läsa det. Logga in genom att klicka på länken nedan!");
+        ?>
     </p>
     <div style=" display: block;
                                -moz-border-radius:3px;
@@ -11,9 +15,8 @@
                                   margin-right: auto;
                                  width:180px;
                                 ">
-        <a style="color:#ffdead; font-size: 40px;text-decoration: none" href="<?php echo $activation_url;?>"
-           target="_blank">Activate</a>
+        <a style="color:#ffdead; font-size: 40px;text-decoration: none" href="pvt.dsv.su.se/Group1"
+           target="_blank">CV-Pages</a>
     </div>
 </center>
-
 

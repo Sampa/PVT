@@ -12,11 +12,6 @@
 					<div class="panel panel-success">
 						<div class="panel-heading messagesHeading">
 							<h3 class="panel-title"><?=t("Konversationer");?></h3>
-							<div class="pull-right">
-								<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-									<i class="glyphicon glyphicon-filter"></i>
-								</span>
-							</div>
 						</div>
 						<div class="panel-body messagesBody">
 							<input
@@ -32,9 +27,7 @@
 							<thead>
 								<tr>
 									<th><?=t("Ta bort");?></th>
-									<th><?=t("Antal meddelanden");?></th>
 									<th><?=t("Användare");?></th>
-									<th><?=t("Alla lästa");?></th>
 									<th></th>
 								</tr>
 							</thead>

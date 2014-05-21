@@ -28,15 +28,15 @@ $this->breadcrumbs=array(
         </tbody>
         <tbody>
             <tr>
-            	<th><?php echo 'Alla aktiva användare';?></th>
-               	<th><?php echo 'Aktiva users - antal aktiva rekyterare';?></th>
-            	<th><?php echo 'Aktiva rekryterare';?></th>
+            	<th><?php echo t('Alla aktiva användare');?></th>
+               	<th><?php echo t('Aktiva users - antal aktiva rekyterare');?></th>
+            	<th><?php echo t('Aktiva rekryterare');?></th>
             	<th></th>
             </tr>
             <tr>
-            	<td><?php echo 'Totala antalet användare'?></td>
-               	<td><?php echo 'Aktiva users - antal aktiva rekyterare';?></td>
-            	<td><?php echo 'Aktiva rekryterare';?></td>
+            	<td><?php echo t('Totala antalet användare');?></td>
+               	<td><?php echo t('Aktiva users - antal aktiva rekyterare');?></td>
+            	<td><?php echo t('Aktiva rekryterare');?></td>
             	<td></td>
             </tr>
         </tbody>
@@ -76,10 +76,10 @@ $this->breadcrumbs=array(
      	       	<th><?php echo Yii::t('t','Gäst');?></th>  
             </tr>
             <tr>
-            	<td><?php echo 'Alla sökningar idag';?></td>
-            	<td><?php echo 'Sökningar på inloggade Publicerare';?></td>
-            	<td><?php echo 'Sökningar på inloggade rekryterare';?></td>
-            	<td><?php echo 'Sökningar gjorda av gäster';?></td>
+            	<td><?php echo t('Alla sökningar idag');?></td>
+            	<td><?php echo t('Sökningar på inloggade Publicerare');?></td>
+            	<td><?php echo t('Sökningar på inloggade rekryterare');?></td>
+            	<td><?php echo t('Sökningar gjorda av gäster');?></td>
             </tr>
         </tbody>
     </table>   
@@ -105,8 +105,8 @@ $this->breadcrumbs=array(
 new Morris.Donut({
   element: 'searchWordsDonut',
   data: [
-    {label: "Publicerare", value: <?php echo $dataProvider->getTotalItemCount()-$dataProviderRecruiter->getTotalItemCount()-1;?> },
-    {label: "Rekryterare", value: <?php echo $dataProviderRecruiter->getTotalItemCount();?> },
+    {label: t("Publicerare");, value: <?php echo $dataProvider->getTotalItemCount()-$dataProviderRecruiter->getTotalItemCount()-1;?> },
+    {label: t("Rekryterare");, value: <?php echo $dataProviderRecruiter->getTotalItemCount();?> },
   ]
 });
 
@@ -119,7 +119,7 @@ new Morris.Bar({
   ],
   xkey: 'y',
   ykeys: ['a', 'b', 'c'],
-  labels: ['Lyckades via CV-Pages', 'Lyckades på annat sätt', 'Misslyckade']
+  labels: [t('Lyckades via CV-Pages');, t('Lyckades på annat sätt');, t('Misslyckade');]
 });
 
 new Morris.Line({
@@ -141,7 +141,7 @@ new Morris.Line({
   ykeys: ['value'],
   // Labels for the ykeys -- will be displayed when you hover over the
   // chart.
-  labels: ['Värde']
+  labels: [t('Värde');]
 });
 
 </script>

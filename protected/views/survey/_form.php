@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-    <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block"><?php echo t('Fält markerade med ') ?> <span class="required">*</span><?php echo t(' är obligatoriska.'); ?> </p>
 
     <?php echo $form->errorSummary($model); ?>
 

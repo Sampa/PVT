@@ -46,8 +46,8 @@ class GeograficArea extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cvs' => array(self::HAS_MANY, 'Cv', 'geographicAreaId'),
-			'cvAreas' => array(self::HAS_MANY, 'CvArea', 'AreaId'),
+			'cv' => array(self::MANY_MANY, 'CV','CvArea(AreaId,cvId)'),
+			'cvAreas' => array(self::HAS_MANY, 'CvArea','AreaId'),
 		);
 	}
 

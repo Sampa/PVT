@@ -1,6 +1,6 @@
 <?php
 // Include Composer autoloader if not already done.
-//  include 'vendor/autoload.php';
+  include 'vendor/autoload.php';
 
 /**
  * This is the model class for table "Cv".
@@ -35,6 +35,7 @@ class Cv extends CActiveRecord
      */
     public $hasGeoArea = true;
     public $tags;
+    public $geographicArea = null;
 //    public $numberOfLinks;
 	/**
 	 * @return string the associated database table name
@@ -69,7 +70,7 @@ class Cv extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'geographicArea' => array(self::BELONGS_TO, 'GeograficArea', 'geographicAreaId'),
+			'area' => array(self::MANY_MANY, 'GeograficArea','CvArea(cvId,AreaId)'),
 			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
 			'cvTags' => array(self::HAS_MANY, 'CvTag', 'cvId'),
 			'hotLists' => array(self::HAS_MANY, 'HotList', 'cvId'),
@@ -168,7 +169,7 @@ class Cv extends CActiveRecord
 					//move file from temporary folder to end destination
 					copy($file["path"],$newPath);
 					//a relative public path that we assign to the "pathToPdf" attribute (this gets saved in the database)
-					$cv->pathToPdf =  "pdf/".$this->id."/".$file["filename"];
+					$cv->pathToPdf =  "/pdf/".$this->id."/".$file["filename"];
 
 
 				} else{

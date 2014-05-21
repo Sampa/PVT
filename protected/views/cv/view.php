@@ -15,6 +15,16 @@ $this->breadcrumbs=array(
 <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($model->pathToPdf); ?>" rel="pdf">
     <?php echo t("Öppna cv");?>
 </a>
+<!-- skriva ut alla areas -->
+<h3>Söker jobb i följande områden:</h3>
+<?php
+foreach($model->area as $area){
+    echo $area->country;
+    echo $area->region;
+    echo $area->city;
+}
+?>
+<h3>tags</h3>
 <?php
 foreach($model->cvTags as $cvTag){
     echo "<br/>";
@@ -35,18 +45,6 @@ foreach($model->cvTags as $cvTag){
         ),
         'typeOfEmployment',
         array(
-            'label' => 'Land',
-            'value' => $model->geographicArea->country,
-        ),
-        array(
-            'label' => 'Region',
-            'value' => $model->geographicArea->region,
-        ),
-        array(
-            'label' => 'Stad',
-            'value' => $model->geographicArea->city,
-        ),
-        array(
             'label' => 'CV:',
             'type' => 'raw',
             'value' => Chtml::link($model->title, $model->pathToPdf),
@@ -66,7 +64,7 @@ foreach($model->cvTags as $cvTag){
         dataType:"json",
         url: "/cv/"+$(this).attr("id")
     }).done(function( data ) { //hämtat antalet links
-        alert(data);
+//        alert(data);
     });
         /*
             * hämtar antalet inbound links för ett cv från google

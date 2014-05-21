@@ -27,7 +27,7 @@ $this->breadcrumbs=array(
 		'date',
 
 		'buttons'=>array(
-			'header' => 'Alternativ',
+			'header' => t('Alternativ'),
 			'class'=>'TbButtonColumn',
 			'htmlOptions'=>array('style'=>'width: 250px'),
 			'viewButtonIcon'=>'glyphicon glyphicon-eye-open',

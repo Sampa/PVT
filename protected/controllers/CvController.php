@@ -490,12 +490,12 @@ class CvController extends Controller
 	 */
 	private function handleSearch($criteria) {
 		if(isset($_POST['searchbox'])){//if you write in free text search field
-                $this->setSeveralSearchWordCriteria($criteria,$_POST['searchbox']);
-                $criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
 			if(strpos($_POST['searchbox'], ":")!==false){
+				
 				$metaTag = strstr($_POST['searchbox'],":", true);
 				$pos = strpos($_POST['searchbox'], ":");
 				$search = substr($_POST['searchbox'], $pos+1);
+				
 				if($metaTag == "city"){
 					$criteria2 = new CDbCriteria();
 					$criteria2->addSearchCondition("city",$search);
@@ -601,8 +601,13 @@ class CvController extends Controller
 				elseif($metaTag == 'title'){//title:title
 					$criteria->addSearchCondition("title",$search);
 				}
+				elseif($metaTag =='date'){
+					$criteria->addSearchCondition('date',$search);
+				}
 			}
 			else{
+				$this->setSeveralSearchWordCriteria($criteria,$_POST['searchbox']);
+                $criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
 			}
 		}
 		if(isset($_POST['countries'])){

@@ -102,8 +102,8 @@ if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"){
 			                <strong>Cv-Pages</strong><br>
 			                795 Folsom Ave, Suite 600<br>
 			                San Francisco, CA 94107<br>
-			                <abbr title="Phone">
-				                P:</abbr>
+			                <abbr title=<?=t('Telefon');?>
+				                </abbr>
 			                (123) 456-7890
 		                </address>
 		                <address>

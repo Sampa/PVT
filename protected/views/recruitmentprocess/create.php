@@ -17,7 +17,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Skapa ny rekryteringsprocess</h1>
+<h1><?php echo t("Skapa ny rekryteringsprocess");?></h1>
 
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

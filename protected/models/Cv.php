@@ -35,6 +35,7 @@ class Cv extends CActiveRecord
      */
     public $hasGeoArea = true;
     public $tags;
+    public $geographicArea = null;
 //    public $numberOfLinks;
 	/**
 	 * @return string the associated database table name
@@ -183,7 +184,8 @@ class Cv extends CActiveRecord
 
             // Parse pdf file and build necessary objects.
             $parser = new \Smalot\PdfParser\Parser();
-            $pdf    = $parser->parseFile($cv->pathToPdf);
+            $pathThatWorksWithParser = preg_replace("/\//","",$cv->pathToPdf,1);
+            $pdf  = $parser->parseFile($pathThatWorksWithParser);
             $text = $pdf->getText();
             $cv->pdfText = $text;
 			Yii::app( )->user->setState( 'pdf', null );

@@ -125,7 +125,7 @@ class CvController extends Controller
                      $cvTagRelation->cvId = $model->id;
                      $cvTagRelation->save();
                  }
-                 $this->redirect(array('view','id'=>$model->id));
+                 $this->redirect(array('admin'));
              }
         }
 

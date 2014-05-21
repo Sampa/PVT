@@ -70,7 +70,7 @@
 
                         	<br>
                             <div class="">
-                               <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/cv/">Avancerad sökning</a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register">Registrera dig</a></div>
+                               <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/cv/"><?php echo t('Avancerad sökning')?></a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo t('Registrera dig')?></a></div>
                         
                    		</div>
                 	</div><!-- /header-text -->
@@ -95,7 +95,7 @@
                             <br>
                             
                             <div class="">
-                                <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/login">Logga in</a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register">Registrera dig</a></div>
+                                <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/login"><?php echo t('Logga in')?></a><a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo t('Registrera dig')?></a></div>
                         </div>
                     </div><!-- /header-text -->
                 </div>
@@ -120,7 +120,7 @@
                             <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
                     till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare.
                     Vid missbruk kan ditt konto komma att stängas av. Detta beslut går inte att överklaga.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><?php echo t('Läs mer');?></a><br>
                         </center>
                     </div>
                     <div class="col-md-4">
@@ -132,7 +132,7 @@
                     behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).<br>Som personuppgifter räknas all
                     slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer
                     och adress.");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><?php echo t('Läs mer');?></a><br>
                         </center>
                     </div>
                     <div class="col-md-4">
@@ -144,7 +144,7 @@
                     Syftet med cookies är att få
                     fakta om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning,
                     samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen");?>
-                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">Läs mer</a><br>
+                                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><?php echo t('Läs mer');?></a><br>
                         </center>
                     </div>
                 </div>

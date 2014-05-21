@@ -7,7 +7,7 @@
 
 <div class="row">
   <div class="col-md-2">
-            <a href="" title="Öppna cv" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
+            <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Öppna cv" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
         </div>
   <div class="col-md-2">
   	<ul class="meta-search">
@@ -37,7 +37,11 @@
 
 </div>
   <div class="col-md-3">
-  	<h4><strong><?php echo CHtml::encode($data->cv->title); ?></strong></h4>
+  	<h3>
+      <a href="<?php echo $data->cv->pathToPdf;?>" title="se på cvt">
+      <?php echo CHtml::encode($data->cv->title);?>
+      </a>
+    </h3>
   </div>
 
   <div class="col-md-1">

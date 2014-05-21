@@ -26,7 +26,6 @@
          <arg value="/c"/>
          <arg value="phpunit.bat"/>
          <arg value="..."/>
-     </exec>
- </target>
- </target>
+    </exec>
+  </target>
 </project>

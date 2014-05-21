@@ -213,7 +213,7 @@ var timer;
 $(document).keyup(function(e) {
    input += e.which;    
    clearTimeout(timer);
-   timer = setTimeout(function() { input = ""; }, 100);
+   timer = setTimeout(function() { input = ""; }, 175);
    check_input();
 });
 //Once the time is up, this function is run to see if the user’s input is the same as the secret code

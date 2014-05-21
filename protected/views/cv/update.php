@@ -18,6 +18,6 @@ $this->menu=array(
 );
 ?>
 
-    <h1>Update Cv <?php echo $model->id; ?></h1>
+    <h1><?php echo t("Update Cv"), echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -53,9 +53,15 @@ class RecruitmentprocessController extends Controller
 	{
 		$process = $this->loadModel($id);
 
-		if($process->recruiterId ==Yii::app()->user->id){
+		if($process->recruiterId == Yii::app()->user->id){
 
-			$dataProvider = new CActiveDataProvider('Hotlist');
+			$criteria=new CDbCriteria;
+			$criteria->compare('rpId', $id);
+
+			$dataProvider = new CActiveDataProvider('Hotlist', array(
+    			'criteria'=>$criteria,
+    		));
+
 			$this->render('view',array(
 				'model'=>$process,
 				'dataProvider'=>$dataProvider,

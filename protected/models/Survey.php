@@ -34,7 +34,7 @@ class Survey extends CActiveRecord
 		return array(
 			array('recruiterID, title, date', 'required'),
 			array('recruiterID', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>255),
+			array('title', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, recruiterID, title, date', 'safe', 'on'=>'search'),

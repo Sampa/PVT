@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../protected/models/Cv.php');
+require_once('./../../protected/models/Cv.php');
 
 class CvTest extends PHPUnit_Framework_TestCase
 {

@@ -207,7 +207,16 @@ class UserController extends Controller
 			$dataProvider = new CActiveDataProvider('User');
 			$dataProviderRecruiter = new CActiveDataProvider('Recruiter');
 			$dataProviderCv = new CActiveDataProvider('Cv');
+
+			$criteria = new CDbCriteria;
+        	$criteria->compare('login_date', date('Y-m-d'));
+        	$dataProviderUsersToday['user'] = User::model()->findAll($criteria);
+        	$criteria->addCondition('recruiter.userId IS NOT NULL');
+         	$dataProviderUsersToday['recruiter'] = User::model()->with("recruiter")->findAll($criteria);
+
+
 			$dataProviderRecProcessSuccesful = new CActiveDataProvider('Recruitmentprocess',array(
+
 				'countCriteria'=>array(
 				'condition'=>'successfulProcess="CandidateFoundOp"',
 				)
@@ -227,6 +236,7 @@ class UserController extends Controller
 				'dataProvider'=>$dataProvider,
 				'dataProviderRecruiter' =>$dataProviderRecruiter,
 				'dataProviderCv'=>$dataProviderCv,
+				'dataProviderUsersToday'=>$dataProviderUsersToday,
 				'dataProviderRecProcessSuccesful'=>$dataProviderRecProcessSuccesful,
 				'dataProviderRecProcessOther'=>$dataProviderRecProcessOther,
 				'dataProviderRecProcessFailed'=>$dataProviderRecProcessFailed,

@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <h3><?php echo Yii::t('t','Statistik');?></h3>
+            <h3><?php echo Yii::t('t','Statistik över CV-Pages');?></h3>
         </div>
 
 	<table class="table table-bordered table-condensed table-hover">
@@ -18,6 +18,7 @@ $this->breadcrumbs=array(
             	<th><?php echo Yii::t('t','Totalt antal användare');?></th>
                 <th><?php echo Yii::t('t','Publicerare');?></th>
                 <th><?php echo Yii::t('t','Rekryterare');?></th>
+                <th></th>
             </tr>
             <tr>
             	<td><?php echo $dataProvider->getTotalItemCount()-1;?></td>
@@ -28,15 +29,16 @@ $this->breadcrumbs=array(
         </tbody>
         <tbody>
             <tr>
-            	<th><?php echo t('Alla aktiva användare');?></th>
-               	<th><?php echo t('Aktiva users - antal aktiva rekyterare');?></th>
-            	<th><?php echo t('Aktiva rekryterare');?></th>
+            	<th><?php echo t('Användare som loggat in idag totalt');?></th>
+               	<th><?php echo t('Publicerare');?></th>
+            	<th><?php echo t('Rekryterare');?></th>
             	<th></th>
             </tr>
             <tr>
-            	<td><?php echo t('Totala antalet användare');?></td>
-               	<td><?php echo t('Aktiva users - antal aktiva rekyterare');?></td>
-            	<td><?php echo t('Aktiva rekryterare');?></td>
+            	<td><?php echo count($dataProviderUsersToday['user']) ;?></td>
+               	<td><?php echo (count($dataProviderUsersToday['user']) - count($dataProviderUsersToday['recruiter'])) ;?></td>
+            	<td><?php echo count($dataProviderUsersToday['recruiter']) ;?></td>'
+
             	<td></td>
             </tr>
         </tbody>

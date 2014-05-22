@@ -283,6 +283,11 @@ class SiteController extends Controller
                 }else{
                     $roll=Yii::t("t","publicerare");
                 }
+                //Save the login date in the DB
+                $user = User::model()->findByPk(Yii::app()->user->id);
+                $user->login_date = date('Y-m-d');
+                $user->save();
+                //
                 $message = Yii::t("t",'Välkommen')." " . app()->user->name." ";
                 $message .= Yii::t("t","du är inloggad som ");
                 $message .= $roll;

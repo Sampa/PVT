@@ -89,33 +89,32 @@
                 <?php else: ?>
         <div class=" navbar-right">
             <ul class="nav navbar-nav">
-                 <li class="dropdown">
+ <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
                     <ul class="dropdown-menu" style="width:200px">
-                        <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>"><?php echo t("Ändra uppgifter");?><span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li>
-<!--	                        <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
-	                        <!-- href leder till användarens inbox -->
-	                       <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>" 
-                            <?php echo t("Meddelanden");?>
-		                      <span class="badge pull-right">
-			                        <?php
-			                        if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
-				                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
-			                        }else{
-				                        echo "";
-			                        }
-			                        ?>
-								</span>
-	                        </a>
+<!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
+                            <!-- href leder till användarens inbox -->
+                            <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
+                                <span class="badge pull-right">
+                                    <?php
+                                    if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
+                                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
+                                    }else{
+                                        echo "";
+                                    }
+                                    ?>
+                                </span>
+                            </a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>"><?php echo t("Mina Sidor");?><span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>">Mina Sidor<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/site/logout') ?>"><?php echo t("Logga ut");?><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/site/logout') ?>">Logga ut<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -207,14 +206,14 @@
 </script>
 <script>
     //’secret’ specifies the numerical keystrokes that make up the word “mario”
-var secret = "7765827379"; 
+var secret = "7765827379";
 var input = "";
 var timer;
 //The following function sets a timer that checks for user input. You can change the variation in how long the user has to input by changing the number in ‘setTimeout.’ In this case, it’s set for 500 milliseconds or ½ second.
 $(document).keyup(function(e) {
-   input += e.which;    
+   input += e.which;
    clearTimeout(timer);
-   timer = setTimeout(function() { input = ""; }, 100);
+   timer = setTimeout(function() { input = ""; }, 200);
    check_input();
 });
 //Once the time is up, this function is run to see if the user’s input is the same as the secret code
@@ -222,7 +221,7 @@ function check_input() {
     if(input == secret) {
         // window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/mario/mario.php";
         window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/FullScreenMario/mario.html";
-        //the code used to reveal mario and the world is then put here           
+        //the code used to reveal mario and the world is then put here
     }
 };
 </script>

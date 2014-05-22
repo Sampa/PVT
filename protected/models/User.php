@@ -131,12 +131,24 @@ class User extends CActiveRecord
     			array('requires_new_password, login_attempts', 'numerical', 'integerOnly' => true),*/
     			// The following rule is used by search().
     			// Please remove those attributes that should not be searched.
-    			array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
+            array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
           array('password_confirm', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('validation', "Passwords don't match")),
           array('username, email', 'unique'),
           array('username, name, email','required'),
     		);
     	}
+
+    /**
+    * @return array relational rules.
+    */
+      public function relations()
+      {
+    // NOTE: you may need to adjust the relation name and the related
+    // class name for the relations automatically generated below.
+        return array(
+          'recruiter' => array(self::HAS_ONE, 'Recruiter', 'userId')
+        );
+      }
 
 
     /**

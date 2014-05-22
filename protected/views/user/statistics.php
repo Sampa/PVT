@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <h3><?php echo Yii::t('t','Statistik');?></h3>
+            <h3><?php echo Yii::t('t','Statistik över CV-Pages');?></h3>
         </div>
 
 	<table class="table table-bordered table-condensed table-hover">
@@ -18,6 +18,7 @@ $this->breadcrumbs=array(
             	<th><?php echo Yii::t('t','Totalt antal användare');?></th>
                 <th><?php echo Yii::t('t','Publicerare');?></th>
                 <th><?php echo Yii::t('t','Rekryterare');?></th>
+                <th></th>
             </tr>
             <tr>
             	<td><?php echo $dataProvider->getTotalItemCount()-1;?></td>
@@ -28,15 +29,16 @@ $this->breadcrumbs=array(
         </tbody>
         <tbody>
             <tr>
-            	<th><?php echo t('Alla aktiva användare');?></th>
-               	<th><?php echo t('Aktiva users - antal aktiva rekyterare');?></th>
-            	<th><?php echo t('Aktiva rekryterare');?></th>
+            	<th><?php echo t('Användare som loggat in idag totalt');?></th>
+               	<th><?php echo t('Publicerare');?></th>
+            	<th><?php echo t('Rekryterare');?></th>
             	<th></th>
             </tr>
             <tr>
-            	<td><?php echo t('Totala antalet användare');?></td>
-               	<td><?php echo t('Aktiva users - antal aktiva rekyterare');?></td>
-            	<td><?php echo t('Aktiva rekryterare');?></td>
+            	<td><?php echo count($dataProviderUsersToday['user']) ;?></td>
+               	<td><?php echo (count($dataProviderUsersToday['user']) - count($dataProviderUsersToday['recruiter'])) ;?></td>
+            	<td><?php echo count($dataProviderUsersToday['recruiter']) ;?></td>'
+
             	<td></td>
             </tr>
         </tbody>
@@ -91,13 +93,13 @@ $this->breadcrumbs=array(
 </div>
 
 <div>
-    <h3> <?php echo Yii::t('t','Antal publicerare jämfört med antal rekryterare');?> </h3>
-    <div id="searchWordsDonut" style="height: 300px;"></div>
+    <h3> <?php echo Yii::t('t','Antal inloggade användare idag');?> <?php echo date('Y-m-d') ?> </h3>
+    <div id="usersToday" style="height: 300px;"></div>
 </div>
 
 <div>
-    <h3> <?php echo Yii::t('t','Antal användare totalt. 2008-2013');?> </h3>
-    <div id="exampelchart" style="height: 300px;"></div>
+    <h3> <?php echo Yii::t('t','Antal registrerade publicerare jämfört med antal rekryterare');?> </h3>
+    <div id="searchWordsDonut" style="height: 300px;"></div>
 </div>
 
 <script>
@@ -113,7 +115,8 @@ new Morris.Donut({
 new Morris.Bar({
   element: 'usersBar',
   data: [
-    { y: '2014', a: <?php echo $dataProviderRecProcessSuccesful->getTotalItemCount();?>,
+    { y: '',
+    a: <?php echo $dataProviderRecProcessSuccesful->getTotalItemCount();?>,
     b: <?php echo $dataProviderRecProcessOther->getTotalItemCount();?>,
     c: <?php echo $dataProviderRecProcessFailed->getTotalItemCount();?> },
   ],
@@ -122,26 +125,18 @@ new Morris.Bar({
   labels: ['Lyckades via CV-Pages', 'Lyckades på annat sätt', 'Misslyckade']
 });
 
-new Morris.Line({
-  // ID of the element in which to draw the chart.
-  element: 'exampelchart',
-  // Chart data records -- each entry in this array corresponds to a point on
-  // the chart.
+new Morris.Bar({
+  element: 'usersToday',
   data: [
-    { year: '2008', value: 20 },
-    { year: '2009', value: 38 },
-    { year: '2010', value: 52 },
-    { year: '2011', value: 90 },
-    { year: '2012', value: 140 },
-    { year: '2013', value: 232 }
+    { y: "" ,
+    a: <?php echo (count($dataProviderUsersToday['user']) - count($dataProviderUsersToday['recruiter'])); ?>,
+    b: <?php echo count($dataProviderUsersToday['recruiter']); ?>},
   ],
-  // The name of the data record attribute that contains x-values.
-  xkey: 'year',
-  // A list of names of data record attributes that contain y-values.
-  ykeys: ['value'],
-  // Labels for the ykeys -- will be displayed when you hover over the
-  // chart.
-  labels: ['Värde']
+  xkey: 'y',
+  ykeys: ['a', 'b'],
+  labels: ['Publicerare', 'Rekryterare']
 });
+
+
 
 </script>

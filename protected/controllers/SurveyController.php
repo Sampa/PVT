@@ -31,7 +31,7 @@ class SurveyController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','admin'),
+				'actions'=>array('create','update','admin','delete','sendOutSurveys'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,7 +43,13 @@ class SurveyController extends Controller
 			),
 		);
 	}
+    public function actionSendOutSurveys(){
+        $survey = Survey::model()->findByPk($_POST['surveyId']);
+        foreach($_POST['ids'] as $key=>$id){
+            $cv = Cv::model()->findByPk($id);
 
+        };
+    }
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -157,8 +163,11 @@ class SurveyController extends Controller
 	{
 		if (Yii::app()->request->isPostRequest) {
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
-
+			$model = $this->loadModel($id);
+            foreach($model->surveyQuestions as $key=>$question){
+                $question->delete();
+            }
+            $model->delete();
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if (!isset($_GET['ajax'])) {
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

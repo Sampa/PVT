@@ -186,12 +186,12 @@ $geoid=$model->geographicAreaID;
                     <h4 class="modal-title" id="mySurveyLabel"><?php echo Yii::t("t","Skicka ut enkät till:");?></h4>
                 </div>
                 <div class="modal-body" >
-                    Här är alla cvn du valt att skicka enkäten:
+                   <?php echo t("Här är alla cvn du valt att skicka enkäten till:");?>
                     <ul id="modalText"></ul>
                 </div>
                 <div class="modal-footer">
-                    <button style="max-width:200px;" class="pull-left btn btn-primary btn dropdown-toggle" type="button" data-toggle="dropdown">
-                        <span id="surveyNameButton"><?php echo Yii::t("t","Välj enkät");?></span>
+                    <button style="" class="pull-left btn btn-primary btn dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span id="surveyNameButton" title=""><?php echo Yii::t("t","Välj enkät");?></span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -206,7 +206,7 @@ $geoid=$model->geographicAreaID;
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
                         <?php echo Yii::t("t", "Ångra!");?>
                     </button>
-                    <button type="button" class="btn btn-success">
+                    <button id="sendSurveyButton" type="button" class="btn btn-success">
                         <?php echo Yii::t("t", "Skicka");?>
                     </button>
 
@@ -254,7 +254,20 @@ $geoid=$model->geographicAreaID;
         }, 500);
     });
 
-
+    $("#sendSurveyButton").on("click",function(){
+        var listOfIds = {};
+        $("#modalText").children("li").each(function(index){
+           listOfIds[index] = $(this).attr("id");
+        });
+        $.ajax({
+            type:"POST",
+            url: "/survey/sendOutSurveys",
+            data:{
+                "ids":listOfIds,
+                "surveyId":$("#surveyNameButton").attr("title")
+            }
+        });
+    });
     $("#openModalBtn").on("click", function(){
         $("#myQuitTextSuccess").hide();
         $("#salaryErrorText").hide();
@@ -320,7 +333,6 @@ $geoid=$model->geographicAreaID;
                     url: '/hotlist/delete/'+cvId
                 }).done(function(data){
                     window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + processId;
-                    console.log("Klar");
                 });
             }
         });
@@ -331,10 +343,9 @@ $geoid=$model->geographicAreaID;
         $('input[name="switchbutton"]').each(function(){
             var cvId = $(this).attr('id');
             var isO = $(this).prop('checked');
-            console.log(this);
             var processId = <?php echo $model->id?>;
             if(isO){
-                $('#modalText').append("<li>" +  $(this).attr('data-title')+ "</li>");
+                $('#modalText').append("<li id='"+cvId+"'>" +  $(this).attr('data-title')+ "</li>");
             }
         });
     });

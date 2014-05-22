@@ -131,7 +131,7 @@ class User extends CActiveRecord
     			array('requires_new_password, login_attempts', 'numerical', 'integerOnly' => true),*/
     			// The following rule is used by search().
     			// Please remove those attributes that should not be searched.
-    			array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
+            array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
           array('password_confirm', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('validation', "Passwords don't match")),
           array('username, email', 'unique'),
           array('username, name, email','required'),

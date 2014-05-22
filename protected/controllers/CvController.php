@@ -471,10 +471,10 @@ class CvController extends Controller
             $city = isset($_POST['geoCity']) && $_POST['geoCity'] != "default" ? $_POST['geoCity'] : null;
             if(is_null($country) && is_null($region) && is_null($city))
                 return $criteria;
+
             $listOfCvPks  = $this->getGeoModels($country,$region,$city);
             $criteria->addInCondition("id",$listOfCvPks);
             //the code to add conditions based on the models/objects returned above
-
             foreach($listOfCvPks as  $index=>$pk){
                 $criteria->compare("id",$pk,true,"OR");
             }

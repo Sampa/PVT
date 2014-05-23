@@ -6,6 +6,6 @@ $config=dirname(__FILE__).'unit/RemoteConnectTest.php';
 //$_SERVER['REQUEST_URI'] = 'index-test.php';
 
 //require_once($yiit);
-require_once(dirname(__FILE__).'/WebTestCase.php');
+//require_once(dirname(__FILE__).'/WebTestCase.php');
 
 Yii::createWebApplication($config);

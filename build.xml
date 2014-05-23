@@ -25,7 +25,7 @@
 
      <echo message="Running unit tests with PHPUnit" />
          <exec executable="phpunit" failonerror="true">
-            <arg value="tests/unit/RemoteConnectTest.php"/>
+            <arg value="tests/unit/"/>
         </exec>
 
 

@@ -5,7 +5,8 @@
 
 <?php
 $this->breadcrumbs=array(
-	t('Enkäter')=>array('index'),
+    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    t('Enkäter')=>array('admin'),
 	$model->title=>array('view','id'=>$model->id),
 	t('Update'),
 );

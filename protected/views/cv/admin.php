@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
     );
 ?>
 <div class="page-header">
-        <h1><?php echo Yii::t("t",'Dina publicerade CV:n');?></h1>
+        <h1><?php echo Yii::t("t",'Mina publicerade CV:n');?></h1>
 </div>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
@@ -29,7 +29,6 @@ $this->breadcrumbs=array(
 		'buttons'=>array(
 			'class'=>'TbButtonColumn',
             'htmlOptions'=>array('style'=>'width: 250px'),
-            'viewButtonIcon'=>'glyphicon glyphicon-eye-open',
             'deleteButtonIcon'=>'glyphicon glyphicon-trash',
 //            'updateButtonIcon'=>'glyphicon glyphicon-eye-open',
         ),

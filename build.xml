@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="name-of-project" default="build">
  <target name="build"
-   depends="prepare,phpunit"/>
+   depends="prepare,php,phpunit"/>
 
  <target name="build-parallel"
-   depends="prepare,phpunit"/>
+   depends="prepare,php,phpunit"/>
 
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/build/api"/>
@@ -21,16 +21,15 @@
   <mkdir dir="${basedir}/build/phpdox"/>
  </target>
 
+  <target name="php" description="Run unit tests with PHPUnit">
+        <echo message="HEEEEEEJJ" />
+
+  </target>
+
  <target name="phpunit" description="Run unit tests with PHPUnit">
      <echo message="Running unit tests with PHPUnit" />
          <exec executable="phpunit" failonerror="true">
-            <!--<arg value="tests/unit/RemoteConnectTest.php"/>-->
-             <testsuites>
-             <testsuite name="My Test Suite">
-                 <directory>/tests/unit</directory>
-                 <file>RemoteConnectTest.php</file>
-             </testsuite>
-         </testsuites>
+            <arg value="tests/unit/RemoteConnectTest.php"/>
         </exec>
  </target>
 

@@ -5,7 +5,7 @@
     $this->breadcrumbs = array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
         t('Enkäter')=>array('admin'),
-        Yii::t("t",'Enkät'),
+        Yii::t("t",'Ny Enkät'),
     );
     $recruiter=Recruiter::model()->findByPk(Yii::app()->user->id);
     $beenToSurveyPage=$recruiter->beenToSurveyPage;
@@ -105,7 +105,7 @@
 			//skicka enkätobjektet till SurveyController actionCreate.php
 			$.ajax({
 				type:"post",
-				url:"/survey/create",
+				url:"<?php echo Yii::app()->baseUrl; ?>" + "/survey/create",
 				data:formInfo,
 				dataType:"json",
 				success:function(data){

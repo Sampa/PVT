@@ -1,5 +1,5 @@
 <?php
-
+require_once('../../yii/framework/yii.php');
 require_once('../../protected/models/Hotlist.php');
 
 class HotlistTest extends PHPUnit_Framework_TestCase

@@ -1,5 +1,5 @@
 <?php
-
+require_once('../../yii/framework/yii.php');
 require_once('./../../protected/models/Cv.php');
 require_once('/../../yii/framework/test/CDbTestCase.php');
 class CvTest extends CDbTestCase

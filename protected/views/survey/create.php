@@ -105,7 +105,7 @@
 			//skicka enkätobjektet till SurveyController actionCreate.php
 			$.ajax({
 				type:"post",
-				url:"/survey/create",
+				url:"<?php echo Yii::app()->baseUrl; ?>" + "/survey/create",
 				data:formInfo,
 				dataType:"json",
 				success:function(data){

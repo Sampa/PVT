@@ -262,7 +262,7 @@ $geoid=$model->geographicAreaID;
 
             $.ajax({
                 type:"POST",
-                url: "/recruitmentprocess/commentUpdate",
+                url: "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/commentUpdate",
                 data:{"recId":recId, "comment":comment}
             });
         }, 500);
@@ -275,7 +275,7 @@ $geoid=$model->geographicAreaID;
      });
         $.ajax({
             type:"POST",
-            url: "/survey/sendOutSurveys",
+            url: "<?php echo Yii::app()->baseUrl; ?>" + "/survey/sendOutSurveys",
             dataType:"json",
             data:{
                 "ids":listOfIds,

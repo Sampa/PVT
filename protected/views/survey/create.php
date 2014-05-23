@@ -105,7 +105,7 @@
 			//skicka enkätobjektet till SurveyController actionCreate.php
 			$.ajax({
 				type:"post",
-				url:"/Group1/survey/create",
+				url:"/survey/create",
 				data:formInfo,
 				dataType:"json",
 				success:function(data){

@@ -26,7 +26,10 @@
  * @property ReportedCv[] $reportedCvs
  * @property mixed        hasGeoArea
  */
-require_once('/../../yii/framework/yii.php');
+
+//require_once('yii/framework/yii.php');
+//require_once('../../yii/framework/yii.php');
+//require_once(Yii::app()->basePath . '../../yii/framework/yii.php');
 class Cv extends CActiveRecord
 {
     /*

@@ -2,8 +2,8 @@
 
 // change the following paths if necessary
 echo getcwd();
-die();
-require_once('/yii/framework/yii.php');
+echo "Printed paths";
+require_once('yii/framework/yii.php');
 $yiit=dirname(__FILE__).'/../yii/framework/yiit.php';
 $config=dirname(__FILE__).'/unit/';
 //$_SERVER['REQUEST_URI'] = 'index-test.php';

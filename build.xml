@@ -27,9 +27,7 @@
          <exec executable="phpunit" failonerror="true">
             <arg value="tests/unit/RemoteConnectTest.php"/>
         </exec>
-         <exec executable="phpunit" failonerror="true">
-            <arg value="tests/unit/CvTest.php"/>
-         </exec>
+
 
   </target>
              

@@ -15,11 +15,74 @@ $this->breadcrumbs=array(
     <?php else: ?>
         <div class="horizontal-form">
 
-<form class="form" role="search" name="search" method="post" >
+<form class="form" role="search" name="search" method="post">
 	<div class="form-group">
         <label for="searchbox"><?php echo Yii::t("t","Valfria sökord");?></label>
 		<input id="searchbox" type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
-	</div>
+	    <div class "form group">
+            <span class="glyphicon glyphicon-info-sign infoBox"></span>
+        </div>
+    </div>
+    <div class "form group col-md-6" id = "metaTagInfo">
+        <table class="table table-bordered table-condensed table-hover">
+            <tbody>
+                <tr>
+                    <th><?php echo Yii::t('t','Funktion');?></th>
+                    <th><?php echo Yii::t('t','Metatag');?></th>
+                    <th><?php echo Yii::t('t','Syntax på inmatning');?></th>
+                    <th><?php echo Yii::t('t','Extra info');?></th>
+                </tr>
+                 <tr>                  
+                    <td> <?php echo t("Sökning på flera enskilda ord utan att kräva att alla ord finns i CV:et.");?> </td>
+                    <td> OR</td>
+                    <td> <?php echo t('Ord1 OR Ord2 OR ord3 ...');?> </td>
+                    <td> <?php echo t("I vanliga fall visas CV:n som har alla ord. Taggen gör att den visar alla som innehåller något av orden.");?> </td>
+                </tr>
+                <tr>                  
+                    <td> <?php echo t("Gör en sökning på en fras.");?> </td>
+                    <td> ""</td>
+                    <td> <?php echo t('"Fras"');?> </td>
+                    <td> <?php echo t("Gör en sökning på en hel fras istället för på enskilda ord.");?> </td>
+                </tr>
+                <tr>                  
+                    <td> <?php echo t("Gör en sökning på ett eller flera nyckelord");?> </td>
+                    <td> tag:</td>
+                    <td> tag1,tag2,tag3,tag4...</td>
+                    <td> <?php echo t('Separera taggar med "," tecken för att söka på flera nyckelord.');?> </td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker en viss anställningsform.");?> </td>
+                    <td> employment: </td>
+                    <td> consult OR employment </td>
+                    <td> <?php echo t("Finns bara två typer av inmatning.");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visar alla CV:n som laddats upp ett specifikt datum.");?> </td>
+                    <td> date: </td>
+                    <td> YYYY-MM-DD </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker jobb i en viss stad eller kommun.");?> </td>
+                    <td> city: </td>
+                    <td> <?php echo t("Namn på staden"); ?> </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker jobb i en viss region.");?> </td>
+                    <td> region: </td>
+                    <td> <?php echo t("Namn på regionen"); ?> </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker jobb i ett visst land.");?> </td>
+                    <td> country: </td>
+                    <td> <?php echo t("Namn på landet"); ?> </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="form-group row col-md-6"  style="margin-left:-15px;margin-top:0px;margin-bottom: 15px;">
         <label for="searchTags"><?php echo Yii::t("t","Nyckelord");?></label>
         <input class="form-control" name="tags" id="searchTags" type="text"/>
@@ -107,13 +170,22 @@ if($resultCount< 1):?>
                 </div>
             </div>
 <script>
+    $(".infoBox").on("click", function(event){
+        if($("#metaTagInfo").is(":visible"))
+            $("#metaTagInfo").hide();
+        else
+            $("#metaTagInfo").fadeIn("slow");
+
+    });     
+</script>
+<script>
     function scrollToResults(i,data){
         $('html, body').animate({
                 scrollTop: $("#results").offset().top
             }, 2000);
     }
 jQuery(document).ready(function ($) {
-
+    $("#metaTagInfo").hide();
     jQuery("#searchTags").select2({
         tags:<?php echo json_encode(Tag::getTagsAsString());?>
     });

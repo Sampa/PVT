@@ -43,13 +43,28 @@ class SurveyController extends Controller
 			),
 		);
 	}
-    public function actionSendOutSurveys(){
-        $survey = Survey::model()->findByPk($_POST['surveyId']);
-        foreach($_POST['ids'] as $key=>$id){
-            $cv = Cv::model()->findByPk($id);
+	public function actionSendOutSurveys(){
 
-        };
-    }
+		$survey = Survey::model()->findByPk($_POST['surveyId']);
+		if(!$survey){
+			echo json_encode(array("status"=>"fail","message"=>t("Välj en enkät att skicka ut till dina valda CV:n")));
+			return;
+		}
+		if(isset($_POST['ids'])){
+			foreach($_POST['ids'] as $key=>$id){
+				$cv = Cv::model()->findByPk($id);
+				$candidateForSurvey= new SurveyCandidate;
+				$candidateForSurvey->userID=$cv->publisherId;
+				$candidateForSurvey->surveyID=$survey->id;
+				$candidateForSurvey->answered=0;
+				$candidateForSurvey->save();
+			};
+			echo json_encode(array("status"=>"success","message"=>t("Din enkät är skickad")));
+		}else{
+			echo json_encode(array("status"=>"fail","message"=> t("Välj minst ett CV att skicka din enkät till")));
+		}
+
+	}
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed

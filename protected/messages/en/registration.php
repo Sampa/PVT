@@ -17,6 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  ' Error.Your account could not be activated,please repeat the registration process.' => '',
-  ',welcome! Your account has been activated.Now you can log in.' => '',
+  ' Något gick fel. Ditt konto kunde inte aktiveras. Var vänlig gör om registreringen.' => '',
+  ', välkommen! Ditt konto är aktiverat och du kan nu logga in.' => '',
+  ' Error.Your account could not be activated,please repeat the registration process.' => '@@@@',
+  ',welcome! Your account has been activated.Now you can log in.' => '@@@@',
 );

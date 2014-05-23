@@ -17,11 +17,17 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Error,could not reset your password.' => '',
+  'Det gick inte att skicka meddelandet med återställningslänken.' => '',
+  'Ditt lösenord har återställts. Logga in med ditt nya lösenord.' => '',
+  'Fel, din kontoinformation kunde inte hittas. Återställningslänken har förmodligen redan använts eller gått ut. Vänlig försök igen.' => '',
+  'Fel, kunde inte återställa ditt lösenord.' => '',
+  'Finns ingen användare med denna e-post.' => '',
+  'Återställningslänk har skickats. Kontrollera din e-post.' => '',
+  'Error,could not reset your password.' => '@@@@',
   'Error,your account information was not found.
-                Your reset token has probably been used or  expired.Please repeat the password reset process.' => '',
-  'No user with this email in our records' => '',
-  'We could not email you the password reset link' => '',
-  'We have sent you a reset link,please check your email inbox.' => '',
-  'Your password has been reset.Log in with your new password.' => '',
+                Your reset token has probably been used or  expired.Please repeat the password reset process.' => '@@@@',
+  'No user with this email in our records' => '@@@@',
+  'We could not email you the password reset link' => '@@@@',
+  'We have sent you a reset link,please check your email inbox.' => '@@@@',
+  'Your password has been reset.Log in with your new password.' => '@@@@',
 );

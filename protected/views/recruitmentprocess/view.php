@@ -10,9 +10,14 @@ $this->breadcrumbs=array(
     $model->title,
 );
 ?>
+
+<div id="Congratz" style="display: none" class="alert alert-success">
+    <strong><h3><?= t("Enkät skickad!")?></h3>
+</div>
 <div class="page-header">
     <h1><?php echo $model->title; ?></h1>
 </div>
+
 <div class="row">
     <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("company").":</B>";?></div>
     <div class="col-xs-6 col-sm-6"><?php echo $model->company; ?></div>
@@ -186,6 +191,15 @@ $geoid=$model->geographicAreaID;
                     <h4 class="modal-title" id="mySurveyLabel"><?php echo Yii::t("t","Skicka ut enkät till:");?></h4>
                 </div>
                 <div class="modal-body" >
+                    <div id="noCv" style="color:red; display:none"> 
+                        <strong>
+                        </strong>
+                     </div>
+                    <div id="noSurvey" style="color:red; display:none">
+                        <strong>
+                            <?= t("Välj en enkät!");?>
+                        </strong>
+                    </div>
                    <?php echo t("Här är alla cvn du valt att skicka enkäten till:");?>
                     <ul id="modalText"></ul>
                 </div>
@@ -257,17 +271,27 @@ $geoid=$model->geographicAreaID;
     $("#sendSurveyButton").on("click",function(){
         var listOfIds = {};
         $("#modalText").children("li").each(function(index){
-           listOfIds[index] = $(this).attr("id");
-        });
+         listOfIds[index] = $(this).attr("id");
+     });
         $.ajax({
             type:"POST",
             url: "/survey/sendOutSurveys",
+            dataType:"json",
             data:{
                 "ids":listOfIds,
                 "surveyId":$("#surveyNameButton").attr("title")
             }
+        }).done(function(data){
+            if(data.status=="success"){
+                $('#mySurvey').modal('hide');
+                $('#Congratz').show().delay(2001).fadeOut("slow");
+            }else if(data.status=="fail"){
+                $('#noCv').html(data.message).show().delay(2001).fadeOut("slow");
+            }
         });
+
     });
+
     $("#openModalBtn").on("click", function(){
         $("#myQuitTextSuccess").hide();
         $("#salaryErrorText").hide();

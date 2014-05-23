@@ -18,6 +18,8 @@
  */
 return array (
   'Account activation' => '',
-  'Error.Activation email could not be sent.Please register again.' => '',
-  'Please check your email inbox for the activation link.It is valid for 24 hours.' => '',
+  'Något gick fel. E-post med aktiveringslänk kunde inte skickas. Var vänlig gör om registreringen.' => '',
+  'Vänligen kontrollera din e-post efter ett mail med en aktiveringslänk. Den är giltig i 24 timmar.' => '',
+  'Error.Activation email could not be sent.Please register again.' => '@@@@',
+  'Please check your email inbox for the activation link.It is valid for 24 hours.' => '@@@@',
 );

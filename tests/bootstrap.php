@@ -1,6 +1,8 @@
 <?php
 
 // change the following paths if necessary
+echo getcwd();
+die();
 require_once('/yii/framework/yii.php');
 $yiit=dirname(__FILE__).'/../yii/framework/yiit.php';
 $config=dirname(__FILE__).'/unit/';

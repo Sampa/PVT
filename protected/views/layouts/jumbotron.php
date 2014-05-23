@@ -33,6 +33,7 @@
 				$standardItems = array(
 					array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
 					array('label' => Yii::t("t",' Sökning'), 'url'=>array('/cv/')),
+                    array('label' => Yii::t("t",'Hjälp'), 'url'=>array('site/page/helpguide')),
 				);
                 //slå ihop custom items med de som alltid syns
                 $items = array_merge($standardItems,$items);
@@ -117,6 +118,7 @@
                 </li>
             </ul>
 
+
                        <!--  <span class="navbar-brand">
                             <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
                                 <small><?php echo Yii::t("t","Logga ut");?></small>
@@ -158,21 +160,21 @@
             <div class="container">
                 <div class="row">
                     <br>
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <center>
                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains"></a>
                             <br>
                             <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></a></h5>
                         </center>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <center>
                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="..."></a>
                             <br>
                             <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></a></h5>
                         </center>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <center>
                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="..."></a>
                             <br>

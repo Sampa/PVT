@@ -82,6 +82,8 @@
                 'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
                 'size'=>TbHtml::BUTTON_SIZE_LARGE,
             )); ?>
+
+         
 		</div>
     <?php $this->endWidget(); ?>
 </div><!-- form -->

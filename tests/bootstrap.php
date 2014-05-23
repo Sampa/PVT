@@ -1,7 +1,7 @@
 <?php
 
 // change the following paths if necessary
-require_once('/../yii/framework/yii.php');
+require_once('/yii/framework/yii.php');
 $yiit=dirname(__FILE__).'/../yii/framework/yiit.php';
 $config=dirname(__FILE__).'/unit/';
 //$_SERVER['REQUEST_URI'] = 'index-test.php';

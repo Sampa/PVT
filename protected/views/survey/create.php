@@ -73,7 +73,7 @@
 	$("#saveSurvey").on("click",function(){
 		var type,title;
 		/*be användaren om en titel*/
-		bootbox.prompt("<?php echo Yii::t("t","Namnge din enkät (kommer vara synligt för *något ska stå här*):");?>", function(text) {
+		bootbox.prompt("<?php echo Yii::t("t","Namnge din enkät (kommer bara synas för dig");?>", function(text) {
 			//skit i resten om användaren inte anger en titel
 			if (text=== null)
 				return;

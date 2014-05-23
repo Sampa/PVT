@@ -8,26 +8,16 @@ $this->breadcrumbs=array(
     Yii::t('t', 'Hem') => Yii::app()->getHomeUrl(),
 	Yii::t('t','Rekryteringsprocesser'),
 );
-
-$this->menu=array(
-	array('label'=>'Create Recruitmentprocess','url'=>array('create')),
-	array('label'=>'Manage Recruitmentprocess','url'=>array('admin')),
-
-);
-
 ?>
-
 <div class="page-header">
     <h1><?php echo Yii::t('t','Rekryteringsprocesser');?></h1>
 
   <div align="right">
       <a href="<?php echo Yii::app()->baseUrl;?>/recruitmentprocess/create">
-      <span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Lägg till ny process");?>
+          <span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Lägg till ny process");?>
       </a>
-
     </div>
 </div>
-
     <div class="panel panel-info">
         <!-- Default panel contents -->
         <div class="panel-heading">
@@ -35,7 +25,6 @@ $this->menu=array(
         </div>
 
         <table class="table table-bordered table-condensed table-hover">
-
             <tbody>
                 <tr>
                     <th><?php echo Yii::t('t','Startdatum');?></th>

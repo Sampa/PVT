@@ -1,4 +1,5 @@
 <?php
+require_once('/../../../../../framework/test/CDbTestCase.php');
 
 class CommentTest extends CDbTestCase
 {

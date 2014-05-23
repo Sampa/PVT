@@ -94,8 +94,6 @@
                     <ul class="dropdown-menu" style="width:200px">
                         <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Progression<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                        <li class="divider"></li>
                         <li>
 <!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
                             <!-- href leder till användarens inbox -->

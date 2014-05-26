@@ -14,7 +14,7 @@ class UserController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-		);
+			);
 	}
 
 	/**
@@ -28,19 +28,19 @@ class UserController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','statistics'),
 				'users'=>array('*'),
-			),
+				),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
-			),
+				),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
-			),
+				),
 			array('deny',  // deny all users
 				'users'=>array('*'),
-			),
-		);
+				),
+			);
 	}
 
 	/**
@@ -49,13 +49,13 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
-	    if(Yii::app()->user->id ==$id){
-		
+		if(Yii::app()->user->id ==$id){
+
 			$rmodel=Recruiter::model()->findByPk($id);
 			$this->render('view',array(
 				'model'=>$this->loadModel($id),
 				'rmodel'=>$rmodel
-			));
+				));
 		} else{
 			throw new CHttpException(400,t('Ogiltig begäran.'));
 		}
@@ -81,7 +81,7 @@ class UserController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
-		));
+			));
 	}
 
 	/**
@@ -96,7 +96,7 @@ class UserController extends Controller
 			$rmodel=Recruiter::model()->findByPk($id);
 
 			// Uncomment the following line if AJAX validation is needed
-		
+
 			if($rmodel){
 				$this->performAjaxValidation($model, $rmodel);
 			}
@@ -177,7 +177,7 @@ class UserController extends Controller
 			$dataProvider=new CActiveDataProvider('User');
 			$this->render('index',array(
 				'dataProvider'=>$dataProvider,
-			));
+				));
 		}
 		else{
 			throw new CHttpException(400,t('Ogiltig begäran'));
@@ -189,18 +189,23 @@ class UserController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['User'])) {
-			$model->attributes=$_GET['User'];
-		}
+		if (Yii::app()->user->id == 1){
+			$model=new User('search');
+			$model->unsetAttributes();  // clear any default values
+			if (isset($_GET['User'])) {
+				$model->attributes=$_GET['User'];
+			}
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+			$this->render('admin',array(
+				'model'=>$model,
+				));
+		}
+		else{
+			throw new CHttpException(400,t('Ogiltig begäran'));
+		}
 	}
 
-		public function actionStatistics()
+	public function actionStatistics()
 	{
 		if (Yii::app()->user->id == 1){
 
@@ -209,28 +214,28 @@ class UserController extends Controller
 			$dataProviderCv = new CActiveDataProvider('Cv');
 
 			$criteria = new CDbCriteria;
-        	$criteria->compare('login_date', date('Y-m-d'));
-        	$dataProviderUsersToday['user'] = User::model()->findAll($criteria);
-        	$criteria->addCondition('recruiter.userId IS NOT NULL');
-         	$dataProviderUsersToday['recruiter'] = User::model()->with("recruiter")->findAll($criteria);
+			$criteria->compare('login_date', date('Y-m-d'));
+			$dataProviderUsersToday['user'] = User::model()->findAll($criteria);
+			$criteria->addCondition('recruiter.userId IS NOT NULL');
+			$dataProviderUsersToday['recruiter'] = User::model()->with("recruiter")->findAll($criteria);
 
 
 			$dataProviderRecProcessSuccesful = new CActiveDataProvider('Recruitmentprocess',array(
 
 				'countCriteria'=>array(
-				'condition'=>'successfulProcess="CandidateFoundOp"',
-				)
-			));
+					'condition'=>'successfulProcess="CandidateFoundOp"',
+					)
+				));
 			$dataProviderRecProcessOther = new CActiveDataProvider('Recruitmentprocess',array(
 				'countCriteria'=>array(
-				'condition'=>'successfulProcess="OtherOpFound"',
-				)
-			));
+					'condition'=>'successfulProcess="OtherOpFound"',
+					)
+				));
 			$dataProviderRecProcessFailed = new CActiveDataProvider('Recruitmentprocess',array(
 				'countCriteria'=>array(
-				'condition'=>'successfulProcess="NoCandidateFoundOp"',
-				)
-			));
+					'condition'=>'successfulProcess="NoCandidateFoundOp"',
+					)
+				));
 
 			$this->render('statistics',array(
 				'dataProvider'=>$dataProvider,
@@ -240,7 +245,7 @@ class UserController extends Controller
 				'dataProviderRecProcessSuccesful'=>$dataProviderRecProcessSuccesful,
 				'dataProviderRecProcessOther'=>$dataProviderRecProcessOther,
 				'dataProviderRecProcessFailed'=>$dataProviderRecProcessFailed,
-			));
+				));
 		}else {
 			throw new CHttpException(400,t('Ogiltig begäran'));
 		}

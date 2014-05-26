@@ -3,8 +3,6 @@
 <div class="row">
 
 	<div class="col-md-12 col-lg-12">
-	<?php echo 	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');?>
-
 		<?php
 		$viewedMessage->sender_id = $otherUserId;
 		$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(

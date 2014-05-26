@@ -4,13 +4,14 @@
 
 
 $this->breadcrumbs=array(
-	t('Användare');=>array('index'),
-	t('Hantera');,
+	t("Hem")=> Yii::app()->getHomeUrl(),
+		t("Användare")=>array('index'),
+		t("Hantera"),
 );
 
 $this->menu=array(
-	array('label'=>t('Lista användare');, 'url'=>array('index')),
-	array('label'=>t('Skapa användare');, 'url'=>array('create')),
+	array('label'=>t('Lista användare'), 'url'=>array('index')),
+	array('label'=>t('Skapa användare'), 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

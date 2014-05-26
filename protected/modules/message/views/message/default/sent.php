@@ -1,7 +1,4 @@
 <?php $this->pageTitle = Yii::app()->name . ' - ' . t("Skickade"); ?>
-<?php
-	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
-?>
 <div class="row col-md-12 col-lg-12">
 		<?php if ($messagesAdapter->data): ?>
 			<?php $form = $this->beginWidget('TbActiveForm', array(

@@ -15,7 +15,7 @@
 			?>
 			<div class="btn-group pull-right">
 				<a  class="chatHistoryToggle" data-toggle="collapse" data-parent="#accordion" href="#chatHistoryDiv">
-					<span class="glyphicon glyphicon-arrow-down"></span>
+					<span class="glyphicon glyphicon-arrow-up"></span>
 				</a>
 			</div>
 		</div>
@@ -32,16 +32,23 @@
 				?>
 			</ul>
 		</div>
-		<div class="panel-footer" style="min-height: 70px;">
-			<div class="col-md-11 col-lg-11 col-sm-8 row">
-				<span class="input-group input-group-btn">
-					<input class="form-control col-md-10 col-lg-10 col-sm-6"
-					       placeholder="Skriv ditt meddelande här..." name="Message[body]"
-					       id="Message_body<?= $to->id; ?>" type="text"/>
-					<input id="btn-chat<?= $to->id; ?>" data-url="<?=$this->createUrl("conversation/");?>" class="btn-warning btn sendChatMessage"
-					       name="<?= $to->getFullName(); ?>" value="<?=t("Skicka");?>" type="submit"/>
-				</span>
-			</div>
+		<div class="panel-footer " style="min-height: 70px;">
+            <div id="fields" class="col-md-12 padding:0px;margin:0px;">
+                <div class="col-md-10 col-lg-10 col-sm-8">
+                        <input class="form-control"
+                               placeholder="Skriv..."
+                               name="Message[body]"
+                               id="Message_body<?= $to->id; ?>"
+                               type="text"
+                               style="margin: 0px;"
+                        />
+                </div>
+                <input id="btn-chat<?= $to->id; ?>"
+                               data-url="<?=$this->createUrl("conversation/");?>"
+                               class="col-md-2 col-lg-2 col-sm-2
+                               btn-warning btn sendChatMessage"
+                               name="<?= $to->getFullName(); ?>" value="<?=t("Skicka");?>" type="submit"/>
+            </div>
 		</div>
 	</div>
 </div>

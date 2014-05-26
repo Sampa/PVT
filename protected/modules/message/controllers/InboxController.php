@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * Class InboxController
+ */
 class InboxController extends Controller
 {
 
-	public $defaultAction = 'inbox';
+    /**
+     * @var string
+     */
+    public $defaultAction = 'inbox';
 
-	public function accessRules()
+    /**
+     * @return array
+     */
+    public function accessRules()
 	{
         //@ means those who have logged in
         //* means all users
@@ -34,7 +43,10 @@ class InboxController extends Controller
 		);
 	}
 
-	public function actionInbox() {
+    /**
+     *
+     */
+    public function actionInbox() {
 		$messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
 		$pager = new CPagination($messagesAdapter->totalItemCount);
 		$pager->pageSize = 10;
@@ -45,8 +57,10 @@ class InboxController extends Controller
 		));
 	}
 
-
-	public function actiongetUnreadMessages(){
+    /**
+     * Hämtar de nya meddelandena för chatten (metoden körs typ varannan sekund via ett ajax scriptu
+     */
+    public function actiongetUnreadMessages(){
 
 		if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
 			$allUnreadMessages=Yii::app()->getModule('message')->getUnreadMessages(Yii::app()->user->getId());
@@ -57,18 +71,17 @@ class InboxController extends Controller
 					Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',
 					array("message"=>$message),
 					true
-					);
+				);
 			}
 			echo json_encode(array(
 				"status"=>"ok",
 				"html"=>$html,
 				"messageCount"=>Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())
-				));
-			
+            ));
 		}else{
 			echo json_encode(array(
 				"status"=>"fail",
-				));
+            ));
 		}
 	}
 }

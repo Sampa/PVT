@@ -1,12 +1,12 @@
  <?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
 <?php
-	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs',array('sent'=>$sent));
+//    $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs',array('sent'=>$sent));
 //	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation',array('sent'=>$sent,'inbox'=>$inbox));
-//?>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-10 col-xs-9 bhoechie-tab-container">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+//
+?>
+	<div class="row" style="min-width: 100%;">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
+			<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1 bhoechie-tab-menu">
 				<div class="list-group">
 					<a href="#" class="list-group-item active text-center">
 						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
@@ -45,7 +45,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 <script>
 	$(document).ready(function () {

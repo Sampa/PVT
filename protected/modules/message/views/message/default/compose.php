@@ -1,7 +1,4 @@
 <?php $this->pageTitle = Yii::app()->name . ' - ' . MessageModule::t("Compose Message"); ?>
-<?php
-	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs');
-?>
 <div class="row col-md-12 col-lg-12" style="min-height: 140px;">
 	<div class="form">
 		<?php if (Yii::app()->user->hasFlash('messageModule')): ?>

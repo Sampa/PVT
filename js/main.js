@@ -51,7 +51,7 @@
 /* kod som är här kan man ändra på */
 jQuery(document).ready(function(){
     $(".clickable").on('click',function(){
-        var iconElement = $(this).closest("tr").children("td:last-child");
+        var iconElement = $(this);//.closest("tr").children("td:last-child");
         if(iconElement.hasClass("down")){
             iconElement.removeClass("down");
             iconElement.removeClass("glyphicon-arrow-down");

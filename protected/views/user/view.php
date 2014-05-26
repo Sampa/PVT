@@ -4,11 +4,19 @@
 ?>
 
 <?php
+if(Yii::app()->user->id ==1){
 	$this->breadcrumbs=array(
 		t("Hem")=> Yii::app()->getHomeUrl(),
 		t("Användare")=>array('index'),
   		$model->name,
 	);
+}
+else{
+	$this->breadcrumbs=array(
+		t("Hem")=> Yii::app()->getHomeUrl(),
+  		$model->name,
+	);
+}
 ?>
 
 <div class = 'page-header'>

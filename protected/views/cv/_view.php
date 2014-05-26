@@ -16,7 +16,7 @@
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
 					<!-- En loop som Skriver ut regionerna -->
                     <?php
-                        foreach($data->area as $area){?>
+                        foreach($data->areas as $area){?>
                         <li>
                             <i class="glyphicon glyphicon-globe"></i>
                             <span><?= $area->country; ?>, </span>

@@ -297,48 +297,6 @@ class CvController extends Controller
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-    private function setSeveralSearchWordCriteria($criteria,$searchFieldContent){
-        $searchWords = explode(" ",$searchFieldContent);
-        foreach($searchWords as $index=>$searchWord){
-            $criteria->compare("pdfText",$searchWord,"OR");
-        }
-        return $criteria;
-    }
-	/**
-	 * Lists all CVs. If search form is submitted it lists only matching CV's.
-     * If no searchresults are found it reverts to default and shows all CV's
-	 */
-	public function actionIndex()
-	{
-		//CDBcriteria is a Yii class to make it easier to create advanced SQL queries
-		//alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
-		$criteria=new CDbCriteria;
-        $criteria = $this->setSortOrderCondition($criteria);
-        $criteria = $this->handleSearch($criteria);
-        //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
-		$dataProvider=new CActiveDataProvider('Cv',array(
-            "criteria"=>$criteria,
-
-        ));
-        //tillfälligt dölj de utan text
-        $criteria->compare("pathToPdf","pdf",true);
-		//hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
-		$resultCount = $dataProvider->getTotalItemCount();
-		if($resultCount<1)
-			$dataProvider->setCriteria(new CDbCriteria());
-		//vad vi ska skicka till vyn så vi kan använda/visa det där
-		$dataToView = array(
-			'dataProvider'=>$dataProvider,
-			'resultCount'=>$resultCount,
-		);
-		//om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
-		if( Yii::app()->request->isAjaxRequest){
-			$this->renderPartial('_searchview',$dataToView);
-		}else{
-			$this->render('index',$dataToView);
-		}
-	}
-
 	/**
 	 * Manages all models.
 	 */
@@ -382,6 +340,56 @@ class CvController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    private function setSeveralSearchWordCriteria($criteria,$searchFieldContent){
+        $searchWords = explode(" ",$searchFieldContent);
+        foreach($searchWords as $index=>$searchWord){
+            $criteria->compare("pdfText",$searchWord,"OR");
+        }
+        return $criteria;
+    }
+    /**
+     * Lists all CVs. If search form is submitted it lists only matching CV's.
+     * If no searchresults are found it reverts to default and shows all CV's
+     */
+    public function actionIndex()
+    {
+        //CDBcriteria is a Yii class to make it easier to create advanced SQL queries
+        //alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
+        $criteria=new CDbCriteria;
+        $criteria = $this->setSortOrderCondition($criteria);
+        $criteria = $this->handleSearch($criteria);
+        //sätt relational conditions för geographic areas
+        $criteria->with = array(
+            //areas är namnet på vår relation
+            'areas'=>array(
+                'together'=>true,//dont know whhy
+                'joinType'=>'INNER JOIN', //dont know why
+            ));
+        //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
+        $dataProvider=new CActiveDataProvider('Cv',array(
+            "criteria"=>$criteria,
+
+        ));
+        //tillfälligt dölj de utan text
+//        $criteria->compare("pathToPdf","pdf",true);
+        //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
+        $resultCount = $dataProvider->getTotalItemCount();
+        if($resultCount<1)
+            $dataProvider->setCriteria(new CDbCriteria());
+        //vad vi ska skicka till vyn så vi kan använda/visa det där
+        $dataToView = array(
+            'dataProvider'=>$dataProvider,
+            'resultCount'=>$resultCount,
+        );
+        //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
+        if( Yii::app()->request->isAjaxRequest){
+            $this->renderPartial('_searchview',$dataToView);
+        }else{
+            $this->render('index',$dataToView);
+        }
+    }
+
     /*
      * accepts a country shortname (possible those listed in views/cv/_allCountriesSelect.php
      * returns the geoGraphicArea models with that country set
@@ -471,33 +479,19 @@ class CvController extends Controller
         $city = isset($_POST['geoCity']) && $_POST['geoCity'] != "default" ? $_POST['geoCity'] : null;
         if(is_null($country) && is_null($region) && is_null($city))
             return $criteria;
-
-        //starta nytt kriteria objekt för att filtrera sökresultaten
-//        if(!is_null($country))
-//            $criteria->addSearchCondition("area.country",$country);
-        //if antalet tecken i $region är mer än noll så har man valt en region i sökformuläret
-//        if(!is_null($region))
-//            $criteria->addCondition("area.region=".$region);
-        //if antalet tecken i $city är mer än noll så har man valt en kommun/city i sökformuläret
-//        if(!is_null($city))
-//            $criteria->addCondition("area.city=".$city);
-//        $listOfCvPks  = $this->getGeoModels($country,$region,$city);
-//        $criteria->addInCondition("id",$listOfCvPks);
-//        //the code to add conditions based on the models/objects returned above
-//        foreach($listOfCvPks as  $index=>$pk){
-//            $criteria->compare("id",$pk,true,"OR");
-//        }
-//        //om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
-//        if(sizeof($listOfCvPks)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-//            $criteria->compare("geographicAreaId",0);
-//            $criteria->compare("geographicAreaId",1);
-//        }
+        if(!is_null($country))
+            $criteria->addSearchCondition("areas.country",$country);
+        if(!is_null($region))
+            $criteria->addSearchCondition("areas.region",$region);
+        if(!is_null($city))
+            $criteria->addSearchCondition("areas.city,",$city);
 		return $criteria;
 	}
 	/*
 	 * Den här hanterar ifall vi trycker på sökknappen
 	 */
 	private function handleSearch($criteria) {
+
 		if(isset($_POST['searchbox'])){//if you write in free text search field
 			if(strpos($_POST['searchbox'], ":")!==false){
 
@@ -506,84 +500,15 @@ class CvController extends Controller
 				$search = substr($_POST['searchbox'], $pos+1);
 
 				if($metaTag == "city"){
-					$criteria2 = new CDbCriteria();
-					$criteria2->addSearchCondition("city",$search);
-					$geoModels  = GeograficArea::model()->findAll($criteria2);
-	    			//initiera en tom array vi kan fylla i våra loopar nedan
-				    $relations =array();
-				    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
-					    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
-					    foreach($geo->cvAreas as $areaRelation){
-						    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
-						    if(!in_array($areaRelation->cvId,$relations))
-						        $relations[]= $areaRelation->cvId;
-					    }
-				    }
-			        $criteria->addInCondition("id",$relations);
-					//the code to add conditions based on the models/objects returned above
-
-					foreach($relations as  $index=>$pk){
-						$criteria->compare("id",$pk,true,"OR");
-					}
-					//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
-					if(sizeof($relations)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-						$criteria->compare("geographicAreaId",0);
-						$criteria->compare("geographicAreaId",1);
-					}
+					$criteria->addSearchCondition("areas.city",$search);
 					return $criteria;//city:city
 				}
 				elseif($metaTag == "region"){
-					$criteria2 = new CDbCriteria();
-					$criteria2->addSearchCondition("region",$search);
-					$geoModels  = GeograficArea::model()->findAll($criteria2);
-	    			//initiera en tom array vi kan fylla i våra loopar nedan
-				    $relations =array();
-				    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
-					    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
-					    foreach($geo->cvAreas as $areaRelation){
-						    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
-						    if(!in_array($areaRelation->cvId,$relations))
-						        $relations[]= $areaRelation->cvId;
-					    }
-				    }
-			        $criteria->addInCondition("id",$relations);
-					//the code to add conditions based on the models/objects returned above
-
-					foreach($relations as  $index=>$pk){
-						$criteria->compare("id",$pk,true,"OR");
-					}
-					//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
-					if(sizeof($relations)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-						$criteria->compare("geographicAreaId",0);
-						$criteria->compare("geographicAreaId",1);
-					}
-					return $criteria;//region:region
+                    $criteria->addSearchCondition("areas.region",$search);
+                    return $criteria;//region:region
 				}
 				elseif($metaTag == "country"){
-					$criteria2 = new CDbCriteria();
-					$criteria2->addSearchCondition("country",$search);
-					$geoModels  = GeograficArea::model()->findAll($criteria2);
-	    			//initiera en tom array vi kan fylla i våra loopar nedan
-				    $relations =array();
-				    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
-					    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
-					    foreach($geo->cvAreas as $areaRelation){
-						    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
-						    if(!in_array($areaRelation->cvId,$relations))
-						        $relations[]= $areaRelation->cvId;
-					    }
-				    }
-			        $criteria->addInCondition("id",$relations);
-					//the code to add conditions based on the models/objects returned above
-
-					foreach($relations as  $index=>$pk){
-						$criteria->compare("id",$pk,true,"OR");
-					}
-					//om inga cv:n hittades som matchade regionen vill vi tvinga fram ett "inga resultat hittades"
-					if(sizeof($relations)<1){ //put some impossible criteria to force $dataProvider to get a resultCount of 0
-						$criteria->compare("geographicAreaId",0);
-						$criteria->compare("geographicAreaId",1);
-					}
+                    $criteria->addSearchCondition("areas.country",$search);
 					return $criteria;//country:country
 				}
 				elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3

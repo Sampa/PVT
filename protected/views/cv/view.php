@@ -17,16 +17,16 @@ $this->breadcrumbs=array(
 </a>
 <!-- skriva ut alla areas -->
 <h3>Söker jobb i följande områden:</h3>
-<?php
-foreach($model->area as $area){
-    echo $area->country;
-    echo $area->region;
-    echo $area->city;
+echo $area->region;
+echo $area->city;
 }
 ?>
 <h3>tags</h3>
 <?php
-foreach($model->cvTags as $cvTag){
+foreach($model->
+<?php
+foreach($model->areas as $area){
+    echo $area->country;cvTags as $cvTag){
     echo "<br/>";
     $number = $cvTag->tag->frequency+30;
     echo '<span style="font-size:'.$number.'px">'.$cvTag->tag->name.'</span>';

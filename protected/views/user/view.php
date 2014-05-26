@@ -14,6 +14,7 @@ if(Yii::app()->user->id ==1){
 else{
 	$this->breadcrumbs=array(
 		t("Hem")=> Yii::app()->getHomeUrl(),
+		t('Användare'),
   		$model->name,
 	);
 }

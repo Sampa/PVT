@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 } else{
 	$this->breadcrumbs=array(
 	t("Hem")=> Yii::app()->getHomeUrl(),
+	t('Användare'),
 	$model->name=>array('view','id'=>$model->id),
 	t('Updatera användaruppgifter'),
 );

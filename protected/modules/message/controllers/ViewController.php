@@ -8,15 +8,15 @@ class ViewController extends Controller {
 		$userId = Yii::app()->user->getId();
 		$otherUserId = $id;
 		$criteria = new CDbCriteria;
-		$criteria->compare("receiver_id",$userId,false,"AND");
+//		$criteria->compare("receiver_id",$userId,false,"AND");
 //		$criteria->compare("receiver_id",$otherUserId,false,"AND");
 //		$criteria->compare("sender_id",$userId,false,"OR");
 		$criteria->compare("sender_id",$otherUserId,false);
 		$criteria->limit = 1;
 		$viewedMessage = Message::model()->find($criteria);
-		if (!$otherUserId || !$viewedMessage) {
-			 throw new CHttpException(404, t('Sidan du sökte kunde inte hittas'));
-		}
+//		if (!$otherUserId || !$viewedMessage) {
+//			 throw new CHttpException(404, t('Sidan du sökte kunde inte hittas'));
+//		}
 		if ($viewedMessage->sender_id != $userId && $viewedMessage->receiver_id != $userId) {
 		    throw new CHttpException(403, MessageModule::t('You can not view this message'));
 		}

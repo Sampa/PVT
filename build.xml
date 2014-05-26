@@ -29,7 +29,7 @@
  <target name="phpunit" description="Run unit tests with PHPUnit">
      <echo message="Running unit tests with PHPUnit" />
          <exec executable="phpunit" failonerror="true">
-            <arg value="/tests/unit/RemoteConnectTest.php"/>
+            <arg value="./tests/unit/RemoteConnectTest.php"/>
         </exec>
  </target>
 

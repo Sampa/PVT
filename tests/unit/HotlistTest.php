@@ -1,6 +1,8 @@
 <?php
-require_once('../../yii/framework/yii.php');
-require_once('../../protected/models/Hotlist.php');
+//require_once('../../yii/framework/yii.php');
+//require_once('../../protected/models/Hotlist.php');
+$config=dirname(__FILE__).'/../../protected/models/Hotlist.php';
+$web=Yii::createWebApplication($config);
 
 class HotlistTest extends PHPUnit_Framework_TestCase
 {
@@ -10,7 +12,8 @@ class HotlistTest extends PHPUnit_Framework_TestCase
     $this->db->active=true;
     CActiveRecord::$db=$this->db;
   }
-  public function tearDown(){ }
+  public function tearDown(){
+  }
 
   public function testSaveCvId()
   {

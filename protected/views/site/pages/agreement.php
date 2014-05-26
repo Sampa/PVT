@@ -27,7 +27,7 @@ $this->breadcrumbs = array(
     </div>
         <div class="col-md-4">
             <p>
-               <img src="http://lorempixel.com/output/fashion-h-c-421-652-5.jpg">
+               <img src="http://http://lorempixel.com/400/200/"> 
             </p>
         </div>
     </div>

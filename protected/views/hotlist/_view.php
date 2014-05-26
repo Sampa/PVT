@@ -17,9 +17,9 @@
     <div class="row">
         <div class="col-md-1">
  <!--   <article class="search-result row"> -->
-    <p> <?php echo Yii::t('t','Markera');?> </p>
+            <p> <?php echo Yii::t('t','Markera');?> </p>
 
-        <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
+            <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbuttontest'));?>
         </div>
         <div class="col-md-2">
             <a href="" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/YellowSmily.jpg" /></a>

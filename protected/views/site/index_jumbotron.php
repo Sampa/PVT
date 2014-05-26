@@ -15,7 +15,7 @@
                     <img src="http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg" alt="First slide">
                     <!-- Static Header -->
                     <div class="header-text hidden-xs">
-                        <div class="col-md-12 text-center">
+                        <div class="col-xs-12 text-center">
                             <h2>
                                 <span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span>
                             </h2>
@@ -41,7 +41,7 @@
                     <img src="http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg" alt="Second slide">
                     <!-- Static Header -->
                     <div class="header-text hidden-xs">
-                        <div class="col-md-12 text-center">
+                        <div class="col-xs-12 text-center">
                             <h2>
                                 <span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span>
                             </h2>
@@ -52,8 +52,8 @@
                                     <br>
                                     <br>
                     		<div class="row">
-                        		<div class="col-xs-6 col-md-2"></div>
-                            		<div class="col-xs-6 col-md-8">
+                        		<div class="col-xs-6 col-sm-6 col-md-2"></div>
+                            		<div class="col-xs-6 col-sm-6 col-md-8">
                             			<form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
                                 			<div class="input-group">
                                 				<input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sökord");?>>
@@ -64,7 +64,7 @@
                             			</form>
                             		</div>
 
-                            	<div class="col-xs-6 col-md-2"></div>
+                            	<div class="col-xs-6 col-sm-6 col-md-2"></div>
 
                     		</div>
 
@@ -79,7 +79,7 @@
                     <img src="http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg" alt="Third slide">
                     <!-- Static Header -->
                     <div class="header-text hidden-xs">
-                        <div class="col-md-12 text-center">
+                        <div class="col-xs-12 text-center">
                             <h2>
                                 <span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span>
                             </h2>
@@ -112,7 +112,7 @@
                 <div class="row">
 
                     <br>
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <center>
                             <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
                             <br>
@@ -123,7 +123,7 @@
                                 <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><?php echo t('Läs mer');?></a><br>
                         </center>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <center>
                             <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
                             <br>
@@ -135,7 +135,7 @@
                                 <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><?php echo t('Läs mer');?></a><br>
                         </center>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <center>
                             <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
                             <br>

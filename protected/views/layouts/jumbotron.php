@@ -32,7 +32,7 @@
 				$standardItems = array(
 					array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
 					array('label' => Yii::t("t",' Sökning'), 'url'=>array('/cv/')),
-                    array('label' => Yii::t("t",'Hjälp'), 'url'=>array('site/page/helpguide')),
+                    array('label' => Yii::t("t",'Användarguide'), 'url'=>array('site/page/helpguide')),
 				);
                 //slå ihop custom items med de som alltid syns
                 $items = array_merge($standardItems,$items);
@@ -89,30 +89,32 @@
                 <?php else: ?>
         <div class=" navbar-right">
             <ul class="nav navbar-nav">
- <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
-                    <ul class="dropdown-menu" style="width:200px">
-                        <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>">Ändra uppgifter<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li>
+        <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
+                <ul class="dropdown-menu" style="width:200px">
+                    <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Ändra uppgifter");?><span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                    <li class="divider"></li>
+                    <li>
 <!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
                             <!-- href leder till användarens inbox -->
-                            <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
-                                <span class="badge pull-right">
-                                    <?php
-                                    if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
-                                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
-                                    }else{
-                                        echo "";
-                                    }
-                                    ?>
-                                </span>
-                            </a>
-                        </li>
+                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
+                    <span class="badge pull-right">
+                        <?php
+                        if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
+                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
+                        }else{
+                        echo "";
+                        }
+                         ?>
+                    </span>
+                    </a>
+                    </li>
+                    <li class="divider"></li>
+                        <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Mina Sidor");?><span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>">Mina Sidor<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/site/page/helpguide/')?>"><?php echo Yii::t("t","Användarguide");?><span class="glyphicon glyphicon-question-sign pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/site/logout') ?>">Logga ut<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                        <li><a href="<?php echo $this->createUrl('/site/logout') ?>"><?php echo Yii::t("t","Logga ut");?><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>
                 </li>
             </ul>

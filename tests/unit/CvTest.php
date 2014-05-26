@@ -1,5 +1,5 @@
 <?php
-require_once('${basedir}/yii/framework/yii.php');
+require_once('/yii/framework/yii.php');
 //require_once('Cv.php');
 //require_once('/../../yii/framework/test/CDbTestCase.php');
 $config=dirname(__FILE__).'/../../protected/models/CV.php';

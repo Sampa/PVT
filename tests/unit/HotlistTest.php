@@ -1,5 +1,5 @@
 <?php
-require_once('${basedir}/yii/framework/yii.php');
+require_once('/yii/framework/yii.php');
 //require_once('../../protected/models/Hotlist.php');
 $config=dirname(__FILE__).'/../../protected/models/Hotlist.php';
 $web=Yii::createWebApplication($config);

@@ -4,7 +4,7 @@
 echo "Printed paths: ";
 echo getcwd();
 
-//require_once('/../yii/framework/yii.php');
+require_once('/../yii/framework/yii.php');
 $yiit=dirname(__FILE__).'/../yii/framework/yiit.php';
 //$config=dirname(__FILE__).'/../protected/models/CV.php';
 

@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 col-lg-12 col-sm-12">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<span class="glyphicon glyphicon-comment"></span> 

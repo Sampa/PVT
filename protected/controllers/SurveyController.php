@@ -208,15 +208,13 @@ class SurveyController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Survey('search');
-		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Survey'])) {
-			$model->attributes=$_GET['Survey'];
-		}
-
+		$allModels = Survey::model()->findAll();
+		$dataProvider=new CActiveDataProvider('Survey');
 		$this->render('admin',array(
-			'model'=>$model,
+			'dataProvider'=>$dataProvider,
+			'allModels'=>$allModels
 		));
+
 	}
 
 	/**

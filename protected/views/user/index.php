@@ -5,12 +5,13 @@
 
 <?php
 $this->breadcrumbs=array(
-	t('Användare');,
+	t("Hem")=> Yii::app()->getHomeUrl(),
+		t("Användare")=>array('index'),
 );
 
 $this->menu=array(
-	array('label'=>t('Skapa användare');,'url'=>array('create')),
-	array('label'=>t('Hantera användare');,'url'=>array('admin')),
+	array('label'=>t('Skapa användare'),'url'=>array('create')),
+	array('label'=>t('Hantera användare'),'url'=>array('admin')),
 );
 ?>
 

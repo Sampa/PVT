@@ -30,7 +30,7 @@ class CvController extends Controller
         //with expression means the phpcode _within_ ' ' must return true
 		return array(
             array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array('index','view','SaveInboundLinks'),
+                'actions'=>array('index','view','pdf','SaveInboundLinks'),
                 'users'=>array('*'),
             ),
 			array('allow', // allow authenticated user to perform 'create' and 'upload' actions
@@ -69,7 +69,6 @@ class CvController extends Controller
 			'model'=>$this->loadModel($id), //Cv::model()->with("area")->findByPk($id),
 		));
 	}
-
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -265,7 +264,10 @@ class CvController extends Controller
             'pdf'=>$pdf,
 		));
 	}
-
+    public function actionPdf($id=null){
+        $cv = Cv::model()->findByPk($id);
+        $this->render("_displayPdf",array("model"=>$cv));
+    }
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -318,7 +320,8 @@ class CvController extends Controller
             "criteria"=>$criteria,
 
         ));
-
+        //tillfälligt dölj de utan text
+        $criteria->compare("pathToPdf","pdf",true);
 		//hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
 		$resultCount = $dataProvider->getTotalItemCount();
 		if($resultCount<1)

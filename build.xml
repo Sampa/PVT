@@ -35,7 +35,7 @@
     <target name="phpunit" description="Run unit tests with PHPUnit">
         <echo message="Running unit tests with PHPUnit" />
         <exec executable="phpunit" failonerror="true">
-            <arg value="tests/unit/CvTest.php"/>
+            <arg value="${basedir}/tests/unit/CvTest.php"/>
 
         </exec>
 

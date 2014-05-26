@@ -2,57 +2,21 @@
 /* @var $this CvController */
 /* @var $data Cv */
 ?>
-
-<!-- <div class="view">
-
-	<table class="table table-hover">
-		<tr>
-		 	<td>
-		 		<?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-				<?php echo CHtml::link(CHtml::encode($data->title),array('view','id'=>$data->id)); ?>
-		 	</td>
-		 	<td>
-		 		<?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:
-				<?php echo CHtml::encode($data->date); ?>
-		 	</td>
-		 	<td>
-		 		<?php echo CHtml::encode($data->getAttributeLabel('pathToPdf')); ?>:
-   				<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" rel="pdf"><?php echo Yii::t("t","Öppna cv");?></a>
-		 	</td>
-		 	<td>
-		 		<?php echo CHtml::encode($data->getAttributeLabel('typeOfEmployment')); ?>:
-				<?php echo CHtml::encode($data->typeOfEmployment); ?>
-		 	</td>
-		 	<td>
-		 		<?php echo CHtml::encode($data->getAttributeLabel('geographicAreaId')); ?>:
-				<?php echo CHtml::encode($data->geographicAreaId); ?>
-		 	</td>
-		</tr>
-	</table> -->
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('pdfText')); ?>:</b>
-	<?php echo CHtml::encode($data->pdfText); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('publisherId')); ?>:</b>
-	<?php echo CHtml::encode($data->publisherId); ?>
-	<br />
-
-	*/ ?>
 <div class="container">
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-2">
-				<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" title="Öppna pdf" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
-			</div>
+				<a href="<?php echo Yii::app()->baseUrl."/cv/pdf/".$data->id; ?>" title="Öppna pdf" class="thumbnail">
+                    <img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" />
+                </a>
+            </div>
 			<div class="col-xs-12 col-sm-12 col-md-3">
 				<ul class="meta-search">
 					<li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo substr(CHtml::encode($data->date),0,10); ?></span></li>
 					<li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->typeOfEmployment); ?></span></li>
 					<!-- En loop som Skriver ut regionerna -->
                     <?php
-                        foreach($data->area as $area){?>
+                        foreach($data->areas as $area){?>
                         <li>
                             <i class="glyphicon glyphicon-globe"></i>
                             <span><?= $area->country; ?>, </span>
@@ -60,40 +24,49 @@
                             <span><?= $area->city; ?></span>
                         </li>
                     <?php }?>
-					<li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->publisher->username); ?></span></li>
+					<li><i class="glyphicon glyphicon-user"></i>
+                        <span>
+                            <?php echo CHtml::encode($data->publisher->username); ?>
+                        </span>
+                    </li>
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet" style="margin-top:-25px">
 				<h3>
-					<a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->pathToPdf); ?>" title="öppna pdf">
+					<a href="<?php echo Yii::app()->baseUrl."/cv/pdf/".$data->id; ?>" title="öppna pdf">
 						<?php echo ($data->title);?>
 					</a>
 				</h3>
-<!--                    <h3>Nyckelord:</h3>-->
                     <?php
-                            foreach($data->cvTags as $cvTag){
-                                //frequency är hur ofta den använts
-                                $number = $cvTag->tag->frequency+20;
-                                //skriver ut taggen så att mer använda taggar blir större
-                                echo '<span style="font-size:'.$number.'px"> '.$cvTag->tag->name.'</span>';
-                            }
-//                    ?>
+                        foreach($data->cvTags as $cvTag){
+                            //frequency är hur ofta den använts
+                            $number = $cvTag->tag->frequency+20;
+                            //skriver ut taggen så att mer använda taggar blir större
+                            echo '<span style="font-size:'.$number.'px"> '.$cvTag->tag->name.'</span>';
+                        }
+                    ?>
                 <br/>
-                <span class="plus"><a href="#" title='<?php echo t("Rapportera CV för olämpligt innehåll");?>'>
-                  <i data-toggle="modal" data-target="#reportModal" id="<?php echo $data->id?>" class="glyphicon glyphicon-flag report-cv-flag"></i></a>
-                </span><?php echo Yii::t("t"," Rapportera CV");?></span>
-
+                <span class="plus">
+                    <a href="#" title='<?php echo t("Rapportera CV för olämpligt innehåll");?>'>
+                        <i data-toggle="modal" data-target="#reportModal" id="<?php echo $data->id?>" class="glyphicon glyphicon-flag report-cv-flag"></i>
+                    </a>
+                </span>
+                <?php echo Yii::t("t"," Rapportera CV");?>
                 <?php if( Yii:: app()->user->getState("role")=="recruiter") { ?>
-
-                   <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
-                   <i class="glyphicon glyphicon-file"></i><?php echo Yii::t("t","Lägg till hotlist");?> <span class="caret"></span>
-                </button>
-
+               <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
+                   <i class="glyphicon glyphicon-file"></i>
+                   <?php echo Yii::t("t","Lägg till hotlist");?>
+                   <span class="caret"></span>
+               </button>
                 <?php } ?>
                 <ul class="dropdown-menu pull-right" id="<?php echo $data->id;?>">
                     <?php echo Recruiter::getProcessesAsList();?>
                     <li class="divider"></li>
-                    <li><a href="<?php echo Yii::app()->createUrl("/recruitmentprocess/create");?>"><?php echo Yii::t("t","Skapa ny process");?></a></li>
+                    <li>
+                        <a href="<?php echo Yii::app()->createUrl("/recruitmentprocess/create");?>">
+                            <?php echo Yii::t("t","Skapa ny process");?>
+                        </a>
+                    </li>
                 </ul>
              </div>
                 <!-- Modal -->
@@ -114,13 +87,9 @@
                         </div>
                     </div>
                 </div>
-
-
 			</div> -->
 			<span class="clearfix borda"></span>
 		</article>
 		<hr>
-
-
 	</section>
 </div>

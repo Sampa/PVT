@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
             <span class="glyphicon glyphicon-info-sign infoBox"></span>
         </div>
     </div>
-    <div class "form group col-md-6" id = "metaTagInfo">
+    <div class="form group col-md-6" id = "metaTagInfo">
         <table class="table table-bordered table-condensed table-hover">
             <tbody>
                 <tr>
@@ -109,8 +109,6 @@ $this->breadcrumbs=array(
    </div>
     <div class="well" style="display:none;" id="sortSelectionWrapper"><h4><?php echo Yii::t("t","Sorterade listan efter ");?><span id="sortSelection"></span></h4></div>
             <hr>
-
-
 <?php
 if($resultCount< 1):?>
     <div class="alert alert-info"><?php echo Yii::t("t","Inga sökresultat hittades så vi visar alla");?></div>
@@ -124,7 +122,6 @@ if($resultCount< 1):?>
 	    ));
 	?>
 </div><!-- form -->
-
     <?php endif;?>
                 <!-- Modal för att rapportera CV -->
             <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
@@ -177,8 +174,6 @@ if($resultCount< 1):?>
             $("#metaTagInfo").fadeIn("slow");
 
     });     
-</script>
-<script>
     function scrollToResults(i,data){
         $('html, body').animate({
                 scrollTop: $("#results").offset().top

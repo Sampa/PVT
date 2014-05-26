@@ -15,6 +15,6 @@ return CMap::mergeArray(
 				'connectionString'=>'mysql:host=atlas.dsv.su.se;dbname=pvt14Group1;',
 			),
 			
-		),
-	)
-);
+		)
+	);
+

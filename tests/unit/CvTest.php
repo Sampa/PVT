@@ -1,8 +1,11 @@
 <?php
-require_once('../../yii/framework/yii.php');
-require_once('./../../protected/models/Cv.php');
-require_once('/../../yii/framework/test/CDbTestCase.php');
-class CvTest extends CDbTestCase
+require_once('/yii/framework/yii.php');
+//require_once('Cv.php');
+//require_once('/../../yii/framework/test/CDbTestCase.php');
+$config=dirname(__FILE__).'/../../protected/models/CV.php';
+Yii::createWebApplication($config);
+
+class CvTest extends PHPUnit_Framework_TestCase
 {
 
     public function setUp(){
@@ -12,11 +15,12 @@ class CvTest extends CDbTestCase
     CActiveRecord::$db=$this->db;
     
      }
-    public function tearDown(){ }
+    public function tearDown(){
+    }
 
     public function testTableName()
     {
-    	$newcv =new CV();
+     $newcv =new CV();
         // test to ensure that the object from an fsockopen is valid
        //$cv = new Cv();
         $this->assertTrue($newcv->tableName()=="Cv");

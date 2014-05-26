@@ -24,12 +24,31 @@
   <target name="php" description="Run unit tests with PHPUnit">
         <echo message="HEEEEEEJJ" />
 
-  </target>
 
- <target name="phpunit" description="Run unit tests with PHPUnit">
+  </target>
+    <target name="if_windows">
+        <property name="exe.phpunit" value="C:\xampp\php\\phpunit.bat"/>
+
+
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <echo message="Running unit tests with PHPUnit" />
+        <exec executable="phpunit" failonerror="true">
+            <arg value="${basedir}/tests/unit/CvTest.php"/>
+
+        </exec>
+
+    </target>
+
+ <target name="phpunit1" description="Run unit tests with PHPUnit">
      <echo message="Running unit tests with PHPUnit" />
-         <exec executable="phpunit" failonerror="true">
-            <arg value="./tests/unit/RemoteConnectTest.php"/>
+        <exec executable="${exe.phpunit}" failonerror="true">
+            <arg value="${basedir}/tests/unit/CvTest.php"/>
+
+        </exec>
+        <exec executable="phpunit" failonerror="true">
+         <arg value="${basedir}/tests/unit/HotlistTest.php"/>
         </exec>
  </target>
 

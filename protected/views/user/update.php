@@ -4,12 +4,9 @@
 ?>
 <?php
     $this->breadcrumbs=array(
-        t('Användare')=>array('index'),
-        t('Uppdatera användaruppgifter')=>array('view','id'=>$model->id),
+        t('Användare'),
+        t('Uppdatera uppgifter'),
+        $model->username=>array('view','id'=>$model->id),
     );
 ?>
-<div class="page-header">
-    <h1><?php echo Yii::t("t", "Uppdatera användaruppgifter");?></h1>
-</div>
-
-<?php $this->renderPartial('_form', array('model'=>$model, 'rmodel' => $rmodel,)); ?> 
+<?php $this->renderPartial('_form', array('model'=>$model, 'rmodel' => $rmodel,)); ?>

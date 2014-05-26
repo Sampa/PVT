@@ -6,11 +6,11 @@
 $this->breadcrumbs=array(
 	t('Användare')=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	t('Updatera användaruppgifter'),
+	t('Ändra uppgifter'),
 );
 ?>
     <div class="page-header">
-        <h1><?php echo Yii::t("t", "Uppdatera användaruppgifter");?></h1>
+        <h1><?php echo Yii::t("t", "Ändra uppgifter");?></h1>
     </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'rmodel' => $rmodel,)); ?> 

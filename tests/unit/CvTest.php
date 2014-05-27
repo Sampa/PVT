@@ -35,15 +35,15 @@ class CvTest extends PHPUnit_Framework_TestCase
         $Cv = new CV(
         );
         $this->assertFalse($Cv->save());
-//
-//        $newCv = new Cv;
-//        $newCv->typeOfEmployment='consult';
-//        $newCv->geographicAreaId=135;
-//        $newCv->title ='testTitel';
-//        $newCv->publisherId=102;
+
+        $newCv = new Cv;
+        $newCv->typeOfEmployment='consult';
+        $newCv->geographicAreaId=135;
+        $newCv->title ='testTitel';
+        $newCv->publisherId=102;
 //      $newCv->save();
 
-//        $this->assertTrue($newCv->save());
+        $this->assertTrue($newCv->save());
     }
 
     public function testAttributeLabels(){

@@ -16,6 +16,7 @@
  */
 class SurveyQuestion extends CActiveRecord
 {
+    public $type;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -50,6 +51,7 @@ class SurveyQuestion extends CActiveRecord
 		return array(
 			'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'surveyQuestionID'),
 			'survey' => array(self::BELONGS_TO, 'Survey', 'surveyID'),
+			'options' => array(self::HAS_MANY, 'SurveyQuestionOption', 'questionId'),
 		);
 	}
 

@@ -31,7 +31,7 @@ class SurveyController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','admin','delete','sendOutSurveys'),
+				'actions'=>array('create','update','admin','delete','sendOutSurveys','respond'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,15 @@ class SurveyController extends Controller
 			),
 		);
 	}
+    public function actionRespond($id=null){
+        if(Yii::app()->request->isPostRequest){
+            var_dump($_POST);
+            die();
+        }else{
+            $model = $this->loadModel($id);
+        }
+        $this->render("survey_respond",array("survey"=>$model));
+    }
 	public function actionSendOutSurveys(){
 
 		$survey = Survey::model()->findByPk($_POST['surveyId']);
@@ -83,12 +92,8 @@ class SurveyController extends Controller
 	public function actionCreate()
 	{
 		$survey=new Survey;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($survey);
-
 		if (app()->request->isAjaxRequest) {
-//			var_export($_POST);
+            var_dump($_POST["questions"]);
 			$survey->recruiterID = Yii::app()->user->id;
 			$survey->title = $_POST['title'];
 			$message = array(
@@ -102,12 +107,12 @@ class SurveyController extends Controller
 					$question = new SurveyQuestion;
 					$question->surveyID = $survey->id;
 					$question->question = $data['question'];
+					$question->type = $data['type'];
 					if(isset($data['options'])){
 						$question->haveOptions = 1;
 					}else{
 						$question->haveOptions = 0;
 					}
-
 					if($data['type']=="checkbox"){
 						$question->allowMultipleChoice = 1;
 					}else{

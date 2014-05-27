@@ -1,8 +1,8 @@
  <?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
 <?php
-//    $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_breadcrumbs',array('sent'=>$sent));
-//	$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation',array('sent'=>$sent,'inbox'=>$inbox));
-//
+$menuText = t("Enkäter");
+if(user()->getState("role")=="publisher")
+    $menuText = t("Enkäter");
 ?>
 	<div class="row" style="min-width: 100%;">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
@@ -12,7 +12,7 @@
 						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
 					</a>
 					<a href="#" class="list-group-item text-center">
-						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkätsvar"); ?>
+						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= $menuText;?>
 					</a>
 <!--					<a href="#" class="list-group-item text-center">-->
 <!--						<h4 class="glyphicon glyphicon-pencil"></h4><br/> --><?//= t("Skickade");?>
@@ -31,7 +31,7 @@
 			<!-- enkätsvar section -->
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 				<div class="bhoechie-tab-content">
-					<h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                    <?php $this->renderPartial("application.views.survey.survey_recieved",array("surveys"=>$surveys));?>
 				</div>
 			</div>
 			<!-- Skickade search -->

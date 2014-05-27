@@ -36,6 +36,7 @@ class ConversationController extends Controller
 		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array(
 			'inbox'=>$this->getInboxContent(),
 			'sent'=>$this->getSentContent(),
+            'surveys'=>$this->getSurveys(),
 			'model' => $message,
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
@@ -59,6 +60,13 @@ class ConversationController extends Controller
 			'messagesAdapter' => $messagesAdapter
 		),true);
 	}
+    public function getSurveys(){
+        $criteria = new CDbCriteria;
+        $criteria->compare("userId",Yii::app()->user->id);
+        $criteria->compare( "answered",0);
+        $allForThisArea = SurveyCandidate::model()->findAll($criteria);
+        return $allForThisArea;
+    }
     /**
      * Performs the AJAX validation.
      * @param Cv $model the model to be validated

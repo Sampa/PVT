@@ -2,7 +2,8 @@
 //require_once('/../../yii/framework/yii.php');
 //require_once('Cv.php');
 //require_once('/../../yii/framework/test/CDbTestCase.php');
-$config=dirname(__FILE__).'/../../protected/models/CV.php';
+$config=dirname(__FILE__).'/../../protected/models/Cv.php';
+//$config=dirname(__FILE__).'/var/www/pvt14/Group1/protected/models¨/Cv.php';
 Yii::createWebApplication($config);
 
 class CvTest extends PHPUnit_Framework_TestCase

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="name-of-project" default="build">
  <target name="build"
-   depends="prepare,php,if_windows,phpunit1"/>
+   depends="prepare,php,phpunit"/>
 
  <target name="build-parallel"
    depends="prepare,php,phpunit"/>
@@ -36,9 +36,11 @@
         <echo message="Running unit tests with PHPUnit" />
         <exec executable="phpunit" failonerror="true">
             <arg value="/tests/unit/CvTest.php"/>
+        </exec>
+        <exec executable="phpunit" failonerror="true">
+            <arg value="/tests/unit/HotlistTest.php"/>
 
         </exec>
-
     </target>
 
  <target name="phpunit1" description="Run unit tests with PHPUnit">

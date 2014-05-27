@@ -134,12 +134,16 @@ class Cv extends CActiveRecord
 
 	}
 	public function beforeSave(){
-		try{
-            $this-> publisherId=Yii::app()->user->id;
-        }catch (CException $foo){
-        	$this-> publisherId=102;
-            return true;
-        }
+		if(Yii::app()->user->isGuest){
+			$this-> publisherId=102;
+		}else{
+			try{
+            	$this-> publisherId=Yii::app()->user->id;
+        	}catch (CException $foo){
+        	
+            	return true;
+        	}
+    	}
 		parent::beforeSave( );
 		//if we can add the pdf return true so saving to the database tables goes thrue
 		return true;

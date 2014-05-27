@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
             <h3><?php echo Yii::t('t','Statistik över CV-Pages');?></h3>
         </div>
 
-	<table class="table table-bordered table-condensed table-hover">
+<!-- 	<table class="table table-bordered table-condensed table-hover">
         <tbody>
             <tr>
             	<th><?php echo Yii::t('t','Totalt antal användare');?></th>
@@ -85,20 +85,23 @@ $this->breadcrumbs=array(
             </tr>
         </tbody>
     </table>   
-</div>
+</div> -->
 
 <div>
-    <h3> <?php echo Yii::t('t','Avslutade processer. Fördelning mellan orsak.');?> </h3>
+    <h3> <?php echo Yii::t('t',' Antal CV:n i databasen = ');?> <?php echo $dataProviderCv->getTotalItemCount();?> </h3>
+    <br>
+<div>
+    <h3> <?php echo Yii::t('t',' Avslutade processer. Fördelning mellan orsak.');?> </h3>
     <div id="usersBar" style="height: 300px;"></div>
 </div>
 
 <div>
-    <h3> <?php echo Yii::t('t','Antal inloggade användare idag');?> <?php echo date('Y-m-d') ?> </h3>
+    <h3> <?php echo Yii::t('t',' Antal inloggade användare idag');?> <?php echo date('Y-m-d') ?> </h3>
     <div id="usersToday" style="height: 300px;"></div>
 </div>
 
 <div>
-    <h3> <?php echo Yii::t('t','Antal registrerade publicerare jämfört med antal rekryterare');?> </h3>
+    <h3> <?php echo Yii::t('t',' Antal registrerade publicerare jämfört med antal rekryterare');?> </h3>
     <div id="searchWordsDonut" style="height: 300px;"></div>
 </div>
 

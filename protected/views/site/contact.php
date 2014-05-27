@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle = Yii::app()->name . Yii::t("t","Kontakta oss");
+$this->pageTitle = Yii::app()->name;
 if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"){
 	$this->breadcrumbs = array(
 	    Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),

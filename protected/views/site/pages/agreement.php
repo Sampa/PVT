@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - About';
+$this->pageTitle = Yii::app()->name . ' - Agreement';
 $this->breadcrumbs = array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
     Yii::t("t",'Användaravtal'),

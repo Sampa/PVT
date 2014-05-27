@@ -17,21 +17,22 @@ $this->breadcrumbs=array(
 </a>
 <!-- skriva ut alla areas -->
 <h3>Söker jobb i följande områden:</h3>
-echo $area->region;
-echo $area->city;
-}
-?>
-<h3>tags</h3>
 <?php
-foreach($model->
-<?php
-foreach($model->areas as $area){
-    echo $area->country;cvTags as $cvTag){
+foreach($model->cvTags as $cvTag){
     echo "<br/>";
     $number = $cvTag->tag->frequency+30;
     echo '<span style="font-size:'.$number.'px">'.$cvTag->tag->name.'</span>';
     echo "<br/>";
+
 }
+?>
+<h3>tags</h3>
+<?php
+    foreach($model->areas as $area){
+        echo $area->country;
+        echo $area->region;
+        echo $area->city;
+    }
 ?>
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

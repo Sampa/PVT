@@ -400,35 +400,6 @@ class CvController extends Controller
         }
     }
 
-    /*
-     * accepts a country shortname (possible those listed in views/cv/_allCountriesSelect.php
-     * returns the geoGraphicArea models with that country set
-     */
-    private function getGeoModels($countryName,$region,$city)
-    {
-	    //starta nytt kriteria objekt för att filtrera sökresultaten
-        $criteria = new CDbCriteria();
-        $criteria->addSearchCondition("area.country",$countryName,true,"OR");
-        //if antalet tecken i $region är mer än noll så har man valt en region i sökformuläret
-        $criteria->addSearchCondition("area.region",$region,true,"OR");
-	    //if antalet tecken i $city är mer än noll så har man valt en kommun/city i sökformuläret
-        $criteria->addSearchCondition("area.city",$city,true,"OR");
-
-	    //hämtar enbart de geo models som uppfyller kraven
-        $geoModels  = GeograficArea::model()->findAll($criteria);
-	    //initiera en tom array vi kan fylla i våra loopar nedan
-	    $relations =array();
-	    foreach($geoModels as $geo){ //för varje rad i tabellen GeoGraphicArea som matchade alla valda sökkriterier
-		    //här loopar vi igenom varje relation denna rad har till tabellen CvArea (associationsklass)
-		    foreach($geo->cvAreas as $areaRelation){
-			    //ta cv id:t från relationen och stoppa in i vår array() enbart om det inte redan finns där
-			    if(!in_array($areaRelation->cvId,$relations))
-			        $relations[]= $areaRelation->cvId;
-		    }
-	    }
-	    //returnera en array med alla id:n på CV som har en relation till området användaren söker på
-        return $relations;
-    }
 	/*
 		 * Sets the order of how the results should be displayed.
 		 * date is the column to sort by and DESC means newest first(descending order)

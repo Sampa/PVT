@@ -34,23 +34,33 @@
 
     <target name="phpunit" description="Run unit tests with PHPUnit">
         <echo message="Running unit tests with PHPUnit" />
+        <echo message="Running CvTest" />
         <exec executable="phpunit" failonerror="true">
             <arg value="${basedir}/tests/unit/CvTest.php"/>
         </exec>
+         <echo message="Running HotlistTest" />
         <exec executable="phpunit" failonerror="true">
             <arg value="${basedir}/tests/unit/HotlistTest.php"/>
-
+        </exec>
+        <echo message="Running TagTest" />
+        <exec executable="phpunit" failonerror="true">
+            <arg value="${basedir}/tests/unit/TagTest.php"/>
         </exec>
     </target>
 
  <target name="phpunit1" description="Run unit tests with PHPUnit">
      <echo message="Running unit tests with PHPUnit" />
+     <echo message="Running CvTest" />
         <exec executable="${exe.phpunit}" failonerror="true">
             <arg value="${basedir}/tests/unit/CvTest.php"/>
-
         </exec>
+        <echo message="Running HotlistTest" />
         <exec executable="${exe.phpunit}" failonerror="true">
-         <arg value="${basedir}/tests/unit/HotlistTest.php"/>
+            <arg value="${basedir}/tests/unit/HotlistTest.php"/>
+        </exec>
+        <echo message="Running TagTest" />
+        <exec executable="${exe.phpunit}" failonerror="true">
+            <arg value="${basedir}/tests/unit/TagTest.php"/>
         </exec>
  </target>
 

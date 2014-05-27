@@ -111,8 +111,7 @@ $(".OkReportedCv").on("click",function(event){
             dataType:"json",
             data: {id:idToOk},
             url: "/reportedCv/delete/"+idToOk
-        }).done(function( data) {
-        });
+        })
         window.document.location ='reportedCv';
     });
 

@@ -348,6 +348,19 @@ class CvController extends Controller
         }
         return $criteria;
     }
+    private function setDefaultCriteriaCondition(){
+        $criteria=new CDbCriteria;
+        $criteria = $this->setSortOrderCondition($criteria);
+//            $criteria = $this->handleSearch($criteria);
+        //sätt relational conditions för geographic areas
+        $criteria->with = array(
+            //areas är namnet på vår relation
+            'areas'=>array(
+                'together'=>true,//dont know whhy
+                'joinType'=>'INNER JOIN', //dont know why
+            ));
+        return $criteria;
+    }
     /**
      * Lists all CVs. If search form is submitted it lists only matching CV's.
      * If no searchresults are found it reverts to default and shows all CV's
@@ -356,32 +369,29 @@ class CvController extends Controller
     {
         //CDBcriteria is a Yii class to make it easier to create advanced SQL queries
         //alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
-        $criteria=new CDbCriteria;
-        $criteria = $this->setSortOrderCondition($criteria);
-        $criteria = $this->handleSearch($criteria);
-        //sätt relational conditions för geographic areas
-        $criteria->with = array(
-            //areas är namnet på vår relation
-            'areas'=>array(
-                'together'=>true,//dont know whhy
-                'joinType'=>'INNER JOIN', //dont know why
-            ));
+        $criteria = $this->setDefaultCriteriaCondition();
+        $this->handleSearch($criteria);
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
         $dataProvider=new CActiveDataProvider('Cv',array(
             "criteria"=>$criteria,
-
         ));
+
         //tillfälligt dölj de utan text
 //        $criteria->compare("pathToPdf","pdf",true);
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
         $resultCount = $dataProvider->getTotalItemCount();
-        if($resultCount<1)
-            $dataProvider->setCriteria(new CDbCriteria());
+        if($resultCount<1){
+            $criteria = $this->setDefaultCriteriaCondition();
+            $dataProvider->setCriteria($criteria);
+        }
         //vad vi ska skicka till vyn så vi kan använda/visa det där
         $dataToView = array(
             'dataProvider'=>$dataProvider,
             'resultCount'=>$resultCount,
         );
+//        $pager = new CPagination($dataProvider->totalItemCount);
+//        $pager->pageSize = 10;
+//        $dataProvider->setPagination($pager);
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
         if( Yii::app()->request->isAjaxRequest){
             $this->renderPartial('_searchview',$dataToView);

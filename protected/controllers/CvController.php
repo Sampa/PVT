@@ -354,11 +354,18 @@ class CvController extends Controller
 //            $criteria = $this->handleSearch($criteria);
         //sätt relational conditions för geographic areas
         $criteria->with = array(
-            //areas är namnet på vår relation
+            //areas är namnet på vår relation i Cv model till GeographicArea tabellen
             'areas'=>array(
                 'together'=>true,//dont know whhy
                 'joinType'=>'INNER JOIN', //dont know why
-            ));
+            ),
+            //tags är namnet på vår relation i Cv model till tag tabellen
+            'tags'=>array(
+                'together'=>true,//dont know whhy
+                'joinType'=>'INNER JOIN', //dont know why
+
+            )
+        );
         return $criteria;
     }
     /**
@@ -440,17 +447,9 @@ class CvController extends Controller
 			$allCvIds = array(); //initiate empty array
 			$tagsAsArray = explode(",",$_POST['tags']); //transform from one long string with tags to an array of strings
 			foreach($tagsAsArray as $tag){ //loop all tags the user entered
-				//kontrollera denna query
-				$tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
-				if($tagModel !=null){ //the tag exists
-					//loop the array with each row in the table that connects this tag to a cv
-					foreach($tagModel->cvTags as $cvTag){
-						$allCvIds[] = $cvTag->cvId; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
-					}
-				}
-			}
-			$criteria->addInCondition("id",$allCvIds,"OR");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
-		}
+                $criteria->addSearchCondition("tags.name",$tag,"OR");
+		    }
+        }
 		return $criteria;
 	}
 
@@ -496,16 +495,8 @@ class CvController extends Controller
 					$allCvIds = array(); //initiate empty array
 					$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
 					foreach($tagsAsArray as $tag){ //loop all tags the user entered
-					//kontrollera denna query
-						$tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
-						if($tagModel !=null){ //the tag exists
-							//loop the array with each row in the table that connects this tag to a cv
-							foreach($tagModel->cvTags as $cvTag){
-								$allCvIds[] = $cvTag->cvId; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
-							}
-						}
-					}
-					$criteria->addInCondition("id",$allCvIds,"OR");
+                        $criteria->addSearchCondition("tags.name",$tag,"OR");
+                    };
 				}
 				elseif($metaTag == "employment"){//employment:consult || employment:employment
 					if($search == 'consult')

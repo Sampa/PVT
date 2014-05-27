@@ -75,6 +75,7 @@ class Cv extends CActiveRecord
 			'areas' => array(self::MANY_MANY, 'GeograficArea','CvArea(cvId,AreaId)'),
 			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
 			'cvTags' => array(self::HAS_MANY, 'CvTag', 'cvId'),
+			'tags' => array(self::MANY_MANY, 'Tag', 'CvTag(cvId,tagId)'),
 			'hotLists' => array(self::HAS_MANY, 'HotList', 'cvId'),
 			'messages' => array(self::HAS_MANY, 'Message', 'cvID'),
 			'recFavorites' => array(self::HAS_MANY, 'RecFavorites', 'cvid'),

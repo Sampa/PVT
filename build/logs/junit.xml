@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="TagTest" file="C:\PVT\tests\unit\TagTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.066004">
-    <testcase name="testTableName" class="TagTest" file="C:\PVT\tests\unit\TagTest.php" line="22" assertions="1" time="0.047003"/>
-    <testcase name="testAttributeLabels" class="TagTest" file="C:\PVT\tests\unit\TagTest.php" line="32" assertions="2" time="0.019001"/>
+  <testsuite name="TagTest" file="C:\Users\Mattias\PhpstormProjects\PVT1\tests\unit\TagTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.073449">
+    <testcase name="testTableName" class="TagTest" file="C:\Users\Mattias\PhpstormProjects\PVT1\tests\unit\TagTest.php" line="22" assertions="1" time="0.034682"/>
+    <testcase name="testAttributeLabels" class="TagTest" file="C:\Users\Mattias\PhpstormProjects\PVT1\tests\unit\TagTest.php" line="31" assertions="2" time="0.038767"/>
   </testsuite>
 </testsuites>

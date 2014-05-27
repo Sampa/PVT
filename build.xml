@@ -35,10 +35,12 @@
     <target name="phpunit" description="Run unit tests with PHPUnit">
         <echo message="Running unit tests with PHPUnit" />
         <exec executable="phpunit" failonerror="true">
-            <arg value="${basedir}/tests/unit/CvTest.php"/>
+            <arg value="tests/unit/CvTest.php"/>
+        </exec>
+        <exec executable="phpunit" failonerror="true">
+            <arg value="tests/unit/HotlistTest.php"/>
 
         </exec>
-
     </target>
 
  <target name="phpunit1" description="Run unit tests with PHPUnit">
@@ -47,7 +49,7 @@
             <arg value="${basedir}/tests/unit/CvTest.php"/>
 
         </exec>
-        <exec executable="phpunit" failonerror="true">
+        <exec executable="${exe.phpunit}" failonerror="true">
          <arg value="${basedir}/tests/unit/HotlistTest.php"/>
         </exec>
  </target>

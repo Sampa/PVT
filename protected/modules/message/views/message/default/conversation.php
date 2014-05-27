@@ -6,7 +6,7 @@
 ?>
 	<div class="row" style="min-width: 100%;">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
-			<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1 bhoechie-tab-menu">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
 				<div class="list-group">
 					<a href="#" class="list-group-item active text-center">
 						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
@@ -14,9 +14,9 @@
 					<a href="#" class="list-group-item text-center">
 						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkätsvar"); ?>
 					</a>
-					<a href="#" class="list-group-item text-center">
-						<h4 class="glyphicon glyphicon-pencil"></h4><br/> <?= t("Skickade");?>
-					</a>
+<!--					<a href="#" class="list-group-item text-center">-->
+<!--						<h4 class="glyphicon glyphicon-pencil"></h4><br/> --><?//= t("Skickade");?>
+<!--					</a>-->
 				</div>
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">

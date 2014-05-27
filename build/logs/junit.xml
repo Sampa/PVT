@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="HotlistTest" file="C:\PVT\tests\unit\HotlistTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.268015">
-    <testcase name="testSaveCvId" class="HotlistTest" file="C:\PVT\tests\unit\HotlistTest.php" line="18" assertions="1" time="0.268015"/>
+  <testsuite name="HotlistTest" file="C:\PVT\tests\unit\HotlistTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.090000">
+    <testcase name="testSaveCvId" class="HotlistTest" file="C:\PVT\tests\unit\HotlistTest.php" line="18" assertions="1" time="0.090000"/>
   </testsuite>
 </testsuites>

@@ -21,11 +21,22 @@ class CvTest extends PHPUnit_Framework_TestCase
 
     public function testTableName()
     {
-     $newcv =new CV();
+     $newCv =new CV();
         // test to ensure that the object from an fsockopen is valid
        //$cv = new Cv();
-        $this->assertTrue($newcv->tableName()=="Cv");
+        $this->assertTrue($newCv->tableName()=="Cv");
 
+    }
+    public function testBeforeSave(){
+        $newCv = new CV();
+        $this->assertTrue($newCv->beforeSave() == true);
+    }
+
+    public function testAttributeLabels(){
+        $newCv = new CV();
+        $array=$newCv->attributeLabels();
+        $this->assertTrue($array !== null);
+        $this->assertTrue($array['publisherId'] == 'Publisher');
     }
 }
 ?>

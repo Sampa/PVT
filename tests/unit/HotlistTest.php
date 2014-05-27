@@ -15,13 +15,13 @@ class HotlistTest extends PHPUnit_Framework_TestCase
   public function tearDown(){
   }
 
-  public function testSaveCvId()
+  public function testTableName()
   {
     // test to ensure that the object from an fsockopen is valid
     $hotlist = new Hotlist();
     //$hotlist->cvId = "Testing hotlist";
     //$this->assertTrue($hotlist->save());
-$this->assertTrue($hotlist->tableName()=="HotList");
+    $this->assertTrue($hotlist->tableName()=="HotList");
   }
 }
 ?>

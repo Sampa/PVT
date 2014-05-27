@@ -40,7 +40,7 @@ class CvTest extends PHPUnit_Framework_TestCase
         $newCv->typeOfEmployment='consult';
         $newCv->geographicAreaId=135;
         $newCv->title ='testTitel';
-        $newCv->publisherId=102;
+        //$newCv->publisherId=1;
 //      $newCv->save();
 
         $this->assertTrue($newCv->save());

@@ -137,6 +137,7 @@ class Cv extends CActiveRecord
 		try{
             $this-> publisherId=Yii::app()->user->id;
         }catch (CException $foo){
+        	$this-> publisherId=102;
             return true;
         }
 		parent::beforeSave( );

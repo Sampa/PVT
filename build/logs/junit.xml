@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="RecruitmentprocessTest" file="C:\PVT\tests\unit\RecruitmentprocessTest.php" tests="3" assertions="5" failures="0" errors="0" time="0.080000">
+    <testcase name="testTableName" class="RecruitmentprocessTest" file="C:\PVT\tests\unit\RecruitmentprocessTest.php" line="22" assertions="1" time="0.050000"/>
+    <testcase name="testCreateProcess" class="RecruitmentprocessTest" file="C:\PVT\tests\unit\RecruitmentprocessTest.php" line="31" assertions="2" time="0.020000"/>
+    <testcase name="testAttributeLabels" class="RecruitmentprocessTest" file="C:\PVT\tests\unit\RecruitmentprocessTest.php" line="47" assertions="2" time="0.010000"/>
+  </testsuite>
+</testsuites>

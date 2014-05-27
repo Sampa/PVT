@@ -1,6 +1,7 @@
 <?php $this->pageTitle = Yii::app()->name; ?>
 <div class="container">
     <div class="row">
+        <div class="visible xs">
         <!-- Carousel -->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -107,6 +108,8 @@
             <a class="right carousel-control"  href="#carousel-example-generic" data-slide="next">
                 <span style="margin-left:35px;width: 50px;" class="glyphicon glyphicon-chevron-right"></span>
             </a>
+        </div>
+
         </div><!-- /carousel -->
             <div class="container">
                 <div class="row">

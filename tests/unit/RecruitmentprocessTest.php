@@ -36,7 +36,7 @@ class RecruitmentprocessTest extends PHPUnit_Framework_TestCase
 
         $newRecprocess = new Recruitmentprocess;
         $newRecprocess->typeOfEmployment='consult';
-        $newRecprocess->geographicAreaId=135;
+     //   $newRecprocess->geographicAreaId=135;
         $newRecprocess->title ='testRekrytering';
         $newRecprocess->recruiterId=54;
     //    $newCv->validate();

@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
     <?php echo t("Öppna cv");?>
 </a>
 <!-- skriva ut alla areas -->
-<h3>Söker jobb i följande områden:</h3>
+<h3><?php echo Yii::t("t","Söker jobb i följande områden:");?></h3>
 echo $area->region;
 echo $area->city;
 }

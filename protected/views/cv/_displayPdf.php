@@ -5,7 +5,7 @@
  */
 ?>
 <!-- diven som pdf:en kommer laddas in/visas i)-->
-<div id="pdf<?php echo $model->id;?>" class="embeddedPdf col-md-8 col-lg-8 col-sm-4"></div>
+<div id="pdf<?php echo $model->id;?>" class="embeddedPdf col-md-12 col-lg-12 col-sm-6"></div>
 <span class="clearfix"></span>
 
 <!-- CSS kod vi ska flytta till main.css när alla är nöjda med utseendet-->
@@ -13,7 +13,8 @@
 
     .embeddedPdf {
         margin: 2em auto;
-        height: 500px;
+        height: 1000px;
+        /*tycker height 1000 var rätt så bra storlek, den som vill får ändra */
     }
 
     .embeddedPdf p {

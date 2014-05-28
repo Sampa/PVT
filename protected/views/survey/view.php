@@ -27,10 +27,13 @@ $this->breadcrumbs=array(
             );
             echo "<br/>";
             echo CHtml::tag("div",array("id"=>"answersDiv".$candidate->user->id,"class"=>"hidden"));
+            $questionNumber = 1;
             foreach($model->surveyQuestions as $question){
                 $answer = $question->getAnswerByUser($candidate->user->id);
-                echo "<h4>".$question->question."</h4>";
+                echo "<h4> Fråga ".$questionNumber. " - " .$question->question."</h4>";
+                echo "Svar: ";
                 echo $answer->questionAnswer;
+                $questionNumber++;
             }
             echo CHtml::closeTag("div");
         }
@@ -44,7 +47,7 @@ $this->breadcrumbs=array(
             title: "<?=t("Enkätsvar");?>",
             buttons: {
                 success: {
-                    label: "<?=t("Ok");?>",
+                    label: "<?=t("Stäng");?>",
                     className: "btn-success",
                     callback: function() {
                     }

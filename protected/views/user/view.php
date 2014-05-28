@@ -43,7 +43,7 @@ else{
 	<p><a href="<?php echo Yii::app()->baseUrl;?>/cv/create" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Ladda upp nytt CV");?></a></p>
 </div>
 <div class="col-lg-4">
-	<p><a href="<?php echo Yii::app()->baseUrl;?>/cv/admin" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Dina CV:n");?></a></p>
+	<p><a href="<?php echo Yii::app()->baseUrl;?>/cv/admin" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Mina CV:n");?></a></p>
 </div>
 <?php endif; ?>
 <?php if(isset($rmodel)): ?>

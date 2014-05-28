@@ -151,7 +151,17 @@ class User extends CActiveRecord
         );
       }
 
+    public function getAnswersToSurvey($surveyId){
+        $survey = Survey::model()->findByPk($surveyId);
+        $criteria = new CDbCriteria();
+//        $criteria->addInCondition("surveyQuestionID",$survey->surveyQuestions,"OR");
+        $criteria->with = "surveyQuestion";
+        $criteria->compare("answeredBy",$this->id);
+        $criteria->compare("surveyQuestion.",$this->id);
 
+        $answers = SurveyAnswer::model()->findAll($criteria);
+        return $answers;
+    }
     /**
      * @return array customized attribute labels (name=>label)
      */

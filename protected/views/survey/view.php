@@ -11,10 +11,8 @@ $this->breadcrumbs=array(
     <h5><?=t("Skapades ").$model->date;?></h5>
     <h3><?=t("Enkätens frågor");?></h3>
     <?php
-    $answers=array();
     foreach($model->surveyQuestions as $q){
         echo "<h6>".$q->question."</h6>";
-        $answers[$q->id] = $q->surveyAnswers;
     }
 ?>
 <h3><?=t("Enkäten besvarad av");?></h3>
@@ -29,10 +27,10 @@ $this->breadcrumbs=array(
             );
             echo "<br/>";
             echo CHtml::tag("div",array("id"=>"answersDiv".$candidate->user->id,"class"=>"hidden"));
-            foreach($candidate->user->surveyAnswers as  $answer){
-                echo "<h4>".$answer->surveyQuestion->question."</h4>";
+            foreach($model->surveyQuestions as $question){
+                $answer = $question->getAnswerByUser($candidate->user->id);
+                echo "<h4>".$question->question."</h4>";
                 echo $answer->questionAnswer;
-
             }
             echo CHtml::closeTag("div");
         }

@@ -303,8 +303,9 @@ class CvController extends Controller
 	public function actionAdmin()
 	{
 		if(Yii::app()->user->getState("role")== "publisher"){
-			$allModels = Cv::model()->findAll();
-		//	$dataProvider=new CActiveDataProvider('Cv');
+			$criteria = new CDbCriteria;
+         	$criteria->compare('publisherId', Yii::app()->user->id );
+			$allModels = Cv::model()->findAll($criteria);
 			$this->render('admin',array(
 				//'dataProvider'=>$dataProvider,
 				'allModels'=>$allModels

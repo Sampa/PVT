@@ -233,7 +233,10 @@ class SurveyController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$allModels = Survey::model()->findAll();
+        $criteria = new CDbCriteria();
+        $criteria->compare("recruiterId",user()->id);
+        $criteria->order = "date DESC";
+		$allModels = Survey::model()->findAll($criteria);
 		$dataProvider=new CActiveDataProvider('Survey');
 		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,

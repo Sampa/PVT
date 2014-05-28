@@ -65,6 +65,7 @@ $('.deleteCV').on('click',function(event){
 
 	$.ajax({
 		type: 'POST',
+		datatype: 'json',
 		data: {id:cvIdToDelete},
 		url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete,
 	})

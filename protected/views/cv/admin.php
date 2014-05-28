@@ -6,31 +6,69 @@
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
 	'CV'=>array('index'),
-    	Yii::t("t",'Hantera dina CV:n'),
+    	Yii::t("t",'Mina CV:n'),
     );
 ?>
-<div class="page-header">
-        <h1><?php echo Yii::t("t",'Mina publicerade CV:n');?></h1>
-</div>
+<div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h3><?php echo Yii::t('t','Mina CV:n');?></h3>
+        </div>
 
-<?php $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'cv-grid',
-	'type' => 'striped',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		array(
-			'header' => 'Date',
-			'name' => 'date',
-			'value' => 'substr($data->date, 0, 10)',
-			),
-		'typeOfEmployment',
-		'title',
-		'buttons'=>array(
-			'class'=>'TbButtonColumn',
-            'htmlOptions'=>array('style'=>'width: 250px'),
-            'deleteButtonIcon'=>'glyphicon glyphicon-trash',
-//            'updateButtonIcon'=>'glyphicon glyphicon-eye-open',
-        ),
-	),
-)); ?>
+        <table class="table table-bordered table-condensed table-hover">
+            <tbody>
+                <tr>
+                    <th><?php echo Yii::t('t','Datum');?></th>
+                    <th><?php echo Yii::t('t','Rubrik');?></th>
+                    <th><?php echo Yii::t('t','Anställningsform');?></th>
+                </tr>
+                <?php
+                foreach($allModels as $model){
+                    if($model->publisherId ==Yii::app()->user->id){
+                ?>
+                <tr id="<?php echo $model->id;?>">
+                    <td class='onClick'><?php
+                            echo substr($model->date, 0, 10);
+                        ?>
+                    </td >
+                    <td class='onClick'><?php
+                            echo $model->title;
+                        ?>
+                    </td>
+                    <td class='onClick'><?php
+                            echo $model->typeOfEmployment;
+                        ?>
+                    </td>
+        			<td style='text-align:center;'>
+                		<a href =""; return false;> <span id="<?php echo $model->id?>" value="<?php echo $model->id?>" class="glyphicon glyphicon-trash deleteCV"></span> </a>
+           			 </td>
+                </tr>
+                    <?php
+                    }
+                }?>
+            </tbody>
+        </table>
+
+    </div>
+
+<script>
+$('.onClick').on('click',function(event){
+	event.preventDefault();
+	window.document.location ='/cv/pdf/'+$(this).parent().attr('id');
+});
+</script>
+
+<script>
+$('.deleteCV').on('click',function(event){
+	event.preventDefault();
+	var cvIdToDelete = $(this).attr('id');
+
+	$.ajax({
+		type: 'POST',
+		data: {id:cvIdToDelete},
+		url: '/cv/delete/'+cvIdToDelete
+	})
+	window.document.location ='admin';
+});
+</script>
+

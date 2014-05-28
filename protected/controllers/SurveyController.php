@@ -62,7 +62,7 @@ class SurveyController extends Controller
                     $surveyAnswer->save();
                 }
             }
-            $this->redirect("/message");
+            $this->redirect("<?php echo Yii::app()->baseUrl; ?>" + "/message");
         }else{
             $model = $this->loadModel($id);
         }

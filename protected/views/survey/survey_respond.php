@@ -2,7 +2,7 @@
 $model = new SurveyForm();
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'enableClientValidation' => true,
-    'action'=>"/survey/respond",
+    'action'=>"<?php echo Yii::app()->baseUrl; ?>" + "/survey/respond",
     //'enableAjaxValidation'=>true,
     // 'errorMessageCssClass'=>'has-error',
     'htmlOptions' => array('class' => '','role' => 'form','id' => 'survey-form'),

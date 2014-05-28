@@ -28,7 +28,7 @@ class SurveyController extends Controller
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index','view','create','update','admin','delete','sendOutSurveys'),
-				'expression'=>'(( User::model()->findByPk(Yii::app()->user->id) != null && User::model()->findByPk(Yii::app()->user->id)->isRecruiter()',
+				'expression'=>'(( User::model()->findByPk(Yii::app()->user->id) != null && User::model()->findByPk(Yii::app()->user->id)->isRecruiter() ))',
 			),
 			array('allow', // allow authed users to perform 'respond' actions
 				'actions'=>array('respond'),

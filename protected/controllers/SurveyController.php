@@ -41,8 +41,28 @@ class SurveyController extends Controller
 	}
     public function actionRespond($id=null){
         if(Yii::app()->request->isPostRequest){
-            var_dump($_POST);
-            die();
+            foreach($_POST['SurveyForm'] as $question=>$answer){
+                if(is_array($answer))
+                    $answer = $answer[0];
+                $criteria = new CDbCriteria();
+                $criteria->compare("id",$question);
+                $surveyQuestion = SurveyQuestion::model()->find($criteria);
+                if($surveyQuestion){
+                    $surveyCandidateCriteria = new CDbCriteria();
+                    $surveyCandidateCriteria->compare("userID",user()->id);
+                    $surveyCandidateCriteria->compare("surveyID",$_POST['SurveyForm']['surveyId']);
+                    $surveyCandidate = SurveyCandidate::model()->find($surveyCandidateCriteria);
+                    $surveyCandidate->answered = 1;
+                    $surveyCandidate->save();
+                    
+                    $surveyAnswer = new SurveyAnswer;
+                    $surveyAnswer->surveyQuestionID = $surveyQuestion->id;
+                    $surveyAnswer->questionAnswer = $answer;
+                    $surveyAnswer->answeredBy = $surveyCandidate->userID;
+                    $surveyAnswer->save();
+                }
+            }
+            $this->redirect("/message");
         }else{
             $model = $this->loadModel($id);
         }
@@ -58,8 +78,8 @@ class SurveyController extends Controller
 		if(isset($_POST['ids'])){
 			foreach($_POST['ids'] as $key=>$id){
 				$cv = Cv::model()->findByPk($id);
-				$candidateForSurvey= new SurveyCandidate;
-				$candidateForSurvey->userID=$cv->publisherId;
+				$candida    teForSurvey= new SurveyCandidate;
+				$candidateForSurvey->userID =$cv->publisherId;
 				$candidateForSurvey->surveyID=$survey->id;
 				$candidateForSurvey->answered=0;
 				$candidateForSurvey->save();
@@ -209,7 +229,10 @@ class SurveyController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$allModels = Survey::model()->findAll();
+        $criteria = new CDbCriteria();
+        $criteria->compare("recruiterId",user()->id);
+        $criteria->order = "date DESC";
+		$allModels = Survey::model()->findAll($criteria);
 		$dataProvider=new CActiveDataProvider('Survey');
 		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,

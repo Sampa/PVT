@@ -1,26 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "SurveyCandidate".
+ * This is the model class for table "SurveyAnswer".
  *
- * The followings are the available columns in table 'SurveyCandidate':
+ * The followings are the available columns in table 'SurveyAnswer':
  * @property integer $id
- * @property integer $userID
- * @property integer $surveyID
- * @property integer $answered
+ * @property integer $surveyQuestionID
+ * @property string $questionAnswer
  *
  * The followings are the available model relations:
- * @property User $user
- * @property Survey $survey
+ * @property SurveyQuestion $surveyQuestion
  */
-class SurveyCandidate extends CActiveRecord
+class SurveyAnswer extends CActiveRecord
 {
+    public $answeredBy;
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'SurveyCandidate';
+		return 'SurveyAnswer';
 	}
 
 	/**
@@ -31,11 +30,11 @@ class SurveyCandidate extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userID, surveyID, answered', 'required'),
-			array('userID, surveyID, answered', 'numerical', 'integerOnly'=>true),
+			array('surveyQuestionID, questionAnswer', 'required'),
+			array('surveyQuestionID', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userID, surveyID, answered', 'safe', 'on'=>'search'),
+			array('id, surveyQuestionID, questionAnswer', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,9 +46,8 @@ class SurveyCandidate extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'userID'),
-			'survey' => array(self::BELONGS_TO, 'Survey', 'surveyID'),
-        );
+			'surveyQuestion' => array(self::BELONGS_TO, 'SurveyQuestion', 'surveyQuestionID'),
+		);
 	}
 
 	/**
@@ -59,9 +57,8 @@ class SurveyCandidate extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'userID' => 'User',
-			'surveyID' => 'Survey',
-			'answered' => 'Answered',
+			'surveyQuestionID' => 'Survey Question',
+			'questionAnswer' => 'Question Answer',
 		);
 	}
 
@@ -84,9 +81,8 @@ class SurveyCandidate extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('userID',$this->userID);
-		$criteria->compare('surveyID',$this->surveyID);
-		$criteria->compare('answered',$this->answered);
+		$criteria->compare('surveyQuestionID',$this->surveyQuestionID);
+		$criteria->compare('questionAnswer',$this->questionAnswer,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -97,7 +93,7 @@ class SurveyCandidate extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return SurveyCandidate the static model class
+	 * @return SurveyAnswer the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

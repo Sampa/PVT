@@ -82,8 +82,8 @@ class SurveyController extends Controller
 		if(isset($_POST['ids'])){
 			foreach($_POST['ids'] as $key=>$id){
 				$cv = Cv::model()->findByPk($id);
-				$candidateForSurvey= new SurveyCandidate;
-				$candidateForSurvey->userID=$cv->publisherId;
+				$candida    teForSurvey= new SurveyCandidate;
+				$candidateForSurvey->userID =$cv->publisherId;
 				$candidateForSurvey->surveyID=$survey->id;
 				$candidateForSurvey->answered=0;
 				$candidateForSurvey->save();

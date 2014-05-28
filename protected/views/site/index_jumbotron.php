@@ -1,6 +1,6 @@
 <?php $this->pageTitle = Yii::app()->name; ?>
 <!--mobilens förstasida-->
-<div class="container visible-xs">
+<div class="container visible-xs visible-sm">
     <center>
         <h2><span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span></h2>
         <h3><span><?php echo Yii::t("t","Sök efter cv:n i databasen");?></span></h3>

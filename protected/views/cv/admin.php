@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
     Yii::t("t",'Mina CV:n'),
     );
 ?>
-<div class="panel panel-success">
+<div class="panel panel-info">
         <!-- Default panel contents -->
         <div class="panel-heading">
             <h3><?php echo Yii::t('t','Mina CV:n');?></h3>
@@ -65,7 +65,7 @@ $('.deleteCV').on('click',function(event){
 
 	$.ajax({
 		type: 'POST',
-		datatype: 'json',
+        dataType:"json",
 		data: {id:cvIdToDelete},
 		url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete,
 	})

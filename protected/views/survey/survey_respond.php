@@ -21,6 +21,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     echo "<h3>".$survey->title."</h3>";
     //loopa igenom enkätens frågor
     foreach($survey->surveyQuestions as $q){
+        $model->addAttribute($q->id);
         echo "<h4>".$q->question ." ?</h4>";
         if($q->haveOptions == 1){
             //initiera array av settings för formulärfältet
@@ -28,23 +29,22 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             //loopa svarsalternativen
             foreach($q->options as $option){
                 //lägg till det i vår array över tillgängliga svarsalternativ
-                $options[$option->id] =$option->text;
+                $options[$option->text] =$option->text;
             }
             //om man ska kunna välja flera skapa checkboxes annars radiobuttons
             if($q->allowMultipleChoice==1){
-                echo $form->checkboxList($model,'title',$options,array('class'=>''));
+                echo $form->checkboxList($model,$q->id,$options,array('class'=>''));
             }else{
-                echo $form->radioButtonList($model,'title',$options);
+                echo $form->radioButtonList($model,$q->id,$options);
             }
         }else{
             if($q->type=="textfield"){
-                echo $form->textField($model,'title',
-                    array('class'=>'col-md-5 form-control','maxlength'=>255));
+                echo $form->textFieldControlGroup($model,$q->id,array("class"=>"form-control"));
             }else{
-                echo $form->textArea($model,'area',
-                    array('class'=>'col-md-5 form-control','maxlength'=>255));
+                echo $form->textAreaControlGroup($model,$q->id,array("class"=>"form-control"));
             }
         }
+        echo $form->hiddenField($model,"surveyId",array("value"=>$survey->id));
     }
     echo TbHtml::submitButton(t('Svara'),array(
         'color'=>TbHtml::BUTTON_COLOR_PRIMARY,

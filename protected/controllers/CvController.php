@@ -302,15 +302,25 @@ class CvController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Cv('search');
-		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Cv'])) {
-			$model->attributes=$_GET['Cv'];
+		if(Yii::app()->user->getState("role")== "publisher"){
+			$allModels = Cv::model()->findAll();
+		//	$dataProvider=new CActiveDataProvider('Cv');
+			$this->render('admin',array(
+				//'dataProvider'=>$dataProvider,
+				'allModels'=>$allModels
+				));
+		}else{
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');	
 		}
+		// $model=new Cv('search');
+		// $model->unsetAttributes();  // clear any default values
+		// if (isset($_GET['Cv'])) {
+		// 	$model->attributes=$_GET['Cv'];
+		// }
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		// $this->render('admin',array(
+		// 	'model'=>$model,
+		// ));
 	}
 
 	/**

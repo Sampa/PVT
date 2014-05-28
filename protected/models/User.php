@@ -247,4 +247,10 @@ class User extends CActiveRecord
 		$c->addSearchCondition('email', $q, true, 'OR');
 		return $this->findAll($c);
 	}
+  public function isPublisher() {
+    return Yii::app()->user->getState("role") == "publisher";
+  }
+  public function isRecruiter() {
+    return Yii::app()->user->getState("role")== "recruiter";
+  }
 }

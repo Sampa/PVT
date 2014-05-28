@@ -9,24 +9,26 @@
   <div class="col-md-2">
             <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Öppna cv" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
         </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
   	<ul class="meta-search">
            <li><i class="glyphicon glyphicon-calendar"></i> <span><?php echo substr(CHtml::encode($data->cv->date),0,10); ?></span></li>
            <li><i class="glyphicon glyphicon-briefcase"></i> <span><?php echo CHtml::encode($data->cv->typeOfEmployment); ?></span></li>
             <?php
             //DB Query to get the country name.
-            if(isset($data->cv->geographicArea->country)){
-                $countryName = $data->cv->geographicArea->country;
-            }else
-                $countryName = null;
-            ?>
-            <li><i class="glyphicon glyphicon-globe"></i> <span><?= $countryName; ?></span></li>
+                        foreach($data->cv->areas as $area){?>
+                        <li>
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span><?= $area->country; ?>, </span>
+                            <span><?= $area->region; ?>, </span>
+                            <span><?= $area->city; ?></span>
+                        </li>
+            <?php }?>
            <li><i class="glyphicon glyphicon-user"></i> <span><?php echo CHtml::encode($data->cv->publisher->username); ?></span></li>
         </ul>
 
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="row lead" >
         <div id="stars" class="starrr" style='font-size: 20px'></div>
          <div style='font-size: 15px'>
@@ -45,8 +47,8 @@
   </div>
 
   <div class="col-md-1">
-<!--         <?php $this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbutton', 'id' => $data->cv->id));?> -->
-      <input id="<?php echo $data->id;?>" name="switchbutton" type="checkbox" value="1" data-title="<?php echo $data->cv->title?>">
+<!--        --><?php //$this->widget('yiiwheels.widgets.switch.WhSwitch', array('name' => 'switchbutton', 'id' => $data->cv->id));?>
+      <input id="<?php echo $data->cv->id;?>" name="switchbutton" type="checkbox" value="1" data-title="<?php echo $data->cv->title?>">
   </div>
 
 </div>

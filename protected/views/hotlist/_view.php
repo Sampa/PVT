@@ -3,17 +3,8 @@
 /* @var $data Hotlist */
 /* @var $hotlistRating HotlistRating */
 ?>
-
 <div class="view">
-
- 
-
 </div>
-<!--<article class="search-result row">
-
-
-<!--     <div class="col-xs-12 col-sm-12 col-md-1">
-    </div> -->
     <div class="row">
         <div class="col-md-1">
  <!--   <article class="search-result row"> -->
@@ -24,7 +15,6 @@
         <div class="col-md-2">
             <a href="" title="Lorem ipsum" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/YellowSmily.jpg" /></a>
         </div>
-<!--        -->
 <!--  <!--      <div class="col-xs-12 col-sm-12 col-md-2">-->
 <!--<!--        --><?php
 //        if($data->hotlistRating->rating == 3){?>

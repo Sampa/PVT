@@ -54,7 +54,6 @@ class Survey extends CActiveRecord
 			'surveyQuestions' => array(self::HAS_MANY, 'SurveyQuestion', 'surveyID'),
 		);
 	}
-
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

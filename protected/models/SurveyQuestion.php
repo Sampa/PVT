@@ -55,6 +55,14 @@ class SurveyQuestion extends CActiveRecord
 		);
 	}
 
+    public function getAnswerByUser($userId){
+        $criteria = new CDbCriteria();
+        $criteria->compare("surveyQuestionID",$this->id);
+        $criteria->compare("answeredBy",$userId);
+        $criteria->limit = 1;
+        $answer = SurveyAnswer::model()->find($criteria);
+        return $answer;
+    }
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

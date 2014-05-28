@@ -62,7 +62,7 @@ class SurveyController extends Controller
                     $surveyAnswer->save();
                 }
             }
-            $this->redirect("/message");
+            $this->redirect("message");
         }else{
             $model = $this->loadModel($id);
         }

@@ -9,7 +9,7 @@
 	<div id="selectCountry" class="col-md-3  " style=" ">
 		    <label class="" for="countries"><?php echo Yii::t("t","Land");?></label>
 		    <select id="countries" name="countries" class="form-control" data-placeholder="<?php echo Yii::t("t","Välj land");?>">
-		    <option value="default" <?php echo isset($search)?"selected" : null; ?>></option>
+		    <option value="default" <?php echo isset($search) && $search ?"selected" : null; ?>></option>
 		    <optgroup label="<?php echo Yii::t("t","Antarktis");?>">
 	                <option id="3371123" value="Bouvet Island">Bouvet Island</option>
 	                <option id="1546748" value="French Southern Territories">French Southern Territories</option>
@@ -175,7 +175,7 @@
 	                <option id="3190538" value="Slovenia">Slovenia</option>
 	                <option id="2510769" value="Spain">Spain</option>
 	                <option id="607072" value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
-	                <option id="2661886" value="Sweden" <?php echo isset($search) ? null: "selected"; ?>>Sweden</option>
+	                <option id="2661886" value="Sweden" <?php echo isset($search) && $search ? null: "selected"; ?>>Sweden</option>
 	                <option id="2658434" value="Switzerland">Switzerland</option>
 	                <option id="690791" value="Ukraine">Ukraine</option>
 	                <option id="2635167" value="United Kingdom">United Kingdom</option>

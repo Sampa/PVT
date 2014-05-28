@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
         <!-- Default panel contents -->
         <div class="panel-heading">
             <h3><?php echo Yii::t('t','Statistik över CV-Pages');?></h3>
@@ -86,7 +86,7 @@ $this->breadcrumbs=array(
         </tbody>
     </table>   
 </div> -->
-
+<center>
 <div>
     <h3> <?php echo Yii::t('t',' Antal CV:n i databasen = ');?> <?php echo $dataProviderCv->getTotalItemCount();?> </h3>
     <br>
@@ -104,6 +104,7 @@ $this->breadcrumbs=array(
     <h3> <?php echo Yii::t('t',' Antal registrerade publicerare jämfört med antal rekryterare');?> </h3>
     <div id="searchWordsDonut" style="height: 300px;"></div>
 </div>
+</center>
 
 <script>
 

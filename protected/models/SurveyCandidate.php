@@ -49,7 +49,7 @@ class SurveyCandidate extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'userID'),
 			'survey' => array(self::BELONGS_TO, 'Survey', 'surveyID'),
-		);
+        );
 	}
 
 	/**

@@ -26,17 +26,13 @@ class SurveyController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','admin','delete','sendOutSurveys','respond'),
-				'users'=>array('@'),
+				'actions'=>array('index','view','create','update','admin','delete','sendOutSurveys'),
+				'expression'=>'(( User::model()->findByPk(Yii::app()->user->id) != null && User::model()->findByPk(Yii::app()->user->id)->isRecruiter() ))',
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+			array('allow', // allow authed users to perform 'respond' actions
+				'actions'=>array('respond'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -45,8 +41,28 @@ class SurveyController extends Controller
 	}
     public function actionRespond($id=null){
         if(Yii::app()->request->isPostRequest){
-            var_dump($_POST);
-            die();
+            foreach($_POST['SurveyForm'] as $question=>$answer){
+                if(is_array($answer))
+                    $answer = $answer[0];
+                $criteria = new CDbCriteria();
+                $criteria->compare("id",$question);
+                $surveyQuestion = SurveyQuestion::model()->find($criteria);
+                if($surveyQuestion){
+                    $surveyCandidateCriteria = new CDbCriteria();
+                    $surveyCandidateCriteria->compare("userID",user()->id);
+                    $surveyCandidateCriteria->compare("surveyID",$_POST['SurveyForm']['surveyId']);
+                    $surveyCandidate = SurveyCandidate::model()->find($surveyCandidateCriteria);
+                    $surveyCandidate->answered = 1;
+                    $surveyCandidate->save();
+                    
+                    $surveyAnswer = new SurveyAnswer;
+                    $surveyAnswer->surveyQuestionID = $surveyQuestion->id;
+                    $surveyAnswer->questionAnswer = $answer;
+                    $surveyAnswer->answeredBy = $surveyCandidate->userID;
+                    $surveyAnswer->save();
+                }
+            }
+            $this->redirect("<?php echo Yii::app()->baseUrl; ?>" + "/message");
         }else{
             $model = $this->loadModel($id);
         }
@@ -62,8 +78,8 @@ class SurveyController extends Controller
 		if(isset($_POST['ids'])){
 			foreach($_POST['ids'] as $key=>$id){
 				$cv = Cv::model()->findByPk($id);
-				$candidateForSurvey= new SurveyCandidate;
-				$candidateForSurvey->userID=$cv->publisherId;
+				$candidateForSurvey = new SurveyCandidate;
+				$candidateForSurvey->userID =$cv->publisherId;
 				$candidateForSurvey->surveyID=$survey->id;
 				$candidateForSurvey->answered=0;
 				$candidateForSurvey->save();
@@ -213,7 +229,10 @@ class SurveyController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$allModels = Survey::model()->findAll();
+        $criteria = new CDbCriteria();
+        $criteria->compare("recruiterId",user()->id);
+        $criteria->order = "date DESC";
+		$allModels = Survey::model()->findAll($criteria);
 		$dataProvider=new CActiveDataProvider('Survey');
 		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,

@@ -88,37 +88,55 @@
 
 
                 <?php else: ?>
-        <div class=" navbar-right">
-            <ul class="nav navbar-nav">
-        <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?><span class="glyphicon glyphicon-user pull-right"></span></a>
-                <ul class="dropdown-menu" style="width:200px">
-                    <li><a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Ändra uppgifter");?><span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                    <li class="divider"></li>
-                    <li>
-<!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
-                            <!-- href leder till användarens inbox -->
-                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
-                    <span class="badge pull-right">
-                        <?php
-                        if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
-                        echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
-                        }else{
-                        echo "";
-                        }
-                         ?>
-                    </span>
-                    </a>
-                    </li>
-                    <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Mina Sidor");?><span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/site/page/helpguide/')?>"><?php echo Yii::t("t","Användarguide");?><span class="glyphicon glyphicon-question-sign pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="<?php echo $this->createUrl('/site/logout') ?>"><?php echo Yii::t("t","Logga ut");?><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                <div class="navbar-right visible-xs" >
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?>
+                                <span class="glyphicon glyphicon-user pull-right"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:200px">
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Mina Sidor");?>
+                                        <span class="glyphicon glyphicon-heart pull-right"></span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
+                                    <!-- href leder till användarens inbox -->
+                                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
+                                        <span class="badge pull-right">
+                                            <?php
+                                            if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
+                                                echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
+                                            }else{
+                                                echo "";
+                                            }
+                                            ?>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/site/page/helpguide/')?>"><?php echo Yii::t("t","Användarguide");?>
+                                        <span class="glyphicon glyphicon-question-sign pull-right"></span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Ändra uppgifter");?>
+                                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/site/logout') ?>"><?php echo Yii::t("t","Logga ut");?>
+                                        <span class="glyphicon glyphicon-log-out pull-right"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
 
 
                        <!--  <span class="navbar-brand">
@@ -126,7 +144,64 @@
                                 <small><?php echo Yii::t("t","Logga ut");?></small>
                             </a>
                         </span> -->
-        </div>
+                </div>
+                <div class="navbar-right hidden-xs" >
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ")." ".Yii::app()->user->name; ?>
+                                <span class="glyphicon glyphicon-user pull-right"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:200px">
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/user/')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Mina Sidor");?>
+                                        <span class="glyphicon glyphicon-heart pull-right"></span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
+                                    <!-- href leder till användarens inbox -->
+                                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
+                                        <span class="badge pull-right">
+                                            <?php
+                                            if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
+                                                echo ' (' . Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) . ')';
+                                            }else{
+                                                echo "";
+                                            }
+                                            ?>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/site/page/helpguide/')?>"><?php echo Yii::t("t","Användarguide");?>
+                                        <span class="glyphicon glyphicon-question-sign pull-right"></span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/user/update')."/".Yii::app()->user->id ?>"><?php echo Yii::t("t","Ändra uppgifter");?>
+                                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="<?php echo $this->createUrl('/site/logout') ?>"><?php echo Yii::t("t","Logga ut");?>
+                                        <span class="glyphicon glyphicon-log-out pull-right"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                       <!--  <span class="navbar-brand">
+                            <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
+                                <small><?php echo Yii::t("t","Logga ut");?></small>
+                            </a>
+                        </span> -->
+                </div>
                 <?php endif;?>
             </div>
             <!--/.navbar-collapse -->
@@ -158,8 +233,38 @@
 	    <?php
 
         if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>
-        <footer id="footer2">
-            <div class="container">
+        <footer id="footer2 ">
+            <div class="container visible-xs">
+                <div class="row">
+                    <br>
+                    <div class="col-md-4">
+                        <center>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains"></a>
+                            <br>
+                            <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></a></h5>
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="..."></a>
+                            <br>
+                            <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></a></h5>
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="..."></a>
+                            <br>
+                            <h5 class="footertext"><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><strong><?php echo YIi:: t("t","Cookies");?></strong></a></h5>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- end if startpage-->
+        <footer id="footer2 ">
+            <div class="container visible-sm visible-md visible-lg">
                 <div class="row">
                     <br>
                     <div class="col-xs-4">
@@ -187,7 +292,6 @@
             </div>
 
         </footer>
-        <!-- end if startpage-->
         <?php endif;?>
     </div> <!-- /container -->
 <?php $this->endContent(); ?>

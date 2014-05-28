@@ -24,7 +24,18 @@ $this->breadcrumbs = array(
             </div>
             <div class="col-xs-4 col-sm-6 col-md-4">
                 <p>
-                 <img src="<?php echo Yii::app()->baseUrl;?>/img/anvbild.jpg">
+                    <?php 
+                         $this->widget('ext.Yiippod.Yiippod', array(
+                        'video'=>"/video/SkapaCv.mov", //if you don't use playlist
+                         //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
+                         'id' => 'yiippodplayer',
+                         'autoplay'=>false,
+                         'width'=>384,
+                         'view'=>6, 
+                         'height'=>216,
+                         'bgcolor'=>'#000'
+                         ));
+                     ?>
              </p>
          </div>
      </div>
@@ -42,13 +53,24 @@ $this->breadcrumbs = array(
         </div>
         <div class="col-xs-4 col-sm-6 col-md-4">
             <p>
-             <img src="<?php echo Yii::app()->baseUrl;?>/img/myror.jpg">
+                <?php  
+                    $this->widget('ext.Yiippod.Yiippod', array(
+                    'video'=>"/video/sokning.mov", //if you don't use playlist
+                    //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
+                    'id' => 'yiippodplayer',
+                    'autoplay'=>false,
+                    'width'=>384,
+                    'view'=>6, 
+                    'height'=>216,
+                    'bgcolor'=>'#000'
+                    ));    
+                 ?>
          </p>
      </div>
  </div>
  <div>
     <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-12">
+            <div class="col-xs-8 col-sm-6 col-md-8">
     <h4><strong><?php echo Yii::t("t","Se mina rekryteringar")?></strong></h4>
     <p id="texts"><?php echo t("
         För att kunna ha pågående rekryteringsprocesser måste du vara inloggad som en rekryterare, 
@@ -58,11 +80,22 @@ $this->breadcrumbs = array(
         där du kan skapa en ny process. ");?>
     </p>
 </div>
-<!-- <div class="col-xs-4 col-sm-6 col-md-4">
+<div class="col-xs-4 col-sm-6 col-md-4">
     <p>
-     <img src="<?php echo Yii::app()->baseUrl;?>/img/anvbild.jpg">
+                     <?php  
+                    $this->widget('ext.Yiippod.Yiippod', array(
+                    'video'=>"/video/rekryteringsprocess.mov", //if you don't use playlist
+                    //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
+                    'id' => 'yiippodplayer',
+                    'autoplay'=>false,
+                    'width'=>384,
+                    'view'=>6, 
+                    'height'=>216,
+                    'bgcolor'=>'#000'
+                    ));    
+                 ?>
  </p>
-</div> -->
+</div>
 </div>
 
 <div class="row">
@@ -78,7 +111,18 @@ $this->breadcrumbs = array(
     </div>
     <div class="col-xs-4 col-sm-6 col-md-4">
     <p>
-     <img src="<?php echo Yii::app()->baseUrl;?>/img/bron.jpg">
+  <?php  
+                    $this->widget('ext.Yiippod.Yiippod', array(
+                    'video'=>"/video/Regga_Take1.mov", //if you don't use playlist
+                    //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
+                    'id' => 'yiippodplayer',
+                    'autoplay'=>false,
+                    'width'=>384,
+                    'view'=>6, 
+                    'height'=>216,
+                    'bgcolor'=>'#000'
+                    ));    
+                 ?>
     </p>
     </div>
 </div>
@@ -111,7 +155,7 @@ $this->breadcrumbs = array(
         </div> -->
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-12">
+        <div class="col-xs-8 col-sm-6 col-md-8">
         <h4><strong><?php echo Yii::t("t","Lägg till cv i hotlist")?></strong></h4>
         <p id="texts"><?php echo t("För att kunna lägga till ett intressant cv i en hotlist måste du vara registrerad som rekryterare först och främst. När du är
         en rekryterare har du möjlighet att skapa en process för att samla intressanta kandidater till den tjänst som behöver fyllas. Du gör så här:
@@ -121,11 +165,22 @@ $this->breadcrumbs = array(
         </p>
         </div>
 
-        <!-- <div class="col-xs-4 col-sm-6 col-md-4">
+        <div class="col-xs-4 col-sm-6 col-md-4">
         <p>
-        <img src="<?php echo Yii::app()->baseUrl;?>/img/anvbild.jpg">
+          <?php  
+                    $this->widget('ext.Yiippod.Yiippod', array(
+                    'video'=>"/video/hotlist.mov", //if you don't use playlist
+                    //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
+                    'id' => 'yiippodplayer',
+                    'autoplay'=>false,
+                    'width'=>384,
+                    'view'=>6, 
+                    'height'=>216,
+                    'bgcolor'=>'#000'
+                    ));    
+                 ?>
         </p>
-        </div> -->
+        </div>
     </div>
 </div>
 

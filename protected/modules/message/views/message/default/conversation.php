@@ -1,9 +1,4 @@
  <?php $this->pageTitle = Yii::app()->name . ' - ' . t("Konversationer"); ?>
-<?php
-$menuText = t("Enkäter");
-if(user()->getState("role")=="publisher")
-    $menuText = t("Enkäter");
-?>
 	<div class="row" style="min-width: 100%;">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
@@ -11,9 +6,11 @@ if(user()->getState("role")=="publisher")
 					<a href="#" class="list-group-item active text-center">
 						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
 					</a>
-					<a href="#" class="list-group-item text-center">
-						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= $menuText;?>
+					<?php if(user()->getState("role")=="publisher"):?>
+                    <a href="#" class="list-group-item text-center">
+						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkäter"); ?>
 					</a>
+                    <?php endif;?>
 <!--					<a href="#" class="list-group-item text-center">-->
 <!--						<h4 class="glyphicon glyphicon-pencil"></h4><br/> --><?//= t("Skickade");?>
 <!--					</a>-->
@@ -32,6 +29,7 @@ if(user()->getState("role")=="publisher")
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 				<div class="bhoechie-tab-content">
                     <?php $this->renderPartial("application.views.survey.survey_recieved",array("surveys"=>$surveys));?>
+                    <?php $this->renderPartial("application.views.survey.survey_answered",array("surveys"=>$answeredSurveys));?>
 				</div>
 			</div>
 			<!-- Skickade search -->

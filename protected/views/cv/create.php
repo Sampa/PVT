@@ -3,7 +3,7 @@
 /* @var $model Cv */
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-    'CV'=>array('index'),
+    Yii::t("t","Mina Sidor")=>Yii::app()->getBaseUrl().'/user/'.app()->user->id,
 	Yii::t("t",'Skapa nytt CV'),
 );
 

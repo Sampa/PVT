@@ -4,10 +4,10 @@
      * @surveys alla kandidate object SurveyCandidate enkäter för den inloggade användaren
      */
     //loopa igenom surveyCandidate info för att få ut relevant survey
-    foreach($surveys as $candidate): ?>
+    foreach($surveys as $candidate):
+    ?>
         <a href="<?=$this->createUrl("/survey/respond/".$candidate->survey->id,array());?>">
             <?=$candidate->survey->title;?>
         </a>
         <hr/>
     <?php endforeach;?>
-

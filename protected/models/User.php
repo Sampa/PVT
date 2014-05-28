@@ -146,11 +146,22 @@ class User extends CActiveRecord
     // NOTE: you may need to adjust the relation name and the related
     // class name for the relations automatically generated below.
         return array(
-          'recruiter' => array(self::HAS_ONE, 'Recruiter', 'userId')
+          'recruiter' => array(self::HAS_ONE, 'Recruiter', 'userId'),
+          'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'answeredBy')
         );
       }
 
+    public function getAnswersToSurvey($surveyId){
+        $survey = Survey::model()->findByPk($surveyId);
+        $criteria = new CDbCriteria();
+//        $criteria->addInCondition("surveyQuestionID",$survey->surveyQuestions,"OR");
+        $criteria->with = "surveyQuestion";
+        $criteria->compare("answeredBy",$this->id);
+        $criteria->compare("surveyQuestion.",$this->id);
 
+        $answers = SurveyAnswer::model()->findAll($criteria);
+        return $answers;
+    }
     /**
      * @return array customized attribute labels (name=>label)
      */

@@ -37,6 +37,7 @@ class ConversationController extends Controller
 			'inbox'=>$this->getInboxContent(),
 			'sent'=>$this->getSentContent(),
             'surveys'=>$this->getSurveys(),
+            'answeredSurveys'=>$this->getAnsweredSurveys(),
 			'model' => $message,
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
@@ -64,6 +65,13 @@ class ConversationController extends Controller
         $criteria = new CDbCriteria;
         $criteria->compare("userId",Yii::app()->user->id);
         $criteria->compare( "answered",0);
+        $allForThisArea = SurveyCandidate::model()->findAll($criteria);
+        return $allForThisArea;
+    }
+    public function getAnsweredSurveys(){
+        $criteria = new CDbCriteria;
+        $criteria->compare("userId",Yii::app()->user->id);
+        $criteria->compare( "answered",1);
         $allForThisArea = SurveyCandidate::model()->findAll($criteria);
         return $allForThisArea;
     }

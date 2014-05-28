@@ -6,7 +6,7 @@
 <?php
 $this->breadcrumbs=array(
     Yii::t('t', 'Hem') => Yii::app()->getHomeUrl(),
-    t('Rekryteringsprocesser')=>array(Yii::app()->baseUrl."/recruitmentprocess"),
+    t('Rekryteringsprocesser')=>Yii::app()->baseUrl."/recruitmentprocess",
     $model->title,
 );
 ?>
@@ -150,10 +150,8 @@ $this->breadcrumbs=array(
         </div>
     </div>
 <?php } ?>
-
 <?php
-$geoid=$model->geographicAreaID;
-
+    $geoid=$model->geographicAreaID;
 ?>
 <div class="row">
     <div class="controls" style="margin-top:20px">
@@ -161,7 +159,6 @@ $geoid=$model->geographicAreaID;
         <?php
         if(isset($model->geographicArea->country)){
             $countryName = $model->geographicArea->country;
-
         }else{
             $countryName=null;
         }

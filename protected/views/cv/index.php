@@ -93,7 +93,7 @@ $this->breadcrumbs=array(
       <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>
   </div>
   <div>
-    <?php $this->renderPartial('_allCountriesSelect', array('search'=>true)); ?>
+    <?php $this->renderPartial('_allCountriesSelect', array('search'=>false)); ?>
   </div>
   <div style="margin-top:15px;">
     <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>

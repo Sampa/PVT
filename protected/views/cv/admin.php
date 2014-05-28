@@ -54,7 +54,7 @@ $this->breadcrumbs=array(
 <script>
 $('.onClick').on('click',function(event){
 	event.preventDefault();
-	window.document.location ='/cv/pdf/'+$(this).parent().attr('id');
+	window.document.location ="<?php echo Yii::app()->baseUrl; ?>" + '/cv/pdf/'+$(this).parent().attr('id');
 });
 </script>
 
@@ -66,7 +66,7 @@ $('.deleteCV').on('click',function(event){
 	$.ajax({
 		type: 'POST',
 		data: {id:cvIdToDelete},
-		url: '/cv/delete/'+cvIdToDelete
+		url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete
 	})
 	window.document.location ='admin';
 });

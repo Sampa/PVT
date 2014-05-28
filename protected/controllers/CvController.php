@@ -344,14 +344,14 @@ class CvController extends Controller
     private function setSeveralSearchWordCriteria($criteria,$searchFieldContent){
         $searchWords = explode(" ",$searchFieldContent);
         foreach($searchWords as $index=>$searchWord){
-            $criteria->compare("pdfText",$searchWord,"OR");
+            $criteria->addSearchCondition("pdfText",$searchWord,true,"AND");
         }
         return $criteria;
     }
     private function setDefaultCriteriaCondition(){
         $criteria=new CDbCriteria;
         $criteria = $this->setSortOrderCondition($criteria);
-//            $criteria = $this->handleSearch($criteria);
+		//$criteria = $this->handleSearch($criteria);
         //sätt relational conditions för geographic areas
         $criteria->with = array(
             //areas är namnet på vår relation i Cv model till GeographicArea tabellen
@@ -384,7 +384,7 @@ class CvController extends Controller
         ));
 
         //tillfälligt dölj de utan text
-//        $criteria->compare("pathToPdf","pdf",true);
+		//$criteria->compare("pathToPdf","pdf",true);
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
         $resultCount = $dataProvider->getTotalItemCount();
         if($resultCount<1){
@@ -396,9 +396,9 @@ class CvController extends Controller
             'dataProvider'=>$dataProvider,
             'resultCount'=>$resultCount,
         );
-//        $pager = new CPagination($dataProvider->totalItemCount);
-//        $pager->pageSize = 10;
-//        $dataProvider->setPagination($pager);
+		//        $pager = new CPagination($dataProvider->totalItemCount);
+		//        $pager->pageSize = 10;
+		//        $dataProvider->setPagination($pager);
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
         if( Yii::app()->request->isAjaxRequest){
             $this->renderPartial('_searchview',$dataToView);
@@ -473,47 +473,66 @@ class CvController extends Controller
 	private function handleSearch($criteria) {
 
 		if(isset($_POST['searchbox'])){//if you write in free text search field
-			if(strpos($_POST['searchbox'], ":")!==false){
+			$searchWordArray = explode(" OR ",$_POST['searchbox']);
+			$rightAfterOr = false;
+			foreach($searchWordArray as $index => $searchString){
+				if(strpos($_POST['searchbox'], " OR "))
+					$rightAfterOr = true;
+				$searchWords = explode(" ",$searchString);
+				foreach($searchWords as $index=>$searchWord){
+					if(strpos($searchString, ":")!==false){
 
-				$metaTag = strstr($_POST['searchbox'],":", true);
-				$pos = strpos($_POST['searchbox'], ":");
-				$search = substr($_POST['searchbox'], $pos+1);
+						$metaTag = strstr($searchString,":", true);
+						$pos = strpos($searchString, ":");
+						$search = substr($searchString, $pos+1);
 
-				if($metaTag == "city"){
-					$criteria->addSearchCondition("areas.city",$search);
-					return $criteria;//city:city
+						if($metaTag == "city"){
+							$criteria->addSearchCondition("areas.city",$search,true,"OR");
+							//return $criteria;//city:city
+						}
+						elseif($metaTag == "region"){
+		                    $criteria->addSearchCondition("areas.region",$search,true,"OR");
+		                    //return $criteria;//region:region
+						}
+						elseif($metaTag == "country"){
+		                    $criteria->addSearchCondition("areas.country",$search,true,"OR");
+							//return $criteria;//country:country
+						}
+						elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3
+							$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
+							foreach($tagsAsArray as $tag){ //loop all tags the user entered
+		                        $criteria->addSearchCondition("tags.name",$tag,true,"OR");
+		                    };
+						}
+						elseif($metaTag == "employment"){//employment:consult || employment:employment
+							if($search == 'consult')
+								$criteria->addSearchCondition("typeOfEmployment","consult",true,"OR");
+							if($search == 'employment')
+								$criteria->addSearchCondition("typeOfEmployment","employment",true,"OR");
+						}
+						elseif($metaTag == 'title'){//title:title
+							$criteria->addSearchCondition("title",$search,true,"OR");
+						}
+						elseif($metaTag =='date'){
+							$criteria->addSearchCondition('date',$search,true,"OR");
+						}
+					}
+					else{
+
+						if($rightAfterOr==true){
+							$criteria->addSearchCondition("pdfText",$searchWord,true,"OR");
+							$rightAfterOr == false;
+						}
+						elseif($rightAfterOr== false){
+							$criteria->addSearchCondition("pdfText",$searchWord,true,"AND");
+						}
 				}
-				elseif($metaTag == "region"){
-                    $criteria->addSearchCondition("areas.region",$search);
-                    return $criteria;//region:region
+					
+
+					//$this->setSeveralSearchWordCriteria($criteria,$searchString);
+					
+					//$criteria->addSearchCondition("title",$searchString, true,'OR');
 				}
-				elseif($metaTag == "country"){
-                    $criteria->addSearchCondition("areas.country",$search);
-					return $criteria;//country:country
-				}
-				elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3
-					$allCvIds = array(); //initiate empty array
-					$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
-					foreach($tagsAsArray as $tag){ //loop all tags the user entered
-                        $criteria->addSearchCondition("tags.name",$tag,"OR");
-                    };
-				}
-				elseif($metaTag == "employment"){//employment:consult || employment:employment
-					if($search == 'consult')
-						$criteria->addSearchCondition("typeOfEmployment","consult");
-					if($search == 'employment')
-						$criteria->addSearchCondition("typeOfEmployment","employment");
-				}
-				elseif($metaTag == 'title'){//title:title
-					$criteria->addSearchCondition("title",$search);
-				}
-				elseif($metaTag =='date'){
-					$criteria->addSearchCondition('date',$search);
-				}
-			}
-			else{
-				$this->setSeveralSearchWordCriteria($criteria,$_POST['searchbox']);
-                $criteria->addSearchCondition("title",$_POST['searchbox'], true, 'OR');
 			}
 		}
 		if(isset($_POST['countries'])){

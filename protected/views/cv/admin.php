@@ -5,8 +5,8 @@
 
 $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
-	'CV'=>array('index'),
-    	Yii::t("t",'Mina CV:n'),
+	Yii::t("t","Mina Sidor")=>Yii::app()->getBaseUrl().'/user/'.app()->user->id,
+    Yii::t("t",'Mina CV:n'),
     );
 ?>
 <div class="panel panel-success">
@@ -66,7 +66,7 @@ $('.deleteCV').on('click',function(event){
 	$.ajax({
 		type: 'POST',
 		data: {id:cvIdToDelete},
-		url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete
+		url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete,
 	})
 	window.document.location ='admin';
 });

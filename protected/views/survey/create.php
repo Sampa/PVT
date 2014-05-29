@@ -35,12 +35,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10 col-sm-9 col-xs-5 pull-right" style="padding-left:0px;">
-            <div class="panel panel-info survey-layout bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
+        <div class="col-md-10 col-sm-9 col-xs-5 pull-right survey-layout" style="margin-left:5px;">
+            <div class="panel panel-info bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
                 <div class="panel-heading">
-                    <h3 class="panel-title">
+                    <h3 class="panel-title" id="layoutTitle">
                         <span class="glyphicon glyphicon-wrench "></span>
 	                    <span id="survey-title"><?php echo Yii::t("t","Din layout");?></span>
+                        <span id="survey-save-text"></span>
                     </h3>
                 </div>
                 <div class="panel-body dropzone" id="formLayoutDropzoneWrapper">
@@ -48,7 +49,6 @@
 
                     </ul>
                 </div>
-                <div style="z-index: 90;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div>
             </div>
         </div>
     </div>
@@ -57,9 +57,9 @@
 <script>
 	//NÄR MAN KLICKAR PÅ SPARA KNAPPEN
 	$("#saveSurvey").on("click",function(){
-		var type,title;
+        var type,title;
 		/*be användaren om en titel*/
-		bootbox.prompt("<?php echo Yii::t("t","Namnge din enkät (kommer bara synas för dig");?>", function(text) {
+		bootbox.prompt("<?php echo Yii::t("t","Namnge din enkät");?>", function(text) {
 			//skit i resten om användaren inte anger en titel
 			if (text=== null)
 				return;
@@ -95,10 +95,19 @@
 				data:formInfo,
 				dataType:"json",
 				success:function(data){
-					if(data.success){
-						$("#survey-title").html(t("Sparat som ")+title);
-						$(".survey-layout").addClass("green")
-					}
+					if(data.success=="success"){
+                        $("#saveSurvey").removeClass("btn-info");
+                        $("#saveSurvey").addClass("green");
+                        $("#formLayoutDropzoneWrapper").addClass("green");
+                        $("#survey-save-text").html(" - Sparat");
+                        setTimeout(function(){
+                            $("#saveSurvey").removeClass("green");
+                            $("#saveSurvey").addClass("btn-info");
+                            $("#formLayoutDropzoneWrapper").removeClass("green");
+                            $("#survey-save-text").html("");
+
+                        },2000);
+                    }
 				}
 			});//end ajax
 		});//end bootbox prompt

@@ -109,7 +109,6 @@ class SurveyController extends Controller
 	{
 		$survey=new Survey;
 		if (app()->request->isAjaxRequest) {
-            var_dump($_POST["questions"]);
 			$survey->recruiterID = Yii::app()->user->id;
 			$survey->title = $_POST['title'];
 			$message = array(
@@ -152,10 +151,10 @@ class SurveyController extends Controller
 
 				}
 			}
-			$success = true;
+			$success = "success";
 			foreach($message as $key=>$boolean){
 				if(!$boolean)
-					$success = false;
+					$success = "error";
 			}
 			echo json_encode(array('success'=>$success,'message'=>$message,'title'=>$survey->title));
 			return;

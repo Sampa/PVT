@@ -395,7 +395,7 @@ class CvController extends Controller
         ));
 
         //tillfälligt dölj de utan text
-		//$criteria->compare("pathToPdf","pdf",true);
+//        $criteria->compare("pathToPdf","pdf",true);
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
         $resultCount = $dataProvider->getTotalItemCount();
         if($resultCount<1){

@@ -119,6 +119,7 @@ if($resultCount< 1):?>
 	    'dataProvider'=>$dataProvider,
          'itemView'=>'_view',
          'afterAjaxUpdate'=>'scrollToResults',
+
 	    ));
 	?>
 </div><!-- form -->

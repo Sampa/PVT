@@ -9,15 +9,11 @@ $this->breadcrumbs=array(
 	Yii::t('t','Rekryteringsprocesser'),
 );
 ?>
-<div class="page-header">
-    <h1><?php echo Yii::t('t','Rekryteringsprocesser');?></h1>
-
-  <div align="right">
+    <div align="right">
       <a href="<?php echo Yii::app()->baseUrl;?>/recruitmentprocess/create">
           <span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Lägg till ny process");?>
       </a>
     </div>
-</div>
     <div class="panel panel-info">
         <!-- Default panel contents -->
         <div class="panel-heading">

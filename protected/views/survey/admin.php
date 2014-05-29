@@ -7,14 +7,11 @@ $this->breadcrumbs=array(
 	t('Enkäter'),
 	);
 	?>
-<div class="page-header">
-	<h1><?php echo Yii::t('t','Enkäter');?></h1>
 	<div align="right">
 		<a href="<?php echo Yii::app()->baseUrl;?>/survey/create">
 			<span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Skapa ny enkät");?>
 		</a>
 	</div>
-</div>
 
 <div class="panel panel-info">
 	<!-- Default panel contents -->

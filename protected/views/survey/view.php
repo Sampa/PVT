@@ -49,8 +49,7 @@ $this->breadcrumbs=array(
                 success: {
                     label: "<?=t("Stäng");?>",
                     className: "btn-success",
-                    callback: function() {
-                    }
+                    callback: function() {}
                 }
             }
         });

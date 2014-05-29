@@ -21,13 +21,10 @@
             </div>
             <div class="panel-body wrapper-component">
                 <div>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span><?php echo t('Textfält'); ?></a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="textarea" title="Textarea"><span class="glyphicon glyphicon-comment"></span><?php echo t(' Textarea'); ?></a>
-                    <!--                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="dropdown" title="Dropdown"><span class="glyphicon glyphicon-collapse-down"></span> Dropdown</a>-->
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span><?php echo t(' Flerval'); ?></a>
-                    <a href="#" class="btn btn-success draggable survey-component" data-toggle="tooltip" data-placement="left" id="radio" title="Radio"><span class="glyphicon glyphicon-list-alt"></span><?php echo t(' Enkelval'); ?></a>
-
-
+                    <a href="#" class="btn btn-success draggable survey-component element" data-toggle="tooltip" data-placement="left" id="text" title="Textfält"><span class="glyphicon glyphicon-comment"></span><?php echo t('Textfält'); ?></a>
+                    <a href="#" class="btn btn-success draggable survey-component element" data-toggle="tooltip" data-placement="left" id="textarea" title="Textarea"><span class="glyphicon glyphicon-comment"></span><?php echo t(' Textarea'); ?></a>
+                    <a href="#" class="btn btn-success draggable survey-component element" data-toggle="tooltip" data-placement="left" id="checkbox" title="Checkbox"><span class="glyphicon glyphicon-check"></span><?php echo t(' Flerval'); ?></a>
+                    <a href="#" class="btn btn-success draggable survey-component element" data-toggle="tooltip" data-placement="left" id="radio" title="Radio"><span class="glyphicon glyphicon-list-alt"></span><?php echo t(' Enkelval'); ?></a>
 	                <!-- spara och hjälp-->
                     <button class="btn btn-warning survey-component" id="help">
                         <span class="glyphicon glyphicon-question-sign"></span> <?php echo Yii::t("t","Hjälp");?>
@@ -38,18 +35,7 @@
                 </div>
             </div>
         </div>
-
-        <!--        <div class="col-md-2 pull-right dropzone">-->
-        <!--            <div style="position: fixed;max-width: 1800px;min-height: 900px;" class="panel panel-warning bootstro" data-bootstro-title="Släng saker du inte vill ha" data-bootstro-content="Detta är din papperskorg, släng saker du inte vill ha här." data-bootstro-placement="bottom" data-bootstro-width='272px' data-bootstro-step="3">-->
-        <!--                <div class="panel-heading">-->
-        <!--                    <h3 class="panel-title">-->
-        <!--                        <span class="glyphicon glyphicon-trash"></span>--><?php //echo Yii::t("t","Papperskorg");?>
-        <!--                    </h3>-->
-        <!--                </div>-->
-        <!--                <div id="garbage" name="target" class="panel-body dropzone"></div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <div class="col-md-10 pull-right" >
+        <div class="col-md-10 col-sm-9 col-xs-5 pull-right" style="padding-left:0px;">
             <div class="panel panel-info survey-layout bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -144,52 +130,59 @@
         $(".draggable" ).draggable({
             revert: true
         });
-        function appendNewFormElements(question,formFieldType){
-//clona rätt template element
-            var questionTemplate = $("#questionTemplate").clone();
-            questionTemplate.children(".questionResultTarget").html(question);
-            var clone = $("[name="+formFieldType+"Template]").clone();
-//hämta antalet likadana element i dropzone för att kunna ge unikt namn
-            var currentNumberOfTextFields = $("#formLayoutDropzoneUl ."+formFieldType+"Template");
-//byt ut name attributet till något unikt med hjälp av antalet ovan
-            clone.attr("name",formFieldType+currentNumberOfTextFields.length);
-//kasta in nya elementet sist i diven
-            var li = $("#sortableLiTemplate").clone();
-            li.attr("id",clone.attr("name"));
-	        li.attr("name",formFieldType);
-            li.find(".panel-body").html(clone);
-            li.find(".panel-heading").prepend(questionTemplate);
-            $("#formLayoutDropzoneUl").append(li);
-            li.addClass("insideDroppable");
-        }
+
         $( ".dropzone" ).droppable({
             drop: function( event, ui ) {
-                if(!$('.panel-body').hasClass('dropzone')){ //freeze under guiden
-                    return;
-                }
-                if($(this).attr("id") =="formLayoutDropzoneWrapper"){
-                    if(ui.draggable.hasClass('insideDroppable')){ //stoppa om man sorterar om komponenter
-                        return;
-                    }
-                    bootbox.prompt("<?php echo Yii::t("t","Formulera din fråga här:");?>", function(question) {
-                        //skit i resten om användaren inte anger en fråga
-                        //vad man valde för typ
-                        if (question  === null)
-                            return;
-                        var formFieldType = ui.draggable.attr("id");//defaultVärde
-                        var numOfOptions = 0;
-                        var pause = true;
-                        switch (formFieldType){
-                            case "dropdown":
-                                break;
-                        }
-                        appendNewFormElements(question,formFieldType);
-                    });
-                }
+                handleNewElement(event,ui.draggable,$(this));
             }
+        });
+        $(".element").on("click",function(event){
+           handleNewElement(event,$(this),$("#formLayoutDropzoneWrapper"));
         });
         $("#formLayoutDropzoneUl").sortable({
             connectToSortable: '#formLayoutDropzoneUl'
         });
+    }
+    function appendNewFormElements(question,formFieldType){
+//clona rätt template element
+        var questionTemplate = $("#questionTemplate").clone();
+        questionTemplate.children(".questionResultTarget").html(question);
+        var clone = $("[name="+formFieldType+"Template]").clone();
+//hämta antalet likadana element i dropzone för att kunna ge unikt namn
+        var currentNumberOfTextFields = $("#formLayoutDropzoneUl ."+formFieldType+"Template");
+//byt ut name attributet till något unikt med hjälp av antalet ovan
+        clone.attr("name",formFieldType+currentNumberOfTextFields.length);
+//kasta in nya elementet sist i diven
+        var li = $("#sortableLiTemplate").clone();
+        li.attr("id",clone.attr("name"));
+        li.attr("name",formFieldType);
+        li.find(".panel-body").html(clone);
+        li.find(".panel-heading").prepend(questionTemplate);
+        $("#formLayoutDropzoneUl").append(li);
+        li.addClass("insideDroppable");
+    }
+    function handleNewElement(event,button,target){
+        if(!$('.panel-body').hasClass('dropzone')){ //freeze under guiden
+            return;
+        }
+        if(target.attr("id") =="formLayoutDropzoneWrapper"){
+            if(button.hasClass('insideDroppable')){ //stoppa om man sorterar om komponenter
+                return;
+            }
+            bootbox.prompt("<?php echo Yii::t("t","Formulera din fråga här:");?>", function(question) {
+                //skit i resten om användaren inte anger en fråga
+                //vad man valde för typ
+                if (question  === null)
+                    return;
+                var formFieldType = button.attr("id");//defaultVärde
+                var numOfOptions = 0;
+                var pause = true;
+                switch (formFieldType){
+                    case "dropdown":
+                        break;
+                }
+                appendNewFormElements(question,formFieldType);
+            });
+        }
     }
 </script>

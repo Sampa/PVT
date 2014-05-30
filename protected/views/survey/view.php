@@ -1,6 +1,7 @@
     <?php
     /* @var $this SurveyController */
     /* @var $model Survey */
+    $this->pageTitle = Yii::app()->name . t(' - Enkäter');
     $this->breadcrumbs=array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
         t('Enkäter')=>array('admin'),

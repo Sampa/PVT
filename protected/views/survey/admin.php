@@ -1,11 +1,11 @@
 <?php
 /* @var $this SurveyController */
 /* @var $model Survey */
-
 $this->breadcrumbs=array(
 	t('Hem') => Yii::app()->getHomeUrl(),
     	t('Enkäter'),
 	);
+$this->pageTitle = Yii::app()->name . t(' - Enkäter');
 ?>
 	<div align="right">
 		<a href="<?php echo Yii::app()->baseUrl;?>/survey/create">

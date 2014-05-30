@@ -96,8 +96,13 @@ class SurveyController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$criteria = new CDbCriteria();
+        $criteria->compare("surveyID", $id);
+        $numberOfCandidates = count(SurveyCandidate::model()->findAll($criteria));
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'numberOfCandidates'=>$numberOfCandidates,
 		));
 	}
 

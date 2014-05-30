@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
 	<div class="panel-heading">
 		<h3><?php echo Yii::t('t','Mina enkäter');?></h3>
 	</div>
-
+	<div class="table-responsive">
 	<table class="table table-bordered table-condensed table-hover">
 		<tbody>
 			<tr>
@@ -30,7 +30,7 @@ $this->breadcrumbs=array(
 						?>
 					<tr class="onClick" id="<?php echo $model->id;?>">
 						<td><?php
-						echo $model->title;
+						echo substr($model->title, 0,10);
 						?>
 						</td>
 						<td><?php
@@ -43,6 +43,7 @@ $this->breadcrumbs=array(
         ?>
     </tbody>
 </table>
+</div>
 
 </div>
 

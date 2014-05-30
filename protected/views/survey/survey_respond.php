@@ -2,7 +2,7 @@
 $model = new SurveyForm();
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'enableClientValidation' => true,
-    'action'=>"<?php echo Yii::app()->baseUrl; ?>" + "/survey/respond",
+    'action'=>  "/survey/respond",
     //'enableAjaxValidation'=>true,
     // 'errorMessageCssClass'=>'has-error',
     'htmlOptions' => array('class' => '','role' => 'form','id' => 'survey-form'),
@@ -22,7 +22,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     //loopa igenom enkätens frågor
     foreach($survey->surveyQuestions as $q){
         $model->addAttribute($q->id);
-        echo "<h4>".$q->question ." ?</h4>";
+        echo "<h4>".$q->question ."</h4>";
         if($q->haveOptions == 1){
             //initiera array av settings för formulärfältet
             $options = array();

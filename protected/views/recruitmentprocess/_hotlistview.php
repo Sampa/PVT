@@ -41,7 +41,7 @@
   <div class="col-md-3">
   	<h3>
       <a href="<?php echo Yii::app()->baseUrl.'/cv/pdf/'.$data->cv->id; ?>" title="se på cvt">
-      <?php echo CHtml::encode($data->cv->title);?>
+         <?php echo CHtml::encode($data->cv->title);?>
       </a>
     </h3>
   </div>

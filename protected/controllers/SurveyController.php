@@ -45,7 +45,7 @@ class SurveyController extends Controller
                 if(is_array($answer))
                     $answer = $answer[0];
                 $criteria = new CDbCriteria();
-                $criteria->compare("id",$question);
+                $criteria->compare("question",$question);
                 $surveyQuestion = SurveyQuestion::model()->find($criteria);
                 if($surveyQuestion){
                     $surveyCandidateCriteria = new CDbCriteria();

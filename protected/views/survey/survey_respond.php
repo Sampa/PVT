@@ -32,9 +32,9 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             }
             //om man ska kunna välja flera skapa checkboxes annars radiobuttons
             if($q->allowMultipleChoice==1){
-                echo $form->checkboxList($model,$q->question,$options,array('class'=>''));
+                echo $form->checkboxListControlGroup($model,$q->question,$options,array('class'=>''));
             }else{
-                echo $form->radioButtonList($model,$q->question,$options);
+                echo $form->radioButtonListControlGroup($model,$q->question,$options);
             }
         }else{
             if($q->type=="textfield"){

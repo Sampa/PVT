@@ -62,14 +62,13 @@ class SurveyController extends Controller
                     $surveyAnswer->save();
                 }
             }
-            $this->redirect("<?php echo Yii::app()->baseUrl; ?>" + "/message");
+            $this->redirect("/message");
         }else{
             $model = $this->loadModel($id);
         }
         $this->render("survey_respond",array("survey"=>$model));
     }
 	public function actionSendOutSurveys(){
-
 		$survey = Survey::model()->findByPk($_POST['surveyId']);
 		if(!$survey){
 			echo json_encode(array("status"=>"fail","message"=>t("Välj en enkät att skicka ut till dina valda CV:n")));

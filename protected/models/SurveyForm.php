@@ -5,8 +5,8 @@ class SurveyForm extends CFormModel{
     private $_dynamicData=array();
     private $_dynamicFields = array();
 
-    public function addAttribute($attribute){
-        $this->_dynamicFields[$attribute] = 1;
+    public function addAttribute($label,$attribute){
+        $this->_dynamicFields[$label] = $attribute;
     }
     public function rules() {
         return array(

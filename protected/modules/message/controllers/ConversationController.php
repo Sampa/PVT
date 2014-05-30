@@ -38,6 +38,7 @@ class ConversationController extends Controller
 			'sent'=>$this->getSentContent(),
             'surveys'=>$this->getSurveys(),
             'answeredSurveys'=>$this->getAnsweredSurveys(),
+            'answeredSurveysForRecruiter'=>$this->getAnsweredSurveysForRecruiter(),
 			'model' => $message,
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
@@ -65,7 +66,8 @@ class ConversationController extends Controller
         $criteria = new CDbCriteria;
         $criteria->compare("userId",Yii::app()->user->id);
         $criteria->compare( "answered",0);
-        $allForThisArea = SurveyCandidate::model()->findAll($criteria);
+        $criteria->order = "survey.date";
+        $allForThisArea = SurveyCandidate::model()->with("survey")->findAll($criteria);
         return $allForThisArea;
     }
     public function getAnsweredSurveys(){
@@ -73,6 +75,13 @@ class ConversationController extends Controller
         $criteria->compare("userId",Yii::app()->user->id);
         $criteria->compare( "answered",1);
         $allForThisArea = SurveyCandidate::model()->findAll($criteria);
+        return $allForThisArea;
+    }
+    public function getAnsweredSurveysForRecruiter(){
+        $criteria = new CDbCriteria;
+        $criteria->compare("recruiterId",Yii::app()->user->id);
+        $criteria->compare( "surveyCandidates.answered",1);
+        $allForThisArea = Survey::model()->with("surveyCandidates")->findAll($criteria);
         return $allForThisArea;
     }
     /**

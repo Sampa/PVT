@@ -2,7 +2,7 @@
 $model = new SurveyForm();
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'enableClientValidation' => true,
-    'action'=>"<?php echo Yii::app()->baseUrl; ?>" + "/survey/respond",
+    'action'=>  "/survey/respond",
     //'enableAjaxValidation'=>true,
     // 'errorMessageCssClass'=>'has-error',
     'htmlOptions' => array('class' => '','role' => 'form','id' => 'survey-form'),
@@ -21,8 +21,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     echo "<h3>".$survey->title."</h3>";
     //loopa igenom enkätens frågor
     foreach($survey->surveyQuestions as $q){
-        $model->addAttribute($q->id);
-        echo "<h4>".$q->question ." ?</h4>";
+        $model->addAttribute($q->question,$q->id);
         if($q->haveOptions == 1){
             //initiera array av settings för formulärfältet
             $options = array();
@@ -33,15 +32,15 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             }
             //om man ska kunna välja flera skapa checkboxes annars radiobuttons
             if($q->allowMultipleChoice==1){
-                echo $form->checkboxList($model,$q->id,$options,array('class'=>''));
+                echo $form->checkboxListControlGroup($model,$q->question,$options,array('class'=>''));
             }else{
-                echo $form->radioButtonList($model,$q->id,$options);
+                echo $form->radioButtonListControlGroup($model,$q->question,$options);
             }
         }else{
             if($q->type=="textfield"){
-                echo $form->textFieldControlGroup($model,$q->id,array("class"=>"form-control"));
+                echo $form->textFieldControlGroup($model,$q->question,array("class"=>"form-control"));
             }else{
-                echo $form->textAreaControlGroup($model,$q->id,array("class"=>"form-control"));
+                echo $form->textAreaControlGroup($model,$q->question,array("class"=>"form-control"));
             }
         }
         echo $form->hiddenField($model,"surveyId",array("value"=>$survey->id));

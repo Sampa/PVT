@@ -6,9 +6,6 @@ $this->breadcrumbs = array(
     );
     ?>
     <div class="container page-min-height">
-
-        <h1 class="page-header"><?php echo Yii::t("t", "Användarguide");?></h1>
-
         <div class="row">
             <div class="col-xs-8 col-sm-6 col-md-8">
                 <h4><strong><?php echo Yii::t("t","Skapa cv")?></strong></h4>

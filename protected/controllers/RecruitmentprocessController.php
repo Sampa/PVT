@@ -192,6 +192,8 @@ class RecruitmentprocessController extends Controller
 			$hotlist->cvId = $_POST['cvID'];
 			$hotlist->rpId = $_POST['processID'];
             $recruitmentProcess = Recruitmentprocess::model()->findByPk($_POST['processID']);
+            if(!$recruitmentProcess)
+                die();
             $recruitmentProcessName = $recruitmentProcess->title;
 			if($hotlist->save()) {
 				echo "Vi har nu sparat CVt i din process ".$recruitmentProcessName."!";

@@ -48,7 +48,13 @@
                 <br/>
                 <span class="plus">
                     <a href="#" title='<?php echo t("Rapportera CV för olämpligt innehåll");?>'>
-                        <i data-toggle="modal" data-target="#reportModal" id="<?php echo $data->id?>" class="glyphicon glyphicon-flag report-cv-flag"></i>
+                        <i 
+                            data-toggle="modal" 
+                            data-target="#reportModal" 
+                            id="<?php echo $data->id?>" 
+                            data-user="<?php echo user()->isGuest ? 0:user()->id; ?>"
+                            class="glyphicon glyphicon-flag report-cv-flag">
+                        </i>
                     </a>
                 </span>
                 <?php echo Yii::t("t"," Rapportera CV");?>

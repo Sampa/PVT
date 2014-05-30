@@ -45,7 +45,7 @@ class SurveyController extends Controller
                 if(is_array($answer))
                     $answer = $answer[0];
                 $criteria = new CDbCriteria();
-                $criteria->compare("id",$question);
+                $criteria->compare("question",$question);
                 $surveyQuestion = SurveyQuestion::model()->find($criteria);
                 if($surveyQuestion){
                     $surveyCandidateCriteria = new CDbCriteria();
@@ -62,14 +62,13 @@ class SurveyController extends Controller
                     $surveyAnswer->save();
                 }
             }
-            $this->redirect("<?php echo Yii::app()->baseUrl; ?>" + "/message");
+            $this->redirect("/message");
         }else{
             $model = $this->loadModel($id);
         }
         $this->render("survey_respond",array("survey"=>$model));
     }
 	public function actionSendOutSurveys(){
-
 		$survey = Survey::model()->findByPk($_POST['surveyId']);
 		if(!$survey){
 			echo json_encode(array("status"=>"fail","message"=>t("Välj en enkät att skicka ut till dina valda CV:n")));
@@ -78,11 +77,18 @@ class SurveyController extends Controller
 		if(isset($_POST['ids'])){
 			foreach($_POST['ids'] as $key=>$id){
 				$cv = Cv::model()->findByPk($id);
-				$candidateForSurvey = new SurveyCandidate;
-				$candidateForSurvey->userID =$cv->publisherId;
-				$candidateForSurvey->surveyID=$survey->id;
-				$candidateForSurvey->answered=0;
-				$candidateForSurvey->save();
+				$c = new CDbCriteria();
+                $c->compare("surveyID",$survey->id);
+                $c->compare("userID",$cv->publisherId);
+                $c->compare("answered",0);
+                $candidateForSurvey = SurveyCandidate::model()->find($c);
+                if(!$candidateForSurvey){
+                    $candidateForSurvey = new SurveyCandidate;
+                    $candidateForSurvey->userID =$cv->publisherId;
+                    $candidateForSurvey->surveyID=$survey->id;
+                    $candidateForSurvey->answered=0;
+                    $candidateForSurvey->save();
+                }
 			};
 			echo json_encode(array("status"=>"success","message"=>t("Din enkät är skickad")));
 		}else{
@@ -114,7 +120,6 @@ class SurveyController extends Controller
 	{
 		$survey=new Survey;
 		if (app()->request->isAjaxRequest) {
-            var_dump($_POST["questions"]);
 			$survey->recruiterID = Yii::app()->user->id;
 			$survey->title = $_POST['title'];
 			$message = array(
@@ -157,10 +162,10 @@ class SurveyController extends Controller
 
 				}
 			}
-			$success = true;
+			$success = "success";
 			foreach($message as $key=>$boolean){
 				if(!$boolean)
-					$success = false;
+					$success = "error";
 			}
 			echo json_encode(array('success'=>$success,'message'=>$message,'title'=>$survey->title));
 			return;

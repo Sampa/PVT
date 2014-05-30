@@ -48,28 +48,13 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'username',
-		'name',
 		'email',
-		'status',
-		'password',
-		/*
-		'password_strategy',
-		'salt',
-		'requires_new_password',
-		'reset_token',
-		'login_attempts',
-		'login_time',
-		'login_ip',
-		'activation_key',
-		'validation_key',
-		'create_time',
-		'update_time',
-		'notify',
-		*/
-		array(
-			'class'=>'bootstrap.widgets.TbButtonColumn',
+        'create_time',
+        'login_attempts',
+        'status',
+        array(
+            'class'=>'bootstrap.widgets.TbButtonColumn',
 		),
 	),
 )); ?>

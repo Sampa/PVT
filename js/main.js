@@ -215,15 +215,15 @@ $(function(){
     /*
     * När man vill spara ett CV till en hotlist
     */
-    jQuery(".listOfProcesses").on("click", function(){
+    $(".listOfProcesses").on("click", function(){
         var processID = $(this).attr("id");
         var cvID = $(this).parent().attr("id");
         $.ajax({  //gör en http POST request till vår actionSaveCV i RecruitmentprocessController och skicka med datan
             type: "POST",
-            url: "recruitmentprocess/savecv",
+            url: "/recruitmentprocess/savecv",
             data: {"processID":processID, "cvID":cvID}
         }).done(function( data ) {
-           jQuery('#hotlistModal').modal('show');
-            $("#hotlistTarget").html(data)
+           $('#hotlistModal').modal('show');
+           $("#hotlistTarget").html(data);
         });
     });

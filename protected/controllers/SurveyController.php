@@ -83,7 +83,7 @@ class SurveyController extends Controller
                 $c->compare("userID",$cv->publisherId);
                 $c->compare("answered",0);
                 $candidateForSurvey = SurveyCandidate::model()->find($c);
-                if($candidateForSurvey){
+                if(!$candidateForSurvey){
                     $candidateForSurvey = new SurveyCandidate;
                     $candidateForSurvey->userID =$cv->publisherId;
                     $candidateForSurvey->surveyID=$survey->id;

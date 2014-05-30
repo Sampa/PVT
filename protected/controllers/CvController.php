@@ -407,7 +407,7 @@ class CvController extends Controller
             'dataProvider'=>$dataProvider,
             'resultCount'=>$resultCount,
         );
-		//        $pager = new CPagination($dataProvider->totalItemCount);
+//		        $pager = new CPagination($dataProvider->totalItemCount);
 		//        $pager->pageSize = 10;
 		//        $dataProvider->setPagination($pager);
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)

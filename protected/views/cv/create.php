@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 ?>
 	<div class="page-header">
-        <h1><?php echo Yii::t("t",'Publicera ditt CV');?></h1>
+        <h1><?php echo Yii::t("t",'Skapa nytt CV');?></h1>
     </div>
     <section class="row" style="width:50%;margin-left: 5px;">
         Här kan du ladda upp en pdf fil från din filkatalog och publicera på vår offentliga CV-databas.

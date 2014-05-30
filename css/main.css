@@ -73,6 +73,9 @@
     background-color: #555;
 }
 
+.onClick{
+    cursor:pointer;
+}
 #footer2{
     color: #000000;
     background:
@@ -188,6 +191,12 @@ body {
 }
 .survey-component {
     width: 75%;
+}
+
+#logo-text {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 100;
+  font-size: 120px;
 }
 /*end survey create page*/
 .page-min-height{

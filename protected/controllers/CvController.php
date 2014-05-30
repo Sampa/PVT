@@ -352,13 +352,6 @@ class CvController extends Controller
 		}
 	}
 
-    private function setSeveralSearchWordCriteria($criteria,$searchFieldContent){
-        $searchWords = explode(" ",$searchFieldContent);
-        foreach($searchWords as $index=>$searchWord){
-            $criteria->addSearchCondition("pdfText",$searchWord,true,"AND");
-        }
-        return $criteria;
-    }
     private function setDefaultCriteriaCondition(){
         $criteria=new CDbCriteria;
         $criteria = $this->setSortOrderCondition($criteria);
@@ -407,9 +400,9 @@ class CvController extends Controller
             'dataProvider'=>$dataProvider,
             'resultCount'=>$resultCount,
         );
-//		        $pager = new CPagination($dataProvider->totalItemCount);
-		//        $pager->pageSize = 10;
-		//        $dataProvider->setPagination($pager);
+		$pager = new CPagination($dataProvider->totalItemCount);
+		$pager->pageSize = 10;
+		$dataProvider->setPagination($pager);
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
         if( Yii::app()->request->isAjaxRequest){
             $this->renderPartial('_searchview',$dataToView);
@@ -485,64 +478,76 @@ class CvController extends Controller
 
 		if(isset($_POST['searchbox'])){//if you write in free text search field
 			$searchWordArray = explode(" OR ",$_POST['searchbox']);
-			$rightAfterOr = false;
 			foreach($searchWordArray as $index => $searchString){
-				if(strpos($_POST['searchbox'], " OR "))
-					$rightAfterOr = true;
+				$phrase = false;
 				$searchWords = explode(" ",$searchString);
 				foreach($searchWords as $index=>$searchWord){
-					if(strpos($searchString, ":")!==false){
+					if($index == 0 && $phrase === false)
+						$operator = 'OR';
+					elseif($phrase === false)
+						$operator = 'AND';
+					
+					if(strpos($searchWord, ":")!==false && $phrase === false){
 
-						$metaTag = strstr($searchString,":", true);
-						$pos = strpos($searchString, ":");
-						$search = substr($searchString, $pos+1);
-
+						$metaTag = strstr($searchWord,":", true);
+						$pos = strpos($searchWord, ":");
+						$search = substr($searchWord, $pos+1);
+						
 						if($metaTag == "city"){
-							$criteria->addSearchCondition("areas.city",$search,true,"OR");
+							$criteria->addSearchCondition("areas.city",$search,true,$operator);
 							//return $criteria;//city:city
 						}
 						elseif($metaTag == "region"){
-		                    $criteria->addSearchCondition("areas.region",$search,true,"OR");
+		                    $criteria->addSearchCondition("areas.region",$search,true,$operator);
 		                    //return $criteria;//region:region
 						}
 						elseif($metaTag == "country"){
-		                    $criteria->addSearchCondition("areas.country",$search,true,"OR");
+		                    $criteria->addSearchCondition("areas.country",$search,true,$operator);
 							//return $criteria;//country:country
 						}
 						elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3
 							$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
 							foreach($tagsAsArray as $tag){ //loop all tags the user entered
-		                        $criteria->addSearchCondition("tags.name",$tag,true,"OR");
+		                        $criteria->addSearchCondition("tags.name",$tag,true,$operator);
 		                    };
 						}
 						elseif($metaTag == "employment"){//employment:consult || employment:employment
 							if($search == 'consult')
-								$criteria->addSearchCondition("typeOfEmployment","consult",true,"OR");
+								$criteria->addSearchCondition("typeOfEmployment","consult",true,$operator);
 							if($search == 'employment')
-								$criteria->addSearchCondition("typeOfEmployment","employment",true,"OR");
+								$criteria->addSearchCondition("typeOfEmployment","employment",true,$operator);
 						}
 						elseif($metaTag == 'title'){//title:title
-							$criteria->addSearchCondition("title",$search,true,"OR");
+							$criteria->addSearchCondition("title",$search,true,$operator);
 						}
 						elseif($metaTag =='date'){
-							$criteria->addSearchCondition('date',$search,true,"OR");
+							$criteria->addSearchCondition('date',$search,true,$operator);
+						}
+						else{
+
 						}
 					}
-					else{
-
-						if($rightAfterOr==true){
-							$criteria->addSearchCondition("pdfText",$searchWord,true,"OR");
-							$rightAfterOr == false;
-						}
-						elseif($rightAfterOr== false){
-							$criteria->addSearchCondition("pdfText",$searchWord,true,"AND");
-						}
-				}
-					
-
-					//$this->setSeveralSearchWordCriteria($criteria,$searchString);
-					
-					//$criteria->addSearchCondition("title",$searchString, true,'OR');
+					elseif(strpos($searchWord, '"')!==false && $phrase === false){
+						$pos = strpos($searchWord, '"');
+						$search = substr($searchWord, $pos+1);
+						$phrase = true;
+					}
+					elseif($phrase === false){
+						$criteria->addSearchCondition("pdfText", $searchWord, true, $operator);
+						$criteria->addSearchCondition("title", $searchWord, true, 'OR');
+						//echo ($criteria->condition);
+					}
+					elseif(strpos($searchWord, '"')=== false && $phrase === true){
+						$search.=" ";
+						$search.=$searchWord;
+					}
+					elseif(strpos($searchWord, '"')!== false && $phrase === true){
+						$searchStr = strstr($searchWord,'"', true);
+						$search.=" ";
+						$search.=$searchStr;
+						$criteria->addSearchCondition("pdfText", $search, true, $operator);
+						$phrase = false;
+					}
 				}
 			}
 		}

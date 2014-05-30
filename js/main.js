@@ -227,3 +227,37 @@ $(function(){
            $("#hotlistTarget").html(data);
         });
     });
+
+/*
+    * När man vill rapportera ett CV
+    */
+    jQuery(".report-cv-flag").on("click", function() {
+        $("#reasonTextField").val("");
+        $("#reportModalTextSuccess").hide();
+        $("#reportModalTextFailure").hide();
+        $("#reportModalEndFooter").hide();
+        var cvID = $(this).attr("id");  
+        var userID = $(this).attr("data-user");
+        $("#submitReportBtn").attr("data-id",cvID);
+        $("#submitReportBtn").attr("data-user",userID);
+    });
+    $("#submitReportBtn").on("click", function() {
+        var cvID = $(this).attr("data-id");  
+        var reason = $("#reasonTextField").val();
+        //sätt userid till 0 om personen är gäst(ej inloggad) annars id:t (shortif syntax) för att undvika issue #29
+        var userID = $(this).attr("data-user");
+        $.ajax ({
+            type: "POST",
+            url: "/reportedCv/create",
+            data: {"reason":reason, "cvID":cvID, "userID":userID}
+        }).done(function( data ) {
+            $("#reportModalInputDiv").hide();
+            $("#reportModalStartFooter").hide();
+            if(data == 1) {
+                $("#reportModalTextSuccess").fadeIn("slow");
+            } else {
+                $("#reportModalTextFailure").fadeIn("slow");
+            }
+            $("#reportModalEndFooter").fadeIn("slow");
+        })
+    });

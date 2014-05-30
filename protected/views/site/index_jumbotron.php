@@ -6,7 +6,7 @@
         <h3><span><?php echo Yii::t("t","Sök efter cv:n i databasen");?></span></h3>
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
-            <div class="input-group">
+            <div class="input-group" style="width: 50%;">
                 <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sökord");?>>
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
@@ -126,7 +126,7 @@ else{ ?>
         <h3><span><?php echo Yii::t("t","Sök efter cv:n i databasen");?></span></h3>
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
-            <div class="input-group">
+            <div class="input-group"  style="width: 50%;">
                 <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sökord");?>>
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>

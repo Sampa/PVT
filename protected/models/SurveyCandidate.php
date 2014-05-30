@@ -15,6 +15,7 @@
  */
 class SurveyCandidate extends CActiveRecord
 {
+    public $date;
 	/**
 	 * @return string the associated database table name
 	 */

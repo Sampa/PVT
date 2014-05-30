@@ -66,6 +66,17 @@ class Survey extends CActiveRecord
 			'date' => 'Date',
 		);
 	}
+    public function numberOfCandidates(){
+        return $this->numberOfResponses(true);
+    }
+    public function numberOfResponses($totalCount=false){
+        $c = new CDbCriteria();
+        $c->compare("surveyId", $this->id);
+        if(!$totalCount){
+            $c->compare("answered", 1);
+        }
+        return SurveyCandidate::model()->count($c);
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

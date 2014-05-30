@@ -108,11 +108,13 @@
                 <?php
                 foreach($model->surveyQuestions as $question){
                     $answer = $question->getAnswerByUser($candidate->user->id);
-                    echo "<tr>";
-                    echo "<td>#".$questionNumber. " - " .$question->question."</td>";
-                    echo "<td>".$answer->questionAnswer."</td>";
-                    echo "</tr>";
-                    $questionNumber++;
+                    if($answer){
+                        echo "<tr>";
+                        echo "<td>#".$questionNumber. " - " .$question->question."</td>";
+                        echo "<td>".$answer->questionAnswer."</td>";
+                        echo "</tr>";
+                        $questionNumber++;
+                    }
                 }
                 ?>
                 </table>

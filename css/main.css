@@ -73,6 +73,9 @@
     background-color: #555;
 }
 
+.onClick{
+    cursor:pointer;
+}
 #footer2{
     color: #000000;
     background:

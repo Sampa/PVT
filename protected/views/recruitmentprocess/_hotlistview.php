@@ -40,7 +40,7 @@
 </div>
   <div class="col-md-3">
   	<h3>
-      <a href="<?php echo $data->cv->pathToPdf;?>" title="se på cvt">
+      <a href="<?php echo Yii::app()->baseUrl.'/cv/pdf/'.$data->cv->id; ?>" title="se på cvt">
       <?php echo CHtml::encode($data->cv->title);?>
       </a>
     </h3>

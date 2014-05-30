@@ -78,11 +78,18 @@ class SurveyController extends Controller
 		if(isset($_POST['ids'])){
 			foreach($_POST['ids'] as $key=>$id){
 				$cv = Cv::model()->findByPk($id);
-				$candidateForSurvey = new SurveyCandidate;
-				$candidateForSurvey->userID =$cv->publisherId;
-				$candidateForSurvey->surveyID=$survey->id;
-				$candidateForSurvey->answered=0;
-				$candidateForSurvey->save();
+				$c = new CDbCriteria();
+                $c->compare("surveyID",$survey->id);
+                $c->compare("userID",$cv->publisherId);
+                $c->compare("answered",0);
+                $candidateForSurvey = SurveyCandidate::model()->find($c);
+                if($candidateForSurvey){
+                    $candidateForSurvey = new SurveyCandidate;
+                    $candidateForSurvey->userID =$cv->publisherId;
+                    $candidateForSurvey->surveyID=$survey->id;
+                    $candidateForSurvey->answered=0;
+                    $candidateForSurvey->save();
+                }
 			};
 			echo json_encode(array("status"=>"success","message"=>t("Din enkät är skickad")));
 		}else{

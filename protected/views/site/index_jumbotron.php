@@ -14,12 +14,14 @@
             </div><!-- /input-group -->
         </form>
         <br>
+        <?php if(yii::app()->user->isGuest) { ?>
         <a class="btn btn-success" href="<?php echo Yii::app()->baseUrl;?>/site/login"><?php echo t('Logga in')?></a>
         <a class="btn btn-success" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo t('Registrera dig')?></a>
+        <?php } ?>
     </center>
 </div>
 
-
+<?php if(yii::app()->user->isGuest) { ?>
 <div class="container visible-md visible-lg"> 
    <div class="row">
        <!-- Carousel -->
@@ -49,6 +51,7 @@
                     <div class="">
                         <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/login"><?php echo Yii::t("t", "Logga in");?></a>
                         <a class="btn btn-theme btn-sm btn-min-block" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo Yii::t("t", "Registrera dig");?></a></div>
+            
                 </div>
                 </div><!-- /header-text -->
             </div>
@@ -112,7 +115,32 @@
             </div>
         </div>
     </div>
-</div><!-- /carousel -->
+</div>
+<?php } 
+else{ ?>
+<!-- /carousel -->
+
+<div class="container visible-md visible-lg">
+    <center>
+        <h2><span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span></h2>
+        <h3><span><?php echo Yii::t("t","Sök efter cv:n i databasen");?></span></h3>
+        <br>
+        <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sökord");?>>
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
+                </span>
+            </div><!-- /input-group -->
+        </form>
+        <br>
+        <?php if(yii::app()->user->isGuest) { ?>
+        <a class="btn btn-success" href="<?php echo Yii::app()->baseUrl;?>/site/login"><?php echo t('Logga in')?></a>
+        <a class="btn btn-success" href="<?php echo Yii::app()->baseUrl;?>/site/register"><?php echo t('Registrera dig')?></a>
+        <?php } ?>
+    </center>
+</div>
+                <?php } ?>
 <div class="container">
     <div class="row">
         <br>

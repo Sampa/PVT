@@ -30,7 +30,7 @@ $this->breadcrumbs=array(
 						?>
 					<tr class="onClick" id="<?php echo $model->id;?>">
 						<td><?php
-						echo substr($model->title, 0,10);
+						echo substr($model->title, 0,15);
 						?>
 						</td>
 						<td><?php

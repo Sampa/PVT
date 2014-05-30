@@ -71,7 +71,7 @@
 		$.ajax({
 			dataType: "json",
 			type: "POST",
-			url: "/message/inbox/getUnreadMessages",
+			url: "message/inbox/getUnreadMessages",
 			data: {
 				receiver_id : toid
 			}

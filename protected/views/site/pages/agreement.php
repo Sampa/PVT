@@ -6,9 +6,6 @@ $this->breadcrumbs = array(
 );
 ?>
 <div class="container page-min-height">
-
-    <h1 class="page-header"><?php echo Yii::t("t", "Användaravtal");?></h1>
-
     <div class="row">
     <div class="col-md-6">
          <p id="texts"><?php echo t("CV-Pages är en webbplats avsedd att användas endast till jobbrekryteringar och får inte användas i andra avseenden.

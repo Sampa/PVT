@@ -6,12 +6,10 @@
 					<a href="#" class="list-group-item active text-center">
 						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
 					</a>
-					<?php if(user()->getState("role")=="publisher"):?>
                     <a href="#" class="list-group-item text-center">
-						<h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkäter"); ?>
-					</a>
-                    <?php endif;?>
-<!--					<a href="#" class="list-group-item text-center">-->
+                        <h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkäter"); ?>
+                    </a>
+                    <!--					<a href="#" class="list-group-item text-center">-->
 <!--						<h4 class="glyphicon glyphicon-pencil"></h4><br/> --><?//= t("Skickade");?>
 <!--					</a>-->
 				</div>
@@ -28,8 +26,11 @@
 			<!-- enkätsvar section -->
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 				<div class="bhoechie-tab-content">
-                    <?php $this->renderPartial("application.views.survey.survey_recieved",array("surveys"=>$surveys));?>
-                    <?php $this->renderPartial("application.views.survey.survey_answered",array("surveys"=>$answeredSurveys));?>
+                    <?php if(user()->getState("role")=="publisher")
+                        $this->renderPartial("application.views.survey.survey_recieved",array("surveys"=>$surveys));
+                        else
+                        $this->renderPartial("application.views.survey.survey_answered",array("surveys"=>$answeredSurveysForRecruiter));
+                    ?>
 				</div>
 			</div>
 			<!-- Skickade search -->

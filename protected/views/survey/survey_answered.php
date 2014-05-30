@@ -4,8 +4,8 @@
      * @surveys alla kandidate object SurveyCandidate enkäter för den inloggade användaren
      */
     //loopa igenom surveyCandidate info för att få ut relevant survey
-    foreach($surveys as $candidate):
+    foreach($surveys as $survey):
     ?>
-            <h4><?=$candidate->survey->title;?></h4>
-        <hr/>
+            <h4><?=CHtml::link($survey->title,$this->createUrl("/survey/view",array("id"=>$survey->id)));?></h4>
+    <hr/>
     <?php endforeach;?>

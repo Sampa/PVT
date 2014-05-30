@@ -65,19 +65,15 @@ $('.onClick').on('click',function(event){
     event.preventDefault();
     window.document.location ="<?php echo Yii::app()->baseUrl; ?>" + '/cv/pdf/'+$(this).parent().attr('id');
 });
-</script>
-
-<script>
 $('.deleteCV').on('click',function(event){
     event.preventDefault();
     var cvIdToDelete = $(this).attr('id');
-
     $.ajax({
         type: 'POST',
         dataType:"json",
         data: {id:cvIdToDelete},
-        url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete,
-    })
+        url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete
+    });
     window.document.location ='admin';
 });
 </script>

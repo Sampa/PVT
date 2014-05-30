@@ -66,7 +66,8 @@ class ConversationController extends Controller
         $criteria = new CDbCriteria;
         $criteria->compare("userId",Yii::app()->user->id);
         $criteria->compare( "answered",0);
-        $allForThisArea = SurveyCandidate::model()->findAll($criteria);
+        $criteria->order = "survey.date";
+        $allForThisArea = SurveyCandidate::model()->with("survey")->findAll($criteria);
         return $allForThisArea;
     }
     public function getAnsweredSurveys(){

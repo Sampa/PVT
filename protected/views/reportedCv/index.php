@@ -93,7 +93,7 @@ $(".deleteReportedCV").on("click",function(event){
 <script>
 $(".onClick").on("click",function(event){
     event.preventDefault();
-    window.document.location ='cv/view/'+$(this).parent().attr("id");
+    window.document.location ='cv/pdf/'+$(this).parent().attr("id");
 });
 </script>
 

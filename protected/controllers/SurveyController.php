@@ -45,7 +45,7 @@ class SurveyController extends Controller
                 if(is_array($answer))
                     $answer = $answer[0];
                 $criteria = new CDbCriteria();
-                $criteria->compare("id",$question);
+                $criteria->compare("question",$question);
                 $surveyQuestion = SurveyQuestion::model()->find($criteria);
                 if($surveyQuestion){
                     $surveyCandidateCriteria = new CDbCriteria();
@@ -62,14 +62,13 @@ class SurveyController extends Controller
                     $surveyAnswer->save();
                 }
             }
-            $this->redirect("<?php echo Yii::app()->baseUrl; ?>" + "/message");
+            $this->redirect("/message");
         }else{
             $model = $this->loadModel($id);
         }
         $this->render("survey_respond",array("survey"=>$model));
     }
 	public function actionSendOutSurveys(){
-
 		$survey = Survey::model()->findByPk($_POST['surveyId']);
 		if(!$survey){
 			echo json_encode(array("status"=>"fail","message"=>t("Välj en enkät att skicka ut till dina valda CV:n")));
@@ -83,7 +82,7 @@ class SurveyController extends Controller
                 $c->compare("userID",$cv->publisherId);
                 $c->compare("answered",0);
                 $candidateForSurvey = SurveyCandidate::model()->find($c);
-                if($candidateForSurvey){
+                if(!$candidateForSurvey){
                     $candidateForSurvey = new SurveyCandidate;
                     $candidateForSurvey->userID =$cv->publisherId;
                     $candidateForSurvey->surveyID=$survey->id;
@@ -103,8 +102,13 @@ class SurveyController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$criteria = new CDbCriteria();
+        $criteria->compare("surveyID", $id);
+        $numberOfCandidates = count(SurveyCandidate::model()->findAll($criteria));
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'numberOfCandidates'=>$numberOfCandidates,
 		));
 	}
 

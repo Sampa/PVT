@@ -119,7 +119,6 @@ if($resultCount< 1):?>
 	    'dataProvider'=>$dataProvider,
          'itemView'=>'_view',
          'afterAjaxUpdate'=>'scrollToResults',
-
 	    ));
 	?>
 </div><!-- form -->
@@ -192,35 +191,7 @@ jQuery(document).ready(function ($) {
 			$("#geographicAreaForm").fadeIn();
 		}
 	});
-    /*
-    * När man vill rapportera ett CV
-    */
-    jQuery(".report-cv-flag").on("click", function() {
-        $("#reasonTextField").val("");
-        $("#reportModalTextSuccess").hide();
-        $("#reportModalTextFailure").hide();
-        $("#reportModalEndFooter").hide();
-        var cvID = $(this).attr("id");
-        $("#submitReportBtn").on("click", function() {
-            var reason = $("#reasonTextField").val();
-	        //sätt userid till 0 om personen är gäst(ej inloggad) annars id:t (shortif syntax) för att undvika issue #29
-            var userID = <?php echo user()->isGuest ? 0:user()->id; ?>;
-            $.ajax ({
-                type: "POST",
-                url: "reportedCv/create",
-                data: {"reason":reason, "cvID":cvID, "userID":userID}
-            }).done(function( data ) {
-                $("#reportModalInputDiv").hide();
-                $("#reportModalStartFooter").hide();
-                if(data == 1) {
-                    $("#reportModalTextSuccess").fadeIn("slow");
-                } else {
-                    $("#reportModalTextFailure").fadeIn("slow");
-                }
-                $("#reportModalEndFooter").fadeIn("slow");
-            })
-        });
-    });
+    
     //Återställder report modal
     jQuery("#reportModalEndFooterCloseBtn").on("click", function() {
         setTimeout(function() {

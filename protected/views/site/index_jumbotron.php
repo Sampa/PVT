@@ -2,7 +2,7 @@
 <!--mobilens förstasida-->
 <div class="container visible-xs visible-sm">
     <center>
-        <h2 id="logo-text"><?php echo Yii::t("t","CV PAGES");?></h2>
+        <h2 id="logo-text"><?php echo Yii::t("t","CV-PAGES");?></h2>
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
             <div class="input-group" style="width: 50%;">
@@ -38,7 +38,7 @@
                 <!-- Static Header -->
                 <div class="header-text hidden-xs">
                 <div class="col-xs-12 text-center">
-                    <h2><span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span></h2>
+                    <h2><span><strong><?php echo Yii::t("t","CV-PAGES");?></strong></span></h2>
                     <br>
                     <br>
                     <h3><span><?php echo Yii::t("t","Ladda upp dina cv:n i vår publika CV-databas");?></span></h3>
@@ -59,7 +59,7 @@
                     <!-- Static Header -->
                 <div class="header-text hidden-xs">
                 <div class="col-xs-12 text-center">
-                    <h2><span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span></h2>
+                    <h2><span><strong><?php echo Yii::t("t","CV-PAGES");?></strong></span></h2>
                     <br>
                     <h3><span><?php echo Yii::t("t","Sök efter cv:n i databasen.");?></span></h3>
                     <br>
@@ -90,7 +90,7 @@
                     <!-- Static Header -->
                     <div class="header-text hidden-xs">
                         <div class="col-xs-12 text-center">
-                            <h2><span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span></h2>
+                            <h2><span><strong><?php echo Yii::t("t","CV-PAGES");?></strong></span></h2>
                             <br>
                             <br>
                             <br>
@@ -121,7 +121,7 @@ else{ ?>
 
 <div class="container visible-md visible-lg">
     <center>
-        <h2 id="logo-text"><?php echo Yii::t("t","CV PAGES");?></h2>
+        <h2 id="logo-text"><?php echo Yii::t("t","CV-PAGES");?></h2>
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
             <div class="input-group"  style="width: 50%;">

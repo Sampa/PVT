@@ -7,7 +7,7 @@
 
 <div class="row">
   <div class="col-md-2">
-            <a href="<?php echo Yii::app()->baseUrl."/".CHtml::encode($data->cv->pathToPdf); ?>" title="Öppna cv" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
+            <a href="<?php echo Yii::app()->baseUrl.'/cv/pdf/'.$data->cv->id; ?>" title="öppna pdf" title="Öppna cv" class="thumbnail"><img src="<?php echo Yii::app()->baseUrl;?>/img/CVicon.png" /></a>
         </div>
   <div class="col-md-3">
   	<ul class="meta-search">

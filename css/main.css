@@ -391,6 +391,13 @@ body .report-cv-flag {
   h2, h3 { page-break-after: avoid; }
 }
 
+/* Landscape phone to portrait tablet */
+@media (max-width: 980px) {
+  #logo-text {
+    font-size: 80px;
+  }
+}
+
 
 
 

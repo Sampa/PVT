@@ -2,11 +2,11 @@
 <!--mobilens förstasida-->
 <div class="container visible-xs visible-sm">
     <center>
-        <h2><span><strong><?php echo Yii::t("t","CV PAGES");?></strong></span></h2>
+        <h2 id="logo-text"><?php echo Yii::t("t","CV PAGES");?></h2>
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
             <div class="input-group" style="width: 50%;">
-                <input type="text" class="form-control" name="searchbox" placeholder="<?php echo Yii::t("t","Sök efter cv:n i databasen");?>">
+                <input type="text" class="form-control" name="searchbox" placeholder="<?php echo Yii::t("t","Sökord");?>">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
                 </span>
@@ -70,7 +70,7 @@
                         <div class="col-xs-6 col-sm-6 col-md-8">
                             <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
                                 <div class="input-group">
-                                        <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sökord");?>>
+                                        <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sök efter cv:n i databasen.");?>>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
                                             </span>
@@ -125,7 +125,7 @@ else{ ?>
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
             <div class="input-group"  style="width: 50%;">
-                <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sök efter cv:n i databasen");?>>
+                <input type="text" class="form-control" name="searchbox" placeholder="<?php echo Yii::t("t","Sök efter CV:n i vår databas");?>">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
                 </span>

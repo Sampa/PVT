@@ -24,6 +24,8 @@ $this->breadcrumbs=array(
 			<tr>
 				<th><?php echo Yii::t('t','Titel');?></th>
 				<th><?php echo Yii::t('t','Datum');?></th>
+				<th><?php echo Yii::t('t','Antal besvarade enkäter');?></th>
+
 			</tr>
 			<?php
 			foreach($allModels as $model){
@@ -37,6 +39,9 @@ $this->breadcrumbs=array(
 						echo $model->date;
 						?>
 						</td>
+						<td>
+							<?php echo $model->date; ?>
+						</td>	
                 	</tr>
                 <?php
             }

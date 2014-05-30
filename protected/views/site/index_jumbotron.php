@@ -6,7 +6,7 @@
         <br>
         <form action="<?php echo Yii::app()->baseUrl;?>/cv/#results" method="post">
             <div class="input-group" style="width: 50%;">
-                <input type="text" class="form-control" name="searchbox" placeholder=<?php echo Yii::t("t","Sök efter cv:n i databasen");?>>
+                <input type="text" class="form-control" name="searchbox" placeholder="<?php echo Yii::t("t","Sök efter cv:n i databasen");?>">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="submit"><?php echo Yii::t("t","Sök");?></button>
                 </span>

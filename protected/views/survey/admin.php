@@ -48,7 +48,6 @@ $this->breadcrumbs=array(
 </div>
 
 </div>
-
 <script>
 $(".onClick").on("click",function(event){
     event.preventDefault();

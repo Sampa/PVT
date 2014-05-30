@@ -108,11 +108,8 @@ jQuery(document).ready(function(){
 }
     });
 });
-
-
 //***********************DO NOT CHACKABACKALOLA HERE********************************'//
 //JS för survey
-
 function startBootstro(){
     $('.survey-component').removeClass('draggable');
     $('.panel-body').removeClass('dropzone');

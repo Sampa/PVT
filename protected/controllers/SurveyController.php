@@ -80,7 +80,7 @@ class SurveyController extends Controller
 				$c = new CDbCriteria();
                 $c->compare("surveyID",$survey->id);
                 $c->compare("userID",$cv->publisherId);
-                $c->compare("answered",0);
+//                $c->compare("answered",0);
                 $candidateForSurvey = SurveyCandidate::model()->find($c);
                 if(!$candidateForSurvey){
                     $candidateForSurvey = new SurveyCandidate;

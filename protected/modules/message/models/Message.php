@@ -224,32 +224,6 @@ class Message extends CActiveRecord
 		$messagesProvider = new CActiveDataProvider('Message', array('criteria' => $c));
 		return $messagesProvider;
 	}
-    public static function getAdapterForConversation($userId) {
-
-		$c = new CDbCriteria();
-        //hämta ut de två användarna från databasen
-        $userOne = User::model()->findByPk($userId);
-        //skapa ett kriteria object för att kunna filtrera sökningen efter meddelandet
-        $c = new CDbCriteria();
-        //bara en recruiter kan ha startat en konversation (och därmed första meddelandet...) så kolla vem av användarna som är rekryteraren
-        if($userOne->recruiter){
-            $senderId = $userOne->id;
-        }
-        //kräv att meddelandet är mellan de två användare vi hämtat
-        $c->addCondition ('t.sender_id = :userId');
-        //hämta max 1 ur databasen
-        $c->limit =1;
-        $c->order ="created_at";
-		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-		$c->order = 't.created_at';
-		$c->params = array(
-			'userId' => $userId,
-			'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,
-		);
-        $c->limit = 1;
-		$messagesProvider = new CActiveDataProvider('Message', array('criteria' => $c));
-		return $messagesProvider;
-	}
 
     /**
      * @param $userId

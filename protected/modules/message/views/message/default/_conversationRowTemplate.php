@@ -15,17 +15,15 @@
                 }
             ?>
 	</td>
-    <td class="clickable accordion-heading accordion-toggle down"
+    <td class="clickable accordion-heading accordion-toggle"
         data-toggle="collapse" href="#acc<?= $index;?>">
         <?php
             echo $conversation->title;
         ?>
     </td>
-    <td class="clickable accordion-heading accordion-toggle down"
+    <td class="clickable accordion-heading accordion-toggle"
         data-toggle="collapse" href="#acc<?= $index;?>">
-        <a class="glyphicon glyphicon-arrow-down down"
-           data-toggle="collapse" href="#acc<?= $index;?>">
-       </a>
+        <a class="glyphicon glyphicon-arrow-down down"></a>
 	</td>
 </tr><!-- end table row -->
 <tr class="col-md-12">
@@ -35,11 +33,8 @@
 				<div class="panel-body"
 				     style="min-height: 50px;">
 					<?php
-                    //    echo $conversation;
-$this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . "/view", array(
+                        $this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . "/view", array(
 							"model" => $conversation,
-//							"receiverName" => $message->getReceiverName(),
-//							"senderName" => $message->getSenderName())
 						));
                     ?>
 				</div>

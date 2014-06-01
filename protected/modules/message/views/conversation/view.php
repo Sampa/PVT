@@ -6,24 +6,22 @@ $this->breadcrumbs=array(
 	'Conversations'=>array('index'),
 	$model->title,
 );
+$to=null;
+if($model->recruiterId== Yii::app()->user->id){
+    $to=$model->publisher;
+}else{
+    $to=$model->recruiter->user;
+}
+
 ?>
 <div class="col-md-12 col-lg-12 col-sm-12">
         <div class="btn-group col-md-12 row" style="margin-bottom: 10px;">
-            <?php
-            $to=null;
-            if($model->recruiterId== Yii::app()->user->id){
-                $to=$model->publisher;
-            }else{
-                $to=$model->recruiter->user;
-            }
-            ?>
-            <a  class="chatHistoryToggle pull-right" data-toggle="collapse" data-parent="#accordion" href="#chatHistoryDiv">
+            <a  class="chatHistoryToggle pull-right" data-toggle="collapse" data-parent="#accordion" href="#chatUl<?=$to->id;?>">
                 <?php echo t("Visa/Dölj historik");?>
-                <span class="glyphicon glyphicon-arrow-up"></span>
             </a>
         </div>
         </div>
-        <div class="panel-body "id="chatHistoryDiv">
+        <div class="panel-body" id="chatHistoryDiv<?=$model->id;?>">
             <ul class="chat" id="chatUl<?=$to->id;?>">
                 <?php
                 foreach ($model->messages as $message):
@@ -61,13 +59,13 @@ $this->breadcrumbs=array(
 <script>
     $(".chatHistoryToggle").on('click',function(){
         var iconElement = $(this).children("span");
-        if(iconElement.hasClass("down")){
-            iconElement.removeClass("down");
-            iconElement.removeClass("glyphicon-arrow-down");
-            iconElement.addClass("glyphicon-arrow-up");
+        if(iconElement.hasClass("up")){
+            iconElement.removeClass("up");
+            iconElement.removeClass("glyphicon-arrow-up");
+            iconElement.addClass("glyphicon-arrow-down");
         }else{
             iconElement.removeClass("glyphicon-arrow-up");
-            iconElement.addClass("down");
+            iconElement.addClass("up");
             iconElement.addClass("glyphicon-arrow-down");
         }
     });

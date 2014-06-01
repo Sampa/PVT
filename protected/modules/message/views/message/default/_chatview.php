@@ -2,8 +2,6 @@
     $model->is_read = 1;
     $model->save();
 ?>
-
-
 <div class="col-md-12 col-lg-12 col-sm-12">
 	<div class="panel panel-primary">
 		<div class="panel-heading">

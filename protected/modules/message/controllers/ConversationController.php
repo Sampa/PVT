@@ -35,6 +35,7 @@ class ConversationController extends Controller
 		}
 		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array(
 			'inbox'=>$this->getInboxContent(),
+			'conversation'=>$this->getConversation(),
 			'sent'=>$this->getSentContent(),
             'surveys'=>$this->getSurveys(),
             'answeredSurveys'=>$this->getAnsweredSurveys(),
@@ -42,6 +43,12 @@ class ConversationController extends Controller
 			'model' => $message,
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
+    public function getConversation(){
+        $model = $this->loadModel(1);
+        return $this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . '/view', array(
+            'model' => $model
+        ),true);
+    }
     public function getInboxContent() {
         $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
         $pager = new CPagination($messagesAdapter->totalItemCount);
@@ -51,6 +58,12 @@ class ConversationController extends Controller
         return $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
             'messagesAdapter' => $messagesAdapter
         ),true);
+    }
+    public function actionView($id)
+    {
+        $this->render('view',array(
+            'model'=>$this->loadModel($id),
+        ));
     }
 	public function getSentContent() {
 		$messagesAdapter = Message::getAdapterForSent(Yii::app()->user->getId());
@@ -84,6 +97,23 @@ class ConversationController extends Controller
         $allForThisArea = Survey::model()->with("surveyCandidates")->findAll($criteria);
         return $allForThisArea;
     }
+
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return Conversation the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model=Conversation::model()->findByPk($id);
+        if ($model===null) {
+            throw new CHttpException(404,'The requested page does not exist.');
+        }
+        return $model;
+    }
+
     /**
      * Performs the AJAX validation.
      * @param Cv $model the model to be validated

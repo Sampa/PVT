@@ -210,7 +210,8 @@ class Message extends CActiveRecord
      * @param $userId
      *
      * @return CActiveDataProvider
-     */public static function getAdapterForInbox($userId) {
+     */
+    public static function getAdapterForInbox($userId) {
 		$c = new CDbCriteria();
 		$c->addCondition ('t.receiver_id = :userId',"OR");
 		$c->addCondition ('t.sender_id = :userId',"OR");
@@ -249,10 +250,10 @@ class Message extends CActiveRecord
      */public static function getAdapterForHistory($userId) {
 
 		$c = new CDbCriteria();
-		$c->addCondition('t.sender_id = :senderId OR t.sender_id = :receiverId');
-		//$c->addCondition('t.receiver_id = :receiverId OR t.receiver_id = :senderId');
+		$c->addCondition('sender_id = :senderId AND receiver_id = :receiverId');
+//		$c->addCondition('receiver_id = :receiverId OR receiver_id = :senderId');
 		$c->addCondition('t.deleted_by = :deleted_by_sender OR t.deleted_by IS NULL OR t.deleted_by = :deleted_by_receiver');
-		$c->order = 't.created_at';
+		$c->order = 'created_at';
 		$c->params = array(
 			'senderId' => $userId,
 			'receiverId' => Yii::app()->user->id,
@@ -323,7 +324,7 @@ class Message extends CActiveRecord
 			$c = new CDbCriteria();
 			$c->addCondition('t.receiver_id = :receiverId');
 			$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-			$c->addCondition('t.is_read = "0"');
+			$c->addCondition('t.is_read = 0');
 			$c->params = array(
 				'receiverId' => $userId,
 				'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,

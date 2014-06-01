@@ -18,8 +18,11 @@
 				<!-- meddelanden/chat section -->
 				<div class="bhoechie-tab-content active">
 					<?php
-					//innehållet sätt i composecontroller getInboxContent() och finns i inbox.php
-						echo $inbox;
+                    echo $conversation;
+                    //$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
+//                        'messagesAdapter' => $inboxAdapter,
+//                        'conversation'=>$conversation
+//                    ));
 					?>
 				</div>
 			</div>
@@ -44,3 +47,10 @@
 			</div>
 		</div>
 	</div>
+
+<script>
+	$(document).ready(function () {
+		<!--	   -->
+
+	});
+</script>

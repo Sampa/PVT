@@ -14,8 +14,19 @@ class ConversationController extends Controller
 		    $message->receiver_id= Yii::app()->request->getPost('receiver_id');
 			$message->sender_id = Yii::app()->user->id;
 			$message->subject = "chat";
-			if ($message->save()) {
-				Yii::app()->user->setFlash('messageModule', MessageModule::t('Message has been sent'));
+			if ($message->validate()) {
+
+                $con = Conversation::model()->findByPk(1);
+                if($con ==null){
+                    $con= new Conversation();
+                    $con->recruiterId = user()->id;
+                    $con->publisherId = $message->receiver_id;
+                    $con->title = $message->subject;
+                    $con->save();
+                }
+                $message->conversationId = $con->id;
+                $message->save();
+                Yii::app()->user->setFlash('messageModule', MessageModule::t('Message has been sent'));
 				$messageView = $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message),true);
 				echo json_encode(array("success"=>true,"message"=>$messageView,"messageId"=>$message->id));
 			} else if ($message->hasErrors('receiver_id')) {
@@ -34,7 +45,7 @@ class ConversationController extends Controller
 			}
 		}
 		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array(
-			'inbox'=>$this->getInboxContent(),
+			'inboxAdapter'=>$this->getInboxAdapter(),
 			'conversation'=>$this->getConversation(),
 			'sent'=>$this->getSentContent(),
             'surveys'=>$this->getSurveys(),
@@ -49,15 +60,13 @@ class ConversationController extends Controller
             'model' => $model
         ),true);
     }
-    public function getInboxContent() {
+    public function getInboxAdapter() {
         $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
         $pager = new CPagination($messagesAdapter->totalItemCount);
         $pager->pageSize = 10;
         $messagesAdapter->setPagination($pager);
 
-        return $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
-            'messagesAdapter' => $messagesAdapter
-        ),true);
+        return $messagesAdapter;
     }
     public function actionView($id)
     {

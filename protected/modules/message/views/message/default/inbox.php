@@ -41,6 +41,7 @@
 									$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_conversationRowTemplate", array(
 											"form"=>$form,
 											"index"=>$index,
+                                            "conversation"=>$conversation,
 											"message" => $message,
 											"receiverName" => $message->getReceiverName(),
 											"senderName" => $message->getSenderName())

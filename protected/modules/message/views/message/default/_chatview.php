@@ -70,23 +70,23 @@
 			iconElement.addClass("glyphicon-arrow-down");
 		}
 	});
-
-	function chatUpdateTime(){
-		var toid=<?php echo $to->id;?>;
-		$.ajax({
-			dataType: "json",
-			type: "POST",
-			url: "message/inbox/getUnreadMessages",
-			data: {
-				receiver_id : toid
-			}
-
-		}).done(function(data){
-			if(data.status=="ok"){
-				$("#chatUl"+toid).append(data.html);
-			}
-		});
-		setTimeout(chatUpdateTime, 2000);
-	}
+<!---->
+<!--	function chatUpdateTime(){-->
+<!--		var toid=--><?php //echo $to->id;?><!--;-->
+<!--		$.ajax({-->
+<!--			dataType: "json",-->
+<!--			type: "POST",-->
+<!--			url: "message/inbox/getUnreadMessages",-->
+<!--			data: {-->
+<!--				receiver_id : toid-->
+<!--			}-->
+<!---->
+<!--		}).done(function(data){-->
+<!--			if(data.status=="ok"){-->
+<!--				$("#chatUl"+toid).append(data.html);-->
+<!--			}-->
+<!--		});-->
+<!--		setTimeout(chatUpdateTime, 2000);-->
+<!--	}-->
 	setTimeout(chatUpdateTime, 2000);
 </script>

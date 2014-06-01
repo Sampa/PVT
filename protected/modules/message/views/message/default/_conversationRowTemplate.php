@@ -34,11 +34,14 @@
 			<div class="accordion-inner">
 				<div class="panel-body"
 				     style="min-height: 400px;">
-					<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(
-							"model" => $message,
-							"receiverName" => $message->getReceiverName(),
-							"senderName" => $message->getSenderName())
-						);?>
+                    aoua
+					<?php
+                        echo $conversation;
+//$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(
+//							"model" => $message,
+//							"receiverName" => $message->getReceiverName(),
+//							"senderName" => $message->getSenderName())
+//						);?>
 				</div>
 			</div>
 		</div>

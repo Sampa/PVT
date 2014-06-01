@@ -1,19 +1,19 @@
 
 function chatUpdateTime(toid){
-    $.ajax({
-        dataType: "json",
-        type: "POST",
-        url: "/message/inbox/getUnreadMessages",
-        data: {
-            receiver_id : toid
-        }
-
-    }).done(function(data){
-        if(data.status=="ok"){
-            $("#chatUl"+toid).append(data.html);
-        }
-    });
-    setTimeout(chatUpdateTime(toid), 2000);
+//    $.ajax({
+//        dataType: "json",
+//        type: "POST",
+//        url: "/message/inbox/getUnreadMessages",
+//        data: {
+//            receiver_id : toid
+//        }
+//
+//    }).done(function(data){
+//        if(data.status=="ok"){
+//            $("#chatUl"+toid).append(data.html);
+//        }
+//    });
+//    setTimeout(chatUpdateTime(toid), 2000);
 }
 //getting country/region/city
 (function(window,$,undefined){

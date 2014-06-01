@@ -56,6 +56,7 @@ class ConversationController extends Controller
 	}
     public function getConversation(){
         $model = $this->loadModel(1);
+        return $model;
         return $this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . '/view', array(
             'model' => $model
         ),true);

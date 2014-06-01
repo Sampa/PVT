@@ -8,25 +8,20 @@ $this->breadcrumbs=array(
 );
 ?>
 <div class="col-md-12 col-lg-12 col-sm-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <span class="glyphicon glyphicon-comment"></span>
+        <div class="btn-group col-md-12 row" style="margin-bottom: 10px;">
             <?php
             $to=null;
-            echo t("Historik för dig och ");
             if($model->recruiterId== Yii::app()->user->id){
                 $to=$model->publisher;
             }else{
                 $to=$model->recruiter->user;
             }
-            echo $to->getFullName();
-
             ?>
-            <div class="btn-group pull-right">
-                <a  class="chatHistoryToggle" data-toggle="collapse" data-parent="#accordion" href="#chatHistoryDiv">
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                </a>
-            </div>
+            <a  class="chatHistoryToggle pull-right" data-toggle="collapse" data-parent="#accordion" href="#chatHistoryDiv">
+                <?php echo t("Visa/Dölj historik");?>
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </a>
+        </div>
         </div>
         <div class="panel-body "id="chatHistoryDiv">
             <ul class="chat" id="chatUl<?=$to->id;?>">
@@ -45,7 +40,7 @@ $this->breadcrumbs=array(
             <div id="fields" class="col-md-12 padding:0px;margin:0px;">
                 <div class="col-md-10 col-lg-10 col-sm-8">
                     <input class="form-control"
-                           placeholder="Skriv..."
+                           placeholder="<?=t('Skriv nytt meddelande...');?>"
                            name="Message[body]"
                            id="Message_body<?= $to->id; ?>"
                            type="text"
@@ -59,8 +54,6 @@ $this->breadcrumbs=array(
                        name="<?= $to->getFullName(); ?>" value="<?=t("Skicka");?>" type="submit"/>
             </div>
         </div>
-    </div>
-</div>
 <script>
     $(".chatHistoryToggle").on('click',function(){
         var iconElement = $(this).children("span");

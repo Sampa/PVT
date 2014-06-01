@@ -213,16 +213,16 @@ class Message extends CActiveRecord
      */
     public static function getAdapterForInbox($userId) {
 		$c = new CDbCriteria();
-		$c->addCondition ('t.receiver_id = :userId',"OR");
-		$c->addCondition ('t.sender_id = :userId',"OR");
-		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-		$c->order = 't.created_at DESC';
+		$c->addCondition ('t.recruiterId = :userId',"OR");
+		$c->addCondition ('t.publisherId = :userId',"OR");
+//		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
+		$c->order = 't.date DESC';
 		$c->params = array(
 			'userId' => $userId,
 			'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,
 		);
         $c->limit = 1;
-		$messagesProvider = new CActiveDataProvider('Message', array('criteria' => $c));
+		$messagesProvider = new CActiveDataProvider('Conversation', array('criteria' => $c));
 		return $messagesProvider;
 	}
 
@@ -322,9 +322,9 @@ class Message extends CActiveRecord
      */public function getCountUnreaded($userId) {
 		if (!$this->unreadMessagesCount) {
 			$c = new CDbCriteria();
-			$c->addCondition('t.receiver_id = :receiverId');
-			$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-			$c->addCondition('t.is_read = 0');
+			$c->addCondition('receiver_id = :receiverId');
+			$c->addCondition('deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
+			$c->addCondition('is_read = "0"');
 			$c->params = array(
 				'receiverId' => $userId,
 				'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,

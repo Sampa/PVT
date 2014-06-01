@@ -9,20 +9,16 @@
                     <a href="#" class="list-group-item text-center">
                         <h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkäter"); ?>
                     </a>
-                    <!--					<a href="#" class="list-group-item text-center">-->
-<!--						<h4 class="glyphicon glyphicon-pencil"></h4><br/> --><?//= t("Skickade");?>
-<!--					</a>-->
 				</div>
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 				<!-- meddelanden/chat section -->
 				<div class="bhoechie-tab-content active">
 					<?php
-                    echo $conversation;
-                    //$this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
-//                        'messagesAdapter' => $inboxAdapter,
-//                        'conversation'=>$conversation
-//                    ));
+                    $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
+                        'messagesAdapter' => $inboxAdapter,
+                        'conversation'=>$conversation
+                    ));
 					?>
 				</div>
 			</div>
@@ -34,15 +30,6 @@
                         else
                         $this->renderPartial("application.views.survey.survey_answered",array("surveys"=>$answeredSurveysForRecruiter));
                     ?>
-				</div>
-			</div>
-			<!-- Skickade search -->
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-				<div class="bhoechie-tab-content">
-					<?php
-					//innehållet sätt i composecontroller getSentContent() och finns i sent.php
-						echo $sent;
-					?>
 				</div>
 			</div>
 		</div>

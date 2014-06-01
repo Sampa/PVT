@@ -16,7 +16,7 @@
 								class="form-control"
 								id="task-table-filter"
 								data-action="filter"
-								data-filters="#task-table"
+						    		data-filters="#task-table"
 								placeholder="<?=t("Sök");?>"
 							/>
 						</div>
@@ -31,24 +31,13 @@
 							<tbody>
 							<div class="accordion">
 								<div class="accordion-group">
-							<?php
-								$showed = array();
-								foreach ($messagesAdapter->data as $index => $message):
-									if (in_array($message->sender_id, $showed))
-										continue;
-										$showed[] = $message->sender_id;
-									//för varje konversation renderea denna template
+    							<?php
 									$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_conversationRowTemplate", array(
 											"form"=>$form,
-											"index"=>$index,
+											"index"=>$conversation->id,
                                             "conversation"=>$conversation,
-											"message" => $message,
-											"receiverName" => $message->getReceiverName(),
-											"senderName" => $message->getSenderName())
-									);
+                                      ));
 									?>
-
-								<?php endforeach ?>
 								</div><!-- accordion-group-->
 							</div>
 							</tbody>

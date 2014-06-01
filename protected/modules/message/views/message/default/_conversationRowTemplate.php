@@ -1,29 +1,29 @@
 <tr class="accordion-heading">
 	<td>
 		<?php echo CHtml::checkBox("Message[$index][selected]"); ?>
-		<?php echo $form->hiddenField($message, "[$index]id"); ?>
+		<?php echo $form->hiddenField($conversation, "[$index]id"); ?>
 	</td>
 
-	<td class=" accordion-heading" href="#acc<?= $index; ?>">
-		<a href="<?=$this->createUrl("view/",array("id"=>$message->sender_id));?>">
+    <td class="clickable accordion-heading accordion-toggle "
+        data-toggle="collapse" href="#acc<?= $index;?>">
             <?php
-                if($message->sender_id== Yii::app()->user->id){
-                    echo $message->getReceiverName();
+                if($conversation->recruiterId== Yii::app()->user->id){
+                    echo $conversation->publisher->getFullName();
                 }
-                else{
-                    echo $message->getSenderName();
+            else{
+                echo $conversation->recruiter->user->getFullName();
                 }
             ?>
-        </a>
 	</td>
-    <td >
+    <td class="clickable accordion-heading accordion-toggle down"
+        data-toggle="collapse" href="#acc<?= $index;?>">
         <?php
-            $firstMessage = Message::getFirstMessageTitle($message->sender_id,$message->receiver_id);
-            echo $firstMessage->subject;
+            echo $conversation->title;
         ?>
     </td>
-	<td>
-        <a class="glyphicon glyphicon-arrow-down clickable accordion-heading accordion-toggle down"
+    <td class="clickable accordion-heading accordion-toggle down"
+        data-toggle="collapse" href="#acc<?= $index;?>">
+        <a class="glyphicon glyphicon-arrow-down down"
            data-toggle="collapse" href="#acc<?= $index;?>">
        </a>
 	</td>
@@ -33,15 +33,15 @@
 		<div id="acc<?= $index; ?>" class="accordion-body collapse" style="padding:0px;">
 			<div class="accordion-inner">
 				<div class="panel-body"
-				     style="min-height: 400px;">
-                    aoua
+				     style="min-height: 50px;">
 					<?php
-                        echo $conversation;
-//$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(
-//							"model" => $message,
+                    //    echo $conversation;
+$this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . "/view", array(
+							"model" => $conversation,
 //							"receiverName" => $message->getReceiverName(),
 //							"senderName" => $message->getSenderName())
-//						);?>
+						));
+                    ?>
 				</div>
 			</div>
 		</div>

@@ -69,8 +69,7 @@ class InboxController extends Controller
 				$message->markAsRead();
 				$html=$html.$this->renderPartial(
 					Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',
-					array("message"=>$message),
-					true
+					array("message"=>$message),true
 				);
 			}
 			echo json_encode(array(

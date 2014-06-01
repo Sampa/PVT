@@ -48,7 +48,7 @@ class Conversation extends CActiveRecord
 		return array(
 			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
 			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterId'),
-            'messages' => array(self::HAS_MANY, 'Message','conversationId')
+            'messages' => array(self::HAS_MANY, 'Message','conversationId','order'=>"messages.created_at")
 		);
 	}
 

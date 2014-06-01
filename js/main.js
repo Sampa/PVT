@@ -94,6 +94,7 @@ jQuery(document).ready(function(){
     $(".sendChatMessage").on("click", function (event) {
         event.preventDefault();
         var id = $(this).attr("id");
+        var conversationId = $(this).attr("data-content");
         id = id.replace("btn-chat", "");
         $.ajax({
             "type": "POST",
@@ -102,7 +103,8 @@ jQuery(document).ready(function(){
             "data": {
                 "body": $("#Message_body" + id).val(),
                 "receiver": $(this).attr("name"),
-                "receiver_id": id
+                "receiver_id": id,
+                "conversation_id": conversationId
             }
         }).done(function (data) {
             if (data.success)
@@ -251,13 +253,13 @@ $(function(){
         $("#reportModalTextSuccess").hide();
         $("#reportModalTextFailure").hide();
         $("#reportModalEndFooter").hide();
-        var cvID = $(this).attr("id");  
+        var cvID = $(this).attr("id");
         var userID = $(this).attr("data-user");
         $("#submitReportBtn").attr("data-id",cvID);
         $("#submitReportBtn").attr("data-user",userID);
     });
     $("#submitReportBtn").on("click", function() {
-        var cvID = $(this).attr("data-id");  
+        var cvID = $(this).attr("data-id");
         var reason = $("#reasonTextField").val();
         //sätt userid till 0 om personen är gäst(ej inloggad) annars id:t (shortif syntax) för att undvika issue #29
         var userID = $(this).attr("data-user");

@@ -15,8 +15,7 @@ class ConversationController extends Controller
 			$message->sender_id = Yii::app()->user->id;
 			$message->subject = "chat";
 			if ($message->validate()) {
-
-                $con = Conversation::model()->findByPk(1);
+                $con = Conversation::model()->findByPk(Yii::app()->request->getPost('conversation_id'));
                 if($con ==null){
                     $con= new Conversation();
                     $con->recruiterId = user()->id;

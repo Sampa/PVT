@@ -147,9 +147,19 @@ class User extends CActiveRecord
     // class name for the relations automatically generated below.
         return array(
           'recruiter' => array(self::HAS_ONE, 'Recruiter', 'userId'),
-          'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'answeredBy')
+          'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'answeredBy'),
+          'conversations' => array(self::HAS_MANY, 'Conversation', 'recruiterId'),
+          'conversationsAsPublisher' => array(self::HAS_MANY, 'Conversation', 'publisherId')
         );
       }
+	public function getConversations(){
+		$c = new CDbCriteria();
+		$c->compare("recruiterId",user()->id,false,"OR");
+		$c->compare("publisherId",user()->id,false,"OR");
+		$c->order ="date";
+		$conversations = Conversation::model()->findAll($c);
+		return $conversations;
+	}
 
     public function getAnswersToSurvey($surveyId){
         $survey = Survey::model()->findByPk($surveyId);

@@ -47,11 +47,15 @@ $this->breadcrumbs=array(
                            style="margin: 0px;"
                         />
                 </div>
-                <input id="btn-chat<?= $to->id; ?>"
-                       data-url="<?=$this->createUrl("conversation/");?>"
-                       class="col-md-2 col-lg-2 col-sm-2
-                               btn-warning btn sendChatMessage"
-                       name="<?= $to->getFullName(); ?>" value="<?=t("Skicka");?>" type="submit"/>
+                <input
+	               id="btn-chat<?= $to->id; ?>"
+                   data-url="<?=$this->createUrl("conversation/");?>"
+                   data-content="<?=$model->id;?>"
+                   class="col-md-2 col-lg-2 col-sm-2 btn-warning btn sendChatMessage"
+                   name="<?= $to->getFullName(); ?>"
+                   value="<?=t("Skicka");?>"
+                   type="submit"
+	            />
             </div>
         </div>
 <script>

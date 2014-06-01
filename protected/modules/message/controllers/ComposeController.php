@@ -17,14 +17,11 @@ class ComposeController extends Controller
 			$message->attributes = Yii::app()->request->getPost('Message');
 			$message->sender_id = Yii::app()->user->getId();
 			if ($message->validate()) {
-                $con = Conversation::model()->findByPk(1);
-                if($con ==null){
-                    $con= new Conversation();
-                    $con->recruiterId = user()->id;
-                    $con->publisherId = $message->receiver_id;
-                    $con->title = $message->subject;
-                    $con->save();
-                }
+                $con= new Conversation();
+                $con->recruiterId = user()->id;
+                $con->publisherId = $message->receiver_id;
+                $con->title = $message->subject;
+                $con->save();
                 $message->conversationId = $con->id;
                 $message->save();
 				Yii::app()->user->setFlash('messageModule', t("Meddelandet har skickats"));
@@ -40,7 +37,7 @@ class ComposeController extends Controller
                     'notifier',
                     'main3'
                 );
-                $this->redirect($this->createUrl('message/'));
+                $this->redirect($this->createUrl('/message/'));
 			} else if ($message->hasErrors('receiver_id')) {
 				$message->receiver_id = null;
 				$receiverName = '';

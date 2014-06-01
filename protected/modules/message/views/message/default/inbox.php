@@ -32,11 +32,15 @@
 							<div class="accordion">
 								<div class="accordion-group">
     							<?php
+								$user = User::model()->findByPk(user()->id);
+							    $conversations = $user->getConversations();
+							    foreach($conversations as $conversation){
 									$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_conversationRowTemplate", array(
 											"form"=>$form,
 											"index"=>$conversation->id,
                                             "conversation"=>$conversation,
                                       ));
+							    }
 									?>
 								</div><!-- accordion-group-->
 							</div>

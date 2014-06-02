@@ -3,11 +3,10 @@ function chatUpdateTime(toid){
     $.ajax({
         dataType: "json",
         type: "POST",
-        url: "/message/inbox/getUnreadMessages",
+        url: "message/inbox/getUnreadMessages",
         data: {
             receiver_id : toid
         }
-
     }).done(function(data){
         if(data.status=="ok"){
             $("#chatUl"+toid).append(data.html);
@@ -36,8 +35,9 @@ function chatUpdateTime(toid){
     function handleResult(data){
         target.children(":not(:first-child)").remove();
         data.geonames.forEach(function(item){
-            var fixedName = item.name.replace("Municipality","Kommun");
-            fixedName = fixedName.replace("unicipality","Kommun");
+            var fixedName = item.name.replace("Municipality","");
+            fixedName = fixedName.replace("municipality","");
+            fixedName = fixedName.replace("Kommun","");
             var foo = new Option(fixedName,fixedName);
             $(foo).attr("id",item.geonameId);
             target.append(foo);

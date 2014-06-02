@@ -104,7 +104,7 @@
                                 <li>
                                     <!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
                                     <!-- href leder till användarens inbox -->
-                                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
+                                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden/ Enkäter");?>
                                         <span class="badge pull-right">
                                             <?php
                                             if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
@@ -161,7 +161,7 @@
                                 <li>
                                     <!--                            <a href="#">Meddelanden <span class="badge pull-right"> 42 </span></a>-->
                                     <!-- href leder till användarens inbox -->
-                                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden");?>
+                                    <a href="<?php echo $this->createUrl(Yii::app()->getModule('message')->defaultUrl[0]);?>"> <?php echo t("Meddelanden/ Enkäter");?>
                                         <span class="badge pull-right">
                                             <?php
                                             if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){

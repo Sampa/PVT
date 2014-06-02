@@ -11,9 +11,16 @@
     $beenToSurveyPage=$recruiter->beenToSurveyPage;
 ?>
 
-<div class="container page-min-height bootstro" data-bootstro-title="<?php echo Yii::t("t","Skapa din personliga enkät");?>" data-bootstro-content="<?php echo Yii::t("t","Du använder dig av dessa fält för att bygga upp din enkät så som du vill");?>" data-bootstro-placement="left" data-bootstro-width='150px' data-bootstro-step="0">
-    <div class="row col-md-12 dropzone">
-        <div style="padding: 0px;position: fixed;max-width: 180px;" class="col-md-2 panel panel-info bootstro" data-bootstro-title="<?php echo Yii::t("t","Välj fråga");?>" data-bootstro-content="<?php echo Yii::t("t","Här väljer du vilken sorts fråga som du vill ha i din enkät");?>" data-bootstro-placement="right" data-bootstro-step="1">
+<div class="container page-min-height" >
+    <div class="row col-md-12 dropzone bootstro" 
+    data-bootstro-title="<?php echo Yii::t("t","Skapa din personliga enkät");?>" 
+    data-bootstro-content="<?php echo Yii::t("t","Du använder dig av dessa fält för att bygga upp din enkät så som du vill");?>" 
+    data-bootstro-placement="bottom" 
+    data-bootstro-step="0">
+        <div style="padding: 0px;position: fixed;max-width: 180px;" class="col-md-2 panel panel-info bootstro" 
+        data-bootstro-title="<?php echo Yii::t("t","Välj fråga");?>" data-bootstro-content="<?php echo Yii::t("t","Här väljer du vilken sorts fråga som du vill ha i din enkät");?>" 
+        data-bootstro-placement="right" 
+        data-bootstro-step="1">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <span class="glyphicon glyphicon-cog"></span><?php echo Yii::t("t","Komponenter");?>
@@ -36,7 +43,11 @@
             </div>
         </div>
         <div class="col-md-10 col-sm-9 col-xs-5 pull-right survey-layout" style="margin-left:5px;">
-            <div class="panel panel-info bootstro" data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" data-bootstro-placement="left" data-bootstro-step="2">
+            <div class="panel panel-info bootstro" 
+            data-bootstro-title="<?php echo Yii::t("t","Bygg upp din enkät här");?>" 
+            data-bootstro-content="<?php echo Yii::t("t","Dra hit de olika sorters frågor du vill ha med i din enkät");?>" 
+            data-bootstro-placement="left" 
+            data-bootstro-step="2">
                 <div class="panel-heading">
                     <h3 class="panel-title" id="layoutTitle">
                         <span class="glyphicon glyphicon-wrench "></span>

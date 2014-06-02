@@ -419,10 +419,10 @@ class CvController extends Controller
 	 */
 	private function setSortOrderCondition($criteria) {
 		if(isset($_POST['sortBy'])){
-//			if($_POST['sortBy']=='date')
-//				$criteria->order= "date DESC";
-//			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
-//				$criteria->order= $_POST['sortBy'] .", date DESC";
+			if($_POST['sortBy']=='date')
+				$criteria->order= "date DESC";
+			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
+				$criteria->order= $_POST['sortBy'] .", date DESC";
 		}
 		return $criteria;
 	}

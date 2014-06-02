@@ -18,8 +18,3 @@ $this->breadcrumbs=array(
         Mina sidor när du är inloggad som publicerare.
     </section>
 	<?php $this->renderPartial('_form', array('model'=>$model,'pdf'=>$pdf)); ?>
-	<script>
-    $(document).ready(function ($) {
-	    jQuery("[type*='submit']").addClass("btn-lg");
-    });
-</script>

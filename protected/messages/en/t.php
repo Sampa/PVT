@@ -22,7 +22,7 @@ return array (
   ' Enkät' =>  ' Survey ' ,
   ' Rapportera CV' =>  ' Report CV ' ,
   ' Starta chatt' =>  ' Start chat ' ,
-  ' Sökning' =>  ' Query ' ,
+  ' Sökning' =>  ' Search ' ,
   ' är obligatoriska.' =>  ' Is required.' ,
   'Acceptera användaravtal:' =>  ' Accept the user agreement ,' ,
   'Acceptera användaravtalet' =>  'Accept User Agreement ' ,

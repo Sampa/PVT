@@ -45,7 +45,6 @@ class ConversationController extends Controller
 		}
 		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array(
 			'inboxAdapter'=>$this->getInboxAdapter(),
-			'conversation'=>$this->getConversation(),
 			'sent'=>$this->getSentContent(),
             'surveys'=>$this->getSurveys(),
             'answeredSurveys'=>$this->getAnsweredSurveys(),
@@ -53,13 +52,6 @@ class ConversationController extends Controller
 			'model' => $message,
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
-    public function getConversation(){
-        $model = $this->loadModel(1);
-        return $model;
-        return $this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . '/view', array(
-            'model' => $model
-        ),true);
-    }
     public function getInboxAdapter() {
         $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
         $pager = new CPagination($messagesAdapter->totalItemCount);

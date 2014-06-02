@@ -19,7 +19,6 @@
 					<?php
                     $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
                         'messagesAdapter' => $inboxAdapter,
-                        'conversation'=>$conversation
                     ));
 					?>
 				</div>

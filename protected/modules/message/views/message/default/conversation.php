@@ -5,11 +5,11 @@
 				<div class="list-group">
 					<a href="#" class="list-group-item active text-center">
 						<h2 class="glyphicon glyphicon-envelope"></h2>
-<!--                        <br/> --><?//= t("Meddelanden"); ?>
+                        <br/> <?= t("Meddelanden"); ?>
 					</a>
                     <a href="#" class="list-group-item text-center">
                         <h2 class="glyphicon glyphicon-file"></h2>
-<!--                        <br/> --><?//= t("Enkäter"); ?>
+                        <br/> <?= t("Enkäter"); ?>
                     </a>
 				</div>
 			</div>

@@ -115,7 +115,7 @@ class UserController extends Controller
 					$model->email = $_POST['User']['email'];
 				}
 				if($_POST['User']['new_password']===$_POST['User']['password_confirm']){
-					$model ->password = $_POST['User']['new_password'];
+					$model->password = $_POST['User']['new_password'];
 				}
 				$model->notify = $_POST['User']['notify'];
 				if(!$rmodel){

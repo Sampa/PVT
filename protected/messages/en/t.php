@@ -36,7 +36,7 @@ return array (
   'Antarktis' =>  ' Antarctica ' ,
   'Antsällningsform' =>  ' Type of employment ' ,
   'Användaravtal' =>  'User Agreement ' ,
-  'Användarguide'=> 'Userguide',
+  'Hjälp'=> 'Userguide',
   'Användarnamn' =>  'Username' ,
   'Användarnamn eller e-post' =>  ' Username or email ' ,
   'Asien' =>  ' Asia ' ,

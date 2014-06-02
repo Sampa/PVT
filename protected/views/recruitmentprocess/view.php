@@ -351,7 +351,12 @@ $this->breadcrumbs=array(
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: '/hotlist/delete/'+cvId
+                    url: '/hotlist/delete/'+cvId,
+                    data: {
+                        'cvId': cvId,
+                        'processId': processId
+
+                    }
                 }).done(function(data){
                     window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + processId;
                 });

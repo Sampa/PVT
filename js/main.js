@@ -3,7 +3,7 @@ function chatUpdateTime(toid){
     $.ajax({
         dataType: "json",
         type: "POST",
-        url: "/message/inbox/getUnreadMessages",
+        url: "message/inbox/getUnreadMessages",
         data: {
             receiver_id : toid
         }
@@ -236,7 +236,7 @@ $(function(){
         var cvID = $(this).parent().attr("id");
         $.ajax({  //gör en http POST request till vår actionSaveCV i RecruitmentprocessController och skicka med datan
             type: "POST",
-            url: "/recruitmentprocess/savecv",
+            url: "recruitmentprocess/savecv",
             data: {"processID":processID, "cvID":cvID}
         }).done(function( data ) {
            $('#hotlistModal').modal('show');

@@ -6,12 +6,8 @@ $this->breadcrumbs = array(
 );
 ?>
 <div class="container page-min-height">
-
-    <div class="page-header">
-        <h1><?php echo Yii::t("t", "Logga in");?></h1>
-    </div>
     <div class="horizontal-form">
-        <?php $form = $this->beginWidget('CActiveForm', array(
+        <?php $form = $this->beginWidget('TbActiveForm', array(
             'enableClientValidation' => true,
             //'enableAjaxValidation'=>true,
             // 'errorMessageCssClass'=>'has-error',

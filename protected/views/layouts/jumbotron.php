@@ -34,7 +34,7 @@
 				$standardItems = array(
 					array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
 					array('label' => Yii::t("t",'Sökning'), 'url'=>array('/cv/')),
-                    array('label' => Yii::t("t",'Användarguide'), 'url'=>array('/site/page/helpguide/')),
+                    array('label' => Yii::t("t",'Hjälp'), 'url'=>array('/site/page/helpguide/')),
 				);
                 //slå ihop custom items med de som alltid syns
                 $items = array_merge($standardItems,$items);
@@ -47,6 +47,8 @@
 
 
                 <?php if (app()->user->isGuest): ?>
+                    <span class="pull-right"><?php $this->widget("LangBox",array());?></span>
+
                     <?php
                     $model = new LoginForm();
                     $form = $this->beginWidget('CActiveForm', array(
@@ -57,7 +59,7 @@
 //                        'errorMessageCssClass' => 'has-error',
                         'htmlOptions' => array(
                             'id' => 'login-form',
-                            'class' => 'navbar-form navbar-right',
+                            'class' => 'navbar-form',
                             'role' => 'form',
                         ),
                         'clientOptions' => array(
@@ -70,30 +72,29 @@
                         ),
                     ));
                     ?>
-                    <form>
-                        <div class="form-group">
-                            <?php echo $form->textField($model, 'username', array('max-length' => '10', 'class' => 'form-control', 'placeholder' => Yii::t("t","email eller användarnamn"))); ?>
-                        </div>
-                        <div class="form-group">
-                            <?php echo $form->passwordField($model, 'password', array('max-length' => '10', 'class' => 'form-control', 'type' => 'password', 'placeholder' => Yii::t("t","lösenord"))); ?>
-                        </div>
+                    <div class="form-group">
+                        <?php echo $form->textField($model, 'username', array('max-length' => '10', 'class' => 'form-control', 'placeholder' => Yii::t("t","email eller användarnamn"))); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo $form->passwordField($model, 'password', array('max-length' => '10', 'class' => 'form-control', 'type' => 'password', 'placeholder' => Yii::t("t","lösenord"))); ?>
+                    </div>
 
-                        <?php echo CHtml::submitButton( Yii::t("t",'Logga in'), array('class' => 'btn btn-primary btn-sm')); ?>
-                        <a class="btn btn-primary  btn-sm  btn-warning"
-                           href="<?php echo $this->createUrl('site/email_for_reset') ?>"><?php echo Yii::t("t", "Glömt lösenord");?></a>
-                        <a class=" btn btn-primary btn-sm  btn-info"
-                           href="<?php echo $this->createUrl('site/register') ?>"><?php echo Yii::t("t", "Registrera dig");?></a>
-
-                        <?php $this->endWidget(); ?>
-                    </form>
-
-
+                    <?php echo CHtml::submitButton( Yii::t("t",'Logga in'), array('class' => 'btn btn-primary btn-sm')); ?>
+                    <a class="btn btn-primary  btn-sm  btn-warning"
+                       href="<?php echo $this->createUrl('site/email_for_reset') ?>">
+                        <?php echo Yii::t("t", "Glömt lösenord");?>
+                    </a>
+                    <a class=" btn btn-primary btn-sm  btn-info"
+                       href="<?php echo $this->createUrl('site/register') ?>">
+                        <?php echo Yii::t("t", "Registrera dig");?>
+                    </a>
+                    <?php $this->endWidget(); ?>
                 <?php else: ?>
                 <div class="navbar-right visible-xs" >
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ").Yii::app()->user->name; ?>
-                                
+
                             </a>
                             <ul class="dropdown-menu" style="width:200px">
                                 <li>
@@ -229,10 +230,7 @@
         <?php echo $content; ?>
         <!-- Example row of columns -->
         <hr>
-
-
 	    <?php
-
         if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>
         <footer id="footer2 ">
             <div class="container visible-xs">

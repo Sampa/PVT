@@ -35,8 +35,9 @@ function chatUpdateTime(toid){
     function handleResult(data){
         target.children(":not(:first-child)").remove();
         data.geonames.forEach(function(item){
-            var fixedName = item.name.replace("Municipality","Kommun");
-            fixedName = fixedName.replace("unicipality","Kommun");
+            var fixedName = item.name.replace("Municipality","");
+            fixedName = fixedName.replace("municipality","");
+            fixedName = fixedName.replace("Kommun","");
             var foo = new Option(fixedName,fixedName);
             $(foo).attr("id",item.geonameId);
             target.append(foo);

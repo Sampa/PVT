@@ -54,10 +54,11 @@
                             id="<?php echo $data->id?>" 
                             data-user="<?php echo user()->isGuest ? 0:user()->id; ?>"
                             class="glyphicon glyphicon-flag report-cv-flag">
+                            <?php echo Yii::t("t"," Rapportera");?>
                         </i>
                     </a>
                 </span>
-                <?php echo Yii::t("t"," Rapportera CV");?>
+                
                 <?php if( Yii:: app()->user->getState("role")=="recruiter") { ?>
                <button class="btn btn-primary btn dropdown-toggle pull-right" type="button"data-toggle="dropdown">
                    <i class="glyphicon glyphicon-file"></i>

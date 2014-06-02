@@ -142,7 +142,16 @@ else{ ?>
 <div class="container">
     <div class="row">
         <br>
-        <div class="col-md-4">
+        <div class="col-md-3" align="center">
+            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide">
+                <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
+            </a>
+            <br>
+            <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användarguide");?></strong></h4>
+            <p class="footertext"><?php echo Yii:: t ("t", "Läs om vilka funktioner som erbjuds av CV-Pages samt hur du går tillväga för att använda dem");?>
+                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide">Läs mer</a><br>
+        </div>
+        <div class="col-md-3">
             <center>
                 <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
                 <br>
@@ -153,7 +162,7 @@ else{ ?>
                     <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
                 </center>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <center>
                 <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
                 <br>
@@ -165,7 +174,8 @@ else{ ?>
                 <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
             </center>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-3">
             <center>
                 <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
                 <br>

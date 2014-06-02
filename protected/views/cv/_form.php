@@ -80,7 +80,7 @@
         <div class="form-actions" style="margin-left:-10px;">
             <?php echo TbHtml::submitButton($model->isNewRecord ? yii::t("t",'Publicera') : yii::t("t",'Spara'),array(
                 'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-                'size'=>TbHtml::BUTTON_SIZE_LARGE,
+                'size'=>TbHtml::BUTTON_SIZE_MINI,
             )); ?>
 		</div>
     <?php $this->endWidget(); ?>

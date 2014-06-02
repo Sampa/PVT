@@ -40,9 +40,10 @@
                     <?php
                         foreach($data->cvTags as $cvTag){
                             //frequency är hur ofta den använts
-                            $number = $cvTag->tag->frequency+20;
+                            $number = $cvTag->tag->frequency;
                             //skriver ut taggen så att mer använda taggar blir större
-                            echo '<span style="font-size:'.$number.'px"> '.$cvTag->tag->name.'</span>';
+                            echo '<span class="label label-info" style="margin-right:10px;"> '.$cvTag->tag->name.'</span>';
+                        
                         }
                     ?>
                 <br/>

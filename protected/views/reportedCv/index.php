@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
              <div class="panel-heading" style='margin-left:-16px;'>
                  <h3><?php echo Yii::t('t','Rapporterade CV:n');?></h3>
              </div>
-
+            <div class="table-responsive">
              <table class="table table-bordered table-condensed table-hover">
 
                 <tbody>
@@ -58,6 +58,7 @@ $this->breadcrumbs=array(
     }?>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>

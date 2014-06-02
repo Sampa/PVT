@@ -311,9 +311,10 @@
         </div>
         <!-- Vi vill bara visa en add ikon när man skapar cv-->
         <?php if(isset($showAddButton)):?>
-        <div class="pull-left " id="newAreaWrapper"  style="margin-top: 20px; margin-left: 0px; margin-right: 0px;">
+        <div class="pull-left " id="newAreaWrapper"  style="margin-top: -17px; margin-left: 0px; margin-right: 0px;">
+            <p> <?php echo t("Lägg till");?></p>
             <button id="addArea" class="btn btn-success btn-small">
-                <span class="glyphicon glyphicon-plus-sign"></span>
+                <span class="glyphicon glyphicon-plus-sign"> </span>
             </button>
         </div>
         <?php endif;?>

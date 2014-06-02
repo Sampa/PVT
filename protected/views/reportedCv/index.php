@@ -77,7 +77,7 @@ $(".deleteReportedCV").on("click",function(event){
         $.ajax({
             type: "POST",
             data: {id:cvIdToDelete},
-            url: "/cv/delete/"+cvIdToDelete,
+            url: <?php echo Yii::app()->getBaseUrl();?>+"/cv/delete/"+cvIdToDelete,
         })
         $.ajax({
             type: "POST",

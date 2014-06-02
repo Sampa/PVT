@@ -108,11 +108,8 @@ jQuery(document).ready(function(){
             }
         }).done(function (data) {
             if (data.success)
-                 $("#chatUl"+id).append(data.message);
+                $("#chatUl"+id).append(data.message);
                  $("#Message_body" + id).val("");
-//					$('html, body').animate({
-//						scrollTop: $("#chatLi"+data.messageId).offset().top
-//					}, 2000);
         });
     });
     jQuery('#VAT').hide();

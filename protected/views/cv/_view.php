@@ -2,7 +2,7 @@
 /* @var $this CvController */
 /* @var $data Cv */
 ?>
-<div class="container">
+<div class="cvRow container">
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-2">
@@ -24,7 +24,8 @@
                             <span><?= $area->city; ?></span>
                         </li>
                     <?php }?>
-					<li><i class="glyphicon glyphicon-user"></i>
+					<li>
+                        <i class="glyphicon glyphicon-user"></i>
                         <span>
                             <?php echo CHtml::encode($data->publisher->username); ?>
                         </span>

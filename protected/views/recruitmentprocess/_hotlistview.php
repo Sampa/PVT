@@ -35,7 +35,6 @@
     <div class="row lead" >
         <!--<div id="stars" class="starrr" style='font-size: 20px'></div>-->
          <div style='font-size: 15px'>
-<<<<<<< 
           <span class="plus">
               <a href="<?php echo $this->createUrl('/message/compose/'.$data->cv->publisher->id);?>" title="<?php echo Yii::t("t","Öppna chatt");?>">
                   <i class="glyphicon glyphicon-comment"></i>

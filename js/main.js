@@ -7,7 +7,6 @@ function chatUpdateTime(toid){
         data: {
             receiver_id : toid
         }
-
     }).done(function(data){
         if(data.status=="ok"){
             $("#chatUl"+toid).append(data.html);

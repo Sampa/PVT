@@ -235,7 +235,7 @@
 
         if($_SERVER['REQUEST_URI']!="/" && $_SERVER['REQUEST_URI']!="/Group1/"):?>
         <footer id="footer2 ">
-            <div class="container visible-xs">
+            <div class="container visible-xs visible-sm">
                 <div class="row">
                     <br>
                     <div class="col-md-3" align="center">
@@ -273,7 +273,7 @@
         </footer>
         <!-- end if startpage-->
         <footer id="footer2 ">
-            <div class="container visible-sm visible-md visible-lg">
+            <div class="container visible-md visible-lg">
                 <div class="row">
                     <br>
                     <div class="col-md-3" align="center">

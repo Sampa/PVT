@@ -1,7 +1,6 @@
-<?php echo CHtml::form("/","post",array("id"=>"langform")); ?>
+<?php echo CHtml::form("","post",array("id"=>"langform")); ?>
 	<div id="langdrop" class="pull-left">
 		<?php
-
         echo CHtml::dropDownList('_lang', $currentLang, array(
             'sv'=>t(' Svenska'),
             'en' =>t(' Engelska'),
@@ -10,8 +9,8 @@
               'sv'=>array('class'=>'sv'),
               'en'=>array('class'=>'en'),
             ),
-            'class'=>'form-control',
-            'style'=>'width:120px;',
+            'class'=>'',
+            'style'=>'width:120px;margin-top:17px;',
             'id'=>'langPicker'
         )); ?>
 	</div>

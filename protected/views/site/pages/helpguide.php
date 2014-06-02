@@ -148,7 +148,7 @@ $this->breadcrumbs = array(
         <h4><strong><?php echo Yii::t("t","Lägg till cv i hotlist")?></strong></h4>
         <p id="texts"><?php echo t("För att kunna lägga till ett intressant cv i en hotlist måste du vara registrerad som rekryterare först och främst. När du är
         en rekryterare har du möjlighet att skapa en process för att samla intressanta kandidater till den tjänst som behöver fyllas. Du gör så här:
-        När du äe inloggad och söker efter cv i sökningsfunktionen, kan du välja att lägga till ett cv till en hotlist. Varje hotlist hör
+        När du är inloggad och söker efter cv i sökningsfunktionen, kan du välja att lägga till ett cv till en hotlist. Varje hotlist hör
         till en rekryteringsprocess. Genom att trycka på knappen lägg till i hotlist, får du välja att skapa en ny process eller lägga tillcv i en process som redan finns genom att klicka på namnet
         i dropdown-menyn som presenteras för dig.  ");?>
         </p>
@@ -317,7 +317,7 @@ $this->breadcrumbs = array(
         <h4><strong><?php echo Yii::t("t","Lägg till cv i hotlist")?></strong></h4>
         <p id="texts"><?php echo t("För att kunna lägga till ett intressant cv i en hotlist måste du vara registrerad som rekryterare först och främst. När du är
         en rekryterare har du möjlighet att skapa en process för att samla intressanta kandidater till den tjänst som behöver fyllas. Du gör så här:
-        När du äe inloggad och söker efter cv i sökningsfunktionen, kan du välja att lägga till ett cv till en hotlist. Varje hotlist hör
+        När du är inloggad och söker efter cv i sökningsfunktionen, kan du välja att lägga till ett cv till en hotlist. Varje hotlist hör
         till en rekryteringsprocess. Genom att trycka på knappen lägg till i hotlist, får du välja att skapa en ny process eller lägga tillcv i en process som redan finns genom att klicka på namnet
         i dropdown-menyn som presenteras för dig.  ");?>
         </p>

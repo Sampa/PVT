@@ -21,13 +21,20 @@
             echo $conversation->title;
         ?>
     </td>
+
+    <td class="clickable accordion-heading accordion-toggle"
+        data-toggle="collapse" href="#acc<?= $index;?>">
+        <span class="badge alert-primary"><?=$conversation->messageCountTotal();?></span>
+        <span class="badge alert-success"><?=$conversation->messageCountSent();?></span>
+        <span class="badge alert-info"><?=$conversation->messageCountReceived();?></span>
+    </td>
     <td class="clickable accordion-heading accordion-toggle"
         data-toggle="collapse" href="#acc<?= $index;?>">
         <a class="glyphicon glyphicon-arrow-down down"></a>
 	</td>
 </tr><!-- end table row -->
-<tr class="col-md-12">
-	<td colspan="4">
+<tr class="col-md-12" style="height: 0px;">
+	<td colspan="5">
 		<div id="acc<?= $index; ?>" class="accordion-body collapse" style="padding:0px;">
 			<div class="accordion-inner">
 				<div class="panel-body"

@@ -105,4 +105,13 @@ class Conversation extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+    public function messageCountSent(){
+        return Message::model()->count("conversationId=:cId AND sender_id=:sId",array("cId"=>$this->id,"sId"=>user()->id));
+    }
+    public function messageCountReceived(){
+        return Message::model()->count("conversationId=:cId AND receiver_id=:sId",array("cId"=>$this->id,"sId"=>user()->id));
+    }
+    public function messageCountTotal(){
+        return Message::model()->count("conversationId=:cId",array("cId"=>$this->id));
+    }
 }

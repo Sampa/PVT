@@ -4,10 +4,12 @@
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
 				<div class="list-group">
 					<a href="#" class="list-group-item active text-center">
-						<h4 class="glyphicon glyphicon-envelope"></h4><br/> <?= t("Meddelanden"); ?>
+						<h2 class="glyphicon glyphicon-envelope"></h2>
+<!--                        <br/> --><?//= t("Meddelanden"); ?>
 					</a>
                     <a href="#" class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicon-road"></h4><br/> <?= t("Enkäter"); ?>
+                        <h2 class="glyphicon glyphicon-file"></h2>
+<!--                        <br/> --><?//= t("Enkäter"); ?>
                     </a>
 				</div>
 			</div>

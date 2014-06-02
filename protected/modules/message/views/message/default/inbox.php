@@ -23,9 +23,15 @@
 						<table class="table table-hover" id="task-table">
 							<thead>
 								<tr>
-									<th><?=t("Ta bort");?></th>
-									<th><?=t("Användare");?></th>
-									<th><?=t("Ärende");?></th>
+									<th><span class="glyphicon glyphicon-trash"></span></th>
+									<th><span class="glyphicon glyphicon-user"></span></th>
+									<th><span class="glyphicon glyphicon-info-sign"></span></th>
+									<th>
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                        <span class="glyphicon glyphicon-export"></span>
+                                        <span class="glyphicon glyphicon-import"></span>
+                                    </th>
+									<th><span class="glyphicon glyphicon-comment"></span></th>
 								</tr>
 							</thead>
 							<tbody>

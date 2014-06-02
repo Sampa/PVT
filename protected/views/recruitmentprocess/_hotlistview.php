@@ -30,10 +30,10 @@
 
   <div class="col-md-3">
     <div class="row lead" >
-        <div id="stars" class="starrr" style='font-size: 20px'></div>
+        <!--<div id="stars" class="starrr" style='font-size: 20px'></div>-->
          <div style='font-size: 15px'>
           <span class="plus"><a href="<?php echo $this->createUrl('/message/compose/'.$data->cv->publisher->id);?>" title="<?php echo Yii::t("t","Öppna chatt");?>"><i class="glyphicon glyphicon-comment"></i></a></span><span><?php echo Yii::t("t"," Starta chatt");?></span>
-          <span class="plus"><a href="#" title="Enkät utsänd/besvarad"><i class="glyphicon glyphicon-file"></i></a></span><span><?php echo Yii::t("t"," Enkät");?></span>
+          <!--<span class="plus"><a href="#" title="Enkät utsänd/besvarad"><i class="glyphicon glyphicon-file"></i></a></span><span><?php echo Yii::t("t"," Enkät");?></span>-->
         </div>
 	</div>
 

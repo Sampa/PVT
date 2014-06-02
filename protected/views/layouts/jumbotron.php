@@ -29,6 +29,7 @@
 	                    array('label' => Yii::t("t","Enkäter"), 'url' => array('/survey/admin'),'visible'=>!Yii::app()->user->isGuest,),
                     );
                 }
+
                 //ska alltid synas
 				$standardItems = array(
 					array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
@@ -194,7 +195,7 @@
                             </ul>
                         </li>
                     </ul>
-
+                    <span class="pull-right"><?php $this->widget("LangBox",array());?></span>
 
                        <!--  <span class="navbar-brand">
                             <a class="navbar-right" style="color:#ffffff" href="<?php echo $this->createUrl('site/logout') ?>">
@@ -228,7 +229,7 @@
         <?php echo $content; ?>
         <!-- Example row of columns -->
         <hr>
-	    <?php $this->widget("LangBox",array());?>
+
 
 	    <?php
 

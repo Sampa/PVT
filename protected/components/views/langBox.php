@@ -9,8 +9,8 @@
               'sv'=>array('class'=>'sv'),
               'en'=>array('class'=>'en'),
             ),
-            'class'=>'form-control',
-            'style'=>'width:120px;',
+            'class'=>'',
+            'style'=>'width:120px;margin-top:17px;',
             'id'=>'langPicker'
         )); ?>
 	</div>

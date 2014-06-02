@@ -119,7 +119,7 @@ class User extends CActiveRecord
     public function rules()
     	{
 
-        //not using validation rules here because rules have already been applied  in LoginForm and RegisterForm
+               //not using validation rules here because rules have already been applied  in LoginForm and RegisterForm
     		// NOTE: you should only define rules for those attributes that
     		// will receive user inputs.
     		return array(
@@ -131,8 +131,8 @@ class User extends CActiveRecord
     			array('requires_new_password, login_attempts', 'numerical', 'integerOnly' => true),*/
     			// The following rule is used by search().
     			// Please remove those attributes that should not be searched.
-          array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
-          array('password_confirm', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('validation', "Passwords don't match")),
+            array('id, password, salt, password_strategy , requires_new_password , email', 'safe', 'on' => 'search'),
+          array('password_confirm', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('validation', "Lösenorden matchar inte.")),
           array('username, email', 'unique'),
           array('username, name, email','required'),
     		);
@@ -164,7 +164,7 @@ class User extends CActiveRecord
     public function getAnswersToSurvey($surveyId){
         $survey = Survey::model()->findByPk($surveyId);
         $criteria = new CDbCriteria();
-  //        $criteria->addInCondition("surveyQuestionID",$survey->surveyQuestions,"OR");
+//        $criteria->addInCondition("surveyQuestionID",$survey->surveyQuestions,"OR");
         $criteria->with = "surveyQuestion";
         $criteria->compare("answeredBy",$this->id);
         $criteria->compare("surveyQuestion.",$this->id);

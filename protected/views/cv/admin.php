@@ -74,7 +74,7 @@ $('.deleteCV').on('click',function(event){
         data: {id:cvIdToDelete},
         url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete
     });
-    window.document.location ='admin';
+    window.location.reload(true);
 });
 </script>
 

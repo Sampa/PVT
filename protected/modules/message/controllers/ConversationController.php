@@ -14,8 +14,18 @@ class ConversationController extends Controller
 		    $message->receiver_id= Yii::app()->request->getPost('receiver_id');
 			$message->sender_id = Yii::app()->user->id;
 			$message->subject = "chat";
-			if ($message->save()) {
-				Yii::app()->user->setFlash('messageModule', MessageModule::t('Message has been sent'));
+			if ($message->validate()) {
+                $con = Conversation::model()->findByPk(Yii::app()->request->getPost('conversation_id'));
+                if($con ==null){
+                    $con= new Conversation();
+                    $con->recruiterId = user()->id;
+                    $con->publisherId = $message->receiver_id;
+                    $con->title = $message->subject;
+                    $con->save();
+                }
+                $message->conversationId = $con->id;
+                $message->save();
+                Yii::app()->user->setFlash('messageModule', MessageModule::t('Message has been sent'));
 				$messageView = $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message),true);
 				echo json_encode(array("success"=>true,"message"=>$messageView,"messageId"=>$message->id));
 			} else if ($message->hasErrors('receiver_id')) {
@@ -34,7 +44,7 @@ class ConversationController extends Controller
 			}
 		}
 		$this->render(Yii::app()->getModule('message')->viewPath . '/conversation', array(
-			'inbox'=>$this->getInboxContent(),
+			'inboxAdapter'=>$this->getInboxAdapter(),
 			'sent'=>$this->getSentContent(),
             'surveys'=>$this->getSurveys(),
             'answeredSurveys'=>$this->getAnsweredSurveys(),
@@ -42,15 +52,19 @@ class ConversationController extends Controller
 			'model' => $message,
 			'receiverName' => isset($receiverName) ? $receiverName : null));
 	}
-    public function getInboxContent() {
-        $messagesAdapter = Message::getAdapterForConversation(Yii::app()->user->getId());
+    public function getInboxAdapter() {
+        $messagesAdapter = Message::getAdapterForInbox(Yii::app()->user->getId());
         $pager = new CPagination($messagesAdapter->totalItemCount);
         $pager->pageSize = 10;
         $messagesAdapter->setPagination($pager);
 
-        return $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/inbox', array(
-            'messagesAdapter' => $messagesAdapter
-        ),true);
+        return $messagesAdapter;
+    }
+    public function actionView($id)
+    {
+        $this->render('view',array(
+            'model'=>$this->loadModel($id),
+        ));
     }
 	public function getSentContent() {
 		$messagesAdapter = Message::getAdapterForSent(Yii::app()->user->getId());
@@ -84,6 +98,23 @@ class ConversationController extends Controller
         $allForThisArea = Survey::model()->with("surveyCandidates")->findAll($criteria);
         return $allForThisArea;
     }
+
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return Conversation the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model=Conversation::model()->findByPk($id);
+        if ($model===null) {
+            throw new CHttpException(404,'The requested page does not exist.');
+        }
+        return $model;
+    }
+
     /**
      * Performs the AJAX validation.
      * @param Cv $model the model to be validated

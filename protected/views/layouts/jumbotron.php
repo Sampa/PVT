@@ -33,7 +33,7 @@
 				$standardItems = array(
 					array('label' => Yii::t("t",'Kontakt'), 'url' => array('/site/contact')),
 					array('label' => Yii::t("t",' Sökning'), 'url'=>array('/cv/')),
-                    array('label' => Yii::t("t",'Användarguide'), 'url'=>array('/site/page/helpguide')),
+                    array('label' => Yii::t("t",' Användarguide'), 'url'=>array('/site/page/helpguide/')),
 				);
                 //slå ihop custom items med de som alltid syns
                 $items = array_merge($standardItems,$items);

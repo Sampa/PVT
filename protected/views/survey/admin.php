@@ -1,12 +1,12 @@
 <?php
 /* @var $this SurveyController */
 /* @var $model Survey */
-
 $this->breadcrumbs=array(
 	t('Hem') => Yii::app()->getHomeUrl(),
-	t('Enkäter'),
+    	t('Enkäter'),
 	);
-	?>
+$this->pageTitle = Yii::app()->name . t(' - Enkäter');
+?>
 	<div align="right">
 		<a href="<?php echo Yii::app()->baseUrl;?>/survey/create">
 			<span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Skapa ny enkät");?>
@@ -24,8 +24,7 @@ $this->breadcrumbs=array(
 			<tr>
 				<th><?php echo Yii::t('t','Titel');?></th>
 				<th><?php echo Yii::t('t','Datum');?></th>
-				<th><?php echo Yii::t('t','Antal besvarade enkäter');?></th>
-
+				<th><?php echo Yii::t('t','Svarsfrekvens');?></th>
 			</tr>
 			<?php
 			foreach($allModels as $model){
@@ -35,13 +34,16 @@ $this->breadcrumbs=array(
 						echo substr($model->title, 0,15);
 						?>
 						</td>
-						<td><?php
-						echo $model->date;
-						?>
+						<td>
+                            <?php echo $model->date;?>
 						</td>
 						<td>
-							<?php echo $model->date; ?>
-						</td>	
+							<?php
+                                echo $model->numberOfResponses();
+                                echo " ".t("av")." ";
+                                echo $model->numberOfCandidates();
+                            ?>
+						</td>
                 	</tr>
                 <?php
             }

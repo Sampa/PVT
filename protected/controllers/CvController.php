@@ -468,7 +468,7 @@ class CvController extends Controller
         if(!is_null($region))
             $criteria->addSearchCondition("areas.region",$region);
         if(!is_null($city))
-            $criteria->addSearchCondition("areas.city,",$city);
+            $criteria->addSearchCondition("areas.city",$city);
 		return $criteria;
 	}
 	/*

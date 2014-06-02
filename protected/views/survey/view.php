@@ -1,6 +1,7 @@
     <?php
     /* @var $this SurveyController */
     /* @var $model Survey */
+    $this->pageTitle = Yii::app()->name . t(' - Enkäter');
     $this->breadcrumbs=array(
         Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
         t('Enkäter')=>array('admin'),
@@ -108,11 +109,13 @@
                 <?php
                 foreach($model->surveyQuestions as $question){
                     $answer = $question->getAnswerByUser($candidate->user->id);
-                    echo "<tr>";
-                    echo "<td>#".$questionNumber. " - " .$question->question."</td>";
-                    echo "<td>".$answer->questionAnswer."</td>";
-                    echo "</tr>";
-                    $questionNumber++;
+                    if($answer){
+                        echo "<tr>";
+                        echo "<td>#".$questionNumber. " - " .$question->question."</td>";
+                        echo "<td>".$answer->questionAnswer."</td>";
+                        echo "</tr>";
+                        $questionNumber++;
+                    }
                 }
                 ?>
                 </table>

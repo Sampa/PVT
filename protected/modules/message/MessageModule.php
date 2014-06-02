@@ -18,6 +18,7 @@ class MessageModule extends CWebModule
 	public $defaultUrl = array("/message/");
 
 	public $viewPath = '/message/default';
+	public $viewPathConversation = '/conversation';
 
 	public function init()
 	{

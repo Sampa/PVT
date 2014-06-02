@@ -27,7 +27,7 @@ class ViewController extends Controller {
 		$message = new Message();
 		$isIncomeMessage = $viewedMessage->receiver_id == $userId;
 		if ($isIncomeMessage) {
-		//	$viewedMessage->markAsRead();
+//			$viewedMessage->markAsRead();
 		}
 		$this->render(Yii::app()->getModule('message')->viewPath . '/view', array('viewedMessage' => $viewedMessage, 'message' => $message,'otherUserId'=>$otherUserId));
 	}

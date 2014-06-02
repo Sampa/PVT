@@ -1,3 +1,20 @@
+
+function chatUpdateTime(toid){
+    $.ajax({
+        dataType: "json",
+        type: "POST",
+        url: "message/inbox/getUnreadMessages",
+        data: {
+            receiver_id : toid
+        }
+    }).done(function(data){
+        if(data.status=="ok"){
+            $("#chatUl"+toid).append(data.html);
+        }
+        setTimeout(chatUpdateTime(toid), 2000);
+
+    });
+}
 //getting country/region/city
 (function(window,$,undefined){
     var target = $("#geoCity");
@@ -18,8 +35,9 @@
     function handleResult(data){
         target.children(":not(:first-child)").remove();
         data.geonames.forEach(function(item){
-            var fixedName = item.name.replace("Municipality","Kommun");
-            fixedName = fixedName.replace("unicipality","Kommun");
+            var fixedName = item.name.replace("Municipality","");
+            fixedName = fixedName.replace("municipality","");
+            fixedName = fixedName.replace("Kommun","");
             var foo = new Option(fixedName,fixedName);
             $(foo).attr("id",item.geonameId);
             target.append(foo);
@@ -51,7 +69,7 @@
 /* kod som är här kan man ändra på */
 jQuery(document).ready(function(){
     $(".clickable").on('click',function(){
-        var iconElement = $(this);//.closest("tr").children("td:last-child");
+        var iconElement = $(this).closest("tr").children("td:last-child").children("a");
         if(iconElement.hasClass("down")){
             iconElement.removeClass("down");
             iconElement.removeClass("glyphicon-arrow-down");
@@ -76,6 +94,7 @@ jQuery(document).ready(function(){
     $(".sendChatMessage").on("click", function (event) {
         event.preventDefault();
         var id = $(this).attr("id");
+        var conversationId = $(this).attr("data-content");
         id = id.replace("btn-chat", "");
         $.ajax({
             "type": "POST",
@@ -84,7 +103,8 @@ jQuery(document).ready(function(){
             "data": {
                 "body": $("#Message_body" + id).val(),
                 "receiver": $(this).attr("name"),
-                "receiver_id": id
+                "receiver_id": id,
+                "conversation_id": conversationId
             }
         }).done(function (data) {
             if (data.success)
@@ -217,7 +237,7 @@ $(function(){
         var cvID = $(this).parent().attr("id");
         $.ajax({  //gör en http POST request till vår actionSaveCV i RecruitmentprocessController och skicka med datan
             type: "POST",
-            url: "/recruitmentprocess/savecv",
+            url: "recruitmentprocess/savecv",
             data: {"processID":processID, "cvID":cvID}
         }).done(function( data ) {
            $('#hotlistModal').modal('show');
@@ -233,13 +253,13 @@ $(function(){
         $("#reportModalTextSuccess").hide();
         $("#reportModalTextFailure").hide();
         $("#reportModalEndFooter").hide();
-        var cvID = $(this).attr("id");  
+        var cvID = $(this).attr("id");
         var userID = $(this).attr("data-user");
         $("#submitReportBtn").attr("data-id",cvID);
         $("#submitReportBtn").attr("data-user",userID);
     });
     $("#submitReportBtn").on("click", function() {
-        var cvID = $(this).attr("data-id");  
+        var cvID = $(this).attr("data-id");
         var reason = $("#reasonTextField").val();
         //sätt userid till 0 om personen är gäst(ej inloggad) annars id:t (shortif syntax) för att undvika issue #29
         var userID = $(this).attr("data-user");

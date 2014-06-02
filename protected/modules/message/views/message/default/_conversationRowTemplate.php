@@ -1,44 +1,49 @@
 <tr class="accordion-heading">
 	<td>
 		<?php echo CHtml::checkBox("Message[$index][selected]"); ?>
-		<?php echo $form->hiddenField($message, "[$index]id"); ?>
+		<?php echo $form->hiddenField($conversation, "[$index]id"); ?>
 	</td>
 
-	<td class=" accordion-heading" href="#acc<?= $index; ?>">
-		<a href="<?=$this->createUrl("view/",array("id"=>$message->sender_id));?>">
+    <td class="clickable accordion-heading accordion-toggle "
+        data-toggle="collapse" href="#acc<?= $index;?>">
             <?php
-                if($message->sender_id== Yii::app()->user->id){
-                    echo $message->getReceiverName();
+                if($conversation->recruiterId== Yii::app()->user->id){
+                    echo $conversation->publisher->getFullName();
                 }
-                else{
-                    echo $message->getSenderName();
+            else{
+                echo $conversation->recruiter->user->getFullName();
                 }
             ?>
-        </a>
 	</td>
-    <td >
+    <td class="clickable accordion-heading accordion-toggle"
+        data-toggle="collapse" href="#acc<?= $index;?>">
         <?php
-            $firstMessage = Message::getFirstMessageTitle($message->sender_id,$message->receiver_id);
-            echo $firstMessage->subject;
+            echo $conversation->title;
         ?>
     </td>
-	<td>
-        <a class="glyphicon glyphicon-arrow-down clickable accordion-heading accordion-toggle down"
-           data-toggle="collapse" href="#acc<?= $index;?>">
-       </a>
+
+    <td class="clickable accordion-heading accordion-toggle"
+        data-toggle="collapse" href="#acc<?= $index;?>">
+        <span class="badge alert-success"><?=$conversation->messageCountTotal();?></span>
+        <span class="badge alert-info"><?=$conversation->messageCountSent();?></span>
+        <span class="badge alert-danger"><?=$conversation->messageCountReceived();?></span>
+    </td>
+    <td class="clickable accordion-heading accordion-toggle"
+        data-toggle="collapse" href="#acc<?= $index;?>">
+        <a class="glyphicon glyphicon-arrow-down down"></a>
 	</td>
 </tr><!-- end table row -->
-<tr class="col-md-12">
-	<td colspan="4">
+<tr class="col-md-12" style="height: 0px;">
+	<td colspan="5">
 		<div id="acc<?= $index; ?>" class="accordion-body collapse" style="padding:0px;">
 			<div class="accordion-inner">
 				<div class="panel-body"
-				     style="min-height: 400px;">
-					<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_chatview", array(
-							"model" => $message,
-							"receiverName" => $message->getReceiverName(),
-							"senderName" => $message->getSenderName())
-						);?>
+				     style="min-height: 50px;">
+					<?php
+                        $this->renderPartial(Yii::app()->getModule('message')->viewPathConversation . "/view", array(
+							"model" => $conversation,
+						));
+                    ?>
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,4 @@
+
 <h2 style="margin-top: 0;color:#55518a"><?=t("Besvarade enkäter");?></h2>
 <?php
     /*

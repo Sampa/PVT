@@ -77,13 +77,13 @@ $(".deleteReportedCV").on("click",function(event){
         $.ajax({
             type: "POST",
             data: {id:cvIdToDelete},
-            url: "/cv/delete/"+cvIdToDelete,
+            url: "cv/delete/"+cvIdToDelete,
         })
         $.ajax({
             type: "POST",
             dataType:"json",
             data: {id:idToRemoveFromReported},
-            url: "/reportedCv/delete/"+idToRemoveFromReported,
+            url: "reportedCv/delete/"+idToRemoveFromReported,
         })
         window.document.location ='reportedCv';
     });
@@ -110,7 +110,7 @@ $(".OkReportedCv").on("click",function(event){
             type: "POST",
             dataType:"json",
             data: {id:idToOk},
-            url: "/reportedCv/delete/"+idToOk
+            url: "reportedCv/delete/"+idToOk
         })
         window.document.location ='reportedCv';
     });

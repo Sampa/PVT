@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /**
  * This is the model class for table "{{messages}}".
@@ -210,44 +210,19 @@ class Message extends CActiveRecord
      * @param $userId
      *
      * @return CActiveDataProvider
-     */public static function getAdapterForInbox($userId) {
+     */
+    public static function getAdapterForInbox($userId) {
 		$c = new CDbCriteria();
-		$c->addCondition ('t.receiver_id = :userId',"OR");
-		$c->addCondition ('t.sender_id = :userId',"OR");
-		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-		$c->order = 't.created_at DESC';
+		$c->addCondition ('t.recruiterId = :userId',"OR");
+		$c->addCondition ('t.publisherId = :userId',"OR");
+//		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
+		$c->order = 't.date DESC';
 		$c->params = array(
 			'userId' => $userId,
 			'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,
 		);
         $c->limit = 1;
-		$messagesProvider = new CActiveDataProvider('Message', array('criteria' => $c));
-		return $messagesProvider;
-	}
-    public static function getAdapterForConversation($userId) {
-
-		$c = new CDbCriteria();
-        //hämta ut de två användarna från databasen
-        $userOne = User::model()->findByPk($userId);
-        //skapa ett kriteria object för att kunna filtrera sökningen efter meddelandet
-        $c = new CDbCriteria();
-        //bara en recruiter kan ha startat en konversation (och därmed första meddelandet...) så kolla vem av användarna som är rekryteraren
-        if($userOne->recruiter){
-            $senderId = $userOne->id;
-        }
-        //kräv att meddelandet är mellan de två användare vi hämtat
-        $c->addCondition ('t.sender_id = :userId');
-        //hämta max 1 ur databasen
-        $c->limit =1;
-        $c->order ="created_at";
-		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-		$c->order = 't.created_at';
-		$c->params = array(
-			'userId' => $userId,
-			'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,
-		);
-        $c->limit = 1;
-		$messagesProvider = new CActiveDataProvider('Message', array('criteria' => $c));
+		$messagesProvider = new CActiveDataProvider('Conversation', array('criteria' => $c));
 		return $messagesProvider;
 	}
 
@@ -275,10 +250,10 @@ class Message extends CActiveRecord
      */public static function getAdapterForHistory($userId) {
 
 		$c = new CDbCriteria();
-		$c->addCondition('t.sender_id = :senderId OR t.sender_id = :receiverId');
-		//$c->addCondition('t.receiver_id = :receiverId OR t.receiver_id = :senderId');
+		$c->addCondition('sender_id = :senderId AND receiver_id = :receiverId');
+//		$c->addCondition('receiver_id = :receiverId OR receiver_id = :senderId');
 		$c->addCondition('t.deleted_by = :deleted_by_sender OR t.deleted_by IS NULL OR t.deleted_by = :deleted_by_receiver');
-		$c->order = 't.created_at';
+		$c->order = 'created_at';
 		$c->params = array(
 			'senderId' => $userId,
 			'receiverId' => Yii::app()->user->id,
@@ -347,9 +322,9 @@ class Message extends CActiveRecord
      */public function getCountUnreaded($userId) {
 		if (!$this->unreadMessagesCount) {
 			$c = new CDbCriteria();
-			$c->addCondition('t.receiver_id = :receiverId');
-			$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
-			$c->addCondition('t.is_read = "0"');
+			$c->addCondition('receiver_id = :receiverId');
+			$c->addCondition('deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');
+			$c->addCondition('is_read = "0"');
 			$c->params = array(
 				'receiverId' => $userId,
 				'deleted_by_receiver' => Message::DELETED_BY_RECEIVER,

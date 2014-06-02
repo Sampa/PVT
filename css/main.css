@@ -1,7 +1,29 @@
 
+
 /* ==|== Custom CSS ========================================
    Please define your custom styles after this section.
    ========================================================================== */
+
+
+.svFlag{
+    background: url("../img/flags.png") no-repeat;
+    background-position: -2786px 0;
+    min-width: 16px;
+    max-width: 16px;
+    min-height: 16px;
+    float:left;
+}
+.enFlag{
+    background: url("../img/flags.png") no-repeat;
+    background-position: -1156px 0;
+    min-width: 16px;
+    max-width: 16px;
+    min-height: 16px;
+    float:left;
+}
+.flag {
+    float:left;
+}
 /*message*/
 .chat
 {
@@ -389,6 +411,13 @@ body .report-cv-flag {
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 980px) {
+  #logo-text {
+    font-size: 80px;
+  }
 }
 
 

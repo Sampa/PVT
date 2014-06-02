@@ -16,38 +16,38 @@
 								class="form-control"
 								id="task-table-filter"
 								data-action="filter"
-								data-filters="#task-table"
+						    		data-filters="#task-table"
 								placeholder="<?=t("Sök");?>"
 							/>
 						</div>
 						<table class="table table-hover" id="task-table">
 							<thead>
 								<tr>
-									<th><?=t("Ta bort");?></th>
-									<th><?=t("Användare");?></th>
-									<th><?=t("Ärende");?></th>
+									<th><span class="glyphicon glyphicon-trash"></span></th>
+									<th><span class="glyphicon glyphicon-user"></span></th>
+									<th><span class="glyphicon glyphicon-info-sign"></span></th>
+									<th>
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                        <span class="glyphicon glyphicon-export"></span>
+                                        <span class="glyphicon glyphicon-import"></span>
+                                    </th>
+									<th><span class="glyphicon glyphicon-comment"></span></th>
 								</tr>
 							</thead>
 							<tbody>
 							<div class="accordion">
 								<div class="accordion-group">
-							<?php
-								$showed = array();
-								foreach ($messagesAdapter->data as $index => $message):
-									if (in_array($message->sender_id, $showed))
-										continue;
-										$showed[] = $message->sender_id;
-									//för varje konversation renderea denna template
+    							<?php
+								$user = User::model()->findByPk(user()->id);
+							    $conversations = $user->getConversations();
+							    foreach($conversations as $conversation){
 									$this->renderPartial(Yii::app()->getModule('message')->viewPath . "/_conversationRowTemplate", array(
 											"form"=>$form,
-											"index"=>$index,
-											"message" => $message,
-											"receiverName" => $message->getReceiverName(),
-											"senderName" => $message->getSenderName())
-									);
+											"index"=>$conversation->id,
+                                            "conversation"=>$conversation,
+                                      ));
+							    }
 									?>
-
-								<?php endforeach ?>
 								</div><!-- accordion-group-->
 							</div>
 							</tbody>

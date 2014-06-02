@@ -87,7 +87,7 @@ $this->breadcrumbs=array(
         <label for="searchTags"><?php echo Yii::t("t","Nyckelord");?></label>
         <input class="form-control" name="tags" id="searchTags" type="text"/>
     </div>
-    <span class="clearfix"></span>
+    <div class="form-group row clearfix"> </div> <!--Fix för Safari och IE-->
   <div class="checkbox">
       <input id="consultOption" name="consult" type="checkbox"/> <?php echo Yii::t("t","Sök efter konsultuppdrag");?><br>
       <input name="employment" type="checkbox"/> <?php echo Yii::t("t","Sök efter tillsvidareanställning");?>

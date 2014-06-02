@@ -279,19 +279,14 @@ class SiteController extends Controller
                 //build message string for alittle more readability
 
                 if(Yii::app()->user->getState("role")=='recruiter'){
-                    $roll= Yii::t("t","rekryterare");
+                    $role= Yii::t("t","rekryterare");
                 }else{
-                    $roll=Yii::t("t","publicerare");
+                    $role=Yii::t("t","publicerare");
                 }
                 //Save the login date in the DB
                 $user = User::model()->findByPk(Yii::app()->user->id);
                 $user->login_date = date('Y-m-d');
                 $user->save();
-                //
-                $message = Yii::t("t",'Välkommen')." " . app()->user->name." ";
-                $message .= Yii::t("t","du är inloggad som ");
-                $message .= $roll;
-                Yii::app()->user->setFlash('success',$message);
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }

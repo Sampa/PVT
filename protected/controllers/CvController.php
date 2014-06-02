@@ -294,7 +294,7 @@ class CvController extends Controller
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 			}
 		} else {
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+			throw new CHttpException(400,'Otillåten begäran.');
 		}
 	}
 	/**
@@ -335,7 +335,7 @@ class CvController extends Controller
 	{
 		$model=Cv::model()->findByPk($id);
 		if ($model===null) {
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Den begärda sidan existerar inte.');
 		}
 		return $model;
 	}
@@ -385,10 +385,15 @@ class CvController extends Controller
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
         $dataProvider=new CActiveDataProvider('Cv',array(
             "criteria"=>$criteria,
+            "sort"=>array(
+                'defaultOrder' => 'numberOfLinks, date',
+            ),
+//            'pagination'=>array(
+//                'pageSize'=>10,
+//            ),
         ));
 
         //tillfälligt dölj de utan text
-//        $criteria->compare("pathToPdf","pdf",true);
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
         $resultCount = $dataProvider->getTotalItemCount();
         if($resultCount<1){
@@ -400,11 +405,8 @@ class CvController extends Controller
             'dataProvider'=>$dataProvider,
             'resultCount'=>$resultCount,
         );
-		$pager = new CPagination($dataProvider->totalItemCount);
-		$pager->pageSize = 10;
-		$dataProvider->setPagination($pager);
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
-        if( Yii::app()->request->isAjaxRequest){
+        if( Yii::app()->request->isAjaxRequest && isset($_POST['sortBy'])){
             $this->renderPartial('_searchview',$dataToView);
         }else{
             $this->render('index',$dataToView);
@@ -417,13 +419,10 @@ class CvController extends Controller
 	 */
 	private function setSortOrderCondition($criteria) {
 		if(isset($_POST['sortBy'])){
-			if($_POST['sortBy']=='date')
-				$criteria->order= "date DESC";
-			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
-				$criteria->order= $_POST['sortBy'] .", date DESC";
-		}else{ //defaultvillkor
-			$_POST['sortBy'] = "date";
-			$criteria->order= "numberOfLinks DESC, date DESC";
+//			if($_POST['sortBy']=='date')
+//				$criteria->order= "date DESC";
+//			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
+//				$criteria->order= $_POST['sortBy'] .", date DESC";
 		}
 		return $criteria;
 	}
@@ -456,7 +455,6 @@ class CvController extends Controller
         }
 		return $criteria;
 	}
-
 	private function setGeoAreaCondition($criteria) {
         $country = isset($_POST['countries']) && $_POST['countries'] !="default" ? $_POST['countries'] : null;
         $region = isset($_POST['geoRegion']) && $_POST['geoRegion'] != "default" ? $_POST['geoRegion'] : null;
@@ -475,7 +473,6 @@ class CvController extends Controller
 	 * Den här hanterar ifall vi trycker på sökknappen
 	 */
 	private function handleSearch($criteria) {
-
 		if(isset($_POST['searchbox'])){//if you write in free text search field
 			$searchWordArray = explode(" OR ",$_POST['searchbox']);
 			foreach($searchWordArray as $index => $searchString){

@@ -112,7 +112,11 @@ class HotlistController extends Controller
 	{
 		if (Yii::app()->request->isPostRequest) {
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+            $criteria= new CDbCriteria();
+            $criteria->compare('rpId',$_POST['processId']);
+            $criteria->compare('cvId',$_POST['cvId']);
+			$hotList= hotlist::model()->find($criteria);
+            $hotList->delete();
 			// // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			// if (!isset($_GET['ajax'])) {
 			// 	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

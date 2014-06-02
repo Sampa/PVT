@@ -262,7 +262,7 @@ $(function(){
         var userID = $(this).attr("data-user");
         $.ajax ({
             type: "POST",
-            url: "/reportedCv/create",
+            url: "reportedCv/create",
             data: {"reason":reason, "cvID":cvID, "userID":userID}
         }).done(function( data ) {
             $("#reportModalInputDiv").hide();

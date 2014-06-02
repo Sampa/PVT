@@ -63,18 +63,22 @@ $this->breadcrumbs=array(
 <script>
 $('.onClick').on('click',function(event){
     event.preventDefault();
-    window.document.location ="<?php echo Yii::app()->baseUrl; ?>" + '/cv/pdf/'+$(this).parent().attr('id');
+    window.document.location = 'cv/pdf/'+$(this).parent().attr('id');
 });
-$('.deleteCV').on('click',function(event){
+$(".deleteCV").on("click",function(event){
     event.preventDefault();
-    var cvIdToDelete = $(this).attr('id');
+    var cvIdToDelete = $(this).attr("id");
+    bootbox.confirm("<?php echo Yii::t("t","Är du säker på att du vill ta bort detta CV?");?>", function(result) {
+        if(!result){
+            return;
+        } 
     $.ajax({
-        type: 'POST',
-        dataType:"json",
+        type: "POST",
         data: {id:cvIdToDelete},
-        url: "<?php echo Yii::app()->baseUrl; ?>" + '/cv/delete/'+cvIdToDelete
-    });
-    window.location.reload(true);
+        url: "cv/delete/"+cvIdToDelete,
+    })
+        window.document.location ='admin';
+    })
 });
 </script>
 

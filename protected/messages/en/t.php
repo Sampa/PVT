@@ -207,7 +207,7 @@ return array (
   'Sök efter konsultuppdrag' =>  ' Search consultancy ' ,
   'Sök efter tillsvidareanställning' =>  'Search for indefinite duration ' ,
   'Sök på CV:n' =>  ' Search Resumes ' ,
-  'Sökning' =>  ' Query ' ,
+  'Sökning' =>  'Search' ,
   'Sökningar idag' =>  ' Searches Today ' ,
   'Sökord' =>  ' Keywords ' ,
   'Sökväg till pdf' =>  'Path to pdf ' ,

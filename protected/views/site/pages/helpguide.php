@@ -23,7 +23,7 @@ $this->breadcrumbs = array(
                 <p>
                     <?php 
                          $this->widget('ext.Yiippod.Yiippod', array(
-                        'video'=>"/video/SkapaCv.mov", //if you don't use playlist
+                        'video'=>Yii::app()->baseUrl."/video/SkapaCv.mov", //if you don't use playlist
                          //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                          'id' => 'yiippodplayer',
                          'autoplay'=>false,
@@ -52,7 +52,7 @@ $this->breadcrumbs = array(
             <p>
                 <?php  
                     $this->widget('ext.Yiippod.Yiippod', array(
-                    'video'=>"/video/sokning.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/Sokning.mov", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiippodplayer',
                     'autoplay'=>false,
@@ -81,7 +81,7 @@ $this->breadcrumbs = array(
     <p>
                      <?php  
                     $this->widget('ext.Yiippod.Yiippod', array(
-                    'video'=>"/video/rekryteringsprocess.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/rekryteringsprocess.mov", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiippodplayer',
                     'autoplay'=>false,
@@ -110,7 +110,7 @@ $this->breadcrumbs = array(
     <p>
   <?php  
                     $this->widget('ext.Yiippod.Yiippod', array(
-                    'video'=>"/video/Regga_Take1.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/Regga_Take1.mov", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiippodplayer',
                     'autoplay'=>false,
@@ -166,7 +166,7 @@ $this->breadcrumbs = array(
         <p>
           <?php  
                     $this->widget('ext.Yiippod.Yiippod', array(
-                    'video'=>"/video/hotlist.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/hotlist.mov", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiippodplayer',
                     'autoplay'=>false,

@@ -83,7 +83,7 @@ $(".deleteReportedCV").on("click",function(event){
             type: "POST",
             dataType:"json",
             data: {id:idToRemoveFromReported},
-            url: "/reportedCv/delete/"+idToRemoveFromReported,
+            url: <?php echo Yii::app()->getBaseUrl();?>+"/reportedCv/delete/"+idToRemoveFromReported,
         })
         window.document.location ='reportedCv';
     });
@@ -110,7 +110,7 @@ $(".OkReportedCv").on("click",function(event){
             type: "POST",
             dataType:"json",
             data: {id:idToOk},
-            url: "/reportedCv/delete/"+idToOk
+            url: <?php echo Yii::app()->getBaseUrl();?>+"/reportedCv/delete/"+idToOk
         })
         window.document.location ='reportedCv';
     });

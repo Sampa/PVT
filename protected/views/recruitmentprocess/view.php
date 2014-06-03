@@ -358,7 +358,7 @@ $this->breadcrumbs=array(
 
                     }
                 }).done(function(data){
-                    window.location.reload()
+                    window.location.reload();
                 });
             }
         });

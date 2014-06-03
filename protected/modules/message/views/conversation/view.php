@@ -48,7 +48,7 @@ if($model->recruiterId== Yii::app()->user->id){
                 </div>
                 <input
 	               id="btn-chat<?= $to->id; ?>"
-                   data-url="<?=Yii::app()->baseUrl?>."message/conversation"
+                   data-url="<?=Yii::app()->baseUrl;?>message/conversation"
                    data-content="<?=$model->id;?>"
                    class="col-md-2 col-lg-2 col-sm-2 btn-warning btn sendChatMessage"
                    name="<?= $to->getFullName(); ?>"

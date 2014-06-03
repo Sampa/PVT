@@ -149,38 +149,41 @@ else{ ?>
             <br>
             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användarguide");?></strong></h4>
             <p class="footertext"><?php echo Yii:: t ("t", "Läs om vilka funktioner som erbjuds av CV-Pages samt hur du går tillväga för att använda dem");?>
-                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide">Läs mer</a><br>
+                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide"><?php echo t('Läs mer')?></a><br>
         </div>
         <div class="col-md-3">
             <center>
-                <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
                 <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
                     till jobbrekryteringar och får inte användas i andra avseenden. ");?>
-                    <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">Läs mer</a><br>
+                    <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><?php echo t('Läs mer')?></a><br>
                 </center>
         </div>
         <div class="col-md-3">
             <center>
-                <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo Yii:: t("t","Personuppgifter");?></strong></h4>
                 <p class="footertext"><?php echo Yii:: t("t","Registrering hos CV-Pages innebär att du samtycker till att CV-Pages
                 behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).");?>
-                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">Läs mer</a><br>
+                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><?php echo t('Läs mer')?></a><br>
             </center>
         </div>
 
         <div class="col-md-3">
             <center>
-                <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo YIi:: t("t","Cookies");?></strong></h4>
                 <p class="footertext"><?php echo yii:: t("t","Vi vill meddela er att CV-Pages använder sig utav cookies.
                 Syftet med cookies är att få
                 fakta om exempelvis hur många som besöker webbplatsen.");?>
-                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">Läs mer</a><br>
+                <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><?php echo t('Läs mer')?></a><br>
             </center>
         </div>
         <div class="row">

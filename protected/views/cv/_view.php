@@ -43,7 +43,7 @@
                             //frequency är hur ofta den använts
                             $number = $cvTag->tag->frequency;
                             //skriver ut taggen så att mer använda taggar blir större
-                            echo '<span style="margin-right:10px;"> '.$cvTag->tag->name.'</span>';
+                            echo '<span class="label label-info" style="margin-right:10px;"> '.$cvTag->tag->name.'</span>';
                         
                         }
                     ?>
@@ -78,25 +78,6 @@
                     </li>
                 </ul>
              </div>
-                <!-- Modal -->
-                <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Lägg till hotlist</h4>
-                            </div>
-                            <div class="modal-body">
-                               <h5>Här kan du lägga till detta cv i en hotlist. Varje rekryteringsprocess har en egen hotlist. Välj en befintlig hotlist eller skapa en ny process.</h5>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Ny rekryteringsprocess</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			</div> -->
 			<span class="clearfix borda"></span>
 		</article>
 		<hr>

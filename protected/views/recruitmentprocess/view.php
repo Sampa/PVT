@@ -243,11 +243,23 @@ $this->breadcrumbs=array(
     </h1>
 </div>
 <div class="page-header">
-    <?php
-    $this->widget('bootstrap.widgets.TbListView',array(
-        'dataProvider'=>$dataProvider,
-        'itemView'=>'_hotlistview',
-    ));?>
+    <?php if (empty($model->hotlists)){ ?>
+
+    <p class="nodata"><?php echo t("Du har inga CV:n i din hotlist än, gå till sökningen och hitta dina kandidater!"); ?></p>
+    <p>
+        <a href="<?php echo Yii::app()->baseUrl;?>/cv" class="btn btn-success btn-lg" href="#">
+            <?php echo Yii::t("t","Sök på CV:n");?>
+        </a>
+    </p>
+
+    <?php 
+        }else{
+            $this->widget('bootstrap.widgets.TbListView',array(
+                'dataProvider'=>$dataProvider,
+                'itemView'=>'_hotlistview',
+            )); 
+        }
+    ?>
 </div>
 <script>
     /*Det här sköterautoSave*/

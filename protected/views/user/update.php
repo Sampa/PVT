@@ -7,14 +7,13 @@ if(Yii::app()->user->id ==1){
 $this->breadcrumbs=array(
 	t("Hem")=> Yii::app()->getHomeUrl(),
 	t('Användare')=>array('index'),
-	$model->name=>array('view','id'=>$model->id),
+	t('Mina Sidor')=>Yii::app()->getBaseUrl().'/user/'.app()->user->id,
 	t('Ändra uppgifter'),
 );
 } else{
 	$this->breadcrumbs=array(
 	t("Hem")=> Yii::app()->getHomeUrl(),
-	t('Användare'),
-	$model->name=>array('view','id'=>$model->id),
+	Yii::t("t","Mina Sidor")=>Yii::app()->getBaseUrl().'/user/'.app()->user->id,
 	t('Updatera användaruppgifter'),
 );
 }

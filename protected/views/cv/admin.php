@@ -63,7 +63,7 @@ $this->breadcrumbs=array(
 <script>
 $('.onClick').on('click',function(event){
     event.preventDefault();
-    window.document.location = 'cv/pdf/'+$(this).parent().attr('id');
+    window.document.location = 'pdf/'+$(this).parent().attr('id');
 });
 $(".deleteCV").on("click",function(event){
     event.preventDefault();
@@ -75,7 +75,7 @@ $(".deleteCV").on("click",function(event){
     $.ajax({
         type: "POST",
         data: {id:cvIdToDelete},
-        url: "cv/delete/"+cvIdToDelete,
+        url: "delete/"+cvIdToDelete,
     })
         window.document.location ='admin';
     })

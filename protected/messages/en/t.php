@@ -138,6 +138,7 @@ return array (
   'Mina kommentarer' =>  ' My Comments ' ,
   'Mina CV:n' => 'My CV:s',
   'Mina sidor' =>  ' My Account ' ,
+  'Mina enkäter'=> 'My surveys',
   'Misslyckade processer' =>  'Failed processes ' ,
   'Namn' =>  'Name' ,
   'Namn på processen' =>  ' Name of process ' ,
@@ -202,6 +203,7 @@ return array (
   'Statistik' =>  ' Statistics ' ,
   'Stäng' =>  'Close ' ,
   'Stäng, rapportera inte' =>  'Close , do not report ' ,
+  'Svarsfrekvens' => 'Answers',
   'Sydamerika' =>  ' South America ' ,
   'Syntax på inmatning' =>  ' The syntax of the input ' ,
   'Sök' =>  'Search ' ,
@@ -243,7 +245,7 @@ return array (
   'email eller användarnamn' =>  ' email or username ' ,
   'lösenord' =>  ' password ' ,
   'publicerare' =>  ' publisher ' ,
-  'rekryterare' =>  ' recruiters ' ,
+  'rekryterare' =>  ' recruiter ' ,
   'typeOfEmployment' =>  ' typeOfEmployment ' ,
   'Ämne' =>  ' Subject ' ,
   'Är du 100% säker på att du verkligen vill rapportera det här CVt som OK?' =>  'Are you 100 % sure that you really want to report this the CV that OK ? ' ,
@@ -254,7 +256,8 @@ return array (
   'Återställ lösenord' =>  ' Reset password ' ,
   'Öppna chatt' =>  ' Open Chat ' ,
   'Öppna cv' =>  ' Open cv ' ,
-  'är obligatoriska' =>  ' mandatory ' ,
+  'är obligatoriska' =>  ' are required ' ,
+
   0 =>  0 ,
 
 

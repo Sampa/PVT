@@ -77,8 +77,7 @@ $(".deleteSurvey").on("click",function(event){
             data: {id:deleteSur},
             url: "delete/"+deleteSur
         })
-        alert("hej");
-        //window.document.location ='admin';
+        window.document.location ='admin';
     });
 
 </script>

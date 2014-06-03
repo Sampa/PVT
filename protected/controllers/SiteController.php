@@ -96,17 +96,18 @@ class SiteController extends Controller
     public function actionRegister()
     {
         if(!Yii::app()->user->isGuest) //redirect if logged in (can be changed later)
-            $this->redirect(bu() . '/cv/admin');
+            $this->redirect(bu() . '/user/'.user()->id);
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
-            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted'));
+            echo CActiveForm::validate($model,
+                array('username', 'password','new_password', 'password_confirm','accepted'));
             Yii::app()->end();
         }
 
         if (isset($_POST['RegisterForm'])) {
             $model->attributes = $_POST['RegisterForm'];
-            if ($model->validate(array('email', 'username', 'new_password', 'password_confirm','verify_code','accepted'))) {
+            if ($model->validate()) {
                 $user = new User();
                 $user->email = $_POST['RegisterForm']['email'];
                 $user->username = $_POST['RegisterForm']['username'];
@@ -122,7 +123,7 @@ class SiteController extends Controller
                         if($recruiterModel->validate())
                             $recruiterModel->save();
                     }
-                    //send email     activation key has been generated on beforeValidate function in User class
+//                    send email     activation key has been generated on beforeValidate function in User class
                     $activation_url = $this->createAbsoluteUrl('/site/activate', array('key' => $user->activation_key, 'email' => $user->email));
 
                     if (sendHtmlEmail(
@@ -147,7 +148,6 @@ class SiteController extends Controller
                 }
             }
         }
-
         $this->render('register', array('model' => $model));
     }
 

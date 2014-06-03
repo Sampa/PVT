@@ -92,7 +92,7 @@ class CvController extends Controller
                          $area = explode(",", $singleArea);
                          $geo = new GeograficArea;
                          if(isset($area[1])){
-                             $geo->country  = $area[0];
+                             $geo->counatry  = $area[0];
                              $geo->region  = $area[1];
                              $geo->city = $area[2];
                              if(!$geo->save()){
@@ -355,7 +355,7 @@ class CvController extends Controller
     private function setDefaultCriteriaCondition(){
         $criteria=new CDbCriteria;
         $criteria = $this->setSortOrderCondition($criteria);
-		//$criteria = $this->handleSearch($criteria);
+//		$criteria = $this->handleSearch($criteria);
         //sätt relational conditions för geographic areas
         $criteria->with = array(
             //areas är namnet på vår relation i Cv model till GeographicArea tabellen
@@ -363,12 +363,11 @@ class CvController extends Controller
                 'together'=>true,//dont know whhy
                 'joinType'=>'INNER JOIN', //dont know why
             ),
-            //tags är namnet på vår relation i Cv model till tag tabellen
-            'tags'=>array(
-                'together'=>true,//dont know whhy
-                'joinType'=>'INNER JOIN', //dont know why
-
-            )
+//            tags är namnet på vår relation i Cv model till tag tabellen
+//                  'keywords'=>array(
+//                'together'=>false,//dont know whhy
+//                'joinType'=>'INNER JOIN', //dont know why
+//            )
         );
         return $criteria;
     }
@@ -392,7 +391,6 @@ class CvController extends Controller
 //                'pageSize'=>10,
 //            ),
         ));
-
         //tillfälligt dölj de utan text
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
         $resultCount = $dataProvider->getTotalItemCount();
@@ -450,9 +448,17 @@ class CvController extends Controller
 			$allCvIds = array(); //initiate empty array
 			$tagsAsArray = explode(",",$_POST['tags']); //transform from one long string with tags to an array of strings
 			foreach($tagsAsArray as $tag){ //loop all tags the user entered
-                $criteria->addSearchCondition("tags.name",$tag,"OR");
-		    }
-        }
+				//kontrollera denna query
+				$tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+				if($tagModel !=null){ //the tag exists
+					//loop the array with each row in the table that connects this tag to a cv
+					foreach($tagModel->cv as $cv){
+						$allCvIds[] = $cv->title; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
+					}
+				}
+			}
+			$criteria->compare("title",$allCvIds,false,"OR");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
+		}
 		return $criteria;
 	}
 	private function setGeoAreaCondition($criteria) {
@@ -474,7 +480,8 @@ class CvController extends Controller
 	 */
 	private function handleSearch($criteria) {
 		if(isset($_POST['searchbox'])){//if you write in free text search field
-			$searchWordArray = explode(" OR ",$_POST['searchbox']);
+
+            $searchWordArray = explode(" OR ",$_POST['searchbox']);
 			foreach($searchWordArray as $index => $searchString){
 				$phrase = false;
 				$searchWords = explode(" ",$searchString);
@@ -483,13 +490,13 @@ class CvController extends Controller
 						$operator = 'OR';
 					elseif($phrase === false)
 						$operator = 'AND';
-					
+
 					if(strpos($searchWord, ":")!==false && $phrase === false){
 
 						$metaTag = strstr($searchWord,":", true);
 						$pos = strpos($searchWord, ":");
 						$search = substr($searchWord, $pos+1);
-						
+
 						if($metaTag == "city"){
 							$criteria->addSearchCondition("areas.city",$search,true,$operator);
 							//return $criteria;//city:city
@@ -504,9 +511,18 @@ class CvController extends Controller
 						}
 						elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3
 							$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
-							foreach($tagsAsArray as $tag){ //loop all tags the user entered
-		                        $criteria->addSearchCondition("tags.name",$tag,true,$operator);
-		                    };
+                            $allCvIds = array(); //initiate empty array
+                            foreach($tagsAsArray as $tag){ //loop all tags the user entered
+                                //kontrollera denna query
+                                $tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+                                if($tagModel !=null){ //the tag exists
+                                    //loop the array with each row in the table that connects this tag to a cv
+                                    foreach($tagModel->cv as $cv){
+                                        $allCvIds[] = $cv->title; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
+                                    }
+                                }
+                            }
+                            $criteria->compare("title",$allCvIds,false,"AND");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
 						}
 						elseif($metaTag == "employment"){//employment:consult || employment:employment
 							if($search == 'consult')
@@ -532,7 +548,6 @@ class CvController extends Controller
 					elseif($phrase === false){
 						$criteria->addSearchCondition("pdfText", $searchWord, true, $operator);
 						$criteria->addSearchCondition("title", $searchWord, true, 'OR');
-						//echo ($criteria->condition);
 					}
 					elseif(strpos($searchWord, '"')=== false && $phrase === true){
 						$search.=" ";

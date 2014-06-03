@@ -43,7 +43,7 @@ class CvArea extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'cv' => array(self::BELONGS_TO, 'Cv', 'cvId'),
-            'area' => array(self::BELONGS_TO, 'GeograficArea', 'AreaId'),
+            'geoarea' => array(self::BELONGS_TO, 'GeograficArea', 'AreaId'),
 		);
 	}
 

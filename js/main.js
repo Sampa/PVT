@@ -255,6 +255,7 @@ $(function(){
         $("#submitReportBtn").attr("data-id",cvID);
         $("#submitReportBtn").attr("data-user",userID);
     });
+
     $("#submitReportBtn").on("click", function() {
         var cvID = $(this).attr("data-id");
         var reason = $("#reasonTextField").val();

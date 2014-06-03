@@ -3,7 +3,8 @@
 /* @var $model Conversation */
 
 $this->breadcrumbs=array(
-	'Conversations'=>array('index'),
+	Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
+    Yii::t("t", "Meddelanden"),
 	$model->title,
 );
 $to=null;

@@ -46,7 +46,6 @@ function chatUpdateTime(toid){
     }
     $(function(){
         ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
-
             var next= $("#"+list[index+1]);
              $("#"+item).select2({
                 placeholder: next.attr("data-default")

@@ -158,6 +158,7 @@ return array (
   'Papperskorg' =>  ' Trash ' ,
   'Password' =>  'Password' ,
   'Personuppgiftslagen' =>  ' Privacy Act ' ,
+  'Personuppgifter' => 'Personal information' ,
   'PuL' =>  ' PDA ' ,
   'Publicera ditt CV' =>  'Publish your CV ' ,
   'Publicerare' =>  ' Publishers ' ,

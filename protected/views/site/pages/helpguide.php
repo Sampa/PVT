@@ -9,14 +9,12 @@ $this->breadcrumbs = array(
         <div class="row">
             <div class="col-md-8 col-md-6 col-md-8">
                 <h4><strong><?php echo Yii::t("t","Skapa cv")?></strong></h4>
-                <p id="texts"><?php echo t("
-                    För att kunna skapa och lägga upp CV:n måste du först vara registrerad som publicerare. 
+                <p id="texts"><?php echo Yii::t("t","För att kunna skapa och lägga upp CV:n måste du först vara registrerad som publicerare. 
                     För att sedan lägga upp ett CV klickar du på Skapa nytt cv. Här väljer du vilken typ av anställning du är intresserad av. 
                     Du får välja mellan antigen ett konsultuppdrag eller en vanlig anställning, och i vilken del av världen som du vill arbeta på.  
                     Därefter väljer du det CV som du vill ladda upp. Notera att CV:t måste vara en pdf-fil för att kunna laddas upp!
                     Om du vill kan du välja att lägga till ett eller flera nyckelord till ditt CV för att öka sökträffen hos rekryterare. 
-                    Detta gör du genom att fylla i nyckelord på den avsedda platsen strax ovanför Publicera-knappen.
-                    ")?>
+                    Detta gör du genom att fylla i nyckelord på den avsedda platsen strax ovanför Publicera-knappen.")?>
                 </p>
             </div>
             <div class="col-md-4 col-md-6 col-md-4">

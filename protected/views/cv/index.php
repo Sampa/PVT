@@ -100,14 +100,17 @@ $this->breadcrumbs=array(
     <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>
   </div>
 </form>
-<hr/>
-    <h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
-    <div class="btn-group">
-          <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
-          <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
-          <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
-          <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
-   </div>
+    <!--Visa bara sorteringsknappar efter sökning -->
+    <?php
+    if(isset($_POST) && count($_POST)>1):?>
+        <hr/>
+        <h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
+        <div class="btn-group">
+              <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
+              <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
+              <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
+       </div>
+    <?php endif;?>
     <div class="well" style="display:none;" id="sortSelectionWrapper"><h4><?php echo Yii::t("t","Sorterade listan efter ");?><span id="sortSelection"></span></h4></div>
             <hr>
 <?php

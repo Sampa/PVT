@@ -354,6 +354,7 @@ class CvController extends Controller
 
     private function setDefaultCriteriaCondition(){
         $criteria=new CDbCriteria;
+        $criteria->limit = 1000;
         $criteria = $this->setSortOrderCondition($criteria);
 //		$criteria = $this->handleSearch($criteria);
         //sätt relational conditions för geographic areas
@@ -382,14 +383,15 @@ class CvController extends Controller
         $criteria = $this->setDefaultCriteriaCondition();
         $this->handleSearch($criteria);
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
+
         $dataProvider=new CActiveDataProvider('Cv',array(
             "criteria"=>$criteria,
             "sort"=>array(
                 'defaultOrder' => 'numberOfLinks, date',
             ),
-//            'pagination'=>array(
-//                'pageSize'=>10,
-//            ),
+            'pagination'=>array(
+                'pageSize'=>20,
+            ),
         ));
         //tillfälligt dölj de utan text
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
@@ -404,7 +406,7 @@ class CvController extends Controller
             'resultCount'=>$resultCount,
         );
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
-        if( Yii::app()->request->isAjaxRequest && isset($_POST['sortBy'])){
+        if( Yii::app()->request->isAjaxRequest ){
             $this->renderPartial('_searchview',$dataToView);
         }else{
             $this->render('index',$dataToView);

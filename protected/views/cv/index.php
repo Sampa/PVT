@@ -213,13 +213,13 @@ jQuery(document).ready(function ($) {
                 document.querySelector("#listOfCvs").innerHTML = "";
                 $("#listOfCvs").html(data);
                 $("#sortSelectionWrapper").fadeIn('slow');
-                var displayText ="anställningsform";
+                var displayText = '<?php echo Yii::t("t","anställningsform")?>';
                 switch(post.sortBy){
                     case "date":
-                        displayText ="datum";
+                        displayText ='<?php echo Yii::t("t","datum")?>';
                     break;
                     case "title":
-                        displayText = "rubrik";
+                        displayText = '<?php echo Yii::t("t","rubrik") ?>';
                 }
                 $("#sortSelection").html(displayText);
             });

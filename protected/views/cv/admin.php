@@ -43,9 +43,14 @@ $this->breadcrumbs=array(
                             echo $model->title;
                         ?>
                     </td>
-                    <td class='onClick'><?php
-                            echo $model->typeOfEmployment;
-                        ?>
+                    <td class='onClick'>
+                        <?php 
+                        if($model->typeOfEmployment == "consult"){ 
+                            echo Yii::t('t','Konsult');
+                        }
+                        else{
+                            echo Yii::t('t','Tillsvidareanställning');
+                        } ?>
                     </td>
                     <td style='text-align:center;'>
                         <a href =""; return false;> <span id="<?php echo $model->id?>" value="<?php echo $model->id?>" class="glyphicon glyphicon-trash deleteCV"></span> </a>

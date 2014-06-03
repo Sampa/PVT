@@ -48,7 +48,7 @@
             </div>
             <input type="hidden" id="listOfAreas" name="geoAreas"/>
         </div>
-        <span class="clearfix"></span>
+        <div class="clearfix"></div>
 		<div class="control-group row  error col-md-12">
 			<div class="row col-md-5">
 				<?php echo $form->textFieldControlGroup($model,'tags',array('class'=>'col-md-5 form-control','maxlength'=>255)); ?>

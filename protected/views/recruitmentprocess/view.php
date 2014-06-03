@@ -346,19 +346,20 @@ $this->breadcrumbs=array(
             var cvId = $(this).attr('id');
             var isO = $(this).prop('checked');
             var processId = <?php echo $model->id?>;
+            var baseUrl = "<?php echo Yii::app()->baseUrl?>";
             if(isO){
                 $(this).prop('checked', true);
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: '/hotlist/delete/'+cvId,
+                    url: baseUrl+'/hotlist/delete/'+cvId,
                     data: {
                         'cvId': cvId,
                         'processId': processId
 
                     }
                 }).done(function(data){
-                    window.document.location = "<?php echo Yii::app()->baseUrl; ?>" + "/recruitmentprocess/view/" + processId;
+                    window.location.reload()
                 });
             }
         });

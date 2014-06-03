@@ -346,13 +346,12 @@ $this->breadcrumbs=array(
             var cvId = $(this).attr('id');
             var isO = $(this).prop('checked');
             var processId = <?php echo $model->id?>;
-            var baseUrl = "<?php echo Yii::app()->baseUrl; ?>";
             if(isO){
                 $(this).prop('checked', true);
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: "<?php echo Yii::app()->baseUrl; ?>"+'/hotlist/delete/'+cvId,
+                    url: "<?php echo Yii::app()->getBaseUrl(); ?>"+'/hotlist/delete/'+cvId,
                     data: {
                         'cvId': cvId,
                         'processId': processId

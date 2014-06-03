@@ -28,8 +28,8 @@
 									<th><span class="glyphicon glyphicon-info-sign"></span></th>
 									<th>
                                         <span class="glyphicon glyphicon-envelope"></span>
-                                        <span class="glyphicon glyphicon-export"></span>
-                                        <span class="glyphicon glyphicon-import"></span>
+<!--                                        <span class="glyphicon glyphicon-export"></span>-->
+<!--                                        <span class="glyphicon glyphicon-import"></span>-->
                                     </th>
 									<th><span class="glyphicon glyphicon-comment"></span></th>
 								</tr>

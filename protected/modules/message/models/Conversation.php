@@ -114,4 +114,12 @@ class Conversation extends CActiveRecord
     public function messageCountTotal(){
         return Message::model()->count("conversationId=:cId",array("cId"=>$this->id));
     }
-}
+    public function messageCountPerConversation(){
+        return Message::model()->count("conversationId=:cId AND is_read=:ir", array("cId"=>$this->id,"ir"=>1));
+
+
+
+      // return app()->userId->conversationId;
+      // $allUnread= MessageModule::model()->getUnreadMessages(app()->userId);
+    }
+  }

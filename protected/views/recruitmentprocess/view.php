@@ -346,7 +346,7 @@ $this->breadcrumbs=array(
             var cvId = $(this).attr('id');
             var isO = $(this).prop('checked');
             var processId = <?php echo $model->id?>;
-            var baseUrl = "<?php echo Yii::app()->baseUrl?>";
+            var baseUrl = "<?php echo Yii::app()->baseUrl; ?>";
             if(isO){
                 $(this).prop('checked', true);
                 $.ajax({

@@ -43,9 +43,14 @@ $this->breadcrumbs=array(
                             echo $model->title;
                         ?>
                     </td>
-                    <td class='onClick'><?php
-                            echo $model->typeOfEmployment;
-                        ?>
+                    <td class='onClick'>
+                        <?php 
+                        if($model->typeOfEmployment == "consult"){ 
+                            echo Yii::t('t','Konsult');
+                        }
+                        else{
+                            echo Yii::t('t','Tillsvidareanställning');
+                        } ?>
                     </td>
                     <td style='text-align:center;'>
                         <a href =""; return false;> <span id="<?php echo $model->id?>" value="<?php echo $model->id?>" class="glyphicon glyphicon-trash deleteCV"></span> </a>
@@ -63,7 +68,7 @@ $this->breadcrumbs=array(
 <script>
 $('.onClick').on('click',function(event){
     event.preventDefault();
-    window.document.location = 'cv/pdf/'+$(this).parent().attr('id');
+    window.document.location = 'pdf/'+$(this).parent().attr('id');
 });
 $(".deleteCV").on("click",function(event){
     event.preventDefault();
@@ -75,7 +80,7 @@ $(".deleteCV").on("click",function(event){
     $.ajax({
         type: "POST",
         data: {id:cvIdToDelete},
-        url: "cv/delete/"+cvIdToDelete,
+        url: "delete/"+cvIdToDelete,
     })
         window.document.location ='admin';
     })

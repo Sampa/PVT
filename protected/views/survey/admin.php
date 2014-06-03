@@ -31,7 +31,7 @@ $this->pageTitle = Yii::app()->name . t(' - Enkäter');
 						?>
 					<tr class="onClick" id="<?php echo $model->id;?>">
 						<td><?php
-						echo substr($model->title, 0,20);
+						echo substr($model->title, 0,30);
 						?>
 						</td>
 						<td>

@@ -28,7 +28,7 @@
 				<div class="bhoechie-tab-content">
                     <?php if(user()->getState("role")=="publisher")
                         $this->renderPartial("application.views.survey.survey_recieved",array("surveys"=>$surveys));
-                        else
+                            else
                         $this->renderPartial("application.views.survey.survey_answered",array("surveys"=>$answeredSurveysForRecruiter));
                     ?>
 				</div>

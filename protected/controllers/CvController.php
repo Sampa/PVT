@@ -92,7 +92,7 @@ class CvController extends Controller
                          $area = explode(",", $singleArea);
                          $geo = new GeograficArea;
                          if(isset($area[1])){
-                             $geo->counatry  = $area[0];
+                             $geo->country  = $area[0];
                              $geo->region  = $area[1];
                              $geo->city = $area[2];
                              if(!$geo->save()){

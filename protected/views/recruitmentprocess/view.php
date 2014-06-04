@@ -60,7 +60,7 @@ $this->breadcrumbs=array(
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="optionsRadios" id="CandidateFoundOp" value="CandidateFoundOp" checked>
-                                        <?php echo t("Jag hittade en kandidat här på Cvpages")?>
+                                        <?php echo t("Jag hittade en kandidat här på Cv-Pages")?>
                                     </label>
                                 </div>
                                 <div class="radio">

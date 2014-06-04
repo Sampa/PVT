@@ -14,7 +14,7 @@ function chatUpdateTime(toid,conversationid){
 //            alert(data.html);
         }else{
         }
-        setTimeout(chatUpdateTime(toid,conversationid), 2000);
+//        setTimeout(chatUpdateTime(toid,conversationid), 2000);
     });
 }
 $(".chatHistoryToggle").on('click',function(){
@@ -110,12 +110,12 @@ jQuery(document).ready(function(){
     /*skicka nytt chat meddelande*/
     $(".sendChatMessage").on("click", function (event) {
         event.preventDefault();
-        var id = $(this).attr("id");
+//        var id = $(this).attr("");
         var conversationId = $(this).attr("data-content");
-        id = id.replace("btn-chat", "");
+        id = conversationId;//id.replace("btn-chat", "");
         var message = $("#Message_body" + id).val();
-        if(message.length < 1)
-            return;
+//        if(message.length < 1)
+//            return;
         $.ajax({
             "type": "POST",
             "url": $(this).attr("data-url"),

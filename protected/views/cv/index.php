@@ -20,7 +20,7 @@ $this->breadcrumbs=array(
 	<div class="form-group">
         <label for="searchbox"><?php echo Yii::t("t","Valfria sökord");?></label>
 		<input id="searchbox" type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
-	    <div class=form-group">
+	    <div class="form-group">
             <span class="glyphicon glyphicon-info-sign infoBox"></span>
         </div>
     </div>

@@ -30,7 +30,7 @@ $this->breadcrumbs=array(
                 <h3><?php echo Yii::t('t','Information om sökning');?></h3>
             </div>
             <div class="form group col-md-12">
-                <table class="table table-bordered table-condensed table-hover">
+                <table class="table table-condensed table-hover">
                     <tbody>
                         <tr>
                             <th><?php echo Yii::t('t','Funktion');?></th>

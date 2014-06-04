@@ -23,13 +23,11 @@ if($model->recruiterId== Yii::app()->user->id){
         <div class="panel-body" id="chatHistoryDiv<?=$model->id;?>">
             <ul class="chat" id="chatUl<?=$model->id;?>">
                 <?php
-                foreach ($model->messages as $message):
-                    if($message->receiver_id == user()->id){
-                        $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
-                    }elseif($message->sender_id == user()->id){
+                foreach ($model->messages  as $message):
+                    if($message->sender_id == user()->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));
                     }else{
-                        echo "fuck";
+                        $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
                     }
                 endforeach;
                 ?>

@@ -31,11 +31,7 @@ $this->breadcrumbs = array(
                                 <p class="note"><?php echo Yii::t("t", "Fält markerade med");?> <span class="required">*</span> <?php echo Yii::t("t", "är obligatoriska");?>.</p>
                             </div>
                         </div>
-                        <div class="col-lg-5  has-error">
-                            <div class="help-block ">
-                                <?php echo $form->errorSummary($model); ?>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <?php echo $form->labelEx($model, 'fullname', array('class' => 'col-lg-3 control-label')); ?>

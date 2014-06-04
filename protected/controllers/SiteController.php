@@ -114,14 +114,18 @@ class SiteController extends Controller
                 $user->password = $_POST['RegisterForm']['new_password'];
                 $user->name = $_POST['RegisterForm']['fullname'];
                 $user->notify = $_POST['RegisterForm']['notify'];
-                if ($user->save()) {
+                if ($user->validate()) {
+                    $foo = false;
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
                         $recruiterModel = new Recruiter();
                         $recruiterModel->userId = $user->id;
                         $recruiterModel->orgName = $_POST['RegisterForm']['Companyname'];
                         $recruiterModel->VAT = $_POST['RegisterForm']['VAT'];
-                        if($recruiterModel->validate())
+                        if($recruiterModel->validate()){
                             $recruiterModel->save();
+                        }else{
+                            $foo = true;
+                        }
                     }
 //                    send email     activation key has been generated on beforeValidate function in User class
                     $activation_url = $this->createAbsoluteUrl('/site/activate', array('key' => $user->activation_key, 'email' => $user->email));
@@ -134,8 +138,7 @@ class SiteController extends Controller
                         array('username' => $user->username, 'activation_url' => $activation_url),
                         'activation',
                         'main2'
-                    )
-                    ) {
+                    )){
                         $msg = Yii::t('register', 'Vänligen kontrollera din e-post efter ett mail med en aktiveringslänk. Den är giltig i 24 timmar.');
                         Yii::app()->user->setFlash('success', $msg);
                         $this->redirect(bu() . '/site/login');

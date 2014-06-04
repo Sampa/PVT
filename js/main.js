@@ -11,7 +11,7 @@ function chatUpdateTime(toid){
         if(data.status=="ok"){
             $("#chatUl"+toid).append(data.html);
         }
-//        setTimeout(chatUpdateTime(toid), 2000);
+        setTimeout(chatUpdateTime(toid), 2000);
     });
 }
 $(".chatHistoryToggle").on('click',function(){

@@ -110,7 +110,7 @@ jQuery(document).ready(function(){
     /*skicka nytt chat meddelande*/
     $(".sendChatMessage").on("click", function (event) {
         event.preventDefault();
-//        var id = $(this).attr("");
+        var id = $(this).attr("");
         var conversationId = $(this).attr("data-content");
         id = conversationId;//id.replace("btn-chat", "");
         var message = $("#Message_body" + id).val();
@@ -283,7 +283,7 @@ $(function(){
         var userID = $(this).attr("data-user");
         $.ajax ({
             type: "POST",
-            url: "reportedCv/create",
+            url: "/reportedCv/create",
             data: {"reason":reason, "cvID":cvID, "userID":userID}
         }).done(function( data ) {
             $("#reportModalInputDiv").hide();

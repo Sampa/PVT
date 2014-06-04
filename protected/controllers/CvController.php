@@ -382,14 +382,14 @@ class CvController extends Controller
         //alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
         $criteria = $this->setDefaultCriteriaCondition();
         $this->handleSearch($criteria);
-        $sort = false;
+        $sort = "";
         if(isset($_POST['sortBy']))
             $sort = $_POST['sortBy'];
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
         $dataProvider=new CActiveDataProvider('Cv',array(
             "criteria"=>$criteria,
             "sort"=>array(
-                'defaultOrder' => 'numberOfLinks, date',
+                'defaultOrder' => 'numberOfLinks, date DESC',
             ),
             'pagination'=>array(
                 'pageSize'=>10,
@@ -423,14 +423,16 @@ class CvController extends Controller
 		 * date is the column to sort by and DESC means newest first(descending order)
 	 */
 	private function setSortOrderCondition($criteria) {
+        $sort = "";
         if(isset($_GET['sortBy']))
-            $_POST['sortBy']=$_GET['sortBy'];
-         if(isset($_POST['sortBy'])){
-			if($_POST['sortBy']=='date')
-				$criteria->order= "date DESC";
+            $sort=$_GET['sortBy'];
+         if(isset($_POST['sortBy']))
+            $sort = $_POST['sortBy'];
+		if($sort=='date')
+				$sort = "date DESC";
 			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
-				$criteria->order= $_POST['sortBy'] .", date DESC";
-		}
+				$sort = $sort;
+        $criteria->order= $sort;
 		return $criteria;
 	}
 	/*

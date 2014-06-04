@@ -13,9 +13,13 @@ $this->breadcrumbs=array(
              <div class="panel-heading">
                  <h3><?php echo Yii::t('t','Rapporterade CV:n');?></h3>
              </div>
+             <?php
+             if (count($allModels) == 0) {
+                 echo "<h4 style='text-align: center;''>Det finns inga rapporterade CV:n</h4>";
+             }else {
+             ?>
              <div class="table-responsive">
                  <table class="table table-bordered table-condensed table-hover">
-
                     <tbody>
                         <tr>
                             <th><?php echo Yii::t('t','Rapporteringsdatum');?></th>
@@ -59,6 +63,9 @@ $this->breadcrumbs=array(
     </tbody>
 </table>
 </div>
+<?php
+}
+?>
 </div>
 </div>
 </div>

@@ -60,7 +60,7 @@ $this->breadcrumbs=array(
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="optionsRadios" id="CandidateFoundOp" value="CandidateFoundOp" checked>
-                                        <?php echo t("Jag hittade en kandidat här på Cvpages")?>
+                                        <?php echo t("Jag hittade en kandidat här på Cv-Pages")?>
                                     </label>
                                 </div>
                                 <div class="radio">
@@ -136,6 +136,10 @@ $this->breadcrumbs=array(
     <div class="controls" style="margin-top:20px">
         <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("startDate").":</B>";?></div>
         <div class="col-xs-6 col-sm-2"><?php echo substr($model->startDate,0,10);?> </div>
+    </div>
+</div>
+    <div class="row">
+    <div class="controls" style="margin-top:20px">
         <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("endDate").":</B>";?></div>
         <div class="col-xs-6 col-sm-2"><?php echo substr($model->endDate,0,10);?> </div>
     </div>
@@ -145,6 +149,10 @@ $this->breadcrumbs=array(
         <div class="controls" style="margin-top:20px">
             <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("salaryOfHired").":</B>";?></div>
             <div class="col-xs-6 col-sm-2"><?php echo $model->salaryOfHired;?> </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="controls" style="margin-top:20px">
             <div class="col-xs-6 col-sm-2"><?php echo "<B>".$model->getAttributeLabel("successfulProcess").":</B>";?></div>
             <div class="col-xs-6 col-sm-2"><?php echo $successfulProcess;?> </div>
         </div>

@@ -380,9 +380,15 @@ class CvController extends Controller
     {
         //CDBcriteria is a Yii class to make it easier to create advanced SQL queries
         //alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
-        $criteria = $this->setDefaultCriteriaCondition();
-        $this->handleSearch($criteria);
+        if(!isset($_GET['condition'])){
+            $criteria = $this->setDefaultCriteriaCondition();
+            $this->handleSearch($criteria);
+            $_SESSION['criteria']= $criteria;
+        }else{
+            $criteria = $_SESSION['criteria'];
+        }
         $sort = "";
+        $condition = "";
         if(isset($_POST['sortBy']))
             $sort = $_POST['sortBy'];
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
@@ -395,6 +401,7 @@ class CvController extends Controller
                 'pageSize'=>10,
                 'params'=>array(
                     'sortBy'=>$sort,
+                    'condition'=>"new",
                 ),
             ),
         ));

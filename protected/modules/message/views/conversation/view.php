@@ -23,11 +23,11 @@ if($model->recruiterId== Yii::app()->user->id){
         <div class="panel-body" id="chatHistoryDiv<?=$model->id;?>">
             <ul class="chat" id="chatUl<?=$model->id;?>">
                 <?php
-                foreach ($model->messages as $message):
-                    if($message->receiver_id == user()->id){
-                        $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
-                    }elseif($message->sender_id == user()->id){
+                foreach ($model->messages  as $message):
+                    if($message->sender_id == user()->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));
+                    }else{
+                        $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
                     }
                 endforeach;
                 ?>
@@ -48,6 +48,7 @@ if($model->recruiterId== Yii::app()->user->id){
 	               id="btn-chat<?= $model->id; ?>"
                    data-url="<?=Yii::app()->baseUrl;?>/message/conversation"
                    data-content="<?=$model->id;?>"
+                   data-receiver="<?=$to->id;?>"
                    class="col-md-2 col-lg-2 col-sm-2 btn-warning btn sendChatMessage"
                    name="<?= $to->getFullName(); ?>"
                    value="<?=t("Skicka");?>"

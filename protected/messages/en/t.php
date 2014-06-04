@@ -58,15 +58,15 @@ return array (
   'Captcha' =>  ' Captcha ' ,
   'Cookies' =>  'Cookies' ,
   'Cv:et du försöker nå existerar inte' =>  ' Cv message you are trying to reach does not exist ' ,
-  'CV-Pages är en webbplats avsedd att användas endast till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare. Vid missbruk kan ditt konto komma att stängas av.
-
-CV-Pages förbehåller sig rätten att undanhålla och ta bort material som finns på ditt konto,utan förhandsbesked, om CV-Pages anser att materialet strider mot detta avtal. CV-Pages har inga skyldigheter att förvara, spara eller förse med kopior av material som du tillhandahåller när du använder CV-Pages tjänster.
-
-CV-Pages ansvarar inte för det material som läggs upp och ansvarar inte heller för något som kan förekomma vid kontakt mellan publicerare och rekryterare. CV-Pages garanterar inte anställning till publicerare som har nått en överenskommelse med rekryterare. Det finns möjlighet för användare att rapportera om olämpligt material förekommer. Dock får missbruk av denna funktion inte förekomma. Vid missbruk kan ditt konto komma att stängas av.' =>'CV-Pages is a website designed to be used only for job recruitments and may not be used in other respects. This means that only CVs can be uploaded by its publisher. If abused , your account may be turned off .
-
-CV-Pages reserves the right to withhold and remove any material found on this account, without advance notice , if the CV-Pages consider that the material breach of this Agreement . CV-Pages has no obligation to store, save, or provide copies of materials that you provide when using the CV-Pages services.
-
-CV-Pages is not responsible for the material that is posted and is not responsible for anything that may occur at the contact between publishers and recruiters. CV-Pages does not guarantee employment for publishers who have reached an agreement with recruiters. It is possible for users to report inappropriate material occurs . However, abuse of this feature does not exist. If abused , your account may be turned off .',
+  'CV-Pages är en webbplats avsedd att användas endast till jobbrekryteringar och får inte användas i andra avseenden.
+          Detta innebär att det endast är CV:n som får laddas upp av publicerare. Vid missbruk kan ditt konto komma att stängas av.' => 'CV-Pages is a website designed to be used only for job recruitments and may not be used in other respects. This means that only CVs can be uploaded by its publisher. If abused, your account may be turned off.',
+  'CV-Pages förbehåller sig rätten att undanhålla och ta bort material som finns på ditt konto, utan förhandsbesked,
+                om CV-Pages anser att materialet strider mot detta avtal. CV-Pages har inga skyldigheter att förvara, spara eller förse med kopior av material
+                som du tillhandahåller när du använder CV-Pages tjänster.' => 'CV-Pages reserves the right to withhold and remove any material found on this account, without advance notice, if CV-Pages consider that the material breach of this Agreement. CV-Pages has no obligation to store, save, or provide copies of materials that you provide when using the CV-Pages services.',
+'CV-Pages ansvarar inte för det material som läggs upp och ansvarar inte heller för något som kan förekomma vid kontakt mellan publicerare och rekryterare.
+                                    CV-Pages garanterar inte anställning till publicerare som har nått en överenskommelse med rekryterare.
+                                Det finns möjlighet för användare att rapportera om olämpligt material förekommer. Dock får missbruk av denna funktion inte förekomma.
+                                Vid missbruk kan ditt konto komma att stängas av.' => 'CV-Pages is not responsible for the material that is posted and is not responsible for anything that may occur at the contact between publishers and recruiters. CV-Pages does not guarantee employment for publishers who have reached an agreement with recruiters. It is possible for users to report inappropriate material occurs. However, abuse of this feature does not exist. If abused, your account may be turned off.',
   'Datum' =>  'Date ' ,
   'Din e-post här' =>  'Your e-mail here ' ,
   'Din layout' =>  'Your layout ' ,
@@ -187,7 +187,11 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Registrera dig' =>  ' Register ' ,
   'Registrera dig här' =>  ' Find ' ,
   'Rekryterare' =>  ' Recruiters ' ,
-  'Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL). Som personuppgifter räknas all slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer och adress. Du väljer själv om du vill lämna dina uppgifter till oss och har även rätt att vid behov korrigera de uppgifter som har lämnats. Vi kommer inte att lämna ut dina uppgifter till tredje part utan ditt samtycke.' => 'Registration with CV-Pages means you agree to CV-Pages treats your personal information under the Personal Data Act (1998:204 PDA). As personal data included all kinds of information that directly or indirectly attributable to you as an individual such as social security number and address. You choose if you want to leave us your details and also has the right, if necessary, correct the data submitted. We will not disclose your information to third parties without your samtycke.kan your account may be turned off.',
+  'Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter
+                            enligt personuppgiftslagen (1998:204 PuL). Som personuppgifter räknas all slags information som direkt eller indirekt
+                            kan hänföras till dig som fysisk person till exempel personnummer och adress. Du väljer själv om du vill lämna dina
+                             uppgifter till oss och har även rätt att vid behov korrigera de uppgifter som har lämnats. Vi kommer inte att lämna ut
+                             dina uppgifter till tredje part utan ditt samtycke.' => 'Registration with CV-Pages means you agree to CV-Pages treats your personal information under the Personal Data Act (1998:204 PDA). As personal data included all kinds of information that directly or indirectly attributable to you as an individual such as social security number and address. You choose if you want to leave us your details and also has the right, if necessary, correct the data submitted. We will not disclose your information to third parties without your samtycke.kan your account may be turned off.',
   'Rekryteringsprocesser' =>  ' Recruitment process ' ,
   'Rekryteringsstatus' =>  ' Recruiting Status ' ,
   'Rubrik' =>  'Title' ,
@@ -243,7 +247,9 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Valfria sökord' =>  ' Optional keyword ' ,
   'Vi har nu avslutat processen.' =>  ' We have now completed the process. ' ,
   'Vi har nu sparat din rapport. Tack för din tid!' =>  ' We now have saved your report. Thanks for your time ! ' ,
-  'Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.' =>'We would like to announce that the CV-Pages use out of cookies. The purpose of cookies is to get information such as how many people visit the site, which browser, screen resolution, and which search engine is used to find the website etc. This is to improve the site.',
+  'Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få
+                                information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken
+                                sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.' =>'We would like to announce that the CV-Pages use out of cookies. The purpose of cookies is to get information such as how many people visit the site, which browser, screen resolution, and which search engine is used to find the website etc. This is to improve the site.',
   'Vill du visa dina uppgifter' =>  ' Do you want to show your data ' ,
   'Välj en pdf fil som innehåller ditt CV och ladda upp den här' =>  'Select a pdf file containing your resume and upload it here ' ,
   'Välj enkät' =>  'Select poll ' ,

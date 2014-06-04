@@ -56,7 +56,7 @@
                             id="<?php echo $data->id?>" 
                             data-user="<?php echo user()->isGuest ? 0:user()->id; ?>"
                             class="glyphicon glyphicon-flag report-cv-flag">
-                            <?php echo Yii::t("t"," Rapportera");?>
+                            <?php echo Yii::t("t","Rapportera");?>
                         </i>
                     </a>
                 </span>

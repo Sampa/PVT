@@ -180,6 +180,7 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Radera CV' =>  'Delete CV ' ,
   'Rangordning' =>  ' Ranking ' ,
   'Rapportera CV' =>  ' Report CV ' ,
+  'Rapportera' => 'Report',
   'Rapportera CV som OK' =>  ' Report CVs OK ' ,
   'Rapporterad av' =>  ' Reported by ' ,
   'Rapporterade CV:n' =>  'Reported CV ' ,

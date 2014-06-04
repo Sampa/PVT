@@ -21,7 +21,7 @@ $this->breadcrumbs = array(
                 <p>
                     <?php 
                          $this->widget('ext.Yiinior.Yiinior', array(
-                        'video'=>Yii::app()->baseUrl."/video/SkapaCv.mp4", //if you don't use playlist
+                        'video'=>Yii::app()->baseUrl."/video/SkapaCV.mp4", //if you don't use playlist
                          //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                          'id' => 'yiinior',
                         'autoplay'=>false,
@@ -183,7 +183,7 @@ $this->breadcrumbs = array(
             </div>
             <div class="col-xs-4 col-sm-6 col-md-4">
                 <p>  
-                     <video width="320" height="240" controls>
+                <video width="320" height="240" controls>
                  <source src= "<?php echo Yii::app()->baseUrl?>/video/SkapaCV.mp4" type="video/mp4">
                  </video>
              </p>
@@ -206,7 +206,7 @@ $this->breadcrumbs = array(
                 <video width="320" height="240" controls>
                  <source src= "<?php echo Yii::app()->baseUrl?>/video/Sokning.mp4" type="video/mp4">
                  </video>
-         </p>
+            </p>
      </div>
  </div>
 

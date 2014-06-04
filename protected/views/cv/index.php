@@ -217,7 +217,7 @@ jQuery(document).ready(function ($) {
         post.sortBy = $(this).attr("id");
         $.ajax({
             type: "POST",
-            url: "cv/",
+            url: "",
             data: post
         }).done(function( data ) {
             document.querySelector("#listOfCvs").innerHTML = "";

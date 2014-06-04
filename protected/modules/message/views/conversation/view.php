@@ -13,7 +13,6 @@ if($model->recruiterId== Yii::app()->user->id){
 }else{
     $to=$model->recruiter->user;
 }
-
 ?>
 <div class="col-md-12 col-lg-12 col-sm-12">
         <div class="btn-group col-md-12 row" style="margin-bottom: 10px;">
@@ -26,6 +25,7 @@ if($model->recruiterId== Yii::app()->user->id){
                 <?php
                 foreach ($model->messages as $message):
                     if($message->receiver_id == user()->id){
+                        echo("mottagere");
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
                     }else{
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));

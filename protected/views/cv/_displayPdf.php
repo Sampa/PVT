@@ -51,10 +51,12 @@
             </div>
             <div class="modal-footer" id="reportModalStartFooter">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng, rapportera inte");?></button>
-                <button type="button" class="btn btn-primary" data-id="" id="submitReportBtn"><?php echo Yii::t("t", "Rapportera CV");?></button>
+                <button type="button" class="btn btn-primary" data-id="" 
+                data-url="<?php echo yii::app()->baseUrl;?>/reportedCv/create" id="submitReportBtn"><?php echo Yii::t("t", "Rapportera CV");?></button>
             </div>
             <div class="modal-footer" id="reportModalEndFooter">
-                <button id="reportModalEndFooterCloseBtn" type="button" class="btn btn-default" data-dismiss="modal"><?php echo Yii::t("t", "Stäng");?></button>
+                <button id="reportModalEndFooterCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">
+                    <?php echo Yii::t("t", "Stäng");?></button>
             </div>
         </div>
     </div>

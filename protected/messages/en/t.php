@@ -33,19 +33,24 @@ return array (
   'Antal' =>  'Number ' ,
   'Antal användare totalt. 2008-2013' =>  'Number of users overall. 2008-2013 ',
   'Antal publicerare jämfört med antal rekryterare' =>  'Number publishers compared to the number of recruiters ' ,
+  ' Antal registrerade publicerare jämfört med antal rekryterare' => 'Number of registered publishers compared to the number of recruiters ',
+  ' Antal inloggade användare idag' => 'Number of logged in users today',
+  ' Antal sökningar per dag. Fördelat på roll.' => 'Number of searches per day. Distributed by role',
+  ' Antal CV:n i databasen = ' => 'Number of CVs in the database =',
   'Antarktis' =>  ' Antarctica ' ,
   'Antsällningsform' =>  ' Type of employment ' ,
   'Anonymitet' => 'Anonymity',
   'Användaravtal' =>  'User Agreement ' ,
   'Användarguide'=> 'User guide',
   'Användarnamn' =>  'Username' ,
-  'Användarnamnet man registrerar är det som visas tillsammans med ditt publicerade CV. Detta innebär att du kan ha ett namn som inte är kopplat till ens person och på så sätt vara anonym. Det är bara CV-Pages som kommer ha ditt riktiga namn och mailadress registrerat. Du får ta eget ansvar för innehållet i CV:et som ska publiceras då vi inte redigerar eller ändrar det i någon form.' =>"The username you register, it is displayed along with your published resume. This means you can have a name that is not attached to one's person and thus remain anonymous. It's just the CV Pages that will have your real name and email address registered. You must take responsibility for the content of the CV et to be published when we do not edit or modify it in any form.",
+  'Användarnamnet man registrerar är det som visas tillsammans med ditt publicerade CV. Detta innebär att du kan ha ett namn som inte är kopplat till ens person och på så sätt vara anonym. Det är bara CV-Pages som kommer ha ditt riktiga namn och mailadress registrerat. Du får ta eget ansvar för innehållet i CV:et som ska publiceras då vi inte redigerar eller ändrar det i någon form.' => 'The username you register, it is displayed along with your published resume. This means you can have a name that is not attached to one person and thus remain anonymous. It is just the CV Pages that will have your real name and email address registered. You must take responsibility for the content of the CV et to be published when we do not edit or modify it in any form.',
   'Användarnamn eller e-post' =>  ' Username or email ' ,
   'Asien' =>  ' Asia ' ,
   'Avbryt' =>  'Cancel ' ,
   'Avsluta rekryteringsprocessen' =>  ' End recruitment process ' ,
   'Avslutade processer' =>  ' Finished processes ' ,
-  'Avslutade processer. Fördelning mellan orsak.' =>  ' Finished processes. Distribution of cause . ' ,
+  'Avancerad sökning' => 'Advanced search',
+  ' Avslutade processer. Fördelning mellan orsak.' =>  ' Finished processes. Distribution of cause . ' ,
   'Bekräfta ditt lösenord' =>  'Confirm password ' ,
   'Bekräfta lösenord' =>  ' Confirm Password ' ,
   'Bekräfta lösenordet' =>  'Confirm password ' ,
@@ -58,15 +63,15 @@ return array (
   'Captcha' =>  ' Captcha ' ,
   'Cookies' =>  'Cookies' ,
   'Cv:et du försöker nå existerar inte' =>  ' Cv message you are trying to reach does not exist ' ,
-  'CV-Pages är en webbplats avsedd att användas endast till jobbrekryteringar och får inte användas i andra avseenden. Detta innebär att det endast är CV:n som får laddas upp av publicerare. Vid missbruk kan ditt konto komma att stängas av.
-
-CV-Pages förbehåller sig rätten att undanhålla och ta bort material som finns på ditt konto,utan förhandsbesked, om CV-Pages anser att materialet strider mot detta avtal. CV-Pages har inga skyldigheter att förvara, spara eller förse med kopior av material som du tillhandahåller när du använder CV-Pages tjänster.
-
-CV-Pages ansvarar inte för det material som läggs upp och ansvarar inte heller för något som kan förekomma vid kontakt mellan publicerare och rekryterare. CV-Pages garanterar inte anställning till publicerare som har nått en överenskommelse med rekryterare. Det finns möjlighet för användare att rapportera om olämpligt material förekommer. Dock får missbruk av denna funktion inte förekomma. Vid missbruk kan ditt konto komma att stängas av.' =>'CV-Pages is a website designed to be used only for job recruitments and may not be used in other respects. This means that only CVs can be uploaded by its publisher. If abused , your account may be turned off .
-
-CV-Pages reserves the right to withhold and remove any material found on this account, without advance notice , if the CV-Pages consider that the material breach of this Agreement . CV-Pages has no obligation to store, save, or provide copies of materials that you provide when using the CV-Pages services.
-
-CV-Pages is not responsible for the material that is posted and is not responsible for anything that may occur at the contact between publishers and recruiters. CV-Pages does not guarantee employment for publishers who have reached an agreement with recruiters. It is possible for users to report inappropriate material occurs . However, abuse of this feature does not exist. If abused , your account may be turned off .',
+  'CV-Pages är en webbplats avsedd att användas endast till jobbrekryteringar och får inte användas i andra avseenden.
+          Detta innebär att det endast är CV:n som får laddas upp av publicerare. Vid missbruk kan ditt konto komma att stängas av.' => 'CV-Pages is a website designed to be used only for job recruitments and may not be used in other respects. This means that only CVs can be uploaded by its publisher. If abused, your account may be turned off.',
+  'CV-Pages förbehåller sig rätten att undanhålla och ta bort material som finns på ditt konto, utan förhandsbesked,
+                om CV-Pages anser att materialet strider mot detta avtal. CV-Pages har inga skyldigheter att förvara, spara eller förse med kopior av material
+                som du tillhandahåller när du använder CV-Pages tjänster.' => 'CV-Pages reserves the right to withhold and remove any material found on this account, without advance notice, if CV-Pages consider that the material breach of this Agreement. CV-Pages has no obligation to store, save, or provide copies of materials that you provide when using the CV-Pages services.',
+'CV-Pages ansvarar inte för det material som läggs upp och ansvarar inte heller för något som kan förekomma vid kontakt mellan publicerare och rekryterare.
+                                    CV-Pages garanterar inte anställning till publicerare som har nått en överenskommelse med rekryterare.
+                                Det finns möjlighet för användare att rapportera om olämpligt material förekommer. Dock får missbruk av denna funktion inte förekomma.
+                                Vid missbruk kan ditt konto komma att stängas av.' => 'CV-Pages is not responsible for the material that is posted and is not responsible for anything that may occur at the contact between publishers and recruiters. CV-Pages does not guarantee employment for publishers who have reached an agreement with recruiters. It is possible for users to report inappropriate material occurs. However, abuse of this feature does not exist. If abused, your account may be turned off.',
   'Datum' =>  'Date ' ,
   'Din e-post här' =>  'Your e-mail here ' ,
   'Din layout' =>  'Your layout ' ,
@@ -165,7 +170,7 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Nytt företagsnamn' =>  ' New company name ' ,
   'Nytt lösenord' =>  'New password ' ,
   'Oceanien' =>  ' Oceania ' ,
-  'Om oss' =>  ' About us ' ,
+  'Om Oss' =>  ' About us ' ,
   'Otillåten filtyp' =>  'Invalid file type ' ,
   'Papperskorg' =>  ' Trash ' ,
   'Password' =>  'Password' ,
@@ -179,6 +184,7 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Radera CV' =>  'Delete CV ' ,
   'Rangordning' =>  ' Ranking ' ,
   'Rapportera CV' =>  ' Report CV ' ,
+  'Rapportera' => 'Report',
   'Rapportera CV som OK' =>  ' Report CVs OK ' ,
   'Rapporterad av' =>  ' Reported by ' ,
   'Rapporterade CV:n' =>  'Reported CV ' ,
@@ -187,7 +193,11 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Registrera dig' =>  ' Register ' ,
   'Registrera dig här' =>  ' Find ' ,
   'Rekryterare' =>  ' Recruiters ' ,
-  'Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL). Som personuppgifter räknas all slags information som direkt eller indirekt kan hänföras till dig som fysisk person till exempel personnummer och adress. Du väljer själv om du vill lämna dina uppgifter till oss och har även rätt att vid behov korrigera de uppgifter som har lämnats. Vi kommer inte att lämna ut dina uppgifter till tredje part utan ditt samtycke.' => 'Registration with CV-Pages means you agree to CV-Pages treats your personal information under the Personal Data Act (1998:204 PDA). As personal data included all kinds of information that directly or indirectly attributable to you as an individual such as social security number and address. You choose if you want to leave us your details and also has the right, if necessary, correct the data submitted. We will not disclose your information to third parties without your samtycke.kan your account may be turned off.',
+  'Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter
+                            enligt personuppgiftslagen (1998:204 PuL). Som personuppgifter räknas all slags information som direkt eller indirekt
+                            kan hänföras till dig som fysisk person till exempel personnummer och adress. Du väljer själv om du vill lämna dina
+                             uppgifter till oss och har även rätt att vid behov korrigera de uppgifter som har lämnats. Vi kommer inte att lämna ut
+                             dina uppgifter till tredje part utan ditt samtycke.' => 'Registration with CV-Pages means you agree to CV-Pages treats your personal information under the Personal Data Act (1998:204 PDA). As personal data included all kinds of information that directly or indirectly attributable to you as an individual such as social security number and address. You choose if you want to leave us your details and also has the right, if necessary, correct the data submitted. We will not disclose your information to third parties without your samtycke.kan your account may be turned off.',
   'Rekryteringsprocesser' =>  ' Recruitment process ' ,
   'Rekryteringsstatus' =>  ' Recruiting Status ' ,
   'Rubrik' =>  'Title' ,
@@ -243,7 +253,9 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Valfria sökord' =>  ' Optional keyword ' ,
   'Vi har nu avslutat processen.' =>  ' We have now completed the process. ' ,
   'Vi har nu sparat din rapport. Tack för din tid!' =>  ' We now have saved your report. Thanks for your time ! ' ,
-  'Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.' =>'We would like to announce that the CV-Pages use out of cookies. The purpose of cookies is to get information such as how many people visit the site, which browser, screen resolution, and which search engine is used to find the website etc. This is to improve the site.',
+  'Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få
+                                information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken
+                                sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.' =>'We would like to announce that the CV-Pages use out of cookies. The purpose of cookies is to get information such as how many people visit the site, which browser, screen resolution, and which search engine is used to find the website etc. This is to improve the site.',
   'Vill du visa dina uppgifter' =>  ' Do you want to show your data ' ,
   'Välj en pdf fil som innehåller ditt CV och ladda upp den här' =>  'Select a pdf file containing your resume and upload it here ' ,
   'Välj enkät' =>  'Select poll ' ,
@@ -255,7 +267,7 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Välj land' =>  'Select country ' ,
   'Välj region' =>  'Select region ' ,
   'Välkommen' =>  'Welcome ' ,
-  'Vår affärside går ut på att presentera en publik databas för cv:n oavsett vilken branch du är intresserad av eller proffessionell inom. Möjligheten att vara anonym ger dig en chans till en objektiv första bedömning vilket är helt valfritt. Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du är personligt ansvarig för att skydda dessa uppgifter.' =>  ' Our mission is to introduce a database for CVs regardless of which branch you are interested in or a professional in . The ability to remain anonymous gives you a chance for an objective initial evaluation which is completely optional. Personal and sensitive information that you as publishers invest in your CV files are not protected by us , but you are personally responsible for protecting that information. ' ,
+  'Vår affärside går ut på att presentera en publik databas för CV:n oavsett vilken branch du är intresserad av eller proffessionell inom. Vi erbjuder arbetssökande att publicera sitt CV anonymt för att garantera att du bara bedöms på dina meriter. Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du är personligt ansvarig för att skydda dessa uppgifter.' =>  ' Our mission is to introduce a database for CVs regardless of which branch you are interested in or a professional in . The ability to remain anonymous gives you a chance for an objective initial evaluation which is completely optional. Personal and sensitive information that you as publishers invest in your CV files are not protected by us , but you are personally responsible for protecting that information. ' ,
   'du är inloggad som ' =>  ' You are logged in as ' ,
   'email eller användarnamn' =>  ' email or username ' ,
   'lösenord' =>  ' password ' ,

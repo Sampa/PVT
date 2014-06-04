@@ -12,9 +12,24 @@ function chatUpdateTime(toid){
             $("#chatUl"+toid).append(data.html);
         }
         setTimeout(chatUpdateTime(toid), 2000);
-
     });
 }
+$(".chatHistoryToggle").on('click',function(){
+    var id=$(this).attr("href");
+    $(id).slideToggle();
+
+    var iconElement = $(this).children("span");
+    if(iconElement.hasClass("up")){
+        iconElement.removeClass("up");
+        iconElement.removeClass("glyphicon-arrow-up");
+        iconElement.addClass("glyphicon-arrow-down");
+    }else{
+        iconElement.removeClass("glyphicon-arrow-up");
+        iconElement.addClass("up");
+        iconElement.addClass("glyphicon-arrow-down");
+    }
+});
+
 //getting country/region/city
 (function(window,$,undefined){
     var target = $("#geoCity");
@@ -46,7 +61,6 @@ function chatUpdateTime(toid){
     }
     $(function(){
         ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
-
             var next= $("#"+list[index+1]);
              $("#"+item).select2({
                 placeholder: next.attr("data-default")
@@ -255,6 +269,7 @@ $(function(){
         $("#submitReportBtn").attr("data-id",cvID);
         $("#submitReportBtn").attr("data-user",userID);
     });
+
     $("#submitReportBtn").on("click", function() {
         var cvID = $(this).attr("data-id");
         var reason = $("#reasonTextField").val();

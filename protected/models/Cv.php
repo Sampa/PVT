@@ -74,8 +74,8 @@ class Cv extends CActiveRecord
 		return array(
 			'areas' => array(self::MANY_MANY, 'GeograficArea','CvArea(cvId,AreaId)'),
 			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
-			'cvTags' => array(self::HAS_MANY, 'CvTag', 'cvId'),
-			'tags' => array(self::MANY_MANY, 'Tag', 'CvTag(cvId,tagId)'),
+//			'cvTags' => array(self::HAS_MANY, 'CvTag', 'cvId'),
+			'keywords' => array(self::MANY_MANY, 'Tag', 'CvTag(cvId,tagId)'),
 			'hotLists' => array(self::HAS_MANY, 'HotList', 'cvId'),
 			'messages' => array(self::HAS_MANY, 'Message', 'cvID'),
 			'recFavorites' => array(self::HAS_MANY, 'RecFavorites', 'cvid'),
@@ -118,7 +118,6 @@ class Cv extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
 		$criteria->compare('id',$this->id);
 		$criteria->compare('showUserDetail',$this->showUserDetail);
 		$criteria->compare('date',$this->date,true);

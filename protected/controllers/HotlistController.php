@@ -115,7 +115,7 @@ class HotlistController extends Controller
             $criteria= new CDbCriteria();
             $criteria->compare('rpId',$_POST['processId']);
             $criteria->compare('cvId',$_POST['cvId']);
-			$hotList= hotlist::model()->find($criteria);
+			$hotList= Hotlist::model()->find($criteria);
             $hotList->delete();
 			// // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			// if (!isset($_GET['ajax'])) {

@@ -39,11 +39,11 @@
 					</a>
 				</h3>
                     <?php
-                        foreach($data->cvTags as $cvTag){
+                        foreach($data->keywords as $cvTag){
                             //frequency är hur ofta den använts
-                            $number = $cvTag->tag->frequency;
+                            $number = $cvTag->frequency;
                             //skriver ut taggen så att mer använda taggar blir större
-                            echo '<span class="label label-info" style="margin-right:10px;"> '.$cvTag->tag->name.'</span>';
+                            echo '<span class="label label-info" style="margin-right:10px;"> '.$cvTag->name.'</span>';
                         
                         }
                     ?>

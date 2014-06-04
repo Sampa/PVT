@@ -213,12 +213,37 @@ class UserController extends Controller
 			$dataProviderRecruiter = new CActiveDataProvider('Recruiter');
 			$dataProviderCv = new CActiveDataProvider('Cv');
 
+			// Hämta antalet användare idag
 			$criteria = new CDbCriteria;
 			$criteria->compare('login_date', date('Y-m-d'));
 			$dataProviderUsersToday['user'] = User::model()->findAll($criteria);
 			$criteria->addCondition('recruiter.userId IS NOT NULL');
 			$dataProviderUsersToday['recruiter'] = User::model()->with("recruiter")->findAll($criteria);
 
+			// Hämta antalet sökningar den senaste veckan.
+        	$dataProviderDates = $dataProviderSearchHistoryGuest = $dataProviderSearchHistoryPublisher = $dataProviderSearchHistoryRecruiter = array();
+        	$rolesArray = array("guest", "recruiter", "publisher");
+	        for ($days = 0; $days < 7; $days++) {
+	            $dataProviderDates[$days] = date('Y-m-d', strtotime("-$days days"));
+	            for ($roles = 0; $roles < 3 ; $roles++) {
+	            	$criteria = new CDbCriteria;
+	            	$criteria->compare('date', $dataProviderDates[$days]);
+	            	$criteria->compare('role', $rolesArray[$roles]);
+	            	$model = SearchHistory::model()->find($criteria);
+	            	$numberOfSearches = (isset($model) ? $model->numberOfSearches : 0);
+	            	switch ($rolesArray[$roles]) {
+	            		case 'guest':
+	            			$dataProviderSearchHistoryGuest[$days] = $numberOfSearches;
+	            			break;
+	            		case 'recruiter':
+	            			$dataProviderSearchHistoryRecruiter[$days] = $numberOfSearches;
+	            			break;
+	            		case 'publisher':
+	            			$dataProviderSearchHistoryPublisher[$days] = $numberOfSearches;
+	            			break;
+	            	}
+	            }
+	        }
 
 			$dataProviderRecProcessSuccesful = new CActiveDataProvider('Recruitmentprocess',array(
 
@@ -245,6 +270,10 @@ class UserController extends Controller
 				'dataProviderRecProcessSuccesful'=>$dataProviderRecProcessSuccesful,
 				'dataProviderRecProcessOther'=>$dataProviderRecProcessOther,
 				'dataProviderRecProcessFailed'=>$dataProviderRecProcessFailed,
+				'dataProviderDates'=>$dataProviderDates,
+				'dataProviderSearchHistoryGuest'=>$dataProviderSearchHistoryGuest,
+				'dataProviderSearchHistoryPublisher'=>$dataProviderSearchHistoryPublisher,
+				'dataProviderSearchHistoryRecruiter'=>$dataProviderSearchHistoryRecruiter,
 				));
 		}else {
 			throw new CHttpException(400,t('Ogiltig begäran'));

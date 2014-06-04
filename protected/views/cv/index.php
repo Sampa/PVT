@@ -32,61 +32,61 @@ $this->breadcrumbs=array(
             <div class="form group col-md-12">
                 <table class="table table-condensed table-hover">
                     <tbody>
-                        <tr>
-                            <th><?php echo Yii::t('t','Funktion');?></th>
-                            <th><?php echo Yii::t('t','Metatag');?></th>
-                            <th><?php echo Yii::t('t','Syntax på inmatning');?></th>
-                            <th><?php echo Yii::t('t','Extra info');?></th>
-                        </tr>
-                        <tr>                  
-                            <td> <?php echo t("Sökning på flera enskilda ord utan att kräva att alla ord finns i CV:et.");?> </td>
-                            <td> OR</td>
-                            <td> <?php echo t('Ord1 OR Ord2 OR ord3 ...');?> </td>
-                            <td> <?php echo t("I vanliga fall visas CV:n som har alla ord. Taggen gör att den visar alla som innehåller något av orden.");?> </td>
-                        </tr>
-                        <tr>                  
-                            <td> <?php echo t("Gör en sökning på en fras.");?> </td>
-                            <td> ""</td>
-                            <td> <?php echo t('"Fras"');?> </td>
-                            <td> <?php echo t("Gör en sökning på en hel fras istället för på enskilda ord.");?> </td>
-                        </tr>
-                        <tr>                  
-                            <td> <?php echo t("Gör en sökning på ett eller flera nyckelord");?> </td>
-                            <td> tag:</td>
-                            <td> tag1,tag2,tag3,tag4...</td>
-                            <td> <?php echo t('Separera taggar med "," tecken för att söka på flera nyckelord.');?> </td>
-                        </tr>
-                        <tr>                  
-                            <td><?php echo t("Visa alla som söker en viss anställningsform.");?> </td>
-                            <td> employment: </td>
-                            <td> consult OR employment </td>
-                            <td> <?php echo t("Finns bara två typer av inmatning.");?></td>
-                        </tr>
-                        <tr>                  
-                            <td><?php echo t("Visar alla CV:n som laddats upp ett specifikt datum.");?> </td>
-                            <td> date: </td>
-                            <td> YYYY-MM-DD </td>
-                            <td> <?php echo t(" - ");?></td>
-                        </tr>
-                        <tr>                  
-                            <td><?php echo t("Visa alla som söker jobb i en viss stad eller kommun.");?> </td>
-                            <td> city: </td>
-                            <td> <?php echo t("Namn på staden"); ?> </td>
-                            <td> <?php echo t(" - ");?></td>
-                        </tr>
-                        <tr>                  
-                            <td><?php echo t("Visa alla som söker jobb i en viss region.");?> </td>
-                            <td> region: </td>
-                            <td> <?php echo t("Namn på regionen"); ?> </td>
-                            <td> <?php echo t(" - ");?></td>
-                        </tr>
-                        <tr>                  
-                            <td><?php echo t("Visa alla som söker jobb i ett visst land.");?> </td>
-                            <td> country: </td>
-                            <td> <?php echo t("Namn på landet"); ?> </td>
-                            <td> <?php echo t(" - ");?></td>
-                        </tr>
-                    </tbody>
+                <tr>
+                    <th><?php echo Yii::t('t','Funktion');?></th>
+                    <th><?php echo Yii::t('t','Metatag');?></th>
+                    <th><?php echo Yii::t('t','Syntax på inmatning');?></th>
+                    <th><?php echo Yii::t('t','Extra info');?></th>
+                </tr>
+                 <tr>                  
+                    <td> <?php echo t("Sökning på ett ord som kan vara istället för tidigare sökningsord.");?> </td>
+                    <td> OR</td>
+                    <td> <?php echo t('Ord1 OR Ord2 OR Ord3 ...');?> </td>
+                    <td> <?php echo t("I vanliga fall visas CV:n som har alla ord. Taggen gör att den visar alla som innehåller antigen det innan OR taggen eller ordet efter OR taggen.");?> </td>
+                </tr>
+                <tr>                  
+                    <td> <?php echo t("Gör en sökning på en fras.");?> </td>
+                    <td> ""</td>
+                    <td> <?php echo t('"Fras"');?> </td>
+                    <td> <?php echo t("Gör en sökning på en hel fras istället för på enskilda ord.");?> </td>
+                </tr>
+                <tr>                  
+                    <td> <?php echo t("Gör en sökning på ett eller flera nyckelord.");?> </td>
+                    <td> tag:</td>
+                    <td> tag1,tag2,tag3,tag4...</td>
+                    <td> <?php echo t('Separera taggar med "," tecken för att söka på flera nyckelord.');?> </td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker en viss anställningsform.");?> </td>
+                    <td> employment: </td>
+                    <td> consult OR employment </td>
+                    <td> <?php echo t("Det finns bara två typer av inmatning.");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visar alla CV:n som publicerats på ett specifikt datum.");?> </td>
+                    <td> date: </td>
+                    <td> YYYY-MM-DD </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker jobb i en viss stad eller kommun.");?> </td>
+                    <td> city: </td>
+                    <td> <?php echo t("Namn på staden"); ?> </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker jobb i en viss region.");?> </td>
+                    <td> region: </td>
+                    <td> <?php echo t("Namn på regionen"); ?> </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+                <tr>                  
+                    <td><?php echo t("Visa alla som söker jobb i ett visst land.");?> </td>
+                    <td> country: </td>
+                    <td> <?php echo t("Namn på landet"); ?> </td>
+                    <td> <?php echo t(" - ");?></td>
+                </tr>
+            </tbody>
                 </table>
             </div>
         </div>
@@ -102,8 +102,10 @@ $this->breadcrumbs=array(
       <div>
         <?php $this->renderPartial('_allCountriesSelect', array('search'=>false)); ?>
     </div>
+
     <div style="margin-top:15px;">
         <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>
+
     </div>
 </form>
 <!--Visa bara sorteringsknappar efter sökning -->
@@ -217,7 +219,7 @@ jQuery(document).ready(function ($) {
         post.sortBy = $(this).attr("id");
         $.ajax({
             type: "POST",
-            url: "cv/",
+            url: "",
             data: post
         }).done(function( data ) {
             document.querySelector("#listOfCvs").innerHTML = "";

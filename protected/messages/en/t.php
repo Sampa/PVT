@@ -243,7 +243,7 @@ CV-Pages is not responsible for the material that is posted and is not responsib
   'Valfria sökord' =>  ' Optional keyword ' ,
   'Vi har nu avslutat processen.' =>  ' We have now completed the process. ' ,
   'Vi har nu sparat din rapport. Tack för din tid!' =>  ' We now have saved your report. Thanks for your time ! ' ,
-  'Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.' =>'We would like to announce that the CV-Pages use out of cookies. The purpose of cookies is to get information such as how many people visit the site, which browser, screen resolution, and which search engine is used to find the website etc. This is to improve the site.'
+  'Vi vill meddela om att CV-Pages använder sig utav cookies. Syftet med cookies är att få information om exempelvis hur många som besöker webbplatsen, vilken webbläsare,skärmupplösning, samt vilken sökmotor som används för att hitta webbplatsen o.s.v. Detta för att kunna förbättra webbplatsen.' =>'We would like to announce that the CV-Pages use out of cookies. The purpose of cookies is to get information such as how many people visit the site, which browser, screen resolution, and which search engine is used to find the website etc. This is to improve the site.',
   'Vill du visa dina uppgifter' =>  ' Do you want to show your data ' ,
   'Välj en pdf fil som innehåller ditt CV och ladda upp den här' =>  'Select a pdf file containing your resume and upload it here ' ,
   'Välj enkät' =>  'Select poll ' ,

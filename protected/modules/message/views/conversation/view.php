@@ -58,6 +58,6 @@ if($model->recruiterId== Yii::app()->user->id){
         </div>
 <script>
     $(document).ready(function(){
-        setTimeout(chatUpdateTime(<?=$to->id;?>), 1000);
+        setTimeout(chatUpdateTime(<?=$to->id;?>,<?=$model->id;?>), 1000);
     });
 </script>

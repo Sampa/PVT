@@ -1,17 +1,20 @@
 
-function chatUpdateTime(toid){
+function chatUpdateTime(toid,conversationid){
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "message/inbox/getUnreadMessages",
         data: {
-            receiver_id : toid
+            receiver_id : toid,
+            conversation_id: conversationid
         }
     }).done(function(data){
         if(data.status=="ok"){
-            $("#chatUl"+toid).append(data.html);
+            $("#chatUl"+conversationid).append(data.html);
+//            alert(data.html);
+        }else{
         }
-        setTimeout(chatUpdateTime(toid), 2000);
+        setTimeout(chatUpdateTime(toid,conversationid), 2000);
     });
 }
 $(".chatHistoryToggle").on('click',function(){

@@ -112,8 +112,9 @@ return array(
                     'charset' => 'UTF8',
                     'tablePrefix' => '',
                     'emulatePrepare' => true,
-                    //   'enableProfiling' => true,
-                    'schemaCacheID' => 'cache',
+                       'enableProfiling' => true,
+                    'enableParamLogging'=>true,
+                       'schemaCacheID' => 'cache',
                     'schemaCachingDuration' => 3600
                 ),
 
@@ -155,8 +156,8 @@ return array(
         'replyEmail' => 'reply-to@gmail.com',
         'myEmail' => 'pvtgroup1@gmail.com',
         'gmail_password' => 'pvtdsv123',
-        'recaptcha_private_key' => '6LeLoPQSAAAAABJzDEE5DtcDvnbYgU-uiwNPdKEZ', // captcha will not work without these keys!
-        'recaptcha_public_key' => '6LeLoPQSAAAAAGSPRa6a27K3kJOI90Oymvyxf3MO', //http://www.google.com/recaptcha
+        'recaptcha_private_key' => '6LdOYvESAAAAAAsO6Dlf1C2LpYERG5jxa8dKp1My', // captcha will not work without these keys!
+        'recaptcha_public_key' => '6LdOYvESAAAAAKb_Xcwy86UoSs6XDe0Qj4D9NdV3', //http://www.google.com/recaptcha
         'contactRequireCaptcha' => true,
 		'metaTags'=>array(
 			'city',

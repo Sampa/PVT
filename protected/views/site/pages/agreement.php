@@ -12,7 +12,7 @@ $this->breadcrumbs = array(
           Detta innebär att det endast är CV:n som får laddas upp av publicerare. Vid missbruk kan ditt konto komma att stängas av.")?>
             </p>
 
-        <p id="texts"><?php echo t("CV-Pages förbehåller sig rätten att undanhålla och ta bort material som finns på ditt konto,utan förhandsbesked,
+        <p id="texts"><?php echo t("CV-Pages förbehåller sig rätten att undanhålla och ta bort material som finns på ditt konto, utan förhandsbesked,
                 om CV-Pages anser att materialet strider mot detta avtal. CV-Pages har inga skyldigheter att förvara, spara eller förse med kopior av material
                 som du tillhandahåller när du använder CV-Pages tjänster.")?>
          </p>

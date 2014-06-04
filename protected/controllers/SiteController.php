@@ -96,33 +96,38 @@ class SiteController extends Controller
     public function actionRegister()
     {
         if(!Yii::app()->user->isGuest) //redirect if logged in (can be changed later)
-            $this->redirect(bu() . '/cv/admin');
+            $this->redirect(bu() . '/user/'.user()->id);
         $model = new RegisterForm();
 
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
-            echo CActiveForm::validate($model, array('username', 'password','new_password', 'password_confirm','verify_code','accepted'));
+            echo CActiveForm::validate($model,
+                array('username', 'password','new_password', 'password_confirm','accepted'));
             Yii::app()->end();
         }
 
         if (isset($_POST['RegisterForm'])) {
             $model->attributes = $_POST['RegisterForm'];
-            if ($model->validate(array('email', 'username', 'new_password', 'password_confirm','verify_code','accepted'))) {
+            if ($model->validate()) {
                 $user = new User();
                 $user->email = $_POST['RegisterForm']['email'];
                 $user->username = $_POST['RegisterForm']['username'];
                 $user->password = $_POST['RegisterForm']['new_password'];
                 $user->name = $_POST['RegisterForm']['fullname'];
                 $user->notify = $_POST['RegisterForm']['notify'];
-                if ($user->save()) {
+                if ($user->validate()) {
+                    $foo = false;
                     if($_POST['RegisterForm']['other_checkbox'] === "1"){
                         $recruiterModel = new Recruiter();
                         $recruiterModel->userId = $user->id;
                         $recruiterModel->orgName = $_POST['RegisterForm']['Companyname'];
                         $recruiterModel->VAT = $_POST['RegisterForm']['VAT'];
-                        if($recruiterModel->validate())
+                        if($recruiterModel->validate()){
                             $recruiterModel->save();
+                        }else{
+                            $foo = true;
+                        }
                     }
-                    //send email     activation key has been generated on beforeValidate function in User class
+//                    send email     activation key has been generated on beforeValidate function in User class
                     $activation_url = $this->createAbsoluteUrl('/site/activate', array('key' => $user->activation_key, 'email' => $user->email));
 
                     if (sendHtmlEmail(
@@ -133,8 +138,7 @@ class SiteController extends Controller
                         array('username' => $user->username, 'activation_url' => $activation_url),
                         'activation',
                         'main2'
-                    )
-                    ) {
+                    )){
                         $msg = Yii::t('register', 'Vänligen kontrollera din e-post efter ett mail med en aktiveringslänk. Den är giltig i 24 timmar.');
                         Yii::app()->user->setFlash('success', $msg);
                         $this->redirect(bu() . '/site/login');
@@ -147,7 +151,6 @@ class SiteController extends Controller
                 }
             }
         }
-
         $this->render('register', array('model' => $model));
     }
 
@@ -344,9 +347,18 @@ class SiteController extends Controller
                 $cv = new Cv;
                 $cv->hasGeoArea = true;
                 if($i < 10001){ 
-                    // $cvArea = CvArea::model()->findByPk(30);                       
-                    // $cvArea->save();
-                    
+                    $geo = new GeograficArea;
+                    $geo->country  = "Sweden";
+                    $geo->region  = "Gotland";
+                    $geo->city = "Gotland";
+                    if(!$geo->save()){
+                        die();
+                    }
+                    $cvArea = new CvArea();
+                    $cvArea->cvId = $cv->id;
+                    $cvArea->AreaId = $geo->id;
+                    $cvArea->save();
+
                     $cv->pdfText = "Javautvecklare
 
                     Om jobbet

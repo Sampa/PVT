@@ -81,13 +81,13 @@ $this->breadcrumbs = array(
             </div>
         </div>
     </div>
-        <?php if ($model->getRequireCaptcha()) : ?>
-            <?php $this->widget('application.extensions.recaptcha.EReCaptcha',
-                array('model' => $user, 'attribute' => 'verify_code',
-                    'theme' => 'red', 'language' => 'en',
-                    'publicKey' => Yii::app()->params['recaptcha_public_key']));?>
-            <?php echo CHtml::error($model, 'verify_code'); ?>
-        <?php endif; ?>
+<!--        --><?php //if ($model->getRequireCaptcha()) : ?>
+<!--            --><?php //$this->widget('application.extensions.recaptcha.EReCaptcha',
+//                array('model' => $user, 'attribute' => 'verify_code',
+//                    'theme' => 'red', 'language' => 'en',
+//                    'publicKey' => Yii::app()->params['recaptcha_public_key']));?>
+<!--            --><?php //echo CHtml::error($model, 'verify_code'); ?>
+<!--        --><?php //endif; ?>
         <?php $this->endWidget(); ?>
     </div>
 </div>

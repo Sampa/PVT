@@ -6,9 +6,6 @@ $this->breadcrumbs = array(
     );
     ?>
     <div class="container page-min-height">
-        <div class="page-header">
-            <h1><?php echo Yii::t("t", "Registrera dig här");?> </h1>
-        </div>
         <div class="horizontal-form">
             <?php $form = $this->beginWidget('CActiveForm', array(
                 'enableAjaxValidation'=>true,
@@ -34,11 +31,7 @@ $this->breadcrumbs = array(
                                 <p class="note"><?php echo Yii::t("t", "Fält markerade med");?> <span class="required">*</span> <?php echo Yii::t("t", "är obligatoriska");?>.</p>
                             </div>
                         </div>
-                        <div class="col-lg-5  has-error">
-                            <div class="help-block ">
-                                <?php echo $form->errorSummary($model); ?>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <?php echo $form->labelEx($model, 'fullname', array('class' => 'col-lg-3 control-label')); ?>
@@ -128,7 +121,8 @@ $this->breadcrumbs = array(
                 <div class="col-lg-5 col-lg-offset-3">
                     <?php echo CHtml::activeLabel($model, 'verify_code'); ?>
                     <?php $this->widget('application.extensions.recaptcha.EReCaptcha',
-                        array('model' => $model, 'attribute' => 'verify_code',
+                        array('model' => $model,
+                              'attribute' => 'verify_code',
                             'theme' => 'red',
                             'language' => 'sv',
                             'publicKey' => Yii::app()->params['recaptcha_public_key']));?>

@@ -346,6 +346,8 @@ return array (
   ' Flerval' => ' Multiple choice',
   ' Enkelval' => ' Single choice',
   'Avsluta guiden' => 'Close guide',
+  'Ingen har besvarat enkäten ännu. ' => 'None have answered the survey yet. ',
+  ' personer' => ' persons',
   'Namnge din enkät' => 'Name your survey',
   0 =>  0 ,
 );

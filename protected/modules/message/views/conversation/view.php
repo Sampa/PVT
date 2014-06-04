@@ -28,6 +28,8 @@ if($model->recruiterId== Yii::app()->user->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
                     }elseif($message->sender_id == user()->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));
+                    }else{
+                        echo "fuck";
                     }
                 endforeach;
                 ?>
@@ -48,6 +50,7 @@ if($model->recruiterId== Yii::app()->user->id){
 	               id="btn-chat<?= $model->id; ?>"
                    data-url="<?=Yii::app()->baseUrl;?>/message/conversation"
                    data-content="<?=$model->id;?>"
+                   data-receiver="<?=$to->id;?>"
                    class="col-md-2 col-lg-2 col-sm-2 btn-warning btn sendChatMessage"
                    name="<?= $to->getFullName(); ?>"
                    value="<?=t("Skicka");?>"

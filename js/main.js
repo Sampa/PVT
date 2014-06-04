@@ -110,12 +110,12 @@ jQuery(document).ready(function(){
     /*skicka nytt chat meddelande*/
     $(".sendChatMessage").on("click", function (event) {
         event.preventDefault();
-        var id = $(this).attr("");
+        var id = $(this).attr("data-receiver");
         var conversationId = $(this).attr("data-content");
-        id = conversationId;//id.replace("btn-chat", "");
+//        id = conversationId;//id.replace("btn-chat", "");
         var message = $("#Message_body" + id).val();
-        if(message.length < 1)
-            return;
+//        if(message.length < 1)
+//            return;
         $.ajax({
             "type": "POST",
             "url": $(this).attr("data-url"),

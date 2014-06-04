@@ -21,7 +21,7 @@ $this->breadcrumbs = array(
                 <p>
                     <?php 
                          $this->widget('ext.Yiinior.Yiinior', array(
-                        'video'=>Yii::app()->baseUrl."/video/SkapaCv.mov", //if you don't use playlist
+                        'video'=>Yii::app()->baseUrl."/video/SkapaCv.mp4", //if you don't use playlist
                          //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                          'id' => 'yiinior',
                         'autoplay'=>false,
@@ -47,17 +47,17 @@ $this->breadcrumbs = array(
         </div>
         <div class="col-md-4 col-md-6 col-md-4">
             <p>
-                <?php  
-                    $this->widget('ext.Yiinior.Yiinior', array(
-                    'video'=>Yii::app()->baseUrl."/video/Sokning.mov", //if you don't use playlist
-                    //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
-                    'id' => 'yiinior',
-                    'autoplay'=>false,
-                    'width'=>384, 
-                    'height'=>216,
-                    'bgcolor'=>'#000'
-                    ));    
-                 ?>
+                <?php 
+                         $this->widget('ext.Yiinior.Yiinior', array(
+                        'video'=>Yii::app()->baseUrl."/video/Sokning.mp4", //if you don't use playlist
+                         //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
+                         'id' => 'yiinior',
+                        'autoplay'=>false,
+                        'width'=>384, 
+                        'height'=>216,
+                        'bgcolor'=>'#000'
+                         ));
+                     ?>
          </p>
      </div>
  </div>
@@ -77,7 +77,7 @@ $this->breadcrumbs = array(
     <p>
                      <?php  
                     $this->widget('ext.Yiinior.Yiinior', array(
-                    'video'=>Yii::app()->baseUrl."/video/rekryteringsprocess.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/rekryteringsprocess.mp4", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiinior',
                     'autoplay'=>false,
@@ -105,7 +105,7 @@ $this->breadcrumbs = array(
     <p>
   <?php  
                     $this->widget('ext.Yiinior.Yiinior', array(
-                    'video'=>Yii::app()->baseUrl."/video/registrera_sig.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/registrera_sig.mp4", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiinior',
                     'autoplay'=>false,
@@ -152,7 +152,7 @@ $this->breadcrumbs = array(
         <p>
           <?php  
                     $this->widget('ext.Yiinior.Yiinior', array(
-                    'video'=>Yii::app()->baseUrl."/video/hotlist.mov", //if you don't use playlist
+                    'video'=>Yii::app()->baseUrl."/video/hotlist.mp4", //if you don't use playlist
                     //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                     'id' => 'yiinior',
                     'autoplay'=>false,
@@ -182,19 +182,10 @@ $this->breadcrumbs = array(
                 </p>
             </div>
             <div class="col-xs-4 col-sm-6 col-md-4">
-                <p>
-                    <?php 
-                         $this->widget('ext.Yiippod.Yiippod', array(
-                        'video'=>Yii::app()->baseUrl."/video/SkapaCv.mov", //if you don't use playlist
-                        //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
-                        'id' => 'yiippodplayer',
-                        'autoplay'=>false,
-                        'width'=>384,
-                        'view'=>6, 
-                        'height'=>216,
-                        'bgcolor'=>'#000'
-                        ));
-                     ?>
+                <p>  
+                     <video width="320" height="240" controls>
+                 <source src= "<?php Yii::app()->baseUrl?>/video/SkapaCV.mp4" type="video/mp4">
+                 </video>
              </p>
          </div>
      </div>
@@ -212,18 +203,9 @@ $this->breadcrumbs = array(
         </div>
         <div class="col-xs-4 col-sm-6 col-md-4">
             <p>
-                <?php  
-                    $this->widget('ext.Yiippod.Yiippod', array(
-                        'video'=>Yii::app()->baseUrl."/video/Sokning.mov", //if you don't use playlist
-                        //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
-                        'id' => 'yiippodplayer',
-                        'autoplay'=>false,
-                        'width'=>384,
-                        'view'=>6, 
-                        'height'=>216,
-                        'bgcolor'=>'#000'
-                        ));    
-                 ?>
+                <video width="320" height="240" controls>
+                 <source src= "<?php Yii::app()->baseUrl?>/video/Sokning.mp4" type="video/mp4">
+                 </video>
          </p>
      </div>
  </div>
@@ -241,18 +223,9 @@ $this->breadcrumbs = array(
         </div>
 <div class="col-xs-4 col-sm-6 col-md-4">
     <p>
-                     <?php  
-                        $this->widget('ext.Yiippod.Yiippod', array(
-                        'video'=>Yii::app()->baseUrl."/video/rekryteringsprocess.mov", //if you don't use playlist
-                        //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
-                        'id' => 'yiippodplayer',
-                        'autoplay'=>false,
-                        'width'=>384,
-                        'view'=>6, 
-                        'height'=>216,
-                        'bgcolor'=>'#000'
-                        ));   
-                 ?>
+                  <video width="320" height="240" controls>
+                 <source src= "<?php Yii::app()->baseUrl?>/video/rekryteringsprocess.mp4" type="video/mp4">
+                 </video>
  </p>
 </div>
 </div>
@@ -270,18 +243,9 @@ $this->breadcrumbs = array(
     </div>
     <div class="col-xs-4 col-sm-6 col-md-4">
     <p>
-  <?php  
-                   $this->widget('ext.Yiippod.Yiippod', array(
-                        'video'=>Yii::app()->baseUrl."/video/registrera_sig.mov", //if you don't use playlist
-                        //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
-                        'id' => 'yiippodplayer',
-                        'autoplay'=>false,
-                        'width'=>384,
-                        'view'=>6, 
-                        'height'=>216,
-                        'bgcolor'=>'#000'
-                    ));    
-                 ?>
+        <video width="320" height="240" controls>
+                 <source src= "<?php Yii::app()->baseUrl?>/video/registrera_sig.mp4" type="video/mp4">
+                 </video>
     </p>
     </div>
 </div>
@@ -318,18 +282,9 @@ $this->breadcrumbs = array(
 
         <div class="col-xs-4 col-sm-6 col-md-4">
         <p>
-          <?php  
-                    $this->widget('ext.Yiippod.Yiippod', array(
-                        'video'=>Yii::app()->baseUrl."/video/hotlist.mov", //if you don't use playlist
-                        //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
-                        'id' => 'yiippodplayer',
-                        'autoplay'=>false,
-                        'width'=>384,
-                        'view'=>6, 
-                        'height'=>216,
-                        'bgcolor'=>'#000'
-                    ));    
-                 ?>
+          <video width="320" height="240" controls>
+                 <source src= "<?php Yii::app()->baseUrl?>/video/hotlist.mp4" type="video/mp4">
+                 </video>
         </p>
         </div>
     </div>

@@ -20,7 +20,7 @@
                   );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
-	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t",'Skapa nytt CV'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
 	                    array('label' => Yii::t("t",'Mina CV:n'), 'url' => array('/cv/admin'),'visible'=>!Yii::app()->user->isGuest,),
 	                );
                 }else{

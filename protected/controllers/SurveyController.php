@@ -213,6 +213,9 @@ class SurveyController extends Controller
             foreach($model->surveyQuestions as $key=>$question){
                 $question->delete();
             }
+            foreach($model->surveyCandidates as $key=>$candidate){ 
+            	$candidate->delete(); 
+            }
             $model->delete();
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if (!isset($_GET['ajax'])) {

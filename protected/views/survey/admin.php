@@ -25,25 +25,29 @@ $this->pageTitle = Yii::app()->name . t(' - Enkäter');
 				<th><?php echo Yii::t('t','Titel');?></th>
 				<th><?php echo Yii::t('t','Datum');?></th>
 				<th><?php echo Yii::t('t','Svarsfrekvens');?></th>
+				<th><?php echo Yii::t('t','Ta bort');?></th>
 			</tr>
 			<?php
 			foreach($allModels as $model){
 						?>
-					<tr class="onClick" id="<?php echo $model->id;?>">
-						<td><?php
+					<tr id="<?php echo $model->id;?>">
+						<td class="onClick"><?php
 						echo substr($model->title, 0,30);
 						?>
 						</td>
-						<td>
+						<td class="onClick">
                             <?php echo $model->date;?>
 						</td>
-						<td>
+						<td class="onClick">
 							<?php
                                 echo $model->numberOfResponses();
                                 echo " ".t("av")." ";
                                 echo $model->numberOfCandidates();
                             ?>
 						</td>
+						<td style='text-align:center;'>
+                			<a href =""; return false;> <span id="<?php echo $model->id?>" value="<?php echo $model->id?>" class="glyphicon glyphicon-trash deleteSurvey"></span> </a>
+            			</td>
                 	</tr>
                 <?php
             }
@@ -58,7 +62,23 @@ $this->pageTitle = Yii::app()->name . t(' - Enkäter');
 <script>
 $(".onClick").on("click",function(event){
     event.preventDefault();
-    window.document.location ='view/'+$(this).attr("id");
+    window.document.location ='view/'+$(this).parent().attr("id");
 });
+</script>
+
+<script>
+$(".deleteSurvey").on("click",function(event){
+    event.preventDefault();
+
+    var deleteSur=$(this).attr("id");
+        $.ajax({
+            type: "POST",
+            dataType:"json",
+            data: {id:deleteSur},
+            url: "delete/"+deleteSur
+        })
+        window.document.location ='admin';
+    });
+
 </script>
 

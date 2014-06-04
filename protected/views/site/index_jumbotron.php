@@ -147,11 +147,18 @@ else{ ?>
         <div class="container">
             <div class='col-md-6'>
                 <h2><?php echo t('Om Oss')?></h2>
-                <p><?php echo Yii::t("t", "Vår affärside går ut på att presentera en publik gemensam databas för cv:n oavsett vilken branch du är intresserad av eller proffessionell inom. Vi erbjuder arbetssökande att publicera sitt CV anonymt för att garantera att du bara bedöms på dina meriter. Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du är personligt ansvarig för att skydda dessa uppgifter.");?> <br><br> </p>
+                <p><?php echo Yii::t("t", "Vår affärside går ut på att presentera en publik databas för CV:n oavsett
+                 vilken branch du är intresserad av eller proffessionell inom. 
+                Vi erbjuder arbetssökande att publicera sitt CV anonymt för att garantera att du bara bedöms på dina meriter. 
+                Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du 
+                är personligt ansvarig för att skydda dessa uppgifter.");?> <br><br> </p>
             </div>
             <div  class='col-md-6' align='right'>
                 <h2><?php echo t('Anonymitet')?></h2>
-                <p><?php echo Yii::t("t", "Användarnamnet man registrerar är det som visas tillsammans med ens publicerade cv. Detta innebär att man kan ha ett namn som inte är kopplat till ens person och på så sätt vara anonym. Det är bara CV-Pages som kommer ha ditt riktiga namn och mailadress registrerat. Du får ta eget ansvar för innehållet i CV:et som ska publiceras då vi inte redigerar eller ändrar det i någon form.");?> <br><br> </p>
+                <p><?php echo Yii::t("t", "Användarnamnet man registrerar är det som visas tillsammans med ditt publicerade CV. 
+                Detta innebär att du kan ha ett namn som inte är kopplat till ens person och på så sätt vara anonym. 
+                Det är bara CV-Pages som kommer ha ditt riktiga namn och mailadress registrerat. 
+                Du får ta eget ansvar för innehållet i CV:et som ska publiceras då vi inte redigerar eller ändrar det i någon form.");?> <br><br> </p>
             </div>
         </div>
         <br>

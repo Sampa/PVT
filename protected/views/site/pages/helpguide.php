@@ -5,6 +5,7 @@ $this->breadcrumbs = array(
     Yii::t("t",'Användarguide'),
     );
     ?>
+
 <div class="container page-min-height visible-xs">
     <div class="row">
         <div class="col-md-8 col-md-6 col-md-8">

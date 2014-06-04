@@ -45,5 +45,5 @@
 				</div>
 			</div>
 		</div>
-	</td
+	</td>
 </tr><!-- end hidden table row -->

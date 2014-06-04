@@ -25,9 +25,8 @@ if($model->recruiterId== Yii::app()->user->id){
                 <?php
                 foreach ($model->messages as $message):
                     if($message->receiver_id == user()->id){
-                        echo("mottagere");
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
-                    }else{
+                    }elseif($message->sender_id == user()->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));
                     }
                 endforeach;

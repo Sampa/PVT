@@ -25,7 +25,7 @@
             <h5>
                 <?php
                 if (isset($numberOfAnswersInPercent)) {
-                   echo Yii::t("t","$numberOfAnswersInPercent% av de tillfrågade har besvarat enkäten. ($numberOfAnswers av $numberOfCandidates)");
+                   echo $numberOfAnswersInPercent.Yii::t("t","% av de tillfrågade har besvarat enkäten. ").$numberOfAnswers.t(' av ').$numberOfCandidates;
                } else {
                    echo Yii::t("t","Ingen har besvarat enkäten ännu. ($numberOfAnswers av $numberOfCandidates personer)");
                }?>

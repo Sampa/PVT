@@ -34,10 +34,10 @@ $this->breadcrumbs=array(
                     <th><?php echo Yii::t('t','Extra info');?></th>
                 </tr>
                  <tr>                  
-                    <td> <?php echo t("Sökning på flera enskilda ord utan att kräva att alla ord finns i CV:et.");?> </td>
+                    <td> <?php echo t("Sökning på ett ord som kan vara istället för tidigare sökningsord.");?> </td>
                     <td> OR</td>
-                    <td> <?php echo t('Ord1 OR Ord2 OR ord3 ...');?> </td>
-                    <td> <?php echo t("I vanliga fall visas CV:n som har alla ord. Taggen gör att den visar alla som innehåller något av orden.");?> </td>
+                    <td> <?php echo t('Ord1 OR Ord2 OR Ord3 ...');?> </td>
+                    <td> <?php echo t("I vanliga fall visas CV:n som har alla ord. Taggen gör att den visar alla som innehåller antigen det innan OR taggen eller ordet efter OR taggen.");?> </td>
                 </tr>
                 <tr>                  
                     <td> <?php echo t("Gör en sökning på en fras.");?> </td>
@@ -46,7 +46,7 @@ $this->breadcrumbs=array(
                     <td> <?php echo t("Gör en sökning på en hel fras istället för på enskilda ord.");?> </td>
                 </tr>
                 <tr>                  
-                    <td> <?php echo t("Gör en sökning på ett eller flera nyckelord");?> </td>
+                    <td> <?php echo t("Gör en sökning på ett eller flera nyckelord.");?> </td>
                     <td> tag:</td>
                     <td> tag1,tag2,tag3,tag4...</td>
                     <td> <?php echo t('Separera taggar med "," tecken för att söka på flera nyckelord.');?> </td>
@@ -55,10 +55,10 @@ $this->breadcrumbs=array(
                     <td><?php echo t("Visa alla som söker en viss anställningsform.");?> </td>
                     <td> employment: </td>
                     <td> consult OR employment </td>
-                    <td> <?php echo t("Finns bara två typer av inmatning.");?></td>
+                    <td> <?php echo t("Det finns bara två typer av inmatning.");?></td>
                 </tr>
                 <tr>                  
-                    <td><?php echo t("Visar alla CV:n som laddats upp ett specifikt datum.");?> </td>
+                    <td><?php echo t("Visar alla CV:n som publicerats på ett specifikt datum.");?> </td>
                     <td> date: </td>
                     <td> YYYY-MM-DD </td>
                     <td> <?php echo t(" - ");?></td>

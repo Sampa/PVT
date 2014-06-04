@@ -148,7 +148,7 @@ else{ ?>
             </a>
             <br>
             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användarguide");?></strong></h4>
-            <p class="footertext"><?php echo Yii:: t ("t", "Läs om vilka funktioner som erbjuds av CV-Pages samt hur du går tillväga för att använda dem");?>
+            <p class="footertext"><?php echo Yii:: t ("t", "Läs om vilka funktioner som erbjuds av CV-Pages samt hur du går tillväga för att använda dem.");?>
                 <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide"><?php echo t('Läs mer')?></a><br>
         </div>
         <div class="col-md-3">
@@ -157,8 +157,7 @@ else{ ?>
                 </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
-                <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast
-                    till jobbrekryteringar och får inte användas i andra avseenden. ");?>
+                <p class="footertext"><?php echo Yii:: t ("t", "CV-Pages är en webbplats avsedd att användas endast till jobbrekryteringar och får inte användas i andra avseenden.");?>
                     <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><?php echo t('Läs mer')?></a><br>
                 </center>
         </div>
@@ -168,8 +167,7 @@ else{ ?>
                 </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo Yii:: t("t","Personuppgifter");?></strong></h4>
-                <p class="footertext"><?php echo Yii:: t("t","Registrering hos CV-Pages innebär att du samtycker till att CV-Pages
-                behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).");?>
+                <p class="footertext"><?php echo Yii:: t("t","Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter enligt personuppgiftslagen (1998:204 PuL).");?>
                 <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><?php echo t('Läs mer')?></a><br>
             </center>
         </div>
@@ -180,9 +178,7 @@ else{ ?>
                 </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo YIi:: t("t","Cookies");?></strong></h4>
-                <p class="footertext"><?php echo yii:: t("t","Vi vill meddela er att CV-Pages använder sig utav cookies.
-                Syftet med cookies är att få
-                fakta om exempelvis hur många som besöker webbplatsen.");?>
+                <p class="footertext"><?php echo Yii:: t("t","Vi vill meddela er att CV-Pages använder sig utav cookies. Syftet med cookies är att få fakta om exempelvis hur många som besöker webbplatsen.");?>
                 <br><a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><?php echo t('Läs mer')?></a><br>
             </center>
         </div>

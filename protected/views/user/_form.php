@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" >
+                <div class="row form-group" style="margin:left -19px;" >
                     <?php echo $form->labelEx($rmodel, 'VAT', array('class' => 'col-lg-12 control-label')); ?>
                     <div class="col-lg-5">
                         <?php echo $form->textField($rmodel, 'VAT', array('class' => 'form-control', 'placeholder' => Yii::t("t", "Nytt VAT-nr"), 'rows' => 6, 'cols' => 50)); ?>
@@ -77,7 +77,7 @@
 
 
 
-            <div class="form-group row" style ="margin-left: 1px; clear:both;">
+            <div class="form-group row" style ="margin-left: -14px; clear:both;">
                 <?php echo $form->labelEx($model, 'notify', array('class' => 'col-lg-1 control-label')); ?>
                 <div class="col-lg-1">
                     <?php echo $form->checkBox($model, 'notify', array('id'=>'notify')); ?>

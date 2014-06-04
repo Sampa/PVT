@@ -10,7 +10,7 @@ $this->breadcrumbs = array(
         <h2><?php echo Yii::t("t", "Personuppgifter");?></h2>
         <div class="col-md-6">
             <p id="texts"><?php echo t("Registrering hos CV-Pages innebär att du samtycker till att CV-Pages behandlar dina personuppgifter
-                            enligt personuppgiftslagen (1998:204 PuL).Som personuppgifter räknas all slags information som direkt eller indirekt
+                            enligt personuppgiftslagen (1998:204 PuL). Som personuppgifter räknas all slags information som direkt eller indirekt
                             kan hänföras till dig som fysisk person till exempel personnummer och adress. Du väljer själv om du vill lämna dina
                              uppgifter till oss och har även rätt att vid behov korrigera de uppgifter som har lämnats. Vi kommer inte att lämna ut
                              dina uppgifter till tredje part utan ditt samtycke.")?></p>

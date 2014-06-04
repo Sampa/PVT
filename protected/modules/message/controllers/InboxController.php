@@ -61,11 +61,13 @@ class InboxController extends Controller
      * Hämtar de nya meddelandena för chatten (metoden körs typ varannan sekund via ett ajax scriptu
      */
     public function actiongetUnreadMessages(){
-
-		if(Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())){
-			$allUnreadMessages=Yii::app()->getModule('message')->getUnreadMessages(Yii::app()->user->getId());
+        $model = Conversation::model()->findByPk($_POST['conversation_id']);
+		if($model->messageCountPerConversation() > 0){
+			$allUnreadMessages= $model->unreadMessages;//Yii::app()->getModule('message')->getUnreadMessages(Yii::app()->user->getId());
 			$html="";
-			foreach ($allUnreadMessages as $key => $message) {
+			foreach ($allUnreadMessages as $message) {
+                if($message->is_read==1 || $message->sender_id ==user()->id)
+                    continue;
 				$message->markAsRead();
 				$html=$html.$this->renderPartial(
 					Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',
@@ -75,7 +77,7 @@ class InboxController extends Controller
 			echo json_encode(array(
 				"status"=>"ok",
 				"html"=>$html,
-				"messageCount"=>Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId())
+				"messageCount"=>$model->messageCountPerConversation(),
             ));
 		}else{
 			echo json_encode(array(

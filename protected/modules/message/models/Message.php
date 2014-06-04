@@ -341,7 +341,8 @@ class Message extends CActiveRecord
      *
      * @return CActiveRecord[]
      */public function getUnreadMessages($userId) {
-		
+
+
 		$c = new CDbCriteria();
 		$c->addCondition('t.receiver_id = :receiverId');
 		$c->addCondition('t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL');

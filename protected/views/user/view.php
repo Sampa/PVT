@@ -36,7 +36,7 @@ else{
 
 	)); ?>
 <div class="col-lg-4">
-	<p><a href="<?php echo Yii::app()->baseUrl;?>/user/update/<?php echo $model->id ?>" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Uppdatera användaruppgifter");?></a></p>
+	<p><a href="<?php echo Yii::app()->baseUrl;?>/user/update/<?php echo $model->id ?>" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Ändra användaruppgifter");?></a></p>
 </div>
 <div class="col-lg-4">
 	<p><a href="<?php echo Yii::app()->baseUrl;?>/cv/create" class="btn btn-info btn-btn btn-block" href="#"><?php echo Yii::t("t","Ladda upp nytt CV");?></a></p>

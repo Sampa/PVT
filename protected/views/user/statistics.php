@@ -10,7 +10,6 @@ $this->breadcrumbs=array(
     <div class="panel-heading">
         <h3><?php echo Yii::t('t','Statistik över CV-Pages');?></h3>
     </div>
-    <h3> <?php echo Yii::t('t',' Antal CV:n i databasen = ');?> <?php echo $dataProviderCv->getTotalItemCount();?> </h3>
     <div>
         <h3> <?php echo Yii::t('t',' Antal sökningar per dag. Fördelat på roll.');?> </h3>
         <div id="searchHistory" style="height: 300px;"></div>
@@ -28,6 +27,8 @@ $this->breadcrumbs=array(
         <h3> <?php echo Yii::t('t',' Antal registrerade publicerare jämfört med antal rekryterare');?> </h3>
         <div id="searchWordsDonut" style="height: 300px;"></div>
     </div>
+    <br>
+    <h3> <?php echo Yii::t('t',' Antal CV:n i databasen = ');?> <?php echo $dataProviderCv->getTotalItemCount();?> </h3>
 </div>
 <script>
     new Morris.Line({

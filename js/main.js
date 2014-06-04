@@ -1,20 +1,38 @@
 
-function chatUpdateTime(toid){
+function chatUpdateTime(toid,conversationid){
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "message/inbox/getUnreadMessages",
         data: {
-            receiver_id : toid
+            receiver_id : toid,
+            conversation_id: conversationid
         }
     }).done(function(data){
         if(data.status=="ok"){
-            $("#chatUl"+toid).append(data.html);
+            $("#chatUl"+conversationid).append(data.html);
+//            alert(data.html);
+        }else{
         }
-        setTimeout(chatUpdateTime(toid), 2000);
-
+        setTimeout(chatUpdateTime(toid,conversationid), 2000);
     });
 }
+$(".chatHistoryToggle").on('click',function(){
+    var id=$(this).attr("href");
+    $(id).slideToggle();
+
+    var iconElement = $(this).children("span");
+    if(iconElement.hasClass("up")){
+        iconElement.removeClass("up");
+        iconElement.removeClass("glyphicon-arrow-up");
+        iconElement.addClass("glyphicon-arrow-down");
+    }else{
+        iconElement.removeClass("glyphicon-arrow-up");
+        iconElement.addClass("up");
+        iconElement.addClass("glyphicon-arrow-down");
+    }
+});
+
 //getting country/region/city
 (function(window,$,undefined){
     var target = $("#geoCity");
@@ -95,6 +113,9 @@ jQuery(document).ready(function(){
         var id = $(this).attr("id");
         var conversationId = $(this).attr("data-content");
         id = id.replace("btn-chat", "");
+        var message = $("#Message_body" + id).val();
+        if(message.length < 1)
+            return;
         $.ajax({
             "type": "POST",
             "url": $(this).attr("data-url"),

@@ -1,27 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "Conversation".
+ * This is the model class for table "SearchHistory".
  *
- * The followings are the available columns in table 'Conversation':
+ * The followings are the available columns in table 'SearchHistory':
  * @property integer $id
- * @property integer $recruiterId
- * @property integer $publisherId
- * @property string $title
  * @property string $date
- *
- * The followings are the available model relations:
- * @property User $publisher
- * @property Recruiter $recruiter
+ * @property string $role
+ * @property integer $numberOfSearches
  */
-class Conversation extends CActiveRecord
+class SearchHistory extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'Conversation';
+		return 'SearchHistory';
 	}
 
 	/**
@@ -32,9 +27,11 @@ class Conversation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('date, role, numberOfSearches', 'required'),
+			array('numberOfSearches', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, recruiterId, publisherId, title, date', 'safe', 'on'=>'search'),
+			array('id, date, role, numberOfSearches', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,13 +43,6 @@ class Conversation extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'publisher' => array(self::BELONGS_TO, 'User', 'publisherId'),
-			'recruiter' => array(self::BELONGS_TO, 'Recruiter', 'recruiterId'),
-            'messages' => array(self::HAS_MANY, 'Message','conversationId',
-                'order'=>"messages.created_at" ),
-            'unreadMessages' => array(self::HAS_MANY, 'Message','conversationId',
-                'order'=>"unreadMessages.created_at",
-            ),
 		);
 	}
 
@@ -63,10 +53,9 @@ class Conversation extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'recruiterId' => 'Recruiter',
-			'publisherId' => 'Publisher',
-			'title' => 'Title',
 			'date' => 'Date',
+			'role' => 'Role',
+			'numberOfSearches' => 'Number Of Searches',
 		);
 	}
 
@@ -89,10 +78,9 @@ class Conversation extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('recruiterId',$this->recruiterId);
-		$criteria->compare('publisherId',$this->publisherId);
-		$criteria->compare('title',$this->title,true);
 		$criteria->compare('date',$this->date,true);
+		$criteria->compare('role',$this->role,true);
+		$criteria->compare('numberOfSearches',$this->numberOfSearches);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -103,27 +91,10 @@ class Conversation extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Conversation the static model class
+	 * @return SearchHistory the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-    public function messageCountSent(){
-        return Message::model()->count("conversationId=:cId AND sender_id=:sId",array("cId"=>$this->id,"sId"=>user()->id));
-    }
-    public function messageCountReceived(){
-        return Message::model()->count("conversationId=:cId AND receiver_id=:sId",array("cId"=>$this->id,"sId"=>user()->id));
-    }
-    public function messageCountTotal(){
-        return Message::model()->count("conversationId=:cId",array("cId"=>$this->id));
-    }
-    public function messageCountPerConversation(){
-        return Message::model()->count("conversationId=:cId AND is_read=:ir", array("cId"=>$this->id,"ir"=>1));
-
-
-
-      // return app()->userId->conversationId;
-      // $allUnread= MessageModule::model()->getUnreadMessages(app()->userId);
-    }
-  }
+}

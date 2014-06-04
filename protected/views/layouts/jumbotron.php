@@ -20,7 +20,7 @@
                   );
                 }else if(Yii::app()->user->getState("role")== "publisher"){
 	                $items = array(
-	                    array('label' => Yii::t("t",'Skapa nytt cv'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
+	                    array('label' => Yii::t("t",'Skapa nytt CV'), 'url' => array('/cv/create'),'visible'=>!Yii::app()->user->isGuest,),
 	                    array('label' => Yii::t("t",'Mina CV:n'), 'url' => array('/cv/admin'),'visible'=>!Yii::app()->user->isGuest,),
 	                );
                 }else{
@@ -246,21 +246,27 @@
                     </div>
                     <div class="col-md-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains"></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">
+                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-book"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
                         </center>
                     </div>
                     <div class="col-md-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="..."></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">
+                        <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-folder-open"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></h4>
                         </center>
                     </div>
                     <div class="col-md-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="..."></a>
+                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">
+                            <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-info-sign"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Cookies");?></strong></h4>
                         </center>
@@ -275,30 +281,36 @@
                 <div class="row">
                     <br>
                     <div class="col-md-3" align="center">
-                        <a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide">
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide">
                             <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
-                        </a>
-                        <br>
+                            </a>
+                            <br>
                         <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användarguide");?></strong></h4>
 
                     </div>
                     <div class="col-xs-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains"></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">
+                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-book"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
                         </center>
                     </div>
                     <div class="col-xs-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="..."></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">
+                            <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-folder-open"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></h4>
                         </center>
                     </div>
                     <div class="col-xs-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="..."></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">
+                            <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-info-sign"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Cookies");?></strong></h4>
                         </center>
@@ -324,25 +336,4 @@
         }, 2000);
         });
     });
-</script>
-<script>
-    //’secret’ specifies the numerical keystrokes that make up the word “mario”
-var secret = "7765827379";
-var input = "";
-var timer;
-//The following function sets a timer that checks for user input. You can change the variation in how long the user has to input by changing the number in ‘setTimeout.’ In this case, it’s set for 500 milliseconds or ½ second.
-$(document).keyup(function(e) {
-   input += e.which;
-   clearTimeout(timer);
-   timer = setTimeout(function() { input = ""; }, 200);
-   check_input();
-});
-//Once the time is up, this function is run to see if the user’s input is the same as the secret code
-function check_input() {
-    if(input == secret) {
-        // window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/mario/mario.php";
-        window.document.location = "<?php echo Yii::app()->baseurl; ?>" +"/FullScreenMario/mario.html";
-        //the code used to reveal mario and the world is then put here
-    }
-};
 </script>

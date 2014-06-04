@@ -119,6 +119,7 @@
 else{ ?>
 <!-- /carousel -->
 
+
 <div class="container visible-md visible-lg">
     <center>
         <h2 id="logo-text"><?php echo Yii::t("t","CV-PAGES");?></h2>
@@ -138,9 +139,21 @@ else{ ?>
         <?php } ?>
     </center>
 </div>
+
                 <?php } ?>
+
 <div class="container">
     <div class="row">
+        <div class="container">
+            <div class='col-md-6'>
+                <h2><?php echo t('Om Oss')?></h2>
+                <p><?php echo Yii::t("t", "Vår affärside går ut på att presentera en publik gemensam databas för cv:n oavsett vilken branch du är intresserad av eller proffessionell inom. Vi erbjuder arbetssökande att publicera sitt CV anonymt för att garantera att du bara bedöms på dina meriter. Personliga och känsliga uppgifter som du som publicerare placerar i dina cv-filer skyddas inte av oss utan du är personligt ansvarig för att skydda dessa uppgifter.");?> <br><br> </p>
+            </div>
+            <div  class='col-md-6' align='right'>
+                <h2><?php echo t('Anonymitet')?></h2>
+                <p><?php echo Yii::t("t", "Användarnamnet man registrerar är det som visas tillsammans med ens publicerade cv. Detta innebär att man kan ha ett namn som inte är kopplat till ens person och på så sätt vara anonym. Det är bara CV-Pages som kommer ha ditt riktiga namn och mailadress registrerat. Du får ta eget ansvar för innehållet i CV:et som ska publiceras då vi inte redigerar eller ändrar det i någon form.");?> <br><br> </p>
+            </div>
+        </div>
         <br>
         <div class="col-md-3" align="center">
             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/helpguide">
@@ -153,7 +166,8 @@ else{ ?>
         </div>
         <div class="col-md-3">
             <center>
-                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">
+                    <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-book"></i></button>
                 </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
@@ -163,7 +177,8 @@ else{ ?>
         </div>
         <div class="col-md-3">
             <center>
-                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">
+                    <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-folder-open"></i></button>
                 </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo Yii:: t("t","Personuppgifter");?></strong></h4>
@@ -174,7 +189,8 @@ else{ ?>
 
         <div class="col-md-3">
             <center>
-                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">
+                    <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-info-sign"></i></button>
                 </a>
                 <br>
                 <h4 class="footertext"><strong><?php echo YIi:: t("t","Cookies");?></strong></h4>

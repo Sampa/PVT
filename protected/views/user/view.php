@@ -14,8 +14,7 @@ if(Yii::app()->user->id ==1){
 else{
 	$this->breadcrumbs=array(
 		t("Hem")=> Yii::app()->getHomeUrl(),
-		t('Användare'),
-  		$model->name,
+		t('Mina Sidor'),
 	);
 }
 ?>
@@ -54,7 +53,7 @@ else{
 	    'data'=>$model,
 		'attributes'=>array(
 			'username',
-			'fullname',
+			'name',
 			'email',
 			array(
 			'label' => t('Företagsnamn'),

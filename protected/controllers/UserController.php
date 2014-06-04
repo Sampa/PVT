@@ -221,27 +221,16 @@ class UserController extends Controller
 			$dataProviderUsersToday['recruiter'] = User::model()->with("recruiter")->findAll($criteria);
 
 			// Hämta antalet sökningar den senaste veckan.
-        	$dataProviderDates = array();
-        	$dataProviderSearchHistoryGuest = array();
-        	$dataProviderSearchHistoryPublisher = array();
-        	$dataProviderSearchHistoryRecruiter = array();
+        	$dataProviderDates = $dataProviderSearchHistoryGuest = $dataProviderSearchHistoryPublisher = $dataProviderSearchHistoryRecruiter = array();
         	$rolesArray = array("guest", "recruiter", "publisher");
 	        for ($days = 0; $days < 7; $days++) {
 	            $dataProviderDates[$days] = date('Y-m-d', strtotime("-$days days"));
-	            //print "Soker efter datumet ".$dataProviderDates[$days]."<br>";
-	           	//print "Gar igenom alla roller. <br>"; 
 	            for ($roles = 0; $roles < 3 ; $roles++) {
 	            	$criteria = new CDbCriteria;
 	            	$criteria->compare('date', $dataProviderDates[$days]);
 	            	$criteria->compare('role', $rolesArray[$roles]);
 	            	$model = SearchHistory::model()->find($criteria);
-	            	if (!isset($model)) {
-	            		//print "Ingen träff.<br>";
-	            		$numberOfSearches = 0;
-	            	}else {
-	            		$numberOfSearches = $model->numberOfSearches;
-	            		//print "Traff med ".$numberOfSearches." sokningar for ". $rolesArray[$roles]. "<br>";
-	            	}
+	            	$numberOfSearches = (isset($model) ? $model->numberOfSearches : 0);
 	            	switch ($rolesArray[$roles]) {
 	            		case 'guest':
 	            			$dataProviderSearchHistoryGuest[$days] = $numberOfSearches;
@@ -251,8 +240,6 @@ class UserController extends Controller
 	            			break;
 	            		case 'publisher':
 	            			$dataProviderSearchHistoryPublisher[$days] = $numberOfSearches;
-	            			break;
-	            		default:
 	            			break;
 	            	}
 	            }

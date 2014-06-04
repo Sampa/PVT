@@ -21,7 +21,7 @@ $this->breadcrumbs = array(
                 <p>
                     <?php 
                          $this->widget('ext.Yiinior.Yiinior', array(
-                        'video'=>Yii::app()->baseUrl."/video/SkapaCv.mp4", //if you don't use playlist
+                        'video'=>Yii::app()->baseUrl."/video/SkapaCV.mp4", //if you don't use playlist
                          //'video'=>"http://www.youtube.com/watch?v=qD2olIdUGd8", //if you use playlist
                          'id' => 'yiinior',
                         'autoplay'=>false,

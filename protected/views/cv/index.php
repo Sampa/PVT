@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
                 <span class="glyphicon glyphicon-info-sign infoBox"></span>
             </div>
         </div>
-        <div class="panel panel-info" id = "metaTagInfo">
+        <div class="panel panel-info" id = "metaTagInfo" style="display: none;">
             <!-- Default panel contents -->
             <div class="panel-heading">
                 <h3><?php echo Yii::t('t','Information om sökning');?></h3>
@@ -105,7 +105,6 @@ $this->breadcrumbs=array(
 
     <div style="margin-top:15px;">
         <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>
-
     </div>
 </form>
 <!--Visa bara sorteringsknappar efter sökning -->
@@ -163,7 +162,7 @@ if($resultCount< 1):?>
 </div>
 
 <div class="modal fade" id="hotlistModal" tabindex="-1" role="dialog" aria-labelledby="hotlistTargetLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog">3
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

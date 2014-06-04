@@ -6,6 +6,13 @@
 ?>
 <?php $this->renderPartial("_view",array("data"=>$model));?>
 
+<div id="statement" style="display:none;">
+    <p><?=t("Din klient saknar pdf plugin, ");?>
+        <a href="http://pvt.dsv.su.se/Group1<?=$model->pathToPdf;?>">
+            <?=t("klicka här för att ladda ner pdf:en istället");?>
+        </a>
+    </p>
+</div>
 <!-- diven som pdf:en kommer laddas in/visas i)-->
 <div id="pdf<?php echo $model->id;?>" class="embeddedPdf col-md-12 col-lg-12 col-sm-6"></div>
 <span class="clearfix"></span>
@@ -72,8 +79,22 @@
 </style>
 <script>
     window.onload = function (){
+        var msg;
+        var s = document.getElementById("statement");
         var id = <?=$model->id;?>;
-        id = new PDFObject({
-            url: "http://pvt.dsv.su.se/Group1<?=$model->pathToPdf;?>" }).embed("pdf<?=$model->id;?>");
+        var params = {
+            url: "http://pvt.dsv.su.se/Group1<?=$model->pathToPdf;?>",
+            pdfOpenParams: {
+                navpanes: 0,
+                toolbar: 0,
+                statusbar: 0,
+                view: "FitV"
+            }
+        };
+        var myPDF = new PDFObject(params).embed("pdf<?=$model->id;?>");
+        if(!myPDF){ //kunde inte embedda
+            $("#statement").show();
+            $(".embeddedPdf").hide();
+        }
     };
 </script>

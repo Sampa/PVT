@@ -417,9 +417,6 @@ class CvController extends Controller
             'dataProvider'=>$dataProvider,
             'resultCount'=>$resultCount,
         );
-        echo "<br/>";
-        var_dump($criteria->condition);
-
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
         if( Yii::app()->request->isAjaxRequest ){
             $this->renderPartial('_searchview',$dataToView);

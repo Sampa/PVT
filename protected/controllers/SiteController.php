@@ -347,9 +347,18 @@ class SiteController extends Controller
                 $cv = new Cv;
                 $cv->hasGeoArea = true;
                 if($i < 10001){ 
-                    // $cvArea = CvArea::model()->findByPk(30);                       
-                    // $cvArea->save();
-                    
+                    $geo = new GeograficArea;
+                    $geo->country  = "Sweden";
+                    $geo->region  = "Gotland";
+                    $geo->city = "Gotland";
+                    if(!$geo->save()){
+                        die();
+                    }
+                    $cvArea = new CvArea();
+                    $cvArea->cvId = $cv->id;
+                    $cvArea->AreaId = $geo->id;
+                    $cvArea->save();
+
                     $cv->pdfText = "Javautvecklare
 
                     Om jobbet

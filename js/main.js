@@ -258,7 +258,7 @@ $(function(){
         var cvID = $(this).parent().attr("id");
         $.ajax({  //gör en http POST request till vår actionSaveCV i RecruitmentprocessController och skicka med datan
             type: "POST",
-            url: "recruitmentprocess/savecv",
+            url: $(this).attr("data-url"),
             data: {"processID":processID, "cvID":cvID}
         }).done(function( data ) {
            $('#hotlistModal').modal('show');

@@ -112,7 +112,7 @@ jQuery(document).ready(function(){
         event.preventDefault();
         var id = $(this).attr("data-receiver");
         var conversationId = $(this).attr("data-content");
-        id = conversationId;//id.replace("btn-chat", "");
+//        id = conversationId;//id.replace("btn-chat", "");
         var message = $("#Message_body" + id).val();
 //        if(message.length < 1)
 //            return;

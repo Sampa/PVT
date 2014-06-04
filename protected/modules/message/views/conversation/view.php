@@ -28,6 +28,8 @@ if($model->recruiterId== Yii::app()->user->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_receivedTemplate',array("message"=>$message));
                     }elseif($message->sender_id == user()->id){
                         $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_sentTemplate',array("message"=>$message));
+                    }else{
+                        echo "fuck";
                     }
                 endforeach;
                 ?>

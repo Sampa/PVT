@@ -155,8 +155,8 @@ return array(
         'replyEmail' => 'reply-to@gmail.com',
         'myEmail' => 'pvtgroup1@gmail.com',
         'gmail_password' => 'pvtdsv123',
-        'recaptcha_private_key' => '6LetX_ESAAAAAJljh1ufs6xswXTVdaWY9Y9XyXNo', // captcha will not work without these keys!
-        'recaptcha_public_key' => '6LetX_ESAAAAAOrKqvLlYIQJr6rjReYPupSjI4ay', //http://www.google.com/recaptcha
+        'recaptcha_private_key' => '6LeLoPQSAAAAABJzDEE5DtcDvnbYgU-uiwNPdKEZ', // captcha will not work without these keys!
+        'recaptcha_public_key' => '6LeLoPQSAAAAAGSPRa6a27K3kJOI90Oymvyxf3MO', //http://www.google.com/recaptcha
         'contactRequireCaptcha' => true,
 		'metaTags'=>array(
 			'city',

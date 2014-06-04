@@ -14,7 +14,7 @@ $this->breadcrumbs=array(
 	$this->breadcrumbs=array(
 	t("Hem")=> Yii::app()->getHomeUrl(),
 	Yii::t("t","Mina Sidor")=>Yii::app()->getBaseUrl().'/user/'.app()->user->id,
-	t('Updatera användaruppgifter'),
+	t('Uppdatera användaruppgifter'),
 );
 }
 ?>

@@ -53,7 +53,7 @@ else{
 	    'data'=>$model,
 		'attributes'=>array(
 			'username',
-			'fullname',
+			'name',
 			'email',
 			array(
 			'label' => t('Företagsnamn'),

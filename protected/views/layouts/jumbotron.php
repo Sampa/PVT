@@ -246,21 +246,27 @@
                     </div>
                     <div class="col-md-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement"><img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains"></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">
+                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-book"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
                         </center>
                     </div>
                     <div class="col-md-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul"><img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="..."></a>
+                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">
+                        <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-folder-open"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></h4>
                         </center>
                     </div>
                     <div class="col-md-3">
                         <center>
-                            <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies"><img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="..."></a>
+                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">
+                            <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-info-sign"></i></button>
+                            </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Cookies");?></strong></h4>
                         </center>
@@ -285,7 +291,7 @@
                     <div class="col-xs-3">
                         <center>
                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/agreement">
-                            <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
+                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-book"></i></button>
                             </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Användaravtal");?></strong></h4>
@@ -294,7 +300,7 @@
                     <div class="col-xs-3">
                         <center>
                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/pul">
-                            <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
+                            <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-folder-open"></i></button>
                             </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Personuppgifter");?></strong></h4>
@@ -303,7 +309,7 @@
                     <div class="col-xs-3">
                         <center>
                             <a href="<?php echo Yii::app()->baseUrl;?>/site/page/cookies">
-                            <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
+                            <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-info-sign"></i></button>
                             </a>
                             <br>
                             <h4 class="footertext"><strong><?php echo yii:: t ("t", "Cookies");?></strong></h4>

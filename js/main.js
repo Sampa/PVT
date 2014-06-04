@@ -113,6 +113,9 @@ jQuery(document).ready(function(){
         var id = $(this).attr("id");
         var conversationId = $(this).attr("data-content");
         id = id.replace("btn-chat", "");
+        var message = $("#Message_body" + id).val();
+        if(message.length < 1)
+            return;
         $.ajax({
             "type": "POST",
             "url": $(this).attr("data-url"),

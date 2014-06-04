@@ -490,6 +490,28 @@ class CvController extends Controller
 	 * Den här hanterar ifall vi trycker på sökknappen
 	 */
 	private function handleSearch($criteria) {
+		// Kod som hanterar statistik ang sökningar.
+		$currentUserRole = Yii::app()->user->getState("role");
+		if (!isset($currentUserRole)) {
+			$currentUserRole = "guest";
+		}
+		// Kolla om det finns sparat sen tidigare
+		$searchCriteria = new CDbCriteria;
+		$searchCriteria->compare('date', date('Y-m-d'));
+		$searchCriteria->compare('role', $currentUserRole);
+		$oldSearch = SearchHistory::model()->find($searchCriteria);
+		if (isset($oldSearch)) {
+			// Vi hade sökningen sedan tidigare, behöver bara uppdatera antalet sökningar.
+			$oldSearch->numberOfSearches = $oldSearch->numberOfSearches+1;
+			$oldSearch->save();
+		}else {
+		// Sökningen fanns inte sedan tidigare, skapa en ny.
+			$search = new SearchHistory;
+			$search->date = date('Y-m-d');
+			$search->role = $currentUserRole;
+			$search->numberOfSearches = 1;
+			$search->save();
+		}
 		if(isset($_POST['searchbox'])){//if you write in free text search field
 
             $searchWordArray = explode(" OR ",$_POST['searchbox']);

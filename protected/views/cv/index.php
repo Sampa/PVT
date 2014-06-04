@@ -180,7 +180,7 @@ if($resultCount< 1):?>
     });     
     function scrollToResults(i,data){
         $('html, body').animate({
-                scrollTop: $("#results").offset().top
+               scrollTop: $("#results").top
             }, 2000);
     }
 jQuery(document).ready(function ($) {

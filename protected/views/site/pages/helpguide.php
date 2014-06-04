@@ -184,7 +184,7 @@ $this->breadcrumbs = array(
             <div class="col-xs-4 col-sm-6 col-md-4">
                 <p>  
                      <video width="320" height="240" controls>
-                 <source src= "<?php Yii::app()->baseUrl?>/video/SkapaCV.mp4" type="video/mp4">
+                 <source src= "<?php echo Yii::app()->baseUrl?>/video/SkapaCV.mp4" type="video/mp4">
                  </video>
              </p>
          </div>
@@ -204,7 +204,7 @@ $this->breadcrumbs = array(
         <div class="col-xs-4 col-sm-6 col-md-4">
             <p>
                 <video width="320" height="240" controls>
-                 <source src= "<?php Yii::app()->baseUrl?>/video/Sokning.mp4" type="video/mp4">
+                 <source src= "<?php echo Yii::app()->baseUrl?>/video/Sokning.mp4" type="video/mp4">
                  </video>
          </p>
      </div>
@@ -224,7 +224,7 @@ $this->breadcrumbs = array(
 <div class="col-xs-4 col-sm-6 col-md-4">
     <p>
                   <video width="320" height="240" controls>
-                 <source src= "<?php Yii::app()->baseUrl?>/video/rekryteringsprocess.mp4" type="video/mp4">
+                 <source src= "<?php echo Yii::app()->baseUrl?>/video/rekryteringsprocess.mp4" type="video/mp4">
                  </video>
  </p>
 </div>
@@ -244,7 +244,7 @@ $this->breadcrumbs = array(
     <div class="col-xs-4 col-sm-6 col-md-4">
     <p>
         <video width="320" height="240" controls>
-                 <source src= "<?php Yii::app()->baseUrl?>/video/registrera_sig.mp4" type="video/mp4">
+                 <source src= "<?php echo Yii::app()->baseUrl?>/video/registrera_sig.mp4" type="video/mp4">
                  </video>
     </p>
     </div>
@@ -283,7 +283,7 @@ $this->breadcrumbs = array(
         <div class="col-xs-4 col-sm-6 col-md-4">
         <p>
           <video width="320" height="240" controls>
-                 <source src= "<?php Yii::app()->baseUrl?>/video/hotlist.mp4" type="video/mp4">
+                 <source src= "<?php echo Yii::app()->baseUrl?>/video/hotlist.mp4" type="video/mp4">
                  </video>
         </p>
         </div>

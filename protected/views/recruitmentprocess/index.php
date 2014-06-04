@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
     ?>
     <div align="right">
       <a href="<?php echo Yii::app()->baseUrl;?>/recruitmentprocess/create">
-          <span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Lägg till ny process");?>
+          <span class="glyphicon glyphicon-plus"></span>  <?php echo Yii::t("t","Skapa ny process");?>
       </a>
   </div>
 

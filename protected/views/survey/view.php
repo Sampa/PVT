@@ -25,9 +25,9 @@
             <h5>
                 <?php
                 if (isset($numberOfAnswersInPercent)) {
-                   echo $numberOfAnswersInPercent.Yii::t("t","% av de tillfrågade har besvarat enkäten. ").$numberOfAnswers.t(' av ').$numberOfCandidates;
+                   echo $numberOfAnswersInPercent.Yii::t("t"," % av de tillfrågade har besvarat enkäten. ").$numberOfAnswers.t(' av ').$numberOfCandidates;
                } else {
-                   echo Yii::t("t","Ingen har besvarat enkäten ännu. ($numberOfAnswers av $numberOfCandidates personer)");
+                   echo Yii::t("t","Ingen har besvarat enkäten ännu. ").$numberOfAnswers.t(' av ').$numberOfCandidates.t(' personer');
                }?>
            </h5>
            <a href="#showRecivers" id="showReciversBtn"><?php echo Yii::t("t","Visa mottagare");?></a><p class="footertext"></p>

@@ -11,10 +11,25 @@ function chatUpdateTime(toid){
         if(data.status=="ok"){
             $("#chatUl"+toid).append(data.html);
         }
-        setTimeout(chatUpdateTime(toid), 2000);
-
+//        setTimeout(chatUpdateTime(toid), 2000);
     });
 }
+$(".chatHistoryToggle").on('click',function(){
+    var id=$(this).attr("href");
+    $(id).slideToggle();
+
+    var iconElement = $(this).children("span");
+    if(iconElement.hasClass("up")){
+        iconElement.removeClass("up");
+        iconElement.removeClass("glyphicon-arrow-up");
+        iconElement.addClass("glyphicon-arrow-down");
+    }else{
+        iconElement.removeClass("glyphicon-arrow-up");
+        iconElement.addClass("up");
+        iconElement.addClass("glyphicon-arrow-down");
+    }
+});
+
 //getting country/region/city
 (function(window,$,undefined){
     var target = $("#geoCity");

@@ -14,7 +14,7 @@ function chatUpdateTime(toid,conversationid){
 //            alert(data.html);
         }else{
         }
-//        setTimeout(chatUpdateTime(toid,conversationid), 2000);
+        setTimeout(chatUpdateTime(toid,conversationid), 2000);
     });
 }
 $(".chatHistoryToggle").on('click',function(){

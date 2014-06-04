@@ -94,7 +94,7 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ").Yii::app()->user->name; ?>
-
+                                <span class="glyphicon glyphicon-arrow-down pull-rigth"></span>
                             </a>
                             <ul class="dropdown-menu" style="width:200px">
                                 <li>
@@ -151,7 +151,7 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::t("t"," ").Yii::app()->user->name; ?>
-                                
+                                <span class="glyphicon glyphicon-arrow-down pull-rigth"></span>
                             </a>
                             <ul class="dropdown-menu" style="width:200px">
                                 <li>

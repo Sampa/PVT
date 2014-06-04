@@ -18,10 +18,10 @@ $this->breadcrumbs=array(
 <!-- skriva ut alla areas -->
 <h3>Söker jobb i följande områden:</h3>
 <?php
-foreach($model->cvTags as $cvTag){
+foreach($model->keywords as $cvTag){
     echo "<br/>";
-    $number = $cvTag->tag->frequency+30;
-    echo '<span style="font-size:'.$number.'px">'.$cvTag->tag->name.'</span>';
+    $number = $cvTag->frequency+30;
+    echo '<span style="font-size:'.$number.'px">'.$cvTag->name.'</span>';
     echo "<br/>";
 
 }

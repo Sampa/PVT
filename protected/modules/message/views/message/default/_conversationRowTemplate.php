@@ -24,9 +24,7 @@
 
     <td class="clickable accordion-heading accordion-toggle"
         data-toggle="collapse" href="#acc<?= $index;?>">
-        <span class="badge alert-success"><?=$conversation->messageCountTotal();?></span>
-        <span class="badge alert-info"><?=$conversation->messageCountSent();?></span>
-        <span class="badge alert-danger"><?=$conversation->messageCountReceived();?></span>
+        <span class="badge alert-success"><?=$conversation->messageCountPerConversation();?></span>
     </td>
     <td class="clickable accordion-heading accordion-toggle"
         data-toggle="collapse" href="#acc<?= $index;?>">

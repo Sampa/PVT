@@ -31,8 +31,8 @@ class ContactForm extends CFormModel
     public function validateCaptcha($attribute, $params) {
     		if ($this->getRequireCaptcha())
     			CValidator::createValidator('application.extensions.recaptcha.EReCaptchaValidator',
-                                                                            $this, $attribute
-                                                                             ,array(  'privateKey'=>Yii::app()->params['recaptcha_private_key']))
+                                                                    $this, $attribute
+                                                             ,array(  'privateKey'=>Yii::app()->params['recaptcha_private_key']))
                                                                             ->validate($this);
     	}
 

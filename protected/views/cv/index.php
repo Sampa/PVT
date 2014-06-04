@@ -5,6 +5,7 @@ $this->breadcrumbs=array(
     Yii::t("t","Hem")=>Yii::app()->getHomeUrl(),
     Yii::t("t",'Sökning'),
 );
+
 ?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/css/select2.css" media="screen"/>
     <?php if (Yii::app()->user->hasFlash('index')): ?>
@@ -19,7 +20,7 @@ $this->breadcrumbs=array(
 	<div class="form-group">
         <label for="searchbox"><?php echo Yii::t("t","Valfria sökord");?></label>
 		<input id="searchbox" type="text" name="searchbox" class="form-control" placeholder="<?php echo Yii::t("t","Fritextsökning...");?>" />
-	    <div class "form group">
+	    <div class=form-group">
             <span class="glyphicon glyphicon-info-sign infoBox"></span>
         </div>
     </div>
@@ -99,14 +100,17 @@ $this->breadcrumbs=array(
     <button type="submit" class="btn btn-primary"><?php echo Yii::t("t","Sök");?></button>
   </div>
 </form>
-<hr/>
-    <h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
-    <div class="btn-group">
-          <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
-          <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
-          <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
-          <!--- <button id="geograficArea" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Geografisk area');?></button>-->
-   </div>
+    <!--Visa bara sorteringsknappar efter sökning -->
+    <?php
+    if(isset($_POST) && count($_POST)>1):?>
+        <hr/>
+        <h3 id="results"> <?php echo Yii::t('t', 'Sortera på:');?> </h3>
+        <div class="btn-group">
+              <button id="title" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Rubrik');?></button>
+              <button id="date" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Datum');?></button>
+              <button id="typeOfEmployment" type="button" class="btn btn-success sortButton"><?php echo Yii::t('t', 'Anställningsform');?></button>
+       </div>
+    <?php endif;?>
     <div class="well" style="display:none;" id="sortSelectionWrapper"><h4><?php echo Yii::t("t","Sorterade listan efter ");?><span id="sortSelection"></span></h4></div>
             <hr>
 <?php
@@ -213,13 +217,13 @@ jQuery(document).ready(function ($) {
                 document.querySelector("#listOfCvs").innerHTML = "";
                 $("#listOfCvs").html(data);
                 $("#sortSelectionWrapper").fadeIn('slow');
-                var displayText ="anställningsform";
+                var displayText = '<?php echo Yii::t("t","anställningsform")?>';
                 switch(post.sortBy){
                     case "date":
-                        displayText ="datum";
+                        displayText ='<?php echo Yii::t("t","datum")?>';
                     break;
                     case "title":
-                        displayText = "rubrik";
+                        displayText = '<?php echo Yii::t("t","rubrik") ?>';
                 }
                 $("#sortSelection").html(displayText);
             });

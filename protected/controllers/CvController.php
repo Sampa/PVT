@@ -92,7 +92,7 @@ class CvController extends Controller
                          $area = explode(",", $singleArea);
                          $geo = new GeograficArea;
                          if(isset($area[1])){
-                             $geo->country  = $area[0];
+                             $geo->counatry  = $area[0];
                              $geo->region  = $area[1];
                              $geo->city = $area[2];
                              if(!$geo->save()){
@@ -354,8 +354,9 @@ class CvController extends Controller
 
     private function setDefaultCriteriaCondition(){
         $criteria=new CDbCriteria;
+        $criteria->limit = 1000;
         $criteria = $this->setSortOrderCondition($criteria);
-		//$criteria = $this->handleSearch($criteria);
+//		$criteria = $this->handleSearch($criteria);
         //sätt relational conditions för geographic areas
         $criteria->with = array(
             //areas är namnet på vår relation i Cv model till GeographicArea tabellen
@@ -363,12 +364,11 @@ class CvController extends Controller
                 'together'=>true,//dont know whhy
                 'joinType'=>'INNER JOIN', //dont know why
             ),
-            //tags är namnet på vår relation i Cv model till tag tabellen
-            'tags'=>array(
-                'together'=>true,//dont know whhy
-                'joinType'=>'INNER JOIN', //dont know why
-
-            )
+//            tags är namnet på vår relation i Cv model till tag tabellen
+//                  'keywords'=>array(
+//                'together'=>false,//dont know whhy
+//                'joinType'=>'INNER JOIN', //dont know why
+//            )
         );
         return $criteria;
     }
@@ -382,17 +382,22 @@ class CvController extends Controller
         //alla $criteria = $this->setXYZCondition($criteria) så är XYZ en metod i CvController
         $criteria = $this->setDefaultCriteriaCondition();
         $this->handleSearch($criteria);
+        $sort = false;
+        if(isset($_POST['sortBy']))
+            $sort = $_POST['sortBy'];
         //CActiveDataProvider is a class that handles the criteria above and finds the correct CV's
         $dataProvider=new CActiveDataProvider('Cv',array(
             "criteria"=>$criteria,
             "sort"=>array(
                 'defaultOrder' => 'numberOfLinks, date',
             ),
-//            'pagination'=>array(
-//                'pageSize'=>10,
-//            ),
+            'pagination'=>array(
+                'pageSize'=>10,
+                'params'=>array(
+                    'sortBy'=>$sort,
+                ),
+            ),
         ));
-
         //tillfälligt dölj de utan text
         //hämta antalet resultat och nollställ kriteriet så vi kan visa alla om det var 0 resultat
         $resultCount = $dataProvider->getTotalItemCount();
@@ -406,7 +411,7 @@ class CvController extends Controller
             'resultCount'=>$resultCount,
         );
         //om vi har gjort en ajaxrequest (sorteringsknapparnas jquery kod orsaker den)
-        if( Yii::app()->request->isAjaxRequest && isset($_POST['sortBy'])){
+        if( Yii::app()->request->isAjaxRequest ){
             $this->renderPartial('_searchview',$dataToView);
         }else{
             $this->render('index',$dataToView);
@@ -418,7 +423,9 @@ class CvController extends Controller
 		 * date is the column to sort by and DESC means newest first(descending order)
 	 */
 	private function setSortOrderCondition($criteria) {
-		if(isset($_POST['sortBy'])){
+        if(isset($_GET['sortBy']))
+            $_POST['sortBy']=$_GET['sortBy'];
+         if(isset($_POST['sortBy'])){
 			if($_POST['sortBy']=='date')
 				$criteria->order= "date DESC";
 			else //sortera utifrån det man tryckte på i första hand och om två är lika gå efter datumet (desc = nyast först)
@@ -450,9 +457,17 @@ class CvController extends Controller
 			$allCvIds = array(); //initiate empty array
 			$tagsAsArray = explode(",",$_POST['tags']); //transform from one long string with tags to an array of strings
 			foreach($tagsAsArray as $tag){ //loop all tags the user entered
-                $criteria->addSearchCondition("tags.name",$tag,"OR");
-		    }
-        }
+				//kontrollera denna query
+				$tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+				if($tagModel !=null){ //the tag exists
+					//loop the array with each row in the table that connects this tag to a cv
+					foreach($tagModel->cv as $cv){
+						$allCvIds[] = $cv->title; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
+					}
+				}
+			}
+			$criteria->compare("title",$allCvIds,false,"OR");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
+		}
 		return $criteria;
 	}
 	private function setGeoAreaCondition($criteria) {
@@ -474,7 +489,8 @@ class CvController extends Controller
 	 */
 	private function handleSearch($criteria) {
 		if(isset($_POST['searchbox'])){//if you write in free text search field
-			$searchWordArray = explode(" OR ",$_POST['searchbox']);
+
+            $searchWordArray = explode(" OR ",$_POST['searchbox']);
 			foreach($searchWordArray as $index => $searchString){
 				$phrase = false;
 				$searchWords = explode(" ",$searchString);
@@ -483,13 +499,13 @@ class CvController extends Controller
 						$operator = 'OR';
 					elseif($phrase === false)
 						$operator = 'AND';
-					
+
 					if(strpos($searchWord, ":")!==false && $phrase === false){
 
 						$metaTag = strstr($searchWord,":", true);
 						$pos = strpos($searchWord, ":");
 						$search = substr($searchWord, $pos+1);
-						
+
 						if($metaTag == "city"){
 							$criteria->addSearchCondition("areas.city",$search,true,$operator);
 							//return $criteria;//city:city
@@ -504,9 +520,18 @@ class CvController extends Controller
 						}
 						elseif($metaTag == "tag"){ //tag:tag1,tag2,tag3
 							$tagsAsArray = explode(",",$search); //transform from one long string with tags to an array of strings
-							foreach($tagsAsArray as $tag){ //loop all tags the user entered
-		                        $criteria->addSearchCondition("tags.name",$tag,true,$operator);
-		                    };
+                            $allCvIds = array(); //initiate empty array
+                            foreach($tagsAsArray as $tag){ //loop all tags the user entered
+                                //kontrollera denna query
+                                $tagModel = Tag::model()->find("name='".$tag."'"); //try to find it in the database
+                                if($tagModel !=null){ //the tag exists
+                                    //loop the array with each row in the table that connects this tag to a cv
+                                    foreach($tagModel->cv as $cv){
+                                        $allCvIds[] = $cv->title; //add the primary key of the cv to build an array of CV Ids that has atleast one of the tags the user searched for
+                                    }
+                                }
+                            }
+                            $criteria->compare("title",$allCvIds,false,"AND");//adding the sql condition (primary key of a cv must be in this array to be shown as a result
 						}
 						elseif($metaTag == "employment"){//employment:consult || employment:employment
 							if($search == 'consult')
@@ -532,7 +557,6 @@ class CvController extends Controller
 					elseif($phrase === false){
 						$criteria->addSearchCondition("pdfText", $searchWord, true, $operator);
 						$criteria->addSearchCondition("title", $searchWord, true, 'OR');
-						//echo ($criteria->condition);
 					}
 					elseif(strpos($searchWord, '"')=== false && $phrase === true){
 						$search.=" ";

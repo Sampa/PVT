@@ -46,7 +46,6 @@ function chatUpdateTime(toid){
     }
     $(function(){
         ["countries","geoRegion","geoCity"].forEach(function(item,index,list){
-
             var next= $("#"+list[index+1]);
              $("#"+item).select2({
                 placeholder: next.attr("data-default")
@@ -255,6 +254,7 @@ $(function(){
         $("#submitReportBtn").attr("data-id",cvID);
         $("#submitReportBtn").attr("data-user",userID);
     });
+
     $("#submitReportBtn").on("click", function() {
         var cvID = $(this).attr("data-id");
         var reason = $("#reasonTextField").val();

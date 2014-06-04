@@ -33,41 +33,14 @@ $this->breadcrumbs=array(
     new Morris.Line({
         element: 'searchHistory',
         data: [
-            { y: '<?php echo $dataProviderDates[0] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[0]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[0]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[0]?>
-            },
-            { y: '<?php echo $dataProviderDates[1] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[1]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[1]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[1]?>
-            },
-            { y: '<?php echo $dataProviderDates[2] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[2]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[2]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[2]?>
-            },
-            { y: '<?php echo $dataProviderDates[3] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[3]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[3]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[3]?>
-            },
-            { y: '<?php echo $dataProviderDates[4] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[4]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[4]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[4]?>
-            },
-            { y: '<?php echo $dataProviderDates[5] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[5]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[5]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[5]?>
-            },
-            { y: '<?php echo $dataProviderDates[6] ?>',
-                a: <?php echo $dataProviderSearchHistoryPublisher[6]?>,
-                b: <?php echo $dataProviderSearchHistoryRecruiter[6]?>,
-                c: <?php echo $dataProviderSearchHistoryGuest[6]?>
-            },
+        <?php
+        for ($i = 0; $i < sizeof($dataProviderDates) ; $i++) { 
+            echo " { y: '".$dataProviderDates[$i]."',";
+            echo " a: ".$dataProviderSearchHistoryPublisher[$i].",";
+            echo " b: ".$dataProviderSearchHistoryRecruiter[$i].",";
+            echo " c: ".$dataProviderSearchHistoryGuest[$i].",";
+            echo "},";
+        }?>
         ],
         xkey: 'y',
         ykeys: ['a', 'b', 'c'],

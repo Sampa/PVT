@@ -1,6 +1,6 @@
 <tr class="accordion-heading">
 	<td>
-		<?php echo CHtml::checkBox("Message[$conversation->id][selected]",array("value"=>$conversation->id)); ?>
+		<?php echo CHtml::checkBox("Message[$conversation->id][selected]"); ?>
 		<?php echo $form->hiddenField($conversation, "[$conversation->id]",array("value"=>$conversation->id)); ?>
 	</td>
 

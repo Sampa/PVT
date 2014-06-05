@@ -47,7 +47,7 @@
                                             "conversation"=>$conversation,
                                       ));
 							    }
-									?>
+                                ?>
 								</div><!-- accordion-group-->
 							</div>
 							</tbody>

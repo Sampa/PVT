@@ -1,7 +1,7 @@
 <tr class="accordion-heading">
 	<td>
-		<?php echo CHtml::checkBox("Message[$index][selected]"); ?>
-		<?php echo $form->hiddenField($conversation, "[$index]id"); ?>
+		<?php echo CHtml::checkBox("Message[$conversation->id][selected]",array("value"=>$conversation->id)); ?>
+		<?php echo $form->hiddenField($conversation, "[$conversation->id]",array("value"=>$conversation->id)); ?>
 	</td>
 
     <td class="clickable accordion-heading accordion-toggle "
